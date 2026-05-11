@@ -3,66 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Auto Blog – Car Tips & Guides | AutoCalcHub</title>
-  <meta name="description" content="Practical guides on car buying, fuel costs, EV ownership, and more. Make smarter auto decisions with AutoCalcHub.">
+  <title>Auto Blog – Car Tips, Guides & Calculators | AutoCalcHub</title>
+  <meta name="description" content="Practical guides on car buying, financing, fuel costs, EV ownership, and more. Make smarter auto decisions with AutoCalcHub.">
   <link rel="canonical" href="https://autocalchub.com/blog/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
-  <style>
-    .page { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 6rem; }
-    h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--charcoal); margin-bottom: 0.5rem; }
-    .subtitle { color: var(--mid); margin-bottom: 3rem; }
-    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
-    .blog-card {
-      background: white; border: 1px solid var(--border); border-radius: 12px;
-      padding: 1.75rem; text-decoration: none; color: inherit;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .blog-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
-    .blog-tag {
-      display: inline-block; background: var(--orange-pale); color: var(--orange);
-      font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
-      padding: 0.2rem 0.6rem; border-radius: 100px; margin-bottom: 0.75rem;
-    }
-    .blog-card h2 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--charcoal); line-height: 1.4; }
-    .blog-card p { font-size: 0.875rem; color: var(--mid); line-height: 1.5; }
-    .blog-meta { font-size: 0.75rem; color: var(--light); margin-top: 1rem; }
-  </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-ZH1JYG24PK");
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-ZH1JYG24PK");</script>
+  <style>
+    .page{max-width:1100px;margin:0 auto;padding:3rem 2rem 6rem}
+    h1{font-family:"Space Grotesk",sans-serif;font-size:2.2rem;font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .subtitle{color:var(--mid);margin-bottom:1.5rem}
+    .category-header{font-family:"Space Grotesk",sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin:2.5rem 0 1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--orange)}
+    .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-bottom:1rem}
+    .blog-card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem;text-decoration:none;color:inherit;transition:transform 0.2s,box-shadow 0.2s}
+    .blog-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.07)}
+    .blog-tag{display:inline-block;background:var(--orange-pale);color:var(--orange);font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;padding:0.2rem 0.6rem;border-radius:100px;margin-bottom:0.75rem}
+    .blog-card h2{font-size:1rem;font-weight:600;margin-bottom:0.5rem;color:var(--charcoal);line-height:1.4}
+    .blog-card p{font-size:0.875rem;color:var(--mid);line-height:1.5}
+    .blog-meta{font-size:0.75rem;color:var(--light);margin-top:1rem}
+  </style>
 </head>
 <body>
 <div id="header-placeholder"></div>
 <div class="page">
   <h1>Auto Blog</h1>
   <p class="subtitle">Practical guides to help you drive smarter and spend less.</p>
+
+  <div class="category-header">💰 Buying a Car</div>
   <div class="blog-grid">
-    <a href="how-much-car-can-i-afford.html" class="blog-card">
-      <span class="blog-tag">Buying</span>
-      <h2>How Much Car Can I Afford?</h2>
-      <p>The 20/4/10 rule and other methods to figure out your real car budget before you walk into a dealership.</p>
-      <div class="blog-meta">6 min read · May 2026</div>
-    </a>
-    <a href="how-to-calculate-fuel-cost-road-trip.html" class="blog-card">
-      <span class="blog-tag">Running Costs</span>
-      <h2>How to Calculate Fuel Cost for a Road Trip</h2>
-      <p>Step-by-step guide to estimating gas costs before you leave, so there are no surprises at the pump.</p>
-      <div class="blog-meta">5 min read · May 2026</div>
-    </a>
-    <a href="electric-vs-gas-car-true-cost.html" class="blog-card">
-      <span class="blog-tag">EV</span>
-      <h2>Electric vs Gas Car: True Cost Comparison</h2>
-      <p>Beyond the sticker price — a full breakdown of what EVs and gas cars really cost to own over 5 years.</p>
-      <div class="blog-meta">8 min read · May 2026</div>
-    </a>
+    <a href="how-much-car-can-i-afford.html" class="blog-card"><span class="blog-tag">Buying</span><h2>How Much Car Can I Afford?</h2><p>The 20/4/10 rule and other methods to set your real car budget.</p><div class="blog-meta">6 min read · May 2026</div></a>
+    <a href="how-to-buy-used-car-without-getting-ripped-off.html" class="blog-card"><span class="blog-tag">Buying</span><h2>How to Buy a Used Car Without Getting Ripped Off</h2><p>Step-by-step guide to finding a good used car and avoiding costly mistakes.</p><div class="blog-meta">8 min read · May 2026</div></a>
+    <a href="best-time-of-year-to-buy-a-car.html" class="blog-card"><span class="blog-tag">Buying</span><h2>Best Time of Year to Buy a Car</h2><p>Which months and days offer the biggest discounts and incentives.</p><div class="blog-meta">5 min read · May 2026</div></a>
+    <a href="should-i-buy-or-lease-a-car.html" class="blog-card"><span class="blog-tag">Buying</span><h2>Should I Buy or Lease a Car?</h2><p>A clear breakdown of buying vs leasing for different types of drivers.</p><div class="blog-meta">6 min read · May 2026</div></a>
+    <a href="how-to-negotiate-car-price-at-dealership.html" class="blog-card"><span class="blog-tag">Buying</span><h2>How to Negotiate a Car Price at a Dealership</h2><p>Proven tactics to get a better price on any car.</p><div class="blog-meta">7 min read · May 2026</div></a>
+  </div>
+
+  <div class="category-header">🏦 Financing</div>
+  <div class="blog-grid">
+    <a href="what-credit-score-do-you-need-to-buy-a-car.html" class="blog-card"><span class="blog-tag">Financing</span><h2>What Credit Score Do You Need to Buy a Car?</h2><p>How your credit score affects your interest rate and what to do about it.</p><div class="blog-meta">6 min read · May 2026</div></a>
+    <a href="what-is-good-interest-rate-car-loan.html" class="blog-card"><span class="blog-tag">Financing</span><h2>What Is a Good Interest Rate on a Car Loan?</h2><p>Average car loan rates in 2026 and how to get the best deal.</p><div class="blog-meta">5 min read · May 2026</div></a>
+    <a href="how-to-pay-off-car-loan-early.html" class="blog-card"><span class="blog-tag">Financing</span><h2>How to Pay Off a Car Loan Early</h2><p>Strategies to pay off your auto loan faster and save on interest.</p><div class="blog-meta">5 min read · May 2026</div></a>
+    <a href="is-72-month-car-loan-bad-idea.html" class="blog-card"><span class="blog-tag">Financing</span><h2>Is a 72-Month Car Loan a Bad Idea?</h2><p>The real cost of long-term car loans and when they make sense.</p><div class="blog-meta">5 min read · May 2026</div></a>
+    <a href="how-to-get-pre-approved-car-loan.html" class="blog-card"><span class="blog-tag">Financing</span><h2>How to Get Pre-Approved for a Car Loan</h2><p>Step-by-step guide to getting pre-approved before you shop.</p><div class="blog-meta">5 min read · May 2026</div></a>
+  </div>
+
+  <div class="category-header">⛽ Running Costs</div>
+  <div class="blog-grid">
+    <a href="how-much-does-it-cost-to-own-car-per-month.html" class="blog-card"><span class="blog-tag">Running Costs</span><h2>How Much Does It Cost to Own a Car Per Month?</h2><p>A full breakdown of all the costs beyond the loan payment.</p><div class="blog-meta">6 min read · May 2026</div></a>
+    <a href="how-to-improve-car-gas-mileage.html" class="blog-card"><span class="blog-tag">Running Costs</span><h2>How to Improve Your Car&#39;s Gas Mileage</h2><p>10 proven tips to boost your MPG and save at the pump.</p><div class="blog-meta">5 min read · May 2026</div></a>
+    <a href="how-to-calculate-fuel-cost-road-trip.html" class="blog-card"><span class="blog-tag">Running Costs</span><h2>How to Calculate Fuel Cost for a Road Trip</h2><p>Estimate your gas costs before you leave so there are no surprises.</p><div class="blog-meta">5 min read · May 2026</div></a>
+    <a href="what-is-cheapest-car-to-maintain.html" class="blog-card"><span class="blog-tag">Running Costs</span><h2>What Is the Cheapest Car to Maintain?</h2><p>The cars with the lowest repair costs and best long-term reliability.</p><div class="blog-meta">5 min read · May 2026</div></a>
+  </div>
+
+  <div class="category-header">⚡ Electric Vehicles</div>
+  <div class="blog-grid">
+    <a href="electric-vs-gas-car-true-cost.html" class="blog-card"><span class="blog-tag">EV</span><h2>Electric vs Gas Car: True Cost Comparison</h2><p>A full 5-year cost breakdown including fuel, maintenance, and depreciation.</p><div class="blog-meta">8 min read · May 2026</div></a>
+    <a href="how-much-does-ev-cost-to-charge-at-home.html" class="blog-card"><span class="blog-tag">EV</span><h2>How Much Does It Cost to Charge an EV at Home?</h2><p>Real numbers on home EV charging costs at current electricity rates.</p><div class="blog-meta">5 min read · May 2026</div></a>
+    <a href="ev-tax-credit-2026.html" class="blog-card"><span class="blog-tag">EV</span><h2>EV Tax Credit 2026: Who Qualifies?</h2><p>Everything you need to know about the federal EV tax credit this year.</p><div class="blog-meta">6 min read · May 2026</div></a>
+  </div>
+
+  <div class="category-header">📈 Ownership & Value</div>
+  <div class="blog-grid">
+    <a href="which-cars-hold-value-best.html" class="blog-card"><span class="blog-tag">Ownership</span><h2>Which Cars Hold Their Value the Best?</h2><p>The best cars for resale value in 2026 and which to avoid.</p><div class="blog-meta">5 min read · May 2026</div></a>
+    <a href="how-much-does-new-car-depreciate-first-year.html" class="blog-card"><span class="blog-tag">Ownership</span><h2>How Much Does a New Car Depreciate in Year One?</h2><p>New cars lose value fast. Here&#39;s exactly how much and what to do about it.</p><div class="blog-meta">4 min read · May 2026</div></a>
   </div>
 </div>
 <div id="footer-placeholder"></div>

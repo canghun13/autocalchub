@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gas vs EV Savings Calculator – How Much Can You Save? | AutoCalcHub</title>
+  <meta name="description" content="Calculate how much you could save by switching from a gas car to an electric vehicle. Compare 5-year total costs side by side.">
+  <link rel="canonical" href="https://autocalchub.com/tools/gas-vs-ev-savings-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+    .col-header{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:1rem;padding:0.5rem 0.75rem;border-radius:6px;text-align:center}
+    .col-header.gas{background:var(--orange-pale);color:var(--orange)}
+    .col-header.ev{background:#e8f4fd;color:#1a6fa8}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+    .compare-box{background:var(--off-white);border-radius:10px;padding:1.25rem;text-align:center}
+    .compare-box.winner{background:var(--navy)}
+    .compare-num{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--navy)}
+    .compare-box.winner .compare-num{color:var(--orange)}
+    .compare-label{font-size:0.75rem;color:var(--light);margin-top:0.3rem}
+    .compare-box.winner .compare-label{color:rgba(255,255,255,0.6)}
+    .savings-banner{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:12px;padding:1.5rem;text-align:center;color:white;margin-top:1rem}
+    .savings-num{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--orange)}
+    .content-section{margin-top:3rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem}
+    .content-section p{color:var(--mid);font-size:0.95rem;line-height:1.7;margin-bottom:0.75rem}
+    @media(max-width:600px){.two-col{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>⚡ Gas vs EV Savings Calculator</h1>
+    <p>Compare the 5-year total cost of a gas car vs an electric vehicle side by side.</p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+  <div class="calc-card">
+    <h2>Compare your options</h2>
+    <div class="two-col">
+      <div>
+        <div class="col-header gas">⛽ Gas Car</div>
+        <div class="form-group"><label>Purchase Price</label><div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="gasPrice" value="30000"></div></div>
+        <div class="form-group"><label>MPG</label><div class="input-wrap"><input type="number" id="mpg" value="30"></div></div>
+        <div class="form-group"><label>Gas Price ($/gal)</label><div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="gasPerGal" value="3.50" step="0.01"></div></div>
+        <div class="form-group"><label>Annual Maintenance</label><div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="gasMaint" value="1200"></div></div>
+      </div>
+      <div>
+        <div class="col-header ev">⚡ Electric Car</div>
+        <div class="form-group"><label>Purchase Price</label><div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="evPrice" value="42000"></div></div>
+        <div class="form-group"><label>Miles/kWh</label><div class="input-wrap"><input type="number" id="mpkwh" value="4" step="0.1"></div></div>
+        <div class="form-group"><label>Electric Rate ($/kWh)</label><div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="kwhRate" value="0.16" step="0.01"></div></div>
+        <div class="form-group"><label>Annual Maintenance</label><div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="evMaint" value="600"></div></div>
+      </div>
+    </div>
+    <div class="form-group" style="margin-top:1rem"><label>Annual Miles Driven</label><div class="input-wrap"><input type="number" id="annualMiles" value="12000"></div></div>
+    <div class="form-group"><label>EV Tax Credit</label><div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="taxCredit" value="7500"></div></div>
+    <button class="calc-btn" onclick="calculate()">Compare 5-Year Costs</button>
+  </div>
+  <div class="calc-card results" id="results">
+    <h2>5-Year Cost Comparison</h2>
+    <div class="compare-grid">
+      <div class="compare-box" id="gasBox">
+        <div class="compare-num" id="gas5yr">$0</div>
+        <div class="compare-label">Gas Car — 5 Year Total</div>
+      </div>
+      <div class="compare-box" id="evBox">
+        <div class="compare-num" id="ev5yr">$0</div>
+        <div class="compare-label">EV — 5 Year Total</div>
+      </div>
+    </div>
+    <div class="savings-banner">
+      <div style="font-size:0.9rem;margin-bottom:0.5rem;opacity:0.8" id="savingsLabel">You could save</div>
+      <div class="savings-num" id="savings">$0</div>
+      <div style="font-size:0.85rem;opacity:0.7;margin-top:0.25rem">over 5 years</div>
+    </div>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+  <div class="content-section">
+    <h2>Gas vs Electric: What's the Real Cost?</h2>
+    <p>EVs typically cost more upfront but less to fuel and maintain. Over 5 years, many EV owners save $5,000–$15,000 compared to a comparable gas vehicle, especially with the federal tax credit.</p>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+function calculate(){
+  var gasPrice=parseFloat(document.getElementById('gasPrice').value)||0;
+  var mpg=parseFloat(document.getElementById('mpg').value)||1;
+  var gasPerGal=parseFloat(document.getElementById('gasPerGal').value)||0;
+  var gasMaint=parseFloat(document.getElementById('gasMaint').value)||0;
+  var evPrice=parseFloat(document.getElementById('evPrice').value)||0;
+  var mpkwh=parseFloat(document.getElementById('mpkwh').value)||1;
+  var kwhRate=parseFloat(document.getElementById('kwhRate').value)||0;
+  var evMaint=parseFloat(document.getElementById('evMaint').value)||0;
+  var miles=parseFloat(document.getElementById('annualMiles').value)||0;
+  var credit=parseFloat(document.getElementById('taxCredit').value)||0;
+  var gasFuel=(miles/mpg)*gasPerGal*5;
+  var gas5=gasPrice+gasFuel+(gasMaint*5);
+  var evFuel=(miles/mpkwh)*kwhRate*5;
+  var ev5=(evPrice-credit)+evFuel+(evMaint*5);
+  document.getElementById('gas5yr').textContent=fmt(gas5);
+  document.getElementById('ev5yr').textContent=fmt(ev5);
+  var diff=gas5-ev5;
+  if(diff>0){
+    document.getElementById('savingsLabel').textContent='EV saves you';
+    document.getElementById('savings').textContent=fmt(diff);
+    document.getElementById('evBox').classList.add('winner');
+    document.getElementById('gasBox').classList.remove('winner');
+  } else {
+    document.getElementById('savingsLabel').textContent='Gas car saves you';
+    document.getElementById('savings').textContent=fmt(Math.abs(diff));
+    document.getElementById('gasBox').classList.add('winner');
+    document.getElementById('evBox').classList.remove('winner');
+  }
+  document.getElementById('results').classList.add('show');
+}
+calculate();
+</script>
+</body>
+</html>

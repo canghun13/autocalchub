@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Insurance Cost Estimator – How Much Should You Pay? | AutoCalcHub</title>
+  <meta name="description" content="Estimate your car insurance cost based on your age, driving record, car value, and coverage level. Free car insurance cost estimator.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-insurance-estimator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix{position:absolute;top:50%;transform:translateY(-50%);left:0.875rem;font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    input[type="number"],select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
+    .result-box{background:var(--off-white);border-radius:10px;padding:1.25rem;text-align:center}
+    .result-box.highlight{background:var(--navy)}
+    .result-num{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--navy)}
+    .result-box.highlight .result-num{color:var(--orange)}
+    .result-label{font-size:0.75rem;color:var(--light);margin-top:0.3rem}
+    .result-box.highlight .result-label{color:rgba(255,255,255,0.6)}
+    .disclaimer{background:var(--off-white);border-radius:8px;padding:1rem;margin-top:1rem;font-size:0.8rem;color:var(--light)}
+    .content-section{margin-top:3rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p{color:var(--mid);font-size:0.95rem;line-height:1.7;margin-bottom:0.75rem}
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>🛡️ Car Insurance Cost Estimator</h1>
+    <p>Get a rough estimate of what you should be paying for car insurance.</p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+  <div class="calc-card">
+    <h2>Tell us about yourself and your car</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="age">Your Age</label>
+        <div class="input-wrap"><input type="number" id="age" value="30" min="16" max="85"></div>
+      </div>
+      <div class="form-group">
+        <label for="carValue">Car Value</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="carValue" value="25000"></div>
+      </div>
+      <div class="form-group">
+        <label for="record">Driving Record</label>
+        <select id="record">
+          <option value="clean">Clean (no violations)</option>
+          <option value="minor">Minor (1 ticket)</option>
+          <option value="accident">At-fault accident</option>
+          <option value="dui">DUI/DWI</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="coverage">Coverage Level</label>
+        <select id="coverage">
+          <option value="liability">Liability only</option>
+          <option value="standard" selected>Standard full coverage</option>
+          <option value="comprehensive">Comprehensive + low deductible</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="annualMiles">Annual Miles</label>
+        <div class="input-wrap"><input type="number" id="annualMiles" value="12000"></div>
+      </div>
+      <div class="form-group">
+        <label for="state">State (avg rate)</label>
+        <select id="state">
+          <option value="1.0">Average US</option>
+          <option value="1.4">Michigan (highest)</option>
+          <option value="1.3">Florida / Louisiana</option>
+          <option value="1.1">California / New York</option>
+          <option value="0.8">Maine / Ohio (lowest)</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Estimate My Insurance</button>
+  </div>
+  <div class="calc-card results" id="results">
+    <h2>Your Estimate</h2>
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="monthly">$0/mo</div>
+        <div class="result-label">Est. Monthly Premium</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="annual">$0</div>
+        <div class="result-label">Est. Annual Premium</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="range">$0–$0</div>
+        <div class="result-label">Typical Range</div>
+      </div>
+    </div>
+    <div class="disclaimer">⚠️ This is a rough estimate based on national averages. Actual quotes vary widely by insurer, exact location, credit score, and other factors. Always get 3+ real quotes to find the best rate.</div>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+  <div class="content-section">
+    <h2>What Affects Car Insurance Rates?</h2>
+    <p>The biggest factors are your age (drivers under 25 pay 50–100% more), driving record, where you live, your car's value, and your coverage level.</p>
+    <h3>How to lower your car insurance</h3>
+    <p>Shop at least 3 insurers, raise your deductible, bundle with home insurance, maintain a clean record, ask about low-mileage discounts, and take a defensive driving course.</p>
+    <h3>What is full coverage?</h3>
+    <p>Full coverage combines liability (required by law), collision (covers your car in accidents), and comprehensive (covers theft, weather, animals). It's recommended if your car is worth more than $10,000.</p>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function calculate(){
+  var age=parseInt(document.getElementById('age').value)||30;
+  var carValue=parseFloat(document.getElementById('carValue').value)||0;
+  var record=document.getElementById('record').value;
+  var coverage=document.getElementById('coverage').value;
+  var miles=parseFloat(document.getElementById('annualMiles').value)||12000;
+  var stateMult=parseFloat(document.getElementById('state').value)||1.0;
+  // base by coverage
+  var base=coverage==='liability'?600:coverage==='standard'?1400:1900;
+  // age multiplier
+  var ageMult=age<20?2.2:age<25?1.7:age<30?1.2:age<65?1.0:1.15;
+  // record multiplier
+  var recMult=record==='clean'?1.0:record==='minor'?1.25:record==='accident'?1.55:2.2;
+  // car value
+  var valMult=1+(carValue/100000)*0.4;
+  // miles
+  var milesMult=miles<7500?0.85:miles<12000?1.0:miles<20000?1.1:1.2;
+  var annual=Math.round(base*ageMult*recMult*valMult*milesMult*stateMult/100)*100;
+  var monthly=Math.round(annual/12);
+  var low=Math.round(annual*0.7/100)*100;
+  var high=Math.round(annual*1.4/100)*100;
+  document.getElementById('monthly').textContent='$'+monthly+'/mo';
+  document.getElementById('annual').textContent='$'+annual.toLocaleString();
+  document.getElementById('range').textContent='$'+low.toLocaleString()+'–$'+high.toLocaleString();
+  document.getElementById('results').classList.add('show');
+}
+calculate();
+</script>
+</body>
+</html>

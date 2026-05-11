@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuel Cost Calculator – Gas Cost for Any Trip or Year | AutoCalcHub</title>
+  <meta name="description" content="Calculate how much you'll spend on gas for a road trip or over a full year. Free fuel cost calculator — enter your MPG, distance, and gas price.">
+  <link rel="canonical" href="https://autocalchub.com/tools/fuel-cost-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-ZH1JYG24PK");
+  </script>
+  <style>
+    .tool-page { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .tool-header { margin-bottom: 2.5rem; }
+    .tool-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .tool-header p { color: var(--mid); font-size: 1rem; }
+    .calc-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+    .calc-card h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1.5rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    label { font-size: 0.85rem; font-weight: 500; color: var(--mid); }
+    .input-wrap { position: relative; }
+    .input-prefix, .input-suffix { position: absolute; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: var(--light); font-weight: 500; pointer-events: none; }
+    .input-prefix { left: 0.875rem; }
+    .input-suffix { right: 0.875rem; }
+    input[type="number"] { width: 100%; padding: 0.75rem 0.875rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem; font-family: 'Inter', sans-serif; color: var(--charcoal); background: white; transition: border-color 0.2s; -moz-appearance: textfield; }
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type="number"]:focus { outline: none; border-color: var(--orange); }
+    .has-prefix input { padding-left: 2rem; }
+    .has-suffix input { padding-right: 2.5rem; }
+    .calc-btn { width: 100%; margin-top: 1.5rem; background: var(--navy); color: white; border: none; border-radius: 8px; padding: 0.875rem; font-size: 1rem; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.2s; }
+    .calc-btn:hover { background: var(--navy-mid); }
+    .results { display: none; }
+    .results.show { display: block; }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1rem; }
+    .result-box { background: var(--off-white); border-radius: 10px; padding: 1.25rem; text-align: center; }
+    .result-box.highlight { background: var(--navy); }
+    .result-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); }
+    .result-box.highlight .result-num { color: var(--orange); }
+    .result-label { font-size: 0.75rem; color: var(--light); margin-top: 0.3rem; }
+    .result-box.highlight .result-label { color: rgba(255,255,255,0.6); }
+    .content-section { margin-top: 3rem; }
+    .content-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1rem; }
+    .content-section h3 { font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin: 1.5rem 0 0.5rem; }
+    .content-section p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.75rem; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .results-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>⛽ Fuel Cost Calculator</h1>
+    <p>Calculate your gas cost for any trip or over a full year of driving.</p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+  <div class="calc-card">
+    <h2>Enter your details</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="distance">Distance (miles)</label>
+        <div class="input-wrap"><input type="number" id="distance" value="500" min="1"></div>
+      </div>
+      <div class="form-group">
+        <label for="mpg">Fuel Economy (MPG)</label>
+        <div class="input-wrap"><input type="number" id="mpg" value="30" min="1"></div>
+      </div>
+      <div class="form-group">
+        <label for="price">Gas Price (per gallon)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="price" value="3.50" min="0.01" step="0.01"></div>
+      </div>
+      <div class="form-group">
+        <label for="trips">Trips per year (optional)</label>
+        <div class="input-wrap"><input type="number" id="trips" value="1" min="1"></div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Fuel Cost</button>
+  </div>
+  <div class="calc-card results" id="results">
+    <h2>Your Results</h2>
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="tripCost">$0</div>
+        <div class="result-label">Cost Per Trip</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="gallons">0</div>
+        <div class="result-label">Gallons Used</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="yearlyCost">$0</div>
+        <div class="result-label">Yearly Cost</div>
+      </div>
+    </div>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+  <div class="content-section">
+    <h2>How to Calculate Fuel Cost</h2>
+    <p>The formula is simple: divide your distance by your MPG to get gallons used, then multiply by the gas price per gallon.</p>
+    <p><strong>Fuel Cost = (Distance ÷ MPG) × Gas Price</strong></p>
+    <h3>What is the average MPG for a car?</h3>
+    <p>The average fuel economy for new passenger cars in the US is around 28–32 MPG. SUVs and trucks average 20–25 MPG, while hybrid vehicles can achieve 45–55 MPG.</p>
+    <h3>How to reduce your fuel costs</h3>
+    <p>Maintain proper tire inflation, avoid aggressive acceleration, reduce highway speed, and keep up with regular maintenance. Each 5 mph over 50 mph can reduce fuel efficiency by 7–14%.</p>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n) { return '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+function calculate() {
+  var distance = parseFloat(document.getElementById('distance').value) || 0;
+  var mpg = parseFloat(document.getElementById('mpg').value) || 1;
+  var price = parseFloat(document.getElementById('price').value) || 0;
+  var trips = parseInt(document.getElementById('trips').value) || 1;
+  var gallons = distance / mpg;
+  var tripCost = gallons * price;
+  var yearlyCost = tripCost * trips;
+  document.getElementById('tripCost').textContent = fmt(tripCost);
+  document.getElementById('gallons').textContent = gallons.toFixed(1);
+  document.getElementById('yearlyCost').textContent = fmt(yearlyCost);
+  document.getElementById('results').classList.add('show');
+}
+calculate();
+</script>
+</body>
+</html>

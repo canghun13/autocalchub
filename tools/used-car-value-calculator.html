@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Used Car Value Calculator – What Is My Car Worth? | AutoCalcHub</title>
+  <meta name="description" content="Estimate the fair market value of a used car based on age, mileage, condition, and original price. Free used car value calculator.">
+  <link rel="canonical" href="https://autocalchub.com/tools/used-car-value-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix{position:absolute;top:50%;transform:translateY(-50%);left:0.875rem;font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    input[type="number"],select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
+    .result-box{background:var(--off-white);border-radius:10px;padding:1.25rem;text-align:center}
+    .result-box.highlight{background:var(--navy)}
+    .result-num{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--navy)}
+    .result-box.highlight .result-num{color:var(--orange)}
+    .result-label{font-size:0.75rem;color:var(--light);margin-top:0.3rem}
+    .result-box.highlight .result-label{color:rgba(255,255,255,0.6)}
+    .disclaimer{background:var(--off-white);border-radius:8px;padding:1rem;margin-top:1rem;font-size:0.8rem;color:var(--light)}
+    .content-section{margin-top:3rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem}
+    .content-section p{color:var(--mid);font-size:0.95rem;line-height:1.7;margin-bottom:0.75rem}
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>🔍 Used Car Value Calculator</h1>
+    <p>Estimate the fair market value of a used car based on age, mileage, and condition.</p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+  <div class="calc-card">
+    <h2>Enter the car details</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="origPrice">Original MSRP</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="origPrice" value="35000"></div>
+      </div>
+      <div class="form-group">
+        <label for="age">Age (years old)</label>
+        <div class="input-wrap"><input type="number" id="age" value="3" min="1" max="25"></div>
+      </div>
+      <div class="form-group">
+        <label for="mileage">Current Mileage</label>
+        <div class="input-wrap"><input type="number" id="mileage" value="36000"></div>
+      </div>
+      <div class="form-group">
+        <label for="condition">Condition</label>
+        <select id="condition">
+          <option value="excellent">Excellent</option>
+          <option value="good" selected>Good</option>
+          <option value="fair">Fair</option>
+          <option value="poor">Poor</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="accidents">Accident History</label>
+        <select id="accidents">
+          <option value="none">No accidents</option>
+          <option value="minor">Minor accident</option>
+          <option value="major">Major accident</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="brand">Brand Type</label>
+        <select id="brand">
+          <option value="high">High retention (Toyota, Honda, Subaru)</option>
+          <option value="avg" selected>Average</option>
+          <option value="low">Lower retention (luxury, domestic)</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Estimate Value</button>
+  </div>
+  <div class="calc-card results" id="results">
+    <h2>Estimated Value</h2>
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="fairValue">$0</div>
+        <div class="result-label">Fair Market Value</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="tradeIn">$0</div>
+        <div class="result-label">Trade-In Estimate</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="private">$0</div>
+        <div class="result-label">Private Sale Estimate</div>
+      </div>
+    </div>
+    <div class="disclaimer">⚠️ This is a rough estimate. For an accurate value, check Kelley Blue Book, Edmunds, or CarGurus with your specific make and model.</div>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+  <div class="content-section">
+    <h2>How Is Used Car Value Calculated?</h2>
+    <p>Used car value depends primarily on age, mileage, condition, and market demand. Cars typically lose 15–25% of value in year one and 10–15% each subsequent year. High-mileage vehicles (above 15,000 miles/year) depreciate faster.</p>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+function calculate(){
+  var orig=parseFloat(document.getElementById('origPrice').value)||0;
+  var age=parseInt(document.getElementById('age').value)||1;
+  var mileage=parseFloat(document.getElementById('mileage').value)||0;
+  var cond=document.getElementById('condition').value;
+  var acc=document.getElementById('accidents').value;
+  var brand=document.getElementById('brand').value;
+  // base depreciation
+  var brandRate=brand==='high'?0.12:brand==='avg'?0.15:0.18;
+  var val=orig*Math.pow(1-brandRate,age);
+  // mileage adjustment (avg 12k/yr)
+  var avgMiles=age*12000;
+  var mileDiff=mileage-avgMiles;
+  val-=mileDiff*0.05;
+  // condition
+  var condMult=cond==='excellent'?1.08:cond==='good'?1.0:cond==='fair'?0.85:0.70;
+  val*=condMult;
+  // accident
+  var accMult=acc==='none'?1.0:acc==='minor'?0.90:0.75;
+  val*=accMult;
+  if(val<500)val=500;
+  document.getElementById('fairValue').textContent=fmt(val);
+  document.getElementById('tradeIn').textContent=fmt(val*0.82);
+  document.getElementById('private').textContent=fmt(val*1.10);
+  document.getElementById('results').classList.add('show');
+}
+calculate();
+</script>
+</body>
+</html>

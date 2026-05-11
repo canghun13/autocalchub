@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EV Charging Cost Calculator – Home & Public Charging | AutoCalcHub</title>
+  <meta name="description" content="Calculate the cost to charge your electric vehicle at home or at a public charger. Free EV charging cost calculator — enter your kWh rate and battery size.">
+  <link rel="canonical" href="https://autocalchub.com/tools/ev-charging-cost-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
+    .result-box{background:var(--off-white);border-radius:10px;padding:1.25rem;text-align:center}
+    .result-box.highlight{background:var(--navy)}
+    .result-num{font-family:'Space Grotesk',sans-serif;font-size:1.6rem;font-weight:700;color:var(--navy)}
+    .result-box.highlight .result-num{color:var(--orange)}
+    .result-label{font-size:0.75rem;color:var(--light);margin-top:0.3rem}
+    .result-box.highlight .result-label{color:rgba(255,255,255,0.6)}
+    .content-section{margin-top:3rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p{color:var(--mid);font-size:0.95rem;line-height:1.7;margin-bottom:0.75rem}
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>⚡ EV Charging Cost Calculator</h1>
+    <p>Calculate how much it costs to charge your electric vehicle at home or at a public charger.</p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+  <div class="calc-card">
+    <h2>Enter your EV details</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="battery">Battery Size (kWh)</label>
+        <div class="input-wrap has-suffix"><input type="number" id="battery" value="75" min="10" step="0.5"><span class="input-suffix">kWh</span></div>
+      </div>
+      <div class="form-group">
+        <label for="charge">Charge Amount (%)</label>
+        <div class="input-wrap has-suffix"><input type="number" id="charge" value="80" min="1" max="100"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label for="homeRate">Home Rate (per kWh)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="homeRate" value="0.16" min="0.01" step="0.01"></div>
+      </div>
+      <div class="form-group">
+        <label for="publicRate">Public Rate (per kWh)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="publicRate" value="0.35" min="0.01" step="0.01"></div>
+      </div>
+      <div class="form-group">
+        <label for="milesPerKwh">Efficiency (miles/kWh)</label>
+        <div class="input-wrap"><input type="number" id="milesPerKwh" value="4" min="1" step="0.1"></div>
+      </div>
+      <div class="form-group">
+        <label for="chargesPerMonth">Charges per month</label>
+        <div class="input-wrap"><input type="number" id="chargesPerMonth" value="8" min="1"></div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Charging Cost</button>
+  </div>
+  <div class="calc-card results" id="results">
+    <h2>Your Results</h2>
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="homeCost">$0</div>
+        <div class="result-label">Cost at Home</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="publicCost">$0</div>
+        <div class="result-label">Cost at Public Charger</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="monthlyHome">$0</div>
+        <div class="result-label">Monthly (Home)</div>
+      </div>
+    </div>
+    <p style="font-size:0.85rem;color:var(--light);margin-top:0.5rem;" id="rangeText"></p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+  <div class="content-section">
+    <h2>How Much Does It Cost to Charge an EV?</h2>
+    <p>Charging an EV at home costs significantly less than fueling a gas car. The average US electricity rate is around $0.16/kWh, meaning a full 75 kWh charge costs about $12 at home versus $26+ at a public fast charger.</p>
+    <h3>Home charging vs public charging</h3>
+    <p>Home charging (Level 2) is the most cost-effective option at $0.12–0.20/kWh. Public DC fast chargers typically cost $0.30–0.50/kWh — still cheaper than gas for most drivers, but 2–3x more than home charging.</p>
+    <h3>How does EV charging compare to gas?</h3>
+    <p>At $0.16/kWh and 4 miles/kWh, you're paying about $0.04 per mile. A gas car getting 30 MPG at $3.50/gallon costs about $0.12 per mile — roughly 3x more expensive.</p>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+n.toFixed(2);}
+function calculate(){
+  var battery=parseFloat(document.getElementById('battery').value)||75;
+  var charge=parseFloat(document.getElementById('charge').value)/100||0.8;
+  var homeRate=parseFloat(document.getElementById('homeRate').value)||0.16;
+  var publicRate=parseFloat(document.getElementById('publicRate').value)||0.35;
+  var mpkwh=parseFloat(document.getElementById('milesPerKwh').value)||4;
+  var monthly=parseInt(document.getElementById('chargesPerMonth').value)||8;
+  var kwh=battery*charge;
+  var homeCost=kwh*homeRate;
+  var publicCost=kwh*publicRate;
+  var monthlyHome=homeCost*monthly;
+  var range=kwh*mpkwh;
+  document.getElementById('homeCost').textContent=fmt(homeCost);
+  document.getElementById('publicCost').textContent=fmt(publicCost);
+  document.getElementById('monthlyHome').textContent=fmt(monthlyHome);
+  document.getElementById('rangeText').textContent='Estimated range added: '+Math.round(range)+' miles';
+  document.getElementById('results').classList.add('show');
+}
+calculate();
+</script>
+</body>
+</html>
