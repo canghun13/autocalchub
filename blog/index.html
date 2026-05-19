@@ -10,21 +10,38 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/style.css">
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-ZH1JYG24PK");</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
   <style>
     .page{max-width:1100px;margin:0 auto;padding:3rem 2rem 6rem}
     h1{font-family:"Space Grotesk",sans-serif;font-size:2.2rem;font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
     .subtitle{color:var(--mid);margin-bottom:1.5rem}
+
+    /* SEARCH */
+    .search-wrap{position:relative;max-width:480px;margin-bottom:2.5rem}
+    .search-wrap input{width:100%;padding:0.85rem 1rem 0.85rem 2.75rem;border:1.5px solid var(--border);border-radius:10px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s}
+    .search-wrap input:focus{outline:none;border-color:var(--orange)}
+    .search-icon{position:absolute;left:0.9rem;top:50%;transform:translateY(-50%);color:var(--light);font-size:1rem;pointer-events:none}
+    .search-clear{position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--light);cursor:pointer;font-size:1.1rem;display:none;line-height:1}
+    .search-clear.show{display:block}
+    .no-results{display:none;color:var(--mid);font-size:0.95rem;padding:2rem 0}
+    .no-results.show{display:block}
+
     .category-header{font-family:"Space Grotesk",sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin:2.5rem 0 1rem;padding-bottom:0.5rem;border-bottom:2px solid var(--orange)}
+    .category-section{transition:opacity 0.2s}
     .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-bottom:1rem}
     .blog-card{background:white;border:1px solid var(--border);border-radius:12px;padding:1.75rem;text-decoration:none;color:inherit;transition:transform 0.2s,box-shadow 0.2s}
     .blog-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.07)}
+    .blog-card[hidden]{display:none}
     .blog-tag{display:inline-block;background:var(--orange-pale);color:var(--orange);font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;padding:0.2rem 0.6rem;border-radius:100px;margin-bottom:0.75rem}
     .blog-card h2{font-size:1rem;font-weight:600;margin-bottom:0.5rem;color:var(--charcoal);line-height:1.4}
     .blog-card p{font-size:0.875rem;color:var(--mid);line-height:1.5}
     .blog-meta{font-size:0.75rem;color:var(--light);margin-top:1rem}
+
+    /* LATEST section */
+    .latest-header{display:flex;align-items:center;justify-content:space-between;margin:0 0 1rem}
+    .latest-header h2{font-family:"Space Grotesk",sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal)}
+    .new-badge{background:var(--orange);color:white;font-size:0.65rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:100px;text-transform:uppercase;margin-left:0.5rem;vertical-align:middle}
   </style>
 </head>
 <body>
@@ -33,49 +50,141 @@
   <h1>Auto Blog</h1>
   <p class="subtitle">Practical guides to help you drive smarter and spend less.</p>
 
-  <div class="category-header">💰 Buying a Car</div>
-  <div class="blog-grid">
-    <a href="how-much-car-can-i-afford.html" class="blog-card"><span class="blog-tag">Buying</span><h2>How Much Car Can I Afford?</h2><p>The 20/4/10 rule and other methods to set your real car budget.</p><div class="blog-meta">6 min read · May 2026</div></a>
-    <a href="how-to-buy-used-car-without-getting-ripped-off.html" class="blog-card"><span class="blog-tag">Buying</span><h2>How to Buy a Used Car Without Getting Ripped Off</h2><p>Step-by-step guide to finding a good used car and avoiding costly mistakes.</p><div class="blog-meta">8 min read · May 2026</div></a>
-    <a href="best-time-of-year-to-buy-a-car.html" class="blog-card"><span class="blog-tag">Buying</span><h2>Best Time of Year to Buy a Car</h2><p>Which months and days offer the biggest discounts and incentives.</p><div class="blog-meta">5 min read · May 2026</div></a>
-    <a href="should-i-buy-or-lease-a-car.html" class="blog-card"><span class="blog-tag">Buying</span><h2>Should I Buy or Lease a Car?</h2><p>A clear breakdown of buying vs leasing for different types of drivers.</p><div class="blog-meta">6 min read · May 2026</div></a>
-    <a href="how-to-negotiate-car-price-at-dealership.html" class="blog-card"><span class="blog-tag">Buying</span><h2>How to Negotiate a Car Price at a Dealership</h2><p>Proven tactics to get a better price on any car.</p><div class="blog-meta">7 min read · May 2026</div></a>
-    <a href="how-to-check-car-history-before-buying.html" class="blog-card"><span class="blog-tag">Buying</span><h2>How to Check a Car's History Before Buying</h2><p>What reports to pull, what red flags to look for, and what they don't tell you.</p><div class="blog-meta">6 min read · May 2026</div></a>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search articles..." oninput="filterBlog(this.value)">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
   </div>
 
-  <div class="category-header">🏦 Financing</div>
-  <div class="blog-grid">
-    <a href="what-credit-score-do-you-need-to-buy-a-car.html" class="blog-card"><span class="blog-tag">Financing</span><h2>What Credit Score Do You Need to Buy a Car?</h2><p>How your credit score affects your interest rate and what to do about it.</p><div class="blog-meta">6 min read · May 2026</div></a>
-    <a href="what-is-good-interest-rate-car-loan.html" class="blog-card"><span class="blog-tag">Financing</span><h2>What Is a Good Interest Rate on a Car Loan?</h2><p>Average car loan rates in 2026 and how to get the best deal.</p><div class="blog-meta">5 min read · May 2026</div></a>
-    <a href="how-to-pay-off-car-loan-early.html" class="blog-card"><span class="blog-tag">Financing</span><h2>How to Pay Off a Car Loan Early</h2><p>Strategies to pay off your auto loan faster and save on interest.</p><div class="blog-meta">5 min read · May 2026</div></a>
-    <a href="is-72-month-car-loan-bad-idea.html" class="blog-card"><span class="blog-tag">Financing</span><h2>Is a 72-Month Car Loan a Bad Idea?</h2><p>The real cost of long-term car loans and when they make sense.</p><div class="blog-meta">5 min read · May 2026</div></a>
-    <a href="how-to-get-pre-approved-car-loan.html" class="blog-card"><span class="blog-tag">Financing</span><h2>How to Get Pre-Approved for a Car Loan</h2><p>Step-by-step guide to getting pre-approved before you shop.</p><div class="blog-meta">5 min read · May 2026</div></a>
+  <div id="noResults" class="no-results">No articles found for "<span id="searchTerm"></span>". Try a different keyword.</div>
+
+  <!-- LATEST -->
+  <div class="category-section" id="section-latest">
+    <div class="latest-header">
+      <div><span class="category-header" style="margin:0;display:inline;border:none;padding:0">🆕 Latest</span></div>
+    </div>
+    <div class="blog-grid">
+      <a href="how-long-does-it-take-to-pay-off-car-loan.html" class="blog-card" data-title="How Long Does It Take to Pay Off a Car Loan?" data-tags="financing loan payoff term interest"><span class="blog-tag">Financing</span><h2>How Long Does It Take to Pay Off a Car Loan? <span class="new-badge">New</span></h2><p>Most loans run 48–72 months — but how long should yours? See how term length affects what you actually pay.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="how-to-sell-car-privately-vs-trade-in.html" class="blog-card" data-title="Selling Your Car Privately vs Trading In" data-tags="buying selling trade-in private sale value"><span class="blog-tag">Buying</span><h2>Selling Your Car Privately vs Trading In: Which Gets You More? <span class="new-badge">New</span></h2><p>Private sale vs trade-in — a clear breakdown of the numbers and when each option makes sense.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="is-it-worth-buying-car-with-rebuilt-title.html" class="blog-card" data-title="Is It Worth Buying a Car With a Rebuilt Title?" data-tags="buying rebuilt title salvage used car"><span class="blog-tag">Buying</span><h2>Is It Worth Buying a Car With a Rebuilt Title? <span class="new-badge">New</span></h2><p>Rebuilt titles can save you 20–40% — but are they worth the risk? Here's exactly what to check.</p><div class="blog-meta">6 min read · May 2026</div></a>
+      <a href="what-mileage-is-too-high-for-a-used-car.html" class="blog-card" data-title="What Mileage Is Too High for a Used Car?" data-tags="ownership mileage used car odometer"><span class="blog-tag">Ownership</span><h2>What Mileage Is Too High for a Used Car?</h2><p>Is 100k miles too high? What actually matters more than the odometer number.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="how-to-check-car-history-before-buying.html" class="blog-card" data-title="How to Check a Car's History Before Buying" data-tags="buying history carfax vin report"><span class="blog-tag">Buying</span><h2>How to Check a Car's History Before Buying</h2><p>What reports to pull, what red flags to look for, and what they don't tell you.</p><div class="blog-meta">6 min read · May 2026</div></a>
+      <a href="how-much-does-it-cost-to-fill-up-a-car.html" class="blog-card" data-title="How Much Does It Cost to Fill Up a Car?" data-tags="running costs gas fill up fuel price"><span class="blog-tag">Running Costs</span><h2>How Much Does It Cost to Fill Up a Car?</h2><p>What a full tank actually costs in 2026, by vehicle type and fuel grade.</p><div class="blog-meta">4 min read · May 2026</div></a>
+    </div>
   </div>
 
-  <div class="category-header">⛽ Running Costs</div>
-  <div class="blog-grid">
-    <a href="how-much-does-it-cost-to-own-car-per-month.html" class="blog-card"><span class="blog-tag">Running Costs</span><h2>How Much Does It Cost to Own a Car Per Month?</h2><p>A full breakdown of all the costs beyond the loan payment.</p><div class="blog-meta">6 min read · May 2026</div></a>
-    <a href="how-to-improve-car-gas-mileage.html" class="blog-card"><span class="blog-tag">Running Costs</span><h2>How to Improve Your Car&#39;s Gas Mileage</h2><p>10 proven tips to boost your MPG and save at the pump.</p><div class="blog-meta">5 min read · May 2026</div></a>
-    <a href="how-to-calculate-fuel-cost-road-trip.html" class="blog-card"><span class="blog-tag">Running Costs</span><h2>How to Calculate Fuel Cost for a Road Trip</h2><p>Estimate your gas costs before you leave so there are no surprises.</p><div class="blog-meta">5 min read · May 2026</div></a>
-    <a href="what-is-cheapest-car-to-maintain.html" class="blog-card"><span class="blog-tag">Running Costs</span><h2>What Is the Cheapest Car to Maintain?</h2><p>The cars with the lowest repair costs and best long-term reliability.</p><div class="blog-meta">5 min read · May 2026</div></a>
-    <a href="how-much-does-it-cost-to-fill-up-a-car.html" class="blog-card"><span class="blog-tag">Running Costs</span><h2>How Much Does It Cost to Fill Up a Car?</h2><p>What a full tank actually costs in 2026, by vehicle type and fuel grade.</p><div class="blog-meta">4 min read · May 2026</div></a>
+  <!-- BUYING -->
+  <div class="category-section" id="section-buying">
+    <div class="category-header">💰 Buying a Car</div>
+    <div class="blog-grid">
+      <a href="how-to-sell-car-privately-vs-trade-in.html" class="blog-card" data-title="Selling Your Car Privately vs Trading In" data-tags="buying selling trade-in private sale value"><span class="blog-tag">Buying</span><h2>Selling Your Car Privately vs Trading In: Which Gets You More?</h2><p>Private sale vs trade-in — a clear breakdown of the numbers and when each option makes sense.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="is-it-worth-buying-car-with-rebuilt-title.html" class="blog-card" data-title="Is It Worth Buying a Car With a Rebuilt Title?" data-tags="buying rebuilt title salvage used car"><span class="blog-tag">Buying</span><h2>Is It Worth Buying a Car With a Rebuilt Title?</h2><p>Rebuilt titles can save you 20–40% — but are they worth the risk? Here's exactly what to check.</p><div class="blog-meta">6 min read · May 2026</div></a>
+      <a href="how-to-check-car-history-before-buying.html" class="blog-card" data-title="How to Check a Car's History Before Buying" data-tags="buying history carfax vin report"><span class="blog-tag">Buying</span><h2>How to Check a Car's History Before Buying</h2><p>What reports to pull, what red flags to look for, and what they don't tell you.</p><div class="blog-meta">6 min read · May 2026</div></a>
+      <a href="how-much-car-can-i-afford.html" class="blog-card" data-title="How Much Car Can I Afford?" data-tags="buying budget afford 20/4/10"><span class="blog-tag">Buying</span><h2>How Much Car Can I Afford?</h2><p>The 20/4/10 rule and other methods to set your real car budget.</p><div class="blog-meta">6 min read · May 2026</div></a>
+      <a href="how-to-buy-used-car-without-getting-ripped-off.html" class="blog-card" data-title="How to Buy a Used Car Without Getting Ripped Off" data-tags="buying used car tips avoid scam"><span class="blog-tag">Buying</span><h2>How to Buy a Used Car Without Getting Ripped Off</h2><p>Step-by-step guide to finding a good used car and avoiding costly mistakes.</p><div class="blog-meta">8 min read · May 2026</div></a>
+      <a href="best-time-of-year-to-buy-a-car.html" class="blog-card" data-title="Best Time of Year to Buy a Car" data-tags="buying timing discount deal season"><span class="blog-tag">Buying</span><h2>Best Time of Year to Buy a Car</h2><p>Which months and days offer the biggest discounts and incentives.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="should-i-buy-or-lease-a-car.html" class="blog-card" data-title="Should I Buy or Lease a Car?" data-tags="buying lease vs buy decision"><span class="blog-tag">Buying</span><h2>Should I Buy or Lease a Car?</h2><p>A clear breakdown of buying vs leasing for different types of drivers.</p><div class="blog-meta">6 min read · May 2026</div></a>
+      <a href="how-to-negotiate-car-price-at-dealership.html" class="blog-card" data-title="How to Negotiate a Car Price at a Dealership" data-tags="buying negotiate price dealer tactics"><span class="blog-tag">Buying</span><h2>How to Negotiate a Car Price at a Dealership</h2><p>Proven tactics to get a better price on any car.</p><div class="blog-meta">7 min read · May 2026</div></a>
+    </div>
   </div>
 
-  <div class="category-header">⚡ Electric Vehicles</div>
-  <div class="blog-grid">
-    <a href="electric-vs-gas-car-true-cost.html" class="blog-card"><span class="blog-tag">EV</span><h2>Electric vs Gas Car: True Cost Comparison</h2><p>A full 5-year cost breakdown including fuel, maintenance, and depreciation.</p><div class="blog-meta">8 min read · May 2026</div></a>
-    <a href="how-much-does-ev-cost-to-charge-at-home.html" class="blog-card"><span class="blog-tag">EV</span><h2>How Much Does It Cost to Charge an EV at Home?</h2><p>Real numbers on home EV charging costs at current electricity rates.</p><div class="blog-meta">5 min read · May 2026</div></a>
-    <a href="ev-tax-credit-2026.html" class="blog-card"><span class="blog-tag">EV</span><h2>EV Tax Credit 2026: Who Qualifies?</h2><p>Everything you need to know about the federal EV tax credit this year.</p><div class="blog-meta">6 min read · May 2026</div></a>
+  <!-- FINANCING -->
+  <div class="category-section" id="section-financing">
+    <div class="category-header">🏦 Financing</div>
+    <div class="blog-grid">
+      <a href="how-long-does-it-take-to-pay-off-car-loan.html" class="blog-card" data-title="How Long Does It Take to Pay Off a Car Loan?" data-tags="financing loan payoff term interest"><span class="blog-tag">Financing</span><h2>How Long Does It Take to Pay Off a Car Loan?</h2><p>Most loans run 48–72 months — but how long should yours? See how term length affects what you actually pay.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="what-credit-score-do-you-need-to-buy-a-car.html" class="blog-card" data-title="What Credit Score Do You Need to Buy a Car?" data-tags="financing credit score loan rate"><span class="blog-tag">Financing</span><h2>What Credit Score Do You Need to Buy a Car?</h2><p>How your credit score affects your interest rate and what to do about it.</p><div class="blog-meta">6 min read · May 2026</div></a>
+      <a href="what-is-good-interest-rate-car-loan.html" class="blog-card" data-title="What Is a Good Interest Rate on a Car Loan?" data-tags="financing interest rate APR loan"><span class="blog-tag">Financing</span><h2>What Is a Good Interest Rate on a Car Loan?</h2><p>Average car loan rates in 2026 and how to get the best deal.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="how-to-pay-off-car-loan-early.html" class="blog-card" data-title="How to Pay Off a Car Loan Early" data-tags="financing payoff early loan save interest"><span class="blog-tag">Financing</span><h2>How to Pay Off a Car Loan Early</h2><p>Strategies to pay off your auto loan faster and save on interest.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="is-72-month-car-loan-bad-idea.html" class="blog-card" data-title="Is a 72-Month Car Loan a Bad Idea?" data-tags="financing 72 month long term loan"><span class="blog-tag">Financing</span><h2>Is a 72-Month Car Loan a Bad Idea?</h2><p>The real cost of long-term car loans and when they make sense.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="how-to-get-pre-approved-car-loan.html" class="blog-card" data-title="How to Get Pre-Approved for a Car Loan" data-tags="financing pre-approval loan application"><span class="blog-tag">Financing</span><h2>How to Get Pre-Approved for a Car Loan</h2><p>Step-by-step guide to getting pre-approved before you shop.</p><div class="blog-meta">5 min read · May 2026</div></a>
+    </div>
   </div>
 
-  <div class="category-header">📈 Ownership & Value</div>
-  <div class="blog-grid">
-    <a href="which-cars-hold-value-best.html" class="blog-card"><span class="blog-tag">Ownership</span><h2>Which Cars Hold Their Value the Best?</h2><p>The best cars for resale value in 2026 and which to avoid.</p><div class="blog-meta">5 min read · May 2026</div></a>
-    <a href="how-much-does-new-car-depreciate-first-year.html" class="blog-card"><span class="blog-tag">Ownership</span><h2>How Much Does a New Car Depreciate in Year One?</h2><p>New cars lose value fast. Here&#39;s exactly how much and what to do about it.</p><div class="blog-meta">4 min read · May 2026</div></a>
-    <a href="what-mileage-is-too-high-for-a-used-car.html" class="blog-card"><span class="blog-tag">Ownership</span><h2>What Mileage Is Too High for a Used Car?</h2><p>Is 100k miles too high? What actually matters more than the odometer number.</p><div class="blog-meta">5 min read · May 2026</div></a>
+  <!-- RUNNING COSTS -->
+  <div class="category-section" id="section-running">
+    <div class="category-header">⛽ Running Costs</div>
+    <div class="blog-grid">
+      <a href="how-much-does-it-cost-to-fill-up-a-car.html" class="blog-card" data-title="How Much Does It Cost to Fill Up a Car?" data-tags="running costs gas fill up fuel price"><span class="blog-tag">Running Costs</span><h2>How Much Does It Cost to Fill Up a Car?</h2><p>What a full tank actually costs in 2026, by vehicle type and fuel grade.</p><div class="blog-meta">4 min read · May 2026</div></a>
+      <a href="how-much-does-it-cost-to-own-car-per-month.html" class="blog-card" data-title="How Much Does It Cost to Own a Car Per Month?" data-tags="running costs monthly ownership expenses"><span class="blog-tag">Running Costs</span><h2>How Much Does It Cost to Own a Car Per Month?</h2><p>A full breakdown of all the costs beyond the loan payment.</p><div class="blog-meta">6 min read · May 2026</div></a>
+      <a href="how-to-improve-car-gas-mileage.html" class="blog-card" data-title="How to Improve Your Car's Gas Mileage" data-tags="running costs MPG gas mileage fuel economy"><span class="blog-tag">Running Costs</span><h2>How to Improve Your Car's Gas Mileage</h2><p>10 proven tips to boost your MPG and save at the pump.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="how-to-calculate-fuel-cost-road-trip.html" class="blog-card" data-title="How to Calculate Fuel Cost for a Road Trip" data-tags="running costs road trip fuel gas cost"><span class="blog-tag">Running Costs</span><h2>How to Calculate Fuel Cost for a Road Trip</h2><p>Estimate your gas costs before you leave so there are no surprises.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="what-is-cheapest-car-to-maintain.html" class="blog-card" data-title="What Is the Cheapest Car to Maintain?" data-tags="running costs maintenance cheap reliable"><span class="blog-tag">Running Costs</span><h2>What Is the Cheapest Car to Maintain?</h2><p>The cars with the lowest repair costs and best long-term reliability.</p><div class="blog-meta">5 min read · May 2026</div></a>
+    </div>
+  </div>
+
+  <!-- EV -->
+  <div class="category-section" id="section-ev">
+    <div class="category-header">⚡ Electric Vehicles</div>
+    <div class="blog-grid">
+      <a href="electric-vs-gas-car-true-cost.html" class="blog-card" data-title="Electric vs Gas Car: True Cost Comparison" data-tags="EV electric gas comparison cost ownership"><span class="blog-tag">EV</span><h2>Electric vs Gas Car: True Cost Comparison</h2><p>A full 5-year cost breakdown including fuel, maintenance, and depreciation.</p><div class="blog-meta">8 min read · May 2026</div></a>
+      <a href="how-much-does-ev-cost-to-charge-at-home.html" class="blog-card" data-title="How Much Does It Cost to Charge an EV at Home?" data-tags="EV charging cost home electricity"><span class="blog-tag">EV</span><h2>How Much Does It Cost to Charge an EV at Home?</h2><p>Real numbers on home EV charging costs at current electricity rates.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="ev-tax-credit-2026.html" class="blog-card" data-title="EV Tax Credit 2026: Who Qualifies?" data-tags="EV tax credit federal incentive 2026"><span class="blog-tag">EV</span><h2>EV Tax Credit 2026: Who Qualifies?</h2><p>Everything you need to know about the federal EV tax credit this year.</p><div class="blog-meta">6 min read · May 2026</div></a>
+    </div>
+  </div>
+
+  <!-- OWNERSHIP -->
+  <div class="category-section" id="section-ownership">
+    <div class="category-header">📈 Ownership & Value</div>
+    <div class="blog-grid">
+      <a href="what-mileage-is-too-high-for-a-used-car.html" class="blog-card" data-title="What Mileage Is Too High for a Used Car?" data-tags="ownership mileage used car odometer"><span class="blog-tag">Ownership</span><h2>What Mileage Is Too High for a Used Car?</h2><p>Is 100k miles too high? What actually matters more than the odometer number.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="which-cars-hold-value-best.html" class="blog-card" data-title="Which Cars Hold Their Value the Best?" data-tags="ownership resale value depreciation holds"><span class="blog-tag">Ownership</span><h2>Which Cars Hold Their Value the Best?</h2><p>The best cars for resale value in 2026 and which to avoid.</p><div class="blog-meta">5 min read · May 2026</div></a>
+      <a href="how-much-does-new-car-depreciate-first-year.html" class="blog-card" data-title="How Much Does a New Car Depreciate in Year One?" data-tags="ownership depreciation new car value loss"><span class="blog-tag">Ownership</span><h2>How Much Does a New Car Depreciate in Year One?</h2><p>New cars lose value fast. Here's exactly how much and what to do about it.</p><div class="blog-meta">4 min read · May 2026</div></a>
+    </div>
   </div>
 </div>
+
 <div id="footer-placeholder"></div>
 <script src="../assets/js/components.js"></script>
+<script>
+function filterBlog(q){
+  const query = q.trim().toLowerCase();
+  const clearBtn = document.getElementById('searchClear');
+  clearBtn.className = query ? 'search-clear show' : 'search-clear';
+
+  const cards = document.querySelectorAll('.blog-card');
+  const sections = document.querySelectorAll('.category-section');
+
+  if(!query){
+    cards.forEach(c => c.removeAttribute('hidden'));
+    sections.forEach(s => s.style.display = '');
+    document.getElementById('noResults').className = 'no-results';
+    return;
+  }
+
+  // Hide Latest section during search to avoid duplicates
+  document.getElementById('section-latest').style.display = 'none';
+
+  let totalVisible = 0;
+  sections.forEach(section => {
+    if(section.id === 'section-latest') return;
+    let sectionVisible = 0;
+    section.querySelectorAll('.blog-card').forEach(card => {
+      const title = (card.dataset.title || '').toLowerCase();
+      const tags  = (card.dataset.tags  || '').toLowerCase();
+      const text  = (card.textContent   || '').toLowerCase();
+      const match = title.includes(query) || tags.includes(query) || text.includes(query);
+      if(match){ card.removeAttribute('hidden'); sectionVisible++; totalVisible++; }
+      else { card.setAttribute('hidden',''); }
+    });
+    section.style.display = sectionVisible ? '' : 'none';
+  });
+
+  const noResults = document.getElementById('noResults');
+  if(totalVisible === 0){
+    document.getElementById('searchTerm').textContent = q;
+    noResults.className = 'no-results show';
+  } else {
+    noResults.className = 'no-results';
+  }
+}
+
+function clearSearch(){
+  const input = document.getElementById('searchInput');
+  input.value = '';
+  filterBlog('');
+  input.focus();
+}
+</script>
 </body>
 </html>

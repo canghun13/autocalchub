@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Lease vs Buy Calculator – Which Saves More? | AutoCalcHub</title>
+  <meta name="description" content="Compare the total cost of leasing vs buying a car over any term. See monthly payments, total out-of-pocket, and which option wins for your situation.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-lease-vs-buy-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:2.5rem}
+    .calc-btn{width:100%;margin-top:0.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none;margin-top:1.5rem}
+    .results.show{display:block}
+    .verdict{border-radius:14px;padding:1.75rem;text-align:center;margin-bottom:1.5rem}
+    .verdict.buy-wins{background:var(--navy)}
+    .verdict.lease-wins{background:#1a3d2b}
+    .verdict h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:0.4rem}
+    .verdict p{color:rgba(255,255,255,0.7);font-size:0.9rem;margin:0}
+    .verdict .saving{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+    .compare-box{background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+    .compare-box.winner{border-color:var(--orange);border-width:2px}
+    .compare-box h4{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+    .winner-badge{background:var(--orange);color:white;font-size:0.65rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:100px;text-transform:uppercase}
+    .compare-row{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.875rem}
+    .compare-row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .compare-row span:first-child{color:var(--mid)}
+    .compare-row span:last-child{color:var(--charcoal);font-weight:500}
+    .note-box{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.85rem;color:var(--mid);line-height:1.6}
+    .note-box strong{color:var(--charcoal)}
+    @media(max-width:640px){.calc-grid{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Car Lease vs Buy Calculator</h1>
+    <p>Compare the total cost of leasing vs buying to see which option saves you more money over the same period.</p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-grid">
+    <!-- LEASE -->
+    <div class="calc-card">
+      <h2>🔑 Lease</h2>
+      <div class="form-group">
+        <label>Monthly Lease Payment</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="leasePayment" value="350" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Lease Term (months)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="leaseTerm" value="36" min="12" max="60">
+          <span class="input-suffix">mo</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Due at Signing (down + fees)</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="leaseDue" value="2000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Residual Value (buyout price)</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="leaseResidual" value="16000" min="0">
+        </div>
+      </div>
+    </div>
+
+    <!-- BUY -->
+    <div class="calc-card">
+      <h2>🚗 Buy</h2>
+      <div class="form-group">
+        <label>Vehicle Price</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="buyPrice" value="28000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Down Payment</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="buyDown" value="3000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Loan Term (months)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="buyTerm" value="60" min="12" max="96">
+          <span class="input-suffix">mo</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="buyRate" value="7" min="0" max="30" step="0.1">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group" style="max-width:400px">
+    <label>Compare over how many years?</label>
+    <div class="input-wrap has-suffix">
+      <input type="number" id="compareYears" value="3" min="1" max="10">
+      <span class="input-suffix">yrs</span>
+    </div>
+  </div>
+
+  <button class="calc-btn" onclick="calculate()">Compare Lease vs Buy →</button>
+
+  <div class="results" id="results">
+    <div class="verdict" id="verdict">
+      <h3 id="verdictTitle"></h3>
+      <span class="saving" id="verdictSaving"></span>
+      <p id="verdictNote"></p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-box" id="leaseBox">
+        <h4>🔑 Lease <span class="winner-badge" id="leaseBadge" style="display:none">Lower Cost</span></h4>
+        <div class="compare-row"><span>Monthly payment</span><span id="r-leaseMonthly"></span></div>
+        <div class="compare-row"><span>Due at signing</span><span id="r-leaseDue"></span></div>
+        <div class="compare-row"><span>Total payments</span><span id="r-leasePayments"></span></div>
+        <div class="compare-row"><span>Car value at end</span><span id="r-leaseValue"></span></div>
+        <div class="compare-row"><span>Total out-of-pocket</span><span id="r-leaseTotal"></span></div>
+      </div>
+      <div class="compare-box" id="buyBox">
+        <h4>🚗 Buy <span class="winner-badge" id="buyBadge" style="display:none">Lower Cost</span></h4>
+        <div class="compare-row"><span>Monthly payment</span><span id="r-buyMonthly"></span></div>
+        <div class="compare-row"><span>Down payment</span><span id="r-buyDown"></span></div>
+        <div class="compare-row"><span>Total payments</span><span id="r-buyPayments"></span></div>
+        <div class="compare-row"><span>Car value at end</span><span id="r-buyValue"></span></div>
+        <div class="compare-row"><span>Net cost (payments − car value)</span><span id="r-buyTotal"></span></div>
+      </div>
+    </div>
+    <div class="note-box" id="noteBox"></div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div style="margin-top:3rem">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Lease vs Buy: What the Numbers Don't Show</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">Leasing usually has a lower monthly payment and lower upfront cost, but you don't own anything at the end. Buying costs more month-to-month, but you build equity and eventually become payment-free.</p>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">If you drive more than 12,000–15,000 miles per year, leasing gets expensive fast due to mileage overage fees. If you like driving a new car every 2–3 years and stay within mileage limits, leasing can be a reasonable choice.</p>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">The calculator compares total out-of-pocket cost over the same time period, factoring in car value at the end. For a true apples-to-apples comparison, enter the same number of years for both options.</p>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+
+function calculate(){
+  const leasePayment = parseFloat(document.getElementById('leasePayment').value)||0;
+  const leaseTerm    = parseFloat(document.getElementById('leaseTerm').value)||36;
+  const leaseDue     = parseFloat(document.getElementById('leaseDue').value)||0;
+  const leaseResidual= parseFloat(document.getElementById('leaseResidual').value)||0;
+  const buyPrice     = parseFloat(document.getElementById('buyPrice').value)||0;
+  const buyDown      = parseFloat(document.getElementById('buyDown').value)||0;
+  const buyTerm      = parseFloat(document.getElementById('buyTerm').value)||60;
+  const buyRate      = parseFloat(document.getElementById('buyRate').value)||0;
+  const compareYears = parseFloat(document.getElementById('compareYears').value)||3;
+  const compareMonths= compareYears * 12;
+
+  // LEASE CALC
+  const leaseMonths     = Math.min(leaseTerm, compareMonths);
+  const leaseTotalPay   = leasePayment * leaseMonths + leaseDue;
+  // If compare period > lease term, assume they re-lease (same cost)
+  const leaseExtraMonths= Math.max(0, compareMonths - leaseTerm);
+  const leaseFull       = leasePayment * compareMonths + leaseDue;
+  // Car value at end of compare period for lease: 0 (no ownership)
+  const leaseNetCost    = leaseFull;
+
+  // BUY CALC
+  const principal = buyPrice - buyDown;
+  const monthlyRate = (buyRate/100)/12;
+  let buyMonthly;
+  if(monthlyRate === 0){
+    buyMonthly = principal / buyTerm;
+  } else {
+    buyMonthly = principal * (monthlyRate * Math.pow(1+monthlyRate, buyTerm)) / (Math.pow(1+monthlyRate, buyTerm)-1);
+  }
+  const buyPayMonths    = Math.min(buyTerm, compareMonths);
+  const buyTotalPay     = buyMonthly * buyPayMonths + buyDown;
+  // Estimate car value at end of compare period (20% yr1, 15% yr2-3, 10% after)
+  let carValue = buyPrice;
+  for(let y=0; y<compareYears; y++){
+    const rate = y===0 ? 0.20 : y<3 ? 0.15 : 0.10;
+    carValue = carValue * (1 - rate);
+  }
+  const buyNetCost = buyTotalPay - carValue;
+
+  // VERDICT
+  const leaseSaving = buyNetCost - leaseNetCost;
+  const buySaving   = leaseNetCost - buyNetCost;
+  const leaseWins   = leaseNetCost < buyNetCost;
+
+  document.getElementById('r-leaseMonthly').textContent  = fmt(leasePayment)+'/mo';
+  document.getElementById('r-leaseDue').textContent      = fmt(leaseDue);
+  document.getElementById('r-leasePayments').textContent = fmt(leasePayment * compareMonths);
+  document.getElementById('r-leaseValue').textContent    = '$0 (no ownership)';
+  document.getElementById('r-leaseTotal').textContent    = fmt(leaseNetCost);
+
+  document.getElementById('r-buyMonthly').textContent    = fmt(buyMonthly)+'/mo';
+  document.getElementById('r-buyDown').textContent       = fmt(buyDown);
+  document.getElementById('r-buyPayments').textContent   = fmt(buyMonthly * buyPayMonths + buyDown);
+  document.getElementById('r-buyValue').textContent      = fmt(carValue);
+  document.getElementById('r-buyTotal').textContent      = fmt(buyNetCost);
+
+  const verdict = document.getElementById('verdict');
+  verdict.className = 'verdict ' + (leaseWins ? 'lease-wins' : 'buy-wins');
+  document.getElementById('verdictTitle').textContent = leaseWins ? 'Leasing costs less over '+compareYears+' years' : 'Buying costs less over '+compareYears+' years';
+  document.getElementById('verdictSaving').textContent = fmt(Math.abs(leaseWins ? leaseSaving : buySaving))+' savings';
+  document.getElementById('verdictNote').textContent = leaseWins
+    ? 'After '+compareYears+' years, leasing is cheaper on a net cost basis. Keep in mind you won\'t own anything at the end.'
+    : 'After '+compareYears+' years, buying is cheaper net of car equity. You\'ll own a car worth '+fmt(carValue)+' at the end.';
+
+  document.getElementById('leaseBadge').style.display = leaseWins ? 'inline' : 'none';
+  document.getElementById('buyBadge').style.display   = leaseWins ? 'none' : 'inline';
+  document.getElementById('leaseBox').className = 'compare-box' + (leaseWins ? ' winner' : '');
+  document.getElementById('buyBox').className   = 'compare-box' + (leaseWins ? '' : ' winner');
+
+  document.getElementById('noteBox').innerHTML = '<strong>How this is calculated:</strong> Lease net cost = all lease payments + due at signing over '+compareYears+' years. Buy net cost = all loan payments + down payment − estimated car value at end of period. Car depreciation estimated at 20% in year 1, 15% in years 2–3, 10% per year after.';
+
+  document.getElementById('results').className = 'results show';
+}
+</script>
+</body>
+</html>
