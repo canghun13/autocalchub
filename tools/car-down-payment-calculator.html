@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Down Payment Calculator – How Much Should You Put Down? | AutoCalcHub</title>
+  <meta name="description" content="Calculate how different down payment amounts affect your monthly payment, total interest, and whether you'll go underwater on your loan. Free car down payment calculator.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-down-payment-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .tool-page { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .tool-header { margin-bottom: 2.5rem; }
+    .tool-header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      color: var(--charcoal); margin-bottom: 0.5rem;
+    }
+    .tool-header p { color: var(--mid); font-size: 1rem; }
+
+    .calc-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;
+    }
+    .calc-card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 1.5rem;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 0.85rem; font-weight: 500; color: var(--mid); }
+    .input-wrap { position: relative; }
+    .input-prefix, .input-suffix {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      font-size: 0.9rem; color: var(--light); font-weight: 500; pointer-events: none;
+    }
+    .input-prefix { left: 0.875rem; }
+    .input-suffix { right: 0.875rem; }
+    input[type="number"], select {
+      width: 100%; padding: 0.75rem 0.875rem;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 0.95rem; font-family: 'Inter', sans-serif;
+      color: var(--charcoal); background: white;
+      transition: border-color 0.2s;
+      -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type="number"]:focus, select:focus { outline: none; border-color: var(--orange); }
+    .has-prefix input { padding-left: 2rem; }
+    .has-suffix input { padding-right: 2.5rem; }
+
+    .slider-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .slider-row { display: flex; align-items: center; gap: 0.75rem; }
+    input[type="range"] {
+      flex: 1; accent-color: var(--orange);
+      height: 4px; cursor: pointer;
+    }
+    .slider-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 700; color: var(--orange);
+      min-width: 3.5rem; text-align: right;
+    }
+
+    .calc-btn {
+      width: 100%; margin-top: 1.5rem;
+      background: var(--navy); color: white;
+      border: none; border-radius: 8px;
+      padding: 0.875rem; font-size: 1rem; font-weight: 600;
+      font-family: 'Inter', sans-serif; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: var(--navy-mid); }
+
+    .results { display: none; }
+    .results.show { display: block; }
+
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .result-box {
+      background: var(--off-white); border-radius: 10px;
+      padding: 1.25rem; text-align: center;
+    }
+    .result-box.highlight { background: var(--navy); }
+    .result-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--navy);
+    }
+    .result-box.highlight .result-num { color: var(--orange); }
+    .result-label { font-size: 0.75rem; color: var(--light); margin-top: 0.3rem; }
+    .result-box.highlight .result-label { color: rgba(255,255,255,0.6); }
+
+    /* equity status bar */
+    .equity-bar-wrap { margin: 1.5rem 0; }
+    .equity-bar-label { font-size: 0.85rem; font-weight: 500; color: var(--mid); margin-bottom: 0.5rem; display: flex; justify-content: space-between; }
+    .equity-bar-track { background: var(--border); border-radius: 100px; height: 10px; overflow: hidden; }
+    .equity-bar-fill { height: 100%; border-radius: 100px; transition: width 0.4s ease; }
+    .equity-status { margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600; }
+
+    /* scenario comparison table */
+    .scenario-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 0.5rem; }
+    .scenario-table th {
+      text-align: left; padding: 0.6rem 0.75rem;
+      background: var(--off-white); color: var(--mid);
+      font-weight: 600; font-size: 0.75rem; text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .scenario-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); color: var(--charcoal); }
+    .scenario-table tr:last-child td { border-bottom: none; }
+    .scenario-table tr.active td { background: var(--orange-pale); font-weight: 600; }
+    .scenario-table .tag {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      background: var(--orange); color: white;
+      border-radius: 4px; padding: 0.1rem 0.4rem; margin-left: 0.4rem;
+    }
+
+    .content-section { margin-top: 3rem; }
+    .content-section h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+    .content-section h3 { font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin: 1.5rem 0 0.5rem; }
+    .content-section p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.75rem; }
+
+    .highlight-box {
+      background: var(--orange-pale); border-left: 4px solid var(--orange);
+      border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0;
+    }
+    .highlight-box p { color: var(--charcoal); margin: 0; font-weight: 500; font-size: 0.95rem; }
+
+    .disclaimer {
+      background: var(--off-white); border: 1px solid var(--border);
+      border-radius: 8px; padding: 1.25rem 1.5rem; margin-top: 3rem;
+      font-size: 0.8rem; color: var(--light); line-height: 1.6;
+    }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>💵 Car Down Payment Calculator</h1>
+    <p>See how your down payment affects monthly payments, total interest, and your equity position — side by side.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>Enter your details</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="price">Vehicle Price</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="price" value="35000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="rate">Annual Interest Rate</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="rate" value="6.5" min="0" step="0.1">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="term">Loan Term</label>
+        <select id="term">
+          <option value="36">36 months (3 yrs)</option>
+          <option value="48">48 months (4 yrs)</option>
+          <option value="60" selected>60 months (5 yrs)</option>
+          <option value="72">72 months (6 yrs)</option>
+          <option value="84">84 months (7 yrs)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="trade">Trade-In Value</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="trade" value="0" min="0">
+        </div>
+      </div>
+      <div class="form-group full">
+        <label>Down Payment: <span id="pct-label">10%</span></label>
+        <div class="slider-row">
+          <input type="range" id="down-pct" min="0" max="50" value="10" step="1" oninput="syncSlider()">
+          <span class="slider-val" id="down-dollar">$3,500</span>
+        </div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Down Payment Scenarios</button>
+  </div>
+
+  <div class="calc-card results" id="results">
+    <h2>Your Down Payment: <span id="res-pct">10%</span> (<span id="res-dollar">$3,500</span>)</h2>
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="r-monthly">$0</div>
+        <div class="result-label">Monthly Payment</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="r-interest">$0</div>
+        <div class="result-label">Total Interest</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="r-total">$0</div>
+        <div class="result-label">Total Loan Cost</div>
+      </div>
+    </div>
+
+    <div class="equity-bar-wrap">
+      <div class="equity-bar-label">
+        <span>Equity Position at Purchase</span>
+        <span id="equity-pct-label">10% equity</span>
+      </div>
+      <div class="equity-bar-track">
+        <div class="equity-bar-fill" id="equity-bar" style="width:10%;background:var(--orange);"></div>
+      </div>
+      <div class="equity-status" id="equity-status"></div>
+    </div>
+
+    <h2 style="margin-top:1.5rem;">Compare Scenarios</h2>
+    <div style="overflow-x:auto;">
+      <table class="scenario-table" id="scenario-table">
+        <thead>
+          <tr>
+            <th>Down Payment</th>
+            <th>Amount Down</th>
+            <th>Monthly Payment</th>
+            <th>Total Interest</th>
+            <th>Interest Saved</th>
+          </tr>
+        </thead>
+        <tbody id="scenario-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>How to Use This Calculator</h2>
+    <p>Enter your vehicle price, interest rate, and loan term, then drag the slider to set your down payment percentage. The results show your monthly payment and total interest — plus a comparison table across common down payment levels so you can see the full picture before you commit.</p>
+
+    <h3>What is a down payment?</h3>
+    <p>A down payment is the cash you pay upfront when buying a car. It reduces the amount you need to borrow, which lowers your monthly payment and the total interest you'll pay over the life of the loan. It also determines your starting equity — how much of the car you actually own from day one.</p>
+
+    <h3>The 20/4/10 Rule</h3>
+    <p>A widely used guideline for car buying: put down at least <strong>20%</strong>, finance for no longer than <strong>4 years</strong>, and keep total monthly car costs (payment + insurance) below <strong>10%</strong> of your gross monthly income. Following this rule keeps you in positive equity and avoids overextending your budget.</p>
+
+    <div class="highlight-box">
+      <p>On a $35,000 car at 6.5% APR over 60 months, going from 0% down to 20% down saves you roughly $2,400 in total interest and cuts $130 off your monthly payment.</p>
+    </div>
+
+    <h3>New car vs. used car recommendations</h3>
+    <p>Financial experts generally recommend at least <strong>20% down on a new car</strong> and at least <strong>10% down on a used car</strong>. New cars depreciate rapidly — often 15–20% in the first year — so a larger down payment protects you from going underwater (owing more than the car is worth).</p>
+
+    <h3>What does "underwater" mean?</h3>
+    <p>You're underwater on a loan — also called negative equity — when your remaining loan balance is higher than the car's current market value. This matters if you need to sell the car, trade it in, or if it gets totaled. With a small down payment, you can be underwater for the first 2–3 years of a typical loan.</p>
+
+    <h3>Can you put 0% down?</h3>
+    <p>Yes, many lenders offer zero-down financing, and some dealers actively promote it. But it comes at a cost: higher monthly payments, more total interest, and immediate negative equity. Zero-down makes most sense when you have a high credit score, a short loan term, or access to a 0% promotional APR offer.</p>
+
+    <h3>Trade-ins and down payments</h3>
+    <p>Your trade-in value counts toward your down payment. If your current car is worth $6,000 and you owe nothing on it, that $6,000 reduces the amount you need to finance — same effect as putting $6,000 cash down. If you still owe money on your trade-in, the remaining balance gets rolled into your new loan.</p>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> This calculator provides estimates for educational and planning purposes only. Results assume a fixed interest rate and do not account for taxes, fees, dealer add-ons, or lender-specific requirements. Actual loan terms depend on your credit history, lender policies, and vehicle type. Consult a qualified financial advisor or lender before making any borrowing decision.
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+function fmtK(n) { return n >= 1000 ? '$' + (n/1000).toFixed(1) + 'k' : fmt(n); }
+
+function getPrice() { return parseFloat(document.getElementById('price').value) || 0; }
+function getRate() { return parseFloat(document.getElementById('rate').value) || 0; }
+function getTerm() { return parseInt(document.getElementById('term').value) || 60; }
+function getTrade() { return parseFloat(document.getElementById('trade').value) || 0; }
+function getDownPct() { return parseFloat(document.getElementById('down-pct').value) || 0; }
+
+function monthlyPayment(principal, annualRate, months) {
+  if (annualRate === 0) return principal / months;
+  var r = annualRate / 100 / 12;
+  return principal * (r * Math.pow(1+r, months)) / (Math.pow(1+r, months) - 1);
+}
+
+function syncSlider() {
+  var pct = getDownPct();
+  var price = getPrice();
+  var downDollar = price * pct / 100;
+  document.getElementById('pct-label').textContent = pct + '%';
+  document.getElementById('down-dollar').textContent = fmt(downDollar);
+}
+
+function calculate() {
+  var price = getPrice();
+  var rate = getRate();
+  var term = getTerm();
+  var trade = getTrade();
+  var pct = getDownPct();
+
+  var downDollar = price * pct / 100;
+  var principal = Math.max(0, price - downDollar - trade);
+  var mp = monthlyPayment(principal, rate, term);
+  var totalInterest = mp * term - principal;
+  var totalCost = mp * term;
+
+  document.getElementById('res-pct').textContent = pct + '%';
+  document.getElementById('res-dollar').textContent = fmt(downDollar);
+  document.getElementById('r-monthly').textContent = fmt(mp);
+  document.getElementById('r-interest').textContent = fmt(totalInterest);
+  document.getElementById('r-total').textContent = fmt(totalCost);
+
+  // equity bar
+  var equityPct = Math.min(100, Math.round(pct));
+  var bar = document.getElementById('equity-bar');
+  bar.style.width = equityPct + '%';
+  bar.style.background = equityPct >= 20 ? '#22c55e' : equityPct >= 10 ? 'var(--orange)' : '#ef4444';
+  document.getElementById('equity-pct-label').textContent = equityPct + '% equity';
+  var statusEl = document.getElementById('equity-status');
+  if (equityPct >= 20) {
+    statusEl.textContent = '✅ Strong equity position — protected against depreciation';
+    statusEl.style.color = '#22c55e';
+  } else if (equityPct >= 10) {
+    statusEl.textContent = '⚠️ Moderate equity — you may be underwater in year 1 on a new car';
+    statusEl.style.color = 'var(--orange)';
+  } else {
+    statusEl.textContent = '🔴 Low equity — high risk of being underwater immediately';
+    statusEl.style.color = '#ef4444';
+  }
+
+  // scenario table
+  var scenarios = [0, 5, 10, 15, 20, 25, 30];
+  var baseMP = monthlyPayment(Math.max(0, price - trade), rate, term);
+  var baseInterest = baseMP * term - Math.max(0, price - trade);
+  var tbody = document.getElementById('scenario-body');
+  tbody.innerHTML = '';
+  scenarios.forEach(function(sp) {
+    var sDown = price * sp / 100;
+    var sPrincipal = Math.max(0, price - sDown - trade);
+    var sMP = monthlyPayment(sPrincipal, rate, term);
+    var sInterest = sMP * term - sPrincipal;
+    var saved = baseInterest - sInterest;
+    var isActive = sp === Math.round(pct / 5) * 5 || sp === pct;
+    // highlight closest scenario
+    var diff = Math.abs(sp - pct);
+    var tr = document.createElement('tr');
+    if (sp === Math.round(pct)) isActive = true;
+    // find closest
+    tr.className = (sp === scenarios.reduce(function(prev, cur) { return Math.abs(cur - pct) < Math.abs(prev - pct) ? cur : prev; })) ? 'active' : '';
+    var tag = tr.className === 'active' ? '<span class="tag">Your pick</span>' : '';
+    tr.innerHTML =
+      '<td>' + sp + '%' + tag + '</td>' +
+      '<td>' + fmt(sDown) + '</td>' +
+      '<td>' + fmt(sMP) + '/mo</td>' +
+      '<td>' + fmt(sInterest) + '</td>' +
+      '<td>' + (sp === 0 ? '—' : '<span style="color:#22c55e;font-weight:600;">+' + fmt(saved) + '</span>') + '</td>';
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('results').classList.add('show');
+}
+
+// init slider display
+syncSlider();
+calculate();
+</script>
+</body>
+</html>
