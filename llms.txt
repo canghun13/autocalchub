@@ -1,0 +1,61 @@
+# AutoCalcHub
+
+> Free car calculators and guides to help you make smarter decisions when buying, financing, and owning a vehicle. All tools are free, no signup required.
+
+## Tools
+
+- [Car Loan Calculator](https://autocalchub.com/tools/car-loan-calculator.html): Calculate your monthly car payment, total interest, and full loan cost based on price, APR, and term.
+- [Car Affordability Calculator](https://autocalchub.com/tools/car-affordability-calculator.html): Find out how much car you can afford based on your income, expenses, and the 20/4/10 rule.
+- [Car Down Payment Calculator](https://autocalchub.com/tools/car-down-payment-calculator.html): See how different down payment amounts affect your monthly payment, total interest, and equity position at purchase.
+- [Car Depreciation Calculator](https://autocalchub.com/tools/car-depreciation-calculator.html): Estimate how much your car loses in value over time and what it will be worth at any point in the future.
+- [Used Car Value Calculator](https://autocalchub.com/tools/used-car-value-calculator.html): Estimate the current market value of a used vehicle based on year, mileage, condition, and model.
+- [Car Insurance Estimator](https://autocalchub.com/tools/car-insurance-estimator.html): Estimate your monthly car insurance cost based on your profile, vehicle, and coverage level.
+- [Car Lease vs Buy Calculator](https://autocalchub.com/tools/car-lease-vs-buy-calculator.html): Compare the true total cost of leasing versus buying a car over any time period.
+- [Fuel Cost Calculator](https://autocalchub.com/tools/fuel-cost-calculator.html): Calculate how much you spend on gas per month or year based on your mileage and MPG.
+- [MPG Calculator](https://autocalchub.com/tools/mpg-calculator.html): Calculate your car's real-world fuel efficiency from fill-up data.
+- [Gas vs EV Savings Calculator](https://autocalchub.com/tools/gas-vs-ev-savings-calculator.html): Compare the total cost of driving a gas car versus an electric vehicle including fuel, charging, and maintenance.
+- [EV Charging Cost Calculator](https://autocalchub.com/tools/ev-charging-cost-calculator.html): Calculate the monthly and annual cost of charging an electric vehicle at home.
+- [Road Trip Cost Calculator](https://autocalchub.com/tools/road-trip-cost-calculator.html): Estimate the total fuel cost for any road trip based on distance, MPG, and current gas prices.
+
+## Guides: Buying a Car
+
+- [How Much Car Can I Afford?](https://autocalchub.com/blog/how-much-car-can-i-afford.html): How to figure out your real car budget using income, debt, and the 20/4/10 rule.
+- [How to Buy a Used Car Without Getting Ripped Off](https://autocalchub.com/blog/how-to-buy-used-car-without-getting-ripped-off.html): Step-by-step guide to buying a used car safely and avoiding common scams.
+- [Best Time of Year to Buy a Car](https://autocalchub.com/blog/best-time-of-year-to-buy-a-car.html): When dealers offer the biggest discounts and how to time your purchase.
+- [Should I Buy or Lease a Car?](https://autocalchub.com/blog/should-i-buy-or-lease-a-car.html): A clear breakdown of when buying wins and when leasing makes more sense financially.
+- [How to Negotiate Car Price at a Dealership](https://autocalchub.com/blog/how-to-negotiate-car-price-at-dealership.html): Tactics for getting a lower price and avoiding common dealer tricks.
+- [How to Check a Car's History Before Buying](https://autocalchub.com/blog/how-to-check-car-history-before-buying.html): What reports to pull, what red flags to look for, and what they don't tell you.
+- [Is It Worth Buying a Car With a Rebuilt Title?](https://autocalchub.com/blog/is-it-worth-buying-car-with-rebuilt-title.html): The real risks of rebuilt title vehicles and what to check before you buy.
+- [Selling Your Car Privately vs Trading In](https://autocalchub.com/blog/how-to-sell-car-privately-vs-trade-in.html): Which option gets you more money and when the convenience of a trade-in is worth it.
+
+## Guides: Car Financing
+
+- [What Credit Score Do You Need to Buy a Car?](https://autocalchub.com/blog/what-credit-score-do-you-need-to-buy-a-car.html): How your credit score affects your interest rate and what to do if your score is low.
+- [What Is a Good Interest Rate on a Car Loan?](https://autocalchub.com/blog/what-is-good-interest-rate-car-loan.html): Average auto loan rates in 2026 by credit score tier and how to get the best deal.
+- [How to Pay Off a Car Loan Early](https://autocalchub.com/blog/how-to-pay-off-car-loan-early.html): Strategies to pay off your auto loan faster and how much interest you can save.
+- [Is a 72-Month Car Loan a Bad Idea?](https://autocalchub.com/blog/is-72-month-car-loan-bad-idea.html): The real cost of long loan terms and when a shorter term is worth the higher payment.
+- [How to Get Pre-Approved for a Car Loan](https://autocalchub.com/blog/how-to-get-pre-approved-car-loan.html): Step-by-step guide to getting pre-approved before you walk into a dealership.
+- [How Long Does It Take to Pay Off a Car Loan?](https://autocalchub.com/blog/how-long-does-it-take-to-pay-off-car-loan.html): How loan term affects total cost and how to choose the right payoff timeline.
+- [How Much Should You Put Down on a Car?](https://autocalchub.com/blog/how-much-should-i-put-down-on-a-car.html): The 20/4/10 rule, new vs. used car guidelines, and what happens when you put too little down.
+- [How to Refinance a Car Loan](https://autocalchub.com/blog/how-to-refinance-a-car-loan.html): When refinancing makes sense, how much you can save, and the step-by-step process.
+
+## Guides: Running Costs
+
+- [How Much Does It Cost to Own a Car Per Month?](https://autocalchub.com/blog/how-much-does-it-cost-to-own-car-per-month.html): Full breakdown of monthly car ownership costs including payment, insurance, gas, and maintenance.
+- [How to Improve Car Gas Mileage](https://autocalchub.com/blog/how-to-improve-car-gas-mileage.html): Practical tips to get better MPG and reduce your fuel costs.
+- [How to Calculate Fuel Cost for a Road Trip](https://autocalchub.com/blog/how-to-calculate-fuel-cost-road-trip.html): How to estimate gas costs for any trip before you leave.
+- [What Is the Cheapest Car to Maintain?](https://autocalchub.com/blog/what-is-cheapest-car-to-maintain.html): Which vehicles have the lowest long-term maintenance costs and why.
+- [How Much Does It Cost to Fill Up a Car?](https://autocalchub.com/blog/how-much-does-it-cost-to-fill-up-a-car.html): What a full tank costs in 2026 by vehicle type and tank size.
+
+## Guides: Electric Vehicles
+
+- [Electric vs Gas Car: True Cost Comparison](https://autocalchub.com/blog/electric-vs-gas-car-true-cost.html): A full cost comparison of EVs vs gas cars including purchase price, fuel, insurance, and maintenance.
+- [How Much Does It Cost to Charge an EV at Home?](https://autocalchub.com/blog/how-much-does-ev-cost-to-charge-at-home.html): How to calculate your actual home charging cost based on your electricity rate and battery size.
+- [EV Tax Credit 2026](https://autocalchub.com/blog/ev-tax-credit-2026.html): Which electric vehicles qualify for the federal EV tax credit in 2026 and how to claim it.
+
+## Guides: Car Ownership & Value
+
+- [Which Cars Hold Their Value the Best?](https://autocalchub.com/blog/which-cars-hold-value-best.html): The vehicles with the best resale value in 2026 and which to avoid if depreciation matters to you.
+- [How Much Does a New Car Depreciate in Year One?](https://autocalchub.com/blog/how-much-does-new-car-depreciate-first-year.html): How fast new cars lose value and what it means for your buying decision.
+- [What Mileage Is Too High for a Used Car?](https://autocalchub.com/blog/what-mileage-is-too-high-for-a-used-car.html): What the odometer actually tells you and what matters more when evaluating a used car.
+- [When Should You Trade In Your Car?](https://autocalchub.com/blog/when-to-trade-in-your-car.html): The right timing to trade in, how to avoid negative equity, and how to get a fair offer.
