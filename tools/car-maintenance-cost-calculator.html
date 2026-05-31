@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Maintenance Cost Calculator – Estimate Your Annual Repair Budget | AutoCalcHub</title>
+  <meta name="description" content="Estimate how much you'll spend on car maintenance per year based on your vehicle's make, age, and mileage. Free car maintenance cost calculator.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-maintenance-cost-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Maintenance Cost Calculator",
+    "url": "https://autocalchub.com/tools/car-maintenance-cost-calculator.html",
+    "description": "Estimate how much you'll spend on car maintenance per year based on your vehicle's make, age, and mileage.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    }
+  }
+  </script>
+  <style>
+    .tool-page { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .tool-header { margin-bottom: 2.5rem; }
+    .tool-header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      color: var(--charcoal); margin-bottom: 0.5rem;
+    }
+    .tool-header p { color: var(--mid); font-size: 1rem; }
+    .calc-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;
+    }
+    .calc-card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 1.5rem;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 0.85rem; font-weight: 500; color: var(--mid); }
+    select, input[type="number"] {
+      width: 100%; padding: 0.75rem 0.875rem;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 0.95rem; font-family: 'Inter', sans-serif;
+      color: var(--charcoal); background: white;
+      transition: border-color 0.2s;
+      -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    select:focus, input[type="number"]:focus { outline: none; border-color: var(--orange); }
+    .calc-btn {
+      width: 100%; margin-top: 1.5rem;
+      background: var(--navy); color: white;
+      border: none; border-radius: 8px;
+      padding: 0.875rem; font-size: 1rem; font-weight: 600;
+      font-family: 'Inter', sans-serif; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: #1e3a5f; }
+    .results { display: none; }
+    .results.show { display: block; }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .result-box {
+      background: var(--off-white); border-radius: 10px;
+      padding: 1.25rem; text-align: center;
+    }
+    .result-box.highlight { background: var(--navy); }
+    .result-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--navy);
+    }
+    .result-box.highlight .result-num { color: var(--orange); }
+    .result-label { font-size: 0.75rem; color: var(--light); margin-top: 0.3rem; }
+    .result-box.highlight .result-label { color: rgba(255,255,255,0.6); }
+
+    .breakdown-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin-top: 0.5rem; }
+    .breakdown-table th {
+      text-align: left; padding: 0.6rem 0.75rem;
+      background: var(--off-white); color: var(--mid);
+      font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .breakdown-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--border); color: var(--charcoal); }
+    .breakdown-table tr:last-child td { border-bottom: none; }
+    .breakdown-table .freq { color: var(--light); font-size: 0.8rem; }
+
+    .budget-bar-wrap { margin: 1.5rem 0; }
+    .budget-bar-label { font-size: 0.85rem; font-weight: 500; color: var(--mid); margin-bottom: 0.5rem; display: flex; justify-content: space-between; }
+    .budget-bar-track { background: var(--border); border-radius: 100px; height: 10px; overflow: hidden; }
+    .budget-bar-fill { height: 100%; border-radius: 100px; transition: width 0.4s ease; background: var(--orange); }
+    .budget-tip { margin-top: 0.5rem; font-size: 0.85rem; font-weight: 600; }
+
+    .content-section { margin-top: 3rem; }
+    .content-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1rem; }
+    .content-section h3 { font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin: 1.75rem 0 0.5rem; }
+    .content-section p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.75rem; }
+    .highlight-box { background: var(--orange-pale); border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0; padding: 1.25rem 1.5rem; margin: 1.5rem 0; }
+    .highlight-box p { color: var(--charcoal); margin: 0; font-weight: 500; }
+    .disclaimer { background: var(--off-white); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 1.5rem; margin-top: 3rem; font-size: 0.8rem; color: var(--light); line-height: 1.6; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .results-grid { grid-template-columns: 1fr; } }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>🔧 Car Maintenance Cost Calculator</h1>
+    <p>Estimate your annual maintenance budget based on your vehicle's make type, age, and mileage.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>Your vehicle details</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="make-type">Make Type</label>
+        <select id="make-type">
+          <option value="japanese">Japanese (Toyota, Honda, Mazda)</option>
+          <option value="american">American (Ford, Chevy, Ram)</option>
+          <option value="korean">Korean (Hyundai, Kia)</option>
+          <option value="european_mass">European Mass Market (VW, Volvo)</option>
+          <option value="european_luxury">European Luxury (BMW, Audi, Mercedes)</option>
+          <option value="luxury_american">Luxury American (Cadillac, Lincoln)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="vehicle-type">Vehicle Type</label>
+        <select id="vehicle-type">
+          <option value="sedan">Sedan / Hatchback</option>
+          <option value="suv">SUV / Crossover</option>
+          <option value="truck">Truck</option>
+          <option value="minivan">Minivan</option>
+          <option value="sports">Sports Car</option>
+          <option value="ev">Electric Vehicle (EV)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="vehicle-age">Vehicle Age (years)</label>
+        <input type="number" id="vehicle-age" value="4" min="0" max="25">
+      </div>
+      <div class="form-group">
+        <label for="annual-miles">Annual Mileage</label>
+        <select id="annual-miles">
+          <option value="8000">Under 10,000 miles/yr</option>
+          <option value="12000" selected>10,000–15,000 miles/yr (average)</option>
+          <option value="18000">15,000–20,000 miles/yr</option>
+          <option value="25000">Over 20,000 miles/yr</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label for="condition">Vehicle Condition</label>
+        <select id="condition">
+          <option value="excellent">Excellent – fully up to date on all maintenance</option>
+          <option value="good" selected>Good – mostly up to date</option>
+          <option value="fair">Fair – some deferred maintenance</option>
+          <option value="poor">Poor – significant deferred maintenance</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Estimate Maintenance Costs</button>
+  </div>
+
+  <div class="calc-card results" id="results">
+    <h2>Estimated Annual Maintenance Cost</h2>
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="r-annual">$0</div>
+        <div class="result-label">Estimated Annual Cost</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="r-monthly">$0</div>
+        <div class="result-label">Per Month (budgeted)</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="r-5yr">$0</div>
+        <div class="result-label">5-Year Estimate</div>
+      </div>
+    </div>
+
+    <div class="budget-bar-wrap">
+      <div class="budget-bar-label">
+        <span>Cost vs. National Average ($936/yr)</span>
+        <span id="vs-avg-label"></span>
+      </div>
+      <div class="budget-bar-track">
+        <div class="budget-bar-fill" id="budget-bar" style="width:50%"></div>
+      </div>
+      <div class="budget-tip" id="budget-tip"></div>
+    </div>
+
+    <h2 style="margin-top:1.5rem;">Typical Service Breakdown</h2>
+    <table class="breakdown-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Typical Interval</th>
+          <th>Est. Cost</th>
+          <th>Annual Portion</th>
+        </tr>
+      </thead>
+      <tbody id="breakdown-body"></tbody>
+    </table>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>How to Use This Calculator</h2>
+    <p>Select your vehicle's make type, body style, age, mileage, and condition. The calculator estimates your annual maintenance budget based on RepairPal and AAA data adjusted for vehicle type and usage patterns. The result is a planning estimate — individual costs vary by location, mechanic, and specific model.</p>
+
+    <h3>What counts as maintenance vs. repair?</h3>
+    <p>Maintenance refers to scheduled, preventive services: oil changes, tire rotations, brake pad replacements, filters, fluid flushes. These are predictable and budgetable. Repairs are unscheduled — a failing alternator, a cracked CV axle, a dead battery. This calculator estimates both categories blended together, since the line between them blurs as vehicles age.</p>
+
+    <h3>How vehicle age affects costs</h3>
+    <p>A car in its first three years typically costs $300–$500/year in maintenance. From years four to seven, costs climb to $600–$900/year as more components reach their service intervals. Beyond eight years, $1,000–$1,500/year is common as parts wear and labor-intensive jobs (timing belts, suspension components, water pumps) become due. After 150,000 miles, unscheduled repair risk increases meaningfully.</p>
+
+    <div class="highlight-box">
+      <p>The biggest maintenance mistake: skipping or deferring scheduled services. A $150 timing belt replacement deferred too long can become a $4,000 engine repair. Maintenance is the cheapest insurance you can buy for a car.</p>
+    </div>
+
+    <h3>Why make type matters so much</h3>
+    <p>RepairPal data shows the average annual repair cost for a Toyota is around $441/year; for a BMW it's $968/year — more than double. The gap isn't just parts cost. European luxury vehicles require specialized tools, dealer-trained technicians, and proprietary diagnostic systems that inflate labor costs across every service visit. Japanese brands benefit from decades of parts standardization, wide availability, and mechanic familiarity at any independent shop.</p>
+
+    <h3>EV maintenance: genuinely different</h3>
+    <p>Electric vehicles have no engine oil, no timing belt, no transmission fluid, and far less brake wear due to regenerative braking. Annual EV maintenance is typically $300–$500 — roughly half of an equivalent gas vehicle. The main scheduled items are tire rotations, cabin air filter, wiper blades, and brake fluid checks. Battery replacement is the major wildcard, but most EVs are still within warranty at the 8–10 year mark when battery degradation typically becomes noticeable.</p>
+
+    <h3>How to keep maintenance costs down</h3>
+    <p>Use an independent mechanic rather than a dealership for out-of-warranty work — labor rates are typically 30–50% lower. Follow your owner's manual service schedule rather than the dealership's upsell recommendations. Buy a vehicle with a strong reliability record. Keep your own maintenance log; it also increases resale value. And build a dedicated car maintenance fund: even $75/month set aside covers most annual maintenance costs before they become emergencies.</p>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> Estimates are based on national average data from RepairPal, AAA, and industry sources. Actual costs vary significantly by region, specific model, mechanic rates, and vehicle history. This calculator provides planning estimates only and should not be used as a substitute for a professional vehicle inspection.
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+// Base annual costs by make type
+var BASE = {
+  japanese: 480,
+  american: 620,
+  korean: 540,
+  european_mass: 720,
+  european_luxury: 1050,
+  luxury_american: 880
+};
+
+// Vehicle type multiplier
+var TYPE_MULT = {
+  sedan: 1.0,
+  suv: 1.15,
+  truck: 1.2,
+  minivan: 1.1,
+  sports: 1.3,
+  ev: 0.55
+};
+
+// Age multiplier
+function ageMult(age) {
+  if (age <= 2) return 0.6;
+  if (age <= 4) return 0.85;
+  if (age <= 7) return 1.0;
+  if (age <= 10) return 1.25;
+  if (age <= 15) return 1.55;
+  return 1.9;
+}
+
+// Mileage multiplier
+var MILE_MULT = { 8000: 0.8, 12000: 1.0, 18000: 1.25, 25000: 1.5 };
+
+// Condition multiplier
+var COND_MULT = { excellent: 0.85, good: 1.0, fair: 1.3, poor: 1.65 };
+
+// Service breakdown by vehicle type
+function getBreakdown(makeType, vehicleType, miles) {
+  var isEV = vehicleType === 'ev';
+  var isLux = makeType === 'european_luxury' || makeType === 'luxury_american';
+  var oilCost = isEV ? 0 : (isLux ? 180 : 75);
+  var oilFreq = isEV ? 'N/A' : (isLux ? 'Every 10,000 mi' : 'Every 5,000–7,500 mi');
+  var oilAnnual = isEV ? 0 : Math.round(oilCost * (miles / (isLux ? 10000 : 6000)));
+
+  var rows = [];
+  if (!isEV) rows.push({ name: 'Oil Change', interval: oilFreq, cost: '$' + oilCost, annual: fmt(oilAnnual) });
+  rows.push({ name: 'Tire Rotation', interval: 'Every 6,000–8,000 mi', cost: '$25–$50', annual: fmt(Math.round(miles/7000 * 38)) });
+  rows.push({ name: 'Brake Pads (per axle)', interval: 'Every 30,000–50,000 mi', cost: isLux ? '$400–$700' : '$150–$350', annual: fmt(isLux ? 120 : 60) });
+  rows.push({ name: 'Air Filters (engine + cabin)', interval: 'Annually', cost: isLux ? '$80–$150' : '$40–$80', annual: fmt(isLux ? 100 : 55) });
+  if (!isEV) rows.push({ name: 'Spark Plugs', interval: 'Every 60,000–100,000 mi', cost: isLux ? '$200–$500' : '$80–$180', annual: fmt(isLux ? 60 : 25) });
+  rows.push({ name: 'Fluid Flushes (coolant, brake, trans)', interval: 'Every 30,000–50,000 mi', cost: '$100–$250', annual: fmt(50) });
+  rows.push({ name: 'Wiper Blades', interval: 'Annually', cost: '$20–$50', annual: fmt(35) });
+  rows.push({ name: 'Miscellaneous / unscheduled', interval: 'As needed', cost: 'Varies', annual: isLux ? fmt(300) : fmt(120) });
+  return rows;
+}
+
+function calculate() {
+  var makeType = document.getElementById('make-type').value;
+  var vehicleType = document.getElementById('vehicle-type').value;
+  var age = parseInt(document.getElementById('vehicle-age').value) || 0;
+  var miles = parseInt(document.getElementById('annual-miles').value);
+  var condition = document.getElementById('condition').value;
+
+  var base = BASE[makeType];
+  var annual = Math.round(base * TYPE_MULT[vehicleType] * ageMult(age) * MILE_MULT[miles] * COND_MULT[condition]);
+
+  document.getElementById('r-annual').textContent = fmt(annual);
+  document.getElementById('r-monthly').textContent = fmt(annual / 12);
+  document.getElementById('r-5yr').textContent = fmt(annual * 5);
+
+  // vs average bar
+  var avg = 936;
+  var pct = Math.min(100, Math.round(annual / (avg * 2) * 100));
+  document.getElementById('budget-bar').style.width = pct + '%';
+  var diff = annual - avg;
+  var vsLabel = document.getElementById('vs-avg-label');
+  var tip = document.getElementById('budget-tip');
+  if (diff > 0) {
+    vsLabel.textContent = '+' + fmt(diff) + ' above average';
+    vsLabel.style.color = '#ef4444';
+    document.getElementById('budget-bar').style.background = '#ef4444';
+    tip.textContent = '⚠️ Above average — consider a more reliable make or keep up with preventive maintenance';
+    tip.style.color = '#ef4444';
+  } else {
+    vsLabel.textContent = fmt(Math.abs(diff)) + ' below average';
+    vsLabel.style.color = '#22c55e';
+    document.getElementById('budget-bar').style.background = '#22c55e';
+    tip.textContent = '✅ Below average — good choice for long-term ownership costs';
+    tip.style.color = '#22c55e';
+  }
+
+  // Breakdown table
+  var rows = getBreakdown(makeType, vehicleType, miles);
+  var tbody = document.getElementById('breakdown-body');
+  tbody.innerHTML = '';
+  rows.forEach(function(r) {
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + r.name + '</td><td class="freq">' + r.interval + '</td><td>' + r.cost + '</td><td><strong>' + r.annual + '</strong></td>';
+    tbody.appendChild(tr);
+  });
+
+  document.getElementById('results').classList.add('show');
+}
+
+calculate();
+</script>
+</body>
+</html>

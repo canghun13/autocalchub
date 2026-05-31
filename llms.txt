@@ -7,6 +7,7 @@
 - [Car Loan Calculator](https://autocalchub.com/tools/car-loan-calculator.html): Calculate your monthly car payment, total interest, and full loan cost based on price, APR, and term.
 - [Car Affordability Calculator](https://autocalchub.com/tools/car-affordability-calculator.html): Find out how much car you can afford based on your income, expenses, and the 20/4/10 rule.
 - [Car Down Payment Calculator](https://autocalchub.com/tools/car-down-payment-calculator.html): See how different down payment amounts affect your monthly payment, total interest, and equity position at purchase.
+- [Car Maintenance Cost Calculator](https://autocalchub.com/tools/car-maintenance-cost-calculator.html): Estimate your annual car maintenance budget based on your vehicle's make type, age, and mileage.
 - [Car Depreciation Calculator](https://autocalchub.com/tools/car-depreciation-calculator.html): Estimate how much your car loses in value over time and what it will be worth at any point in the future.
 - [Used Car Value Calculator](https://autocalchub.com/tools/used-car-value-calculator.html): Estimate the current market value of a used vehicle based on year, mileage, condition, and model.
 - [Car Insurance Estimator](https://autocalchub.com/tools/car-insurance-estimator.html): Estimate your monthly car insurance cost based on your profile, vehicle, and coverage level.
@@ -45,6 +46,8 @@
 - [How to Improve Car Gas Mileage](https://autocalchub.com/blog/how-to-improve-car-gas-mileage.html): Practical tips to get better MPG and reduce your fuel costs.
 - [How to Calculate Fuel Cost for a Road Trip](https://autocalchub.com/blog/how-to-calculate-fuel-cost-road-trip.html): How to estimate gas costs for any trip before you leave.
 - [What Is the Cheapest Car to Maintain?](https://autocalchub.com/blog/what-is-cheapest-car-to-maintain.html): Which vehicles have the lowest long-term maintenance costs and why.
+- [How Much Does Car Maintenance Cost Per Year?](https://autocalchub.com/blog/how-much-does-car-maintenance-cost-per-year.html): A full 2026 breakdown of annual maintenance costs by vehicle age, make type, and service category.
+- [How to Lower Your Car Insurance Premium](https://autocalchub.com/blog/how-to-lower-your-car-insurance-premium.html): The most effective ways to reduce your car insurance bill — from deductible adjustments to discounts most drivers never ask about.
 - [How Much Does It Cost to Fill Up a Car?](https://autocalchub.com/blog/how-much-does-it-cost-to-fill-up-a-car.html): What a full tank costs in 2026 by vehicle type and tank size.
 
 ## Guides: Electric Vehicles
@@ -59,3 +62,4 @@
 - [How Much Does a New Car Depreciate in Year One?](https://autocalchub.com/blog/how-much-does-new-car-depreciate-first-year.html): How fast new cars lose value and what it means for your buying decision.
 - [What Mileage Is Too High for a Used Car?](https://autocalchub.com/blog/what-mileage-is-too-high-for-a-used-car.html): What the odometer actually tells you and what matters more when evaluating a used car.
 - [When Should You Trade In Your Car?](https://autocalchub.com/blog/when-to-trade-in-your-car.html): The right timing to trade in, how to avoid negative equity, and how to get a fair offer.
+- [How Car Depreciation Affects Resale Value](https://autocalchub.com/blog/how-does-car-depreciation-affect-resale-value.html): What accelerates depreciation, what slows it, and how to use the depreciation curve to your advantage when buying or selling.
