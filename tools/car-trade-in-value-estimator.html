@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Trade-In Value Estimator – What Will a Dealer Offer? | AutoCalcHub</title>
+  <meta name="description" content="Estimate your car's trade-in value before visiting a dealership. See what dealers typically offer vs. private party value, and how to maximize your trade-in.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-trade-in-value-estimator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix{position:absolute;top:50%;transform:translateY(-50%);left:0.875rem;font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    input[type="number"],select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1rem}
+    .result-box{background:var(--off-white);border-radius:10px;padding:1.25rem;text-align:center}
+    .result-box.highlight{background:var(--navy)}
+    .result-num{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--navy)}
+    .result-box.highlight .result-num{color:var(--orange)}
+    .result-label{font-size:0.75rem;color:var(--light);margin-top:0.3rem}
+    .result-box.highlight .result-label{color:rgba(255,255,255,0.6)}
+    .tip-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1rem 1.25rem;margin-top:1rem;font-size:0.85rem;color:var(--charcoal)}
+    .disclaimer{background:var(--off-white);border-radius:8px;padding:1rem;margin-top:1rem;font-size:0.8rem;color:var(--light)}
+    .content-section{margin-top:3rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p{color:var(--mid);font-size:0.95rem;line-height:1.7;margin-bottom:0.75rem}
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Trade-In Value Estimator",
+    "url": "https://autocalchub.com/tools/car-trade-in-value-estimator.html",
+    "description": "Estimate your car's trade-in value and see what a dealer is likely to offer vs. private party sale value.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    }
+  }
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>🔄 Car Trade-In Value Estimator</h1>
+    <p>Estimate what a dealer will offer for your car — and whether selling privately makes more sense.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>Tell us about your car</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="origPrice">Original Purchase Price</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="origPrice" value="30000"></div>
+      </div>
+      <div class="form-group">
+        <label for="age">Vehicle Age (years)</label>
+        <div class="input-wrap"><input type="number" id="age" value="4" min="1" max="20"></div>
+      </div>
+      <div class="form-group">
+        <label for="mileage">Current Mileage</label>
+        <div class="input-wrap"><input type="number" id="mileage" value="55000"></div>
+      </div>
+      <div class="form-group">
+        <label for="condition">Overall Condition</label>
+        <select id="condition">
+          <option value="excellent">Excellent – like new, no issues</option>
+          <option value="good" selected>Good – minor wear, fully functional</option>
+          <option value="fair">Fair – noticeable wear or minor damage</option>
+          <option value="poor">Poor – needs repair or has damage</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="brand">Brand Reliability</label>
+        <select id="brand">
+          <option value="high">High (Toyota, Honda, Subaru, Mazda)</option>
+          <option value="average" selected>Average (Ford, Chevy, Hyundai, Kia)</option>
+          <option value="low">Lower demand (most European luxury)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="accident">Accident History</label>
+        <select id="accident">
+          <option value="none" selected>No accidents reported</option>
+          <option value="minor">Minor accident (repaired)</option>
+          <option value="major">Major accident or frame damage</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Estimate Trade-In Value</button>
+  </div>
+
+  <div class="calc-card results" id="results">
+    <h2>Your Estimate</h2>
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="tradeIn">$0</div>
+        <div class="result-label">Dealer Trade-In Offer</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="private">$0</div>
+        <div class="result-label">Private Party Value</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="difference">$0</div>
+        <div class="result-label">Private Sale Advantage</div>
+      </div>
+    </div>
+    <div class="tip-box" id="tipBox"></div>
+    <div class="disclaimer">⚠️ These are rough estimates based on general depreciation rates and condition adjustments. Actual trade-in offers depend on your local market, dealer inventory needs, and current demand for your specific make and model. Always get offers from multiple sources (dealer, CarMax, Carvana) before deciding.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Trade-In vs. Private Sale: Which Is Better?</h2>
+    <p>Dealers typically offer 10–20% less than private party value for your trade-in. That gap exists because the dealer needs to inspect, recondition, and resell the car at a profit. In return, you get convenience: no listings, no test drives with strangers, no waiting for payment.</p>
+
+    <h3>When trade-in makes sense</h3>
+    <p>Trading in is usually the right choice when your car has issues that would be hard to disclose and negotiate in a private sale, when you need the transaction completed quickly, or when the tax savings from trading in offset the lower value. In many states, you only pay sales tax on the difference between the new car price and your trade-in value — which can save you $500–$2,000 depending on your state and car values.</p>
+
+    <h3>When private sale makes more sense</h3>
+    <p>If your car is clean, well-maintained, and in demand, private sale can net you $2,000–$5,000 more than a dealer trade-in. Platforms like Facebook Marketplace, Craigslist, and CarGurus make it straightforward to list privately. The tradeoff is time and the effort of coordinating test drives and payment.</p>
+
+    <h3>Get multiple offers before deciding</h3>
+    <p>Before accepting any dealer trade-in offer, get instant online offers from CarMax, Carvana, and Vroom. These services make firm cash offers that you can use as leverage with the dealer — or simply accept if they're higher. The process takes less than 10 minutes online and gives you real market data on what your car is actually worth today.</p>
+
+    <h2>What Affects Your Trade-In Value Most?</h2>
+    <p>In order of impact:</p>
+    <ol>
+      <li><strong>Mileage</strong> — Every 10,000 miles above average (12,000–15,000/year) reduces value by $500–$1,500</li>
+      <li><strong>Condition</strong> — Going from "good" to "excellent" can add $500–$2,000 for high-demand models</li>
+      <li><strong>Accident history</strong> — Even a minor reported accident typically reduces value 10–15%</li>
+      <li><strong>Brand and model demand</strong> — Toyota Tacomas and Honda CRVs hold value dramatically better than most European luxury sedans</li>
+      <li><strong>Market timing</strong> — Truck and SUV values rise with gas prices; EV values have been volatile</li>
+    </ol>
+
+    <h3>How to maximize your trade-in value</h3>
+    <p>Clean the car thoroughly inside and out before any appraisal. Fix small cosmetic issues if the repair cost is less than the value gain. Have your service records ready — documented maintenance history adds credibility and value. Time your trade-in for spring or early summer when used car demand is seasonally highest.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;">Related Guides</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/when-to-trade-in-your-car.html" style="color:var(--orange);text-decoration:none;">When to Trade In Your Car</a></li>
+        <li><a href="../blog/how-to-sell-car-privately-vs-trade-in.html" style="color:var(--orange);text-decoration:none;">How to Sell Your Car Privately vs. Trade In</a></li>
+        <li><a href="../blog/what-mileage-is-too-high-for-a-used-car.html" style="color:var(--orange);text-decoration:none;">What Mileage Is Too High for a Used Car?</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+  <div style="max-width:820px;margin:0 auto;padding:0 2rem 2rem">
+    <div style="background:#f8f9fa;border-radius:10px;padding:1.5rem;margin-bottom:1.5rem">
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--charcoal);margin:0 0 0.5rem">Disclaimer</h2>
+      <p style="font-size:0.85rem;color:var(--mid);line-height:1.6;margin:0">This tool provides rough estimates of trade-in and private party vehicle values based on general depreciation rates, mileage adjustments, and condition factors. These are estimates only — not appraisals. Actual trade-in values depend on your local market, dealer inventory needs, current demand, and the specific make, model, and trim of your vehicle. Always obtain quotes from multiple sources before making any vehicle transaction decisions. This tool is for informational and educational purposes only.</p>
+    </div>
+  </div>
+
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+
+function calculate(){
+  var origPrice = parseFloat(document.getElementById('origPrice').value)||0;
+  var age = parseInt(document.getElementById('age').value)||1;
+  var mileage = parseFloat(document.getElementById('mileage').value)||0;
+  var condition = document.getElementById('condition').value;
+  var brand = document.getElementById('brand').value;
+  var accident = document.getElementById('accident').value;
+
+  // Base depreciation by age
+  var val = origPrice;
+  // Year 1: 20%, Years 2-3: 15%/yr, Years 4-5: 12%/yr, Years 6+: 10%/yr
+  for(var i=1; i<=age; i++){
+    var rate = i===1 ? 0.20 : i<=3 ? 0.15 : i<=5 ? 0.12 : 0.10;
+    val *= (1 - rate);
+  }
+
+  // Mileage adjustment (avg 13500/yr)
+  var avgMiles = age * 13500;
+  var mileDiff = mileage - avgMiles;
+  var mileAdj = (mileDiff / 10000) * 0.025; // ±2.5% per 10K miles
+  val *= (1 - Math.max(-0.15, Math.min(0.15, mileAdj)));
+
+  // Condition multiplier
+  var condMult = condition==='excellent' ? 1.10 : condition==='good' ? 1.0 : condition==='fair' ? 0.85 : 0.70;
+  val *= condMult;
+
+  // Brand multiplier
+  var brandMult = brand==='high' ? 1.08 : brand==='average' ? 1.0 : 0.88;
+  val *= brandMult;
+
+  // Accident multiplier
+  var accMult = accident==='none' ? 1.0 : accident==='minor' ? 0.88 : 0.72;
+  val *= accMult;
+
+  if(val < 500) val = 500;
+
+  // Trade-in is ~82% of private value (dealer discount)
+  var privateVal = val;
+  var tradeInVal = val * 0.82;
+
+  document.getElementById('tradeIn').textContent = fmt(tradeInVal);
+  document.getElementById('private').textContent = fmt(privateVal);
+  document.getElementById('difference').textContent = fmt(privateVal - tradeInVal);
+
+  // Tip
+  var diff = privateVal - tradeInVal;
+  var tip = '';
+  if(diff > 3000){
+    tip = '💡 The gap between private sale and trade-in is significant. Consider selling privately or getting offers from CarMax/Carvana before accepting a dealer trade-in.';
+  } else if(diff > 1500){
+    tip = '💡 There\'s a moderate advantage to selling privately. Get a CarMax or Carvana offer to use as leverage with the dealer.';
+  } else {
+    tip = '💡 The trade-in convenience may be worth the relatively small difference here. Still get one online offer to confirm.';
+  }
+  document.getElementById('tipBox').textContent = tip;
+  document.getElementById('results').classList.add('show');
+}
+calculate();
+</script>
+</body>
+</html>
