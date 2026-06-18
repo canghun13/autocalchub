@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Sales Tax Calculator by State (2026) | AutoCalcHub</title>
+  <meta name="description" content="Calculate car sales tax for any US state instantly. Enter your vehicle price and state to see exactly how much you'll owe — including trade-in deductions.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-sales-tax-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .tool-page { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .tool-header { margin-bottom: 2.5rem; }
+    .tool-header h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      color: var(--charcoal); margin-bottom: 0.5rem;
+    }
+    .tool-header p { color: var(--mid); font-size: 1rem; }
+
+    .calc-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;
+    }
+    .calc-card h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--charcoal); margin-bottom: 1.5rem;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 0.85rem; font-weight: 500; color: var(--mid); }
+    .input-wrap { position: relative; }
+    .input-prefix, .input-suffix {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      font-size: 0.9rem; color: var(--light); font-weight: 500; pointer-events: none;
+    }
+    .input-prefix { left: 0.875rem; }
+    .input-suffix { right: 0.875rem; }
+    input[type="number"] {
+      width: 100%; padding: 0.75rem 0.875rem;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 0.95rem; font-family: 'Inter', sans-serif;
+      color: var(--charcoal); background: white;
+      transition: border-color 0.2s;
+      -moz-appearance: textfield;
+    }
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type="number"]:focus { outline: none; border-color: var(--orange); }
+    .has-prefix input { padding-left: 2rem; }
+    select {
+      width: 100%; padding: 0.75rem 0.875rem;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 0.95rem; font-family: 'Inter', sans-serif;
+      color: var(--charcoal); background: white;
+      transition: border-color 0.2s; appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 0.875rem center;
+      cursor: pointer;
+    }
+    select:focus { outline: none; border-color: var(--orange); }
+
+    .calc-btn {
+      width: 100%; margin-top: 1.5rem;
+      background: var(--navy); color: white;
+      border: none; border-radius: 8px;
+      padding: 0.875rem; font-size: 1rem; font-weight: 600;
+      font-family: 'Inter', sans-serif; cursor: pointer;
+      transition: background 0.2s;
+    }
+    .calc-btn:hover { background: var(--navy-mid); }
+
+    .results { display: none; }
+    .results.show { display: block; }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .result-box {
+      background: var(--off-white); border-radius: 10px;
+      padding: 1.25rem; text-align: center;
+    }
+    .result-box.highlight { background: var(--navy); }
+    .result-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--navy);
+    }
+    .result-box.highlight .result-num { color: var(--orange); }
+    .result-label { font-size: 0.75rem; color: var(--light); margin-top: 0.3rem; }
+    .result-box.highlight .result-label { color: rgba(255,255,255,0.6); }
+
+    .breakdown-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 1rem; }
+    .breakdown-table td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border); color: var(--charcoal); }
+    .breakdown-table tr:last-child td { border-bottom: none; font-weight: 600; }
+    .breakdown-table td:last-child { text-align: right; }
+    .breakdown-table tr.total-row td { background: var(--off-white); font-weight: 700; font-size: 1rem; }
+
+    .state-rate-note {
+      font-size: 0.82rem; color: var(--light); margin-top: 1rem;
+      padding-top: 1rem; border-top: 1px solid var(--border);
+    }
+
+    .no-tax-badge {
+      display: inline-block; background: #e8f5e9; color: #2e7d32;
+      font-size: 0.8rem; font-weight: 600; padding: 0.2rem 0.6rem;
+      border-radius: 100px; margin-left: 0.5rem;
+    }
+
+    .content-section { margin-top: 3rem; }
+    .content-section h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem; font-weight: 700; color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+    .content-section h3 { font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin: 1.5rem 0 0.5rem; }
+    .content-section p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.75rem; }
+
+    .state-tax-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.5rem; margin: 1rem 0;
+    }
+    .state-tax-item {
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--off-white); border-radius: 8px; padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+    }
+    .state-tax-item .state-name { color: var(--charcoal); font-weight: 500; }
+    .state-tax-item .state-rate { color: var(--orange); font-weight: 600; }
+
+    .disclaimer {
+      background: var(--off-white); border-radius: 10px;
+      padding: 1.25rem 1.5rem; margin-top: 2.5rem;
+      font-size: 0.82rem; color: var(--light); line-height: 1.6;
+    }
+    .disclaimer strong { color: var(--mid); }
+
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr; }
+      .state-tax-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-ZH1JYG24PK");
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Sales Tax Calculator",
+    "url": "https://autocalchub.com/tools/car-sales-tax-calculator.html",
+    "description": "Calculate car sales tax for any US state. Enter your vehicle price and state to see exactly how much tax you'll owe, including trade-in deductions.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    }
+  }
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>🧾 Car Sales Tax Calculator</h1>
+    <p>Find out exactly how much sales tax you'll pay when buying a car in any US state.</p>
+  </div>
+
+  <!-- AD -->
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>Enter your vehicle details</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="vehiclePrice">Vehicle Price</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="vehiclePrice" value="30000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <select id="state">
+          <option value="">— Select a state —</option>
+          <option value="AL">Alabama (2.0%)</option>
+          <option value="AK">Alaska (0% — no state tax)</option>
+          <option value="AZ">Arizona (5.6%)</option>
+          <option value="AR">Arkansas (6.5%)</option>
+          <option value="CA">California (7.25%)</option>
+          <option value="CO">Colorado (2.9%)</option>
+          <option value="CT">Connecticut (6.35%)</option>
+          <option value="DE">Delaware (0% — no sales tax)</option>
+          <option value="FL">Florida (6.0%)</option>
+          <option value="GA">Georgia (7.0%)</option>
+          <option value="HI">Hawaii (4.0%)</option>
+          <option value="ID">Idaho (6.0%)</option>
+          <option value="IL">Illinois (6.25%)</option>
+          <option value="IN">Indiana (7.0%)</option>
+          <option value="IA">Iowa (5.0%)</option>
+          <option value="KS">Kansas (6.5%)</option>
+          <option value="KY">Kentucky (6.0%)</option>
+          <option value="LA">Louisiana (4.45%)</option>
+          <option value="ME">Maine (5.5%)</option>
+          <option value="MD">Maryland (6.0%)</option>
+          <option value="MA">Massachusetts (6.25%)</option>
+          <option value="MI">Michigan (6.0%)</option>
+          <option value="MN">Minnesota (6.5%)</option>
+          <option value="MS">Mississippi (5.0%)</option>
+          <option value="MO">Missouri (4.225%)</option>
+          <option value="MT">Montana (0% — no sales tax)</option>
+          <option value="NE">Nebraska (5.5%)</option>
+          <option value="NV">Nevada (6.85%)</option>
+          <option value="NH">New Hampshire (0% — no sales tax)</option>
+          <option value="NJ">New Jersey (6.625%)</option>
+          <option value="NM">New Mexico (4.0%)</option>
+          <option value="NY">New York (4.0%)</option>
+          <option value="NC">North Carolina (3.0%)</option>
+          <option value="ND">North Dakota (5.0%)</option>
+          <option value="OH">Ohio (5.75%)</option>
+          <option value="OK">Oklahoma (3.25%)</option>
+          <option value="OR">Oregon (0% — no sales tax)</option>
+          <option value="PA">Pennsylvania (6.0%)</option>
+          <option value="RI">Rhode Island (7.0%)</option>
+          <option value="SC">South Carolina (5.0%)</option>
+          <option value="SD">South Dakota (4.0%)</option>
+          <option value="TN">Tennessee (7.0%)</option>
+          <option value="TX">Texas (6.25%)</option>
+          <option value="UT">Utah (6.85%)</option>
+          <option value="VT">Vermont (6.0%)</option>
+          <option value="VA">Virginia (4.15%)</option>
+          <option value="WA">Washington (6.8%)</option>
+          <option value="WV">West Virginia (6.0%)</option>
+          <option value="WI">Wisconsin (5.0%)</option>
+          <option value="WY">Wyoming (4.0%)</option>
+          <option value="DC">Washington D.C. (6.0%)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="tradeIn">Trade-In Value (optional)</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="tradeIn" value="0" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="rebate">Manufacturer Rebate (optional)</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="rebate" value="0" min="0">
+        </div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Sales Tax</button>
+  </div>
+
+  <div class="calc-card results" id="results">
+    <h2>Your Results</h2>
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="taxAmount">$0</div>
+        <div class="result-label">Sales Tax Owed</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="taxRate">0%</div>
+        <div class="result-label">State Tax Rate</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="totalOOP">$0</div>
+        <div class="result-label">Vehicle + Tax</div>
+      </div>
+    </div>
+
+    <table class="breakdown-table">
+      <tr>
+        <td>Vehicle Price</td>
+        <td id="bd-price">$0</td>
+      </tr>
+      <tr>
+        <td>Trade-In Deduction</td>
+        <td id="bd-tradein">−$0</td>
+      </tr>
+      <tr>
+        <td>Rebate Deduction</td>
+        <td id="bd-rebate">−$0</td>
+      </tr>
+      <tr>
+        <td>Taxable Amount</td>
+        <td id="bd-taxable">$0</td>
+      </tr>
+      <tr>
+        <td>Sales Tax (<span id="bd-rate">0%</span>)</td>
+        <td id="bd-tax">$0</td>
+      </tr>
+      <tr class="total-row">
+        <td>Vehicle Price + Tax</td>
+        <td id="bd-total">$0</td>
+      </tr>
+    </table>
+
+    <p class="state-rate-note" id="state-note"></p>
+  </div>
+
+  <!-- AD -->
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <!-- CONTENT -->
+  <div class="content-section">
+    <h2>How Car Sales Tax Works in the US</h2>
+    <p>When you buy a car, you pay sales tax to the state where you register the vehicle — not necessarily where you bought it. Tax rates vary significantly by state, from 0% in five states to over 7% in others. In many states, local county and city taxes are added on top of the state rate, which is why your actual tax bill can be higher than the base state rate shown here.</p>
+
+    <h3>States With No Car Sales Tax</h3>
+    <p>Five states charge no sales tax on vehicle purchases: Alaska, Delaware, Montana, New Hampshire, and Oregon. If you live in one of these states, you pay $0 in state sales tax regardless of the vehicle price. Note that some cities in Alaska do levy local sales taxes, but there is no statewide rate.</p>
+
+    <h3>How Trade-Ins Affect Your Tax</h3>
+    <p>In most states, your trade-in value is deducted from the taxable amount before sales tax is calculated. This is one of the most overlooked tax advantages of trading in at a dealership rather than selling privately. For example, if you buy a $35,000 car and trade in a vehicle worth $10,000, you pay tax on $25,000 instead of $35,000 — a meaningful savings at a 6% tax rate.</p>
+    <p>However, not all states offer this trade-in deduction. California, Hawaii, Kentucky, Maryland, Michigan, Montana, and Virginia do not deduct trade-in value from the taxable base. In these states, you pay tax on the full purchase price regardless of any trade-in.</p>
+
+    <h3>How Manufacturer Rebates Affect Tax</h3>
+    <p>Manufacturer rebates (cash back offers from the automaker) are treated differently by state. In most states, rebates do not reduce your taxable amount — you pay tax on the pre-rebate price. A handful of states do allow rebate deductions. This calculator applies deductions where available as a general estimate; check your state's DMV for exact rules.</p>
+
+    <h3>Local Taxes on Top of State Rates</h3>
+    <p>Many states allow counties and cities to charge additional local sales tax. The rates shown in this calculator are state-level base rates. Your actual rate could be 0.5% to 3% higher depending on your county and city. For example, California's state rate is 7.25%, but Los Angeles County adds 2.25%, bringing the total to 9.5% for LA residents. Always check your local rate before finalizing your budget.</p>
+
+    <h3>When Do You Pay Car Sales Tax?</h3>
+    <p>Sales tax is typically collected by the dealer at the time of purchase and remitted to the state. If you buy from a private seller, you generally pay sales tax when you go to register the vehicle at your state's DMV. Some states also charge use tax on vehicles brought in from another state.</p>
+
+    <h2>Car Sales Tax Rates by State (2026)</h2>
+    <p>Base state rates for vehicle purchases. Local rates vary by county and city.</p>
+    <div class="state-tax-grid">
+      <div class="state-tax-item"><span class="state-name">Alabama</span><span class="state-rate">2.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Alaska</span><span class="state-rate">0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Arizona</span><span class="state-rate">5.6%</span></div>
+      <div class="state-tax-item"><span class="state-name">Arkansas</span><span class="state-rate">6.5%</span></div>
+      <div class="state-tax-item"><span class="state-name">California</span><span class="state-rate">7.25%</span></div>
+      <div class="state-tax-item"><span class="state-name">Colorado</span><span class="state-rate">2.9%</span></div>
+      <div class="state-tax-item"><span class="state-name">Connecticut</span><span class="state-rate">6.35%</span></div>
+      <div class="state-tax-item"><span class="state-name">Delaware</span><span class="state-rate">0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Florida</span><span class="state-rate">6.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Georgia</span><span class="state-rate">7.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Hawaii</span><span class="state-rate">4.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Idaho</span><span class="state-rate">6.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Illinois</span><span class="state-rate">6.25%</span></div>
+      <div class="state-tax-item"><span class="state-name">Indiana</span><span class="state-rate">7.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Iowa</span><span class="state-rate">5.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Kansas</span><span class="state-rate">6.5%</span></div>
+      <div class="state-tax-item"><span class="state-name">Kentucky</span><span class="state-rate">6.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Louisiana</span><span class="state-rate">4.45%</span></div>
+      <div class="state-tax-item"><span class="state-name">Maine</span><span class="state-rate">5.5%</span></div>
+      <div class="state-tax-item"><span class="state-name">Maryland</span><span class="state-rate">6.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Massachusetts</span><span class="state-rate">6.25%</span></div>
+      <div class="state-tax-item"><span class="state-name">Michigan</span><span class="state-rate">6.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Minnesota</span><span class="state-rate">6.5%</span></div>
+      <div class="state-tax-item"><span class="state-name">Mississippi</span><span class="state-rate">5.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Missouri</span><span class="state-rate">4.225%</span></div>
+      <div class="state-tax-item"><span class="state-name">Montana</span><span class="state-rate">0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Nebraska</span><span class="state-rate">5.5%</span></div>
+      <div class="state-tax-item"><span class="state-name">Nevada</span><span class="state-rate">6.85%</span></div>
+      <div class="state-tax-item"><span class="state-name">New Hampshire</span><span class="state-rate">0%</span></div>
+      <div class="state-tax-item"><span class="state-name">New Jersey</span><span class="state-rate">6.625%</span></div>
+      <div class="state-tax-item"><span class="state-name">New Mexico</span><span class="state-rate">4.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">New York</span><span class="state-rate">4.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">North Carolina</span><span class="state-rate">3.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">North Dakota</span><span class="state-rate">5.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Ohio</span><span class="state-rate">5.75%</span></div>
+      <div class="state-tax-item"><span class="state-name">Oklahoma</span><span class="state-rate">3.25%</span></div>
+      <div class="state-tax-item"><span class="state-name">Oregon</span><span class="state-rate">0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Pennsylvania</span><span class="state-rate">6.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Rhode Island</span><span class="state-rate">7.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">South Carolina</span><span class="state-rate">5.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">South Dakota</span><span class="state-rate">4.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Tennessee</span><span class="state-rate">7.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Texas</span><span class="state-rate">6.25%</span></div>
+      <div class="state-tax-item"><span class="state-name">Utah</span><span class="state-rate">6.85%</span></div>
+      <div class="state-tax-item"><span class="state-name">Vermont</span><span class="state-rate">6.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Virginia</span><span class="state-rate">4.15%</span></div>
+      <div class="state-tax-item"><span class="state-name">Washington</span><span class="state-rate">6.8%</span></div>
+      <div class="state-tax-item"><span class="state-name">West Virginia</span><span class="state-rate">6.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Wisconsin</span><span class="state-rate">5.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Wyoming</span><span class="state-rate">4.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Washington D.C.</span><span class="state-rate">6.0%</span></div>
+    </div>
+  </div>
+
+  <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin:2.5rem 0;">
+    <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides & Tools</h3>
+    <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+      <li><a href="../tools/car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+      <li><a href="../tools/car-affordability-calculator.html" style="color:var(--orange);text-decoration:none;">Car Affordability Calculator</a></li>
+      <li><a href="../tools/car-down-payment-calculator.html" style="color:var(--orange);text-decoration:none;">Car Down Payment Calculator</a></li>
+      <li><a href="../blog/hidden-fees-when-buying-a-car.html" style="color:var(--orange);text-decoration:none;">Hidden Fees When Buying a Car</a></li>
+      <li><a href="../blog/how-much-car-can-i-afford.html" style="color:var(--orange);text-decoration:none;">How Much Car Can I Afford?</a></li>
+    </ul>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This calculator provides estimates based on state-level base tax rates for informational and planning purposes only. Actual sales tax may differ due to local county and city surcharges, special vehicle classifications, rebate treatment rules, and other state-specific regulations. Trade-in deduction rules vary by state; some states do not allow trade-in deductions from the taxable base. Always verify your final tax amount with your dealer, your state's DMV, or a qualified tax professional before completing a vehicle purchase.
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+// State tax rates and trade-in rules
+const STATE_DATA = {
+  AL: { rate: 2.0,    tradeIn: true  },
+  AK: { rate: 0,      tradeIn: true  },
+  AZ: { rate: 5.6,    tradeIn: true  },
+  AR: { rate: 6.5,    tradeIn: true  },
+  CA: { rate: 7.25,   tradeIn: false }, // CA does not deduct trade-in
+  CO: { rate: 2.9,    tradeIn: true  },
+  CT: { rate: 6.35,   tradeIn: true  },
+  DE: { rate: 0,      tradeIn: true  },
+  FL: { rate: 6.0,    tradeIn: true  },
+  GA: { rate: 7.0,    tradeIn: true  },
+  HI: { rate: 4.0,    tradeIn: false },
+  ID: { rate: 6.0,    tradeIn: true  },
+  IL: { rate: 6.25,   tradeIn: true  },
+  IN: { rate: 7.0,    tradeIn: true  },
+  IA: { rate: 5.0,    tradeIn: true  },
+  KS: { rate: 6.5,    tradeIn: true  },
+  KY: { rate: 6.0,    tradeIn: false },
+  LA: { rate: 4.45,   tradeIn: true  },
+  ME: { rate: 5.5,    tradeIn: true  },
+  MD: { rate: 6.0,    tradeIn: false },
+  MA: { rate: 6.25,   tradeIn: true  },
+  MI: { rate: 6.0,    tradeIn: false },
+  MN: { rate: 6.5,    tradeIn: true  },
+  MS: { rate: 5.0,    tradeIn: true  },
+  MO: { rate: 4.225,  tradeIn: true  },
+  MT: { rate: 0,      tradeIn: true  },
+  NE: { rate: 5.5,    tradeIn: true  },
+  NV: { rate: 6.85,   tradeIn: true  },
+  NH: { rate: 0,      tradeIn: true  },
+  NJ: { rate: 6.625,  tradeIn: true  },
+  NM: { rate: 4.0,    tradeIn: true  },
+  NY: { rate: 4.0,    tradeIn: true  },
+  NC: { rate: 3.0,    tradeIn: true  },
+  ND: { rate: 5.0,    tradeIn: true  },
+  OH: { rate: 5.75,   tradeIn: true  },
+  OK: { rate: 3.25,   tradeIn: true  },
+  OR: { rate: 0,      tradeIn: true  },
+  PA: { rate: 6.0,    tradeIn: true  },
+  RI: { rate: 7.0,    tradeIn: true  },
+  SC: { rate: 5.0,    tradeIn: true  },
+  SD: { rate: 4.0,    tradeIn: true  },
+  TN: { rate: 7.0,    tradeIn: true  },
+  TX: { rate: 6.25,   tradeIn: true  },
+  UT: { rate: 6.85,   tradeIn: true  },
+  VT: { rate: 6.0,    tradeIn: true  },
+  VA: { rate: 4.15,   tradeIn: false },
+  WA: { rate: 6.8,    tradeIn: true  },
+  WV: { rate: 6.0,    tradeIn: true  },
+  WI: { rate: 5.0,    tradeIn: true  },
+  WY: { rate: 4.0,    tradeIn: true  },
+  DC: { rate: 6.0,    tradeIn: true  }
+};
+
+const NO_TAX_STATES = ['AK', 'DE', 'MT', 'NH', 'OR'];
+const NO_TRADEIN_STATES = ['CA', 'HI', 'KY', 'MD', 'MI', 'VA'];
+
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString();
+}
+
+function fmtRate(r) {
+  return r % 1 === 0 ? r.toFixed(0) + '%' : r + '%';
+}
+
+function calculate() {
+  const stateCode = document.getElementById('state').value;
+  if (!stateCode) {
+    alert('Please select a state.');
+    return;
+  }
+
+  const price    = parseFloat(document.getElementById('vehiclePrice').value) || 0;
+  const tradeIn  = parseFloat(document.getElementById('tradeIn').value) || 0;
+  const rebate   = parseFloat(document.getElementById('rebate').value) || 0;
+  const data     = STATE_DATA[stateCode];
+  const rate     = data.rate;
+  const deductTrade = data.tradeIn;
+
+  const tradeDeduct  = deductTrade ? Math.min(tradeIn, price) : 0;
+  const taxableAmt   = Math.max(0, price - tradeDeduct - rebate);
+  const taxAmt       = taxableAmt * (rate / 100);
+  const total        = price + taxAmt;
+
+  document.getElementById('taxAmount').textContent = fmt(taxAmt);
+  document.getElementById('taxRate').textContent   = fmtRate(rate);
+  document.getElementById('totalOOP').textContent  = fmt(total);
+
+  document.getElementById('bd-price').textContent   = fmt(price);
+  document.getElementById('bd-tradein').textContent = deductTrade ? '−' + fmt(tradeIn) : '−$0 (not deductible in ' + stateCode + ')';
+  document.getElementById('bd-rebate').textContent  = '−' + fmt(rebate);
+  document.getElementById('bd-taxable').textContent = fmt(taxableAmt);
+  document.getElementById('bd-rate').textContent    = fmtRate(rate);
+  document.getElementById('bd-tax').textContent     = fmt(taxAmt);
+  document.getElementById('bd-total').textContent   = fmt(total);
+
+  let note = '';
+  if (rate === 0) {
+    note = stateCode + ' has no state sales tax on vehicle purchases.';
+  } else {
+    note = 'Base state rate: ' + fmtRate(rate) + '. Local county/city taxes may apply on top of this rate — your final tax could be higher depending on your location.';
+    if (!deductTrade && tradeIn > 0) {
+      note += ' Note: ' + stateCode + ' does not allow trade-in deductions from the taxable base.';
+    }
+  }
+  document.getElementById('state-note').textContent = note;
+  document.getElementById('results').classList.add('show');
+}
+</script>
+</body>
+</html>
