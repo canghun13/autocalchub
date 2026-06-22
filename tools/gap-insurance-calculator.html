@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GAP Insurance Calculator — Do You Need It? | AutoCalcHub</title>
+  <meta name="description" content="Find out if you need GAP insurance by comparing your loan balance to your car's value. See your coverage gap, how long you'll be underwater, and whether GAP coverage makes financial sense.">
+  <link rel="canonical" href="https://autocalchub.com/tools/gap-insurance-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .tool-page{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:2.5rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0.875rem center;cursor:pointer}
+    select:focus{outline:none;border-color:var(--orange)}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;text-align:center}
+    .verdict-box.gap-needed{background:#fff3e0;border:2px solid #f57c00}
+    .verdict-box.no-gap{background:#e8f5e9;border:2px solid #388e3c}
+    .verdict-icon{font-size:2rem;margin-bottom:0.5rem}
+    .verdict-title{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.4rem}
+    .verdict-box.gap-needed .verdict-title{color:#e65100}
+    .verdict-box.no-gap .verdict-title{color:#2e7d32}
+    .verdict-sub{font-size:0.9rem;color:var(--mid)}
+    .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+    .result-box{background:var(--off-white);border-radius:10px;padding:1.25rem;text-align:center}
+    .result-box.highlight{background:var(--navy)}
+    .result-num{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--navy)}
+    .result-box.highlight .result-num{color:var(--orange)}
+    .result-label{font-size:0.75rem;color:var(--light);margin-top:0.3rem}
+    .result-box.highlight .result-label{color:rgba(255,255,255,0.6)}
+    .breakdown-table{width:100%;border-collapse:collapse;font-size:0.9rem;margin-top:1rem}
+    .breakdown-table td{padding:0.65rem 0.75rem;border-bottom:1px solid var(--border);color:var(--charcoal)}
+    .breakdown-table tr:last-child td{border-bottom:none}
+    .breakdown-table td:last-child{text-align:right;font-weight:500}
+    .breakdown-table tr.highlight-row td{background:var(--orange-pale);font-weight:600}
+    .content-section{margin-top:3rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p{color:var(--mid);font-size:0.95rem;line-height:1.7;margin-bottom:0.75rem}
+    .content-section ul{color:var(--mid);font-size:0.95rem;line-height:1.8;margin:0.5rem 0 1rem 1.5rem}
+    .disclaimer{background:var(--off-white);border-radius:10px;padding:1.25rem 1.5rem;margin-top:2.5rem;font-size:0.82rem;color:var(--light);line-height:1.6}
+    .disclaimer strong{color:var(--mid)}
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GAP Insurance Calculator",
+    "url": "https://autocalchub.com/tools/gap-insurance-calculator.html",
+    "description": "Find out if you need GAP insurance by comparing your loan balance to your car's value. See your coverage gap and how long you'll be underwater on your loan.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"},
+    "provider": {"@type":"Organization","name":"AutoCalcHub","url":"https://autocalchub.com"}
+  }
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>🛡️ GAP Insurance Calculator</h1>
+    <p>Find out if you're underwater on your loan — and whether GAP coverage makes financial sense for your situation.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>Enter your loan and vehicle details</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="loanBalance">Current Loan Balance</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="loanBalance" value="22000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="carValue">Current Car Value (ACV)</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="carValue" value="18000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="monthlyPayment">Monthly Loan Payment</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="monthlyPayment" value="420" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="remainingMonths">Remaining Loan Months</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="remainingMonths" value="48" min="1" max="120">
+          <span class="input-suffix">mo</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="deprecRate">Annual Depreciation Rate</label>
+        <select id="deprecRate">
+          <option value="0.25">High — 25%/yr (luxury, EVs, sports cars)</option>
+          <option value="0.15" selected>Average — 15%/yr (typical vehicles)</option>
+          <option value="0.10">Low — 10%/yr (trucks, popular SUVs)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="gapCost">Annual GAP Insurance Cost (optional)</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="gapCost" value="35" min="0">
+        </div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate GAP Need</button>
+  </div>
+
+  <div class="calc-card results" id="results">
+    <div class="verdict-box" id="verdictBox">
+      <div class="verdict-icon" id="verdictIcon"></div>
+      <div class="verdict-title" id="verdictTitle"></div>
+      <div class="verdict-sub" id="verdictSub"></div>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="coverageGap">$0</div>
+        <div class="result-label">Coverage Gap (you'd owe this)</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="ltvRatio">0%</div>
+        <div class="result-label">Loan-to-Value Ratio</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="monthsUnderwater">0 mo</div>
+        <div class="result-label">Est. Months Still Underwater</div>
+      </div>
+    </div>
+
+    <table class="breakdown-table">
+      <tr><td>Current Loan Balance</td><td id="bd-loan">$0</td></tr>
+      <tr><td>Current Car Value (ACV)</td><td id="bd-value">$0</td></tr>
+      <tr class="highlight-row"><td>Coverage Gap</td><td id="bd-gap">$0</td></tr>
+      <tr><td>Loan-to-Value Ratio</td><td id="bd-ltv">0%</td></tr>
+      <tr><td>Est. Monthly Cost of GAP Coverage</td><td id="bd-gapcost">$0</td></tr>
+      <tr><td>Est. Total GAP Cost Until Break-Even</td><td id="bd-totalgap">$0</td></tr>
+    </table>
+
+    <p id="resultNote" style="font-size:0.85rem;color:var(--light);margin-top:1rem;line-height:1.6"></p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>What Is GAP Insurance?</h2>
+    <p>GAP stands for Guaranteed Asset Protection. It covers the difference — the "gap" — between what your car is worth and what you still owe on your loan if the vehicle is totaled in an accident or stolen. Without GAP coverage, your standard auto insurance pays out only the car's actual cash value (ACV) at the time of the loss. If you owe more than that, you're responsible for the remaining balance — on a car you no longer have.</p>
+    <p>For example: you owe $22,000 on your loan, but the car is only worth $17,000 when it's totaled. Your insurer pays $17,000. You still owe $5,000 to your lender. GAP insurance covers that $5,000.</p>
+
+    <h2>When Do You Actually Need GAP Insurance?</h2>
+    <p>GAP insurance is most important when your loan balance exceeds your car's value — meaning you're "underwater" or "upside down." This is most common in the first two to three years of a loan, especially when:</p>
+    <ul>
+      <li>You made a small down payment (less than 20%)</li>
+      <li>You have a long loan term (60 months or more)</li>
+      <li>You rolled negative equity from a previous loan into this one</li>
+      <li>Your vehicle depreciates quickly (new cars, luxury models, EVs)</li>
+      <li>You're leasing — many lease agreements actually require GAP coverage</li>
+    </ul>
+    <p>If your loan balance is already below your car's value, GAP insurance is unnecessary. You're already in positive equity territory.</p>
+
+    <h3>Where to Buy GAP Insurance (and Where Not To)</h3>
+    <p>The cheapest place to buy GAP coverage is through your existing auto insurance company as an endorsement on your policy. Most major insurers charge $20 to $60 per year for this coverage — you can cancel it the moment your loan balance drops below your car's value.</p>
+    <p>The most expensive place is the dealership finance office, where GAP is often presented as a $400 to $800 lump sum rolled into your loan. This means you're paying interest on the GAP premium itself for the full loan term, and canceling it for a refund can be a complicated process.</p>
+
+    <h2>How Long Will You Be Underwater?</h2>
+    <p>The time you spend underwater depends on your down payment, loan term, interest rate, and how fast your specific vehicle depreciates. Popular trucks and SUVs (Toyota Tacoma, Ford F-150, Jeep Wrangler) depreciate slowly and may reach positive equity faster. Luxury sedans and certain electric vehicles depreciate more steeply, extending the underwater period.</p>
+    <p>The calculator above estimates your break-even point based on your current balance, remaining term, and the depreciation rate you select. Use it as a planning guide — the exact point will vary based on actual market conditions for your vehicle.</p>
+  </div>
+
+  <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin:2.5rem 0">
+    <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal)">Related Guides & Tools</h3>
+    <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8">
+      <li><a href="../tools/car-loan-calculator.html" style="color:var(--orange);text-decoration:none">Car Loan Calculator</a></li>
+      <li><a href="../tools/car-depreciation-calculator.html" style="color:var(--orange);text-decoration:none">Car Depreciation Calculator</a></li>
+      <li><a href="../blog/how-does-car-loan-interest-work.html" style="color:var(--orange);text-decoration:none">How Does Car Loan Interest Work?</a></li>
+      <li><a href="../blog/is-72-month-car-loan-bad-idea.html" style="color:var(--orange);text-decoration:none">Is a 72-Month Car Loan a Bad Idea?</a></li>
+      <li><a href="../blog/how-much-should-i-put-down-on-a-car.html" style="color:var(--orange);text-decoration:none">How Much Should I Put Down on a Car?</a></li>
+    </ul>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This calculator provides estimates for informational and planning purposes only. Depreciation projections are approximations based on average rates and do not reflect your vehicle's actual market value, which varies by make, model, condition, mileage, and local market conditions. GAP insurance costs vary by insurer and policy. The "months underwater" estimate is illustrative — actual break-even timing will differ. This tool does not constitute insurance or financial advice. Consult your insurance agent or a financial professional before making coverage decisions.
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(Math.abs(n)).toLocaleString()}
+function calculate(){
+  const loan     = parseFloat(document.getElementById('loanBalance').value)||0;
+  const value    = parseFloat(document.getElementById('carValue').value)||0;
+  const payment  = parseFloat(document.getElementById('monthlyPayment').value)||0;
+  const months   = parseInt(document.getElementById('remainingMonths').value)||0;
+  const deprec   = parseFloat(document.getElementById('deprecRate').value)||0.15;
+  const gapAnnual= parseFloat(document.getElementById('gapCost').value)||35;
+
+  const gap    = loan - value;
+  const ltv    = value > 0 ? (loan / value * 100) : 0;
+  const gapMo  = gapAnnual / 12;
+  const isUnderwater = gap > 0;
+
+  // Estimate months until break-even (loan balance = car value)
+  let monthsUW = 0;
+  if(isUnderwater && payment > 0){
+    let bal = loan;
+    let val = value;
+    const monthlyDeprec = deprec / 12;
+    for(let i = 1; i <= months; i++){
+      bal -= payment * 0.7; // rough principal portion estimate
+      val *= (1 - monthlyDeprec);
+      if(bal <= val){ monthsUW = i; break; }
+    }
+    if(monthsUW === 0) monthsUW = months; // still underwater at end of loan
+  }
+
+  const totalGapCost = gapMo * monthsUW;
+
+  // Results
+  document.getElementById('coverageGap').textContent = isUnderwater ? fmt(gap) : '$0';
+  document.getElementById('ltvRatio').textContent = ltv.toFixed(1)+'%';
+  document.getElementById('monthsUnderwater').textContent = isUnderwater ? monthsUW+' mo' : '0 mo';
+
+  document.getElementById('bd-loan').textContent = fmt(loan);
+  document.getElementById('bd-value').textContent = fmt(value);
+  document.getElementById('bd-gap').textContent = isUnderwater ? fmt(gap) : 'None — you have equity';
+  document.getElementById('bd-ltv').textContent = ltv.toFixed(1)+'%';
+  document.getElementById('bd-gapcost').textContent = '$'+gapMo.toFixed(2)+'/mo';
+  document.getElementById('bd-totalgap').textContent = isUnderwater ? fmt(totalGapCost) : '$0';
+
+  const vbox  = document.getElementById('verdictBox');
+  const vicon = document.getElementById('verdictIcon');
+  const vtitle= document.getElementById('verdictTitle');
+  const vsub  = document.getElementById('verdictSub');
+  const vnote = document.getElementById('resultNote');
+
+  if(isUnderwater){
+    vbox.className = 'verdict-box gap-needed';
+    vicon.textContent = '⚠️';
+    vtitle.textContent = 'GAP Insurance Recommended';
+    vsub.textContent = `You owe ${fmt(gap)} more than your car is worth. If totaled today, you'd be responsible for this amount out of pocket.`;
+    vnote.textContent = `Estimated time until you reach positive equity: ${monthsUW} months. During this window, GAP coverage would cost approximately ${fmt(totalGapCost)} total — significantly less than the ${fmt(gap)} coverage gap it protects against. Buy GAP through your auto insurer ($20–$60/yr), not the dealership.`;
+  } else {
+    vbox.className = 'verdict-box no-gap';
+    vicon.textContent = '✅';
+    vtitle.textContent = 'GAP Insurance Not Needed';
+    vsub.textContent = `Your car is worth more than you owe. You have ${fmt(Math.abs(gap))} in positive equity — standard insurance coverage is sufficient.`;
+    vnote.textContent = `Since your loan balance is below your vehicle's current value, a total loss would be fully covered by your standard auto insurance payout. You can cancel any existing GAP coverage to save on premiums.`;
+  }
+
+  document.getElementById('results').classList.add('show');
+}
+</script>
+</body>
+</html>

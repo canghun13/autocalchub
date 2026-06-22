@@ -82,3 +82,11 @@
 ## Guides: Car Ownership (Additional)
 
 - [How to Minimize Car Depreciation](https://autocalchub.com/blog/how-to-minimize-car-depreciation.html): Practical strategies to slow your car's depreciation and protect resale value — from choosing the right vehicle to maintenance, mileage management, and timing your sale.
+
+## Tools: GAP Insurance
+
+- [GAP Insurance Calculator](https://autocalchub.com/tools/gap-insurance-calculator.html): Find out if you're underwater on your car loan and whether GAP insurance makes financial sense — compares loan balance to vehicle value and estimates how long you'll need coverage.
+
+## Guides: Financing (Additional)
+
+- [How Does Car Loan Interest Work?](https://autocalchub.com/blog/how-does-car-loan-interest-work.html): Simple interest, amortization, and why early payments are mostly interest — explained with a real month-by-month breakdown and practical strategies for borrowers.
