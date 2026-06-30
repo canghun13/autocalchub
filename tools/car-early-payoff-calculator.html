@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Early Payoff Calculator – Save on Interest | AutoCalcHub</title>
+  <meta name="description" content="See how much faster you can pay off your car loan with extra payments. Calculate interest saved and months cut from your loan term. Free calculator.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-early-payoff-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .tool-page { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .tool-header { margin-bottom: 2.5rem; }
+    .tool-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem,4vw,2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .tool-header p { color: var(--mid); font-size: 1rem; }
+    .calc-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+    .calc-card h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1.5rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    label { font-size: 0.85rem; font-weight: 500; color: var(--mid); }
+    .input-wrap { position: relative; }
+    .input-prefix, .input-suffix { position: absolute; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: var(--light); font-weight: 500; pointer-events: none; }
+    .input-prefix { left: 0.875rem; }
+    .input-suffix { right: 0.875rem; }
+    input[type="number"] { width: 100%; padding: 0.75rem 0.875rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem; font-family: 'Inter', sans-serif; color: var(--charcoal); background: white; transition: border-color 0.2s; -moz-appearance: textfield; }
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type="number"]:focus { outline: none; border-color: var(--orange); }
+    .has-prefix input { padding-left: 2rem; }
+    .has-suffix input { padding-right: 2.5rem; }
+    .calc-btn { width: 100%; margin-top: 1.5rem; background: var(--navy); color: white; border: none; border-radius: 8px; padding: 0.875rem; font-size: 1rem; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.2s; }
+    .calc-btn:hover { background: var(--navy-mid); }
+    .results { display: none; }
+    .results.show { display: block; }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .result-box { background: var(--off-white); border-radius: 10px; padding: 1.25rem; text-align: center; }
+    .result-box.highlight { background: var(--navy); }
+    .result-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); }
+    .result-box.highlight .result-num { color: var(--orange); }
+    .result-label { font-size: 0.75rem; color: var(--light); margin-top: 0.3rem; }
+    .result-box.highlight .result-label { color: rgba(255,255,255,0.6); }
+    .compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .compare-box { background: var(--off-white); border-radius: 12px; padding: 1.25rem; }
+    .compare-box h3 { font-size: 0.85rem; font-weight: 600; color: var(--light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    .compare-line { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--mid); padding: 0.3rem 0; border-bottom: 1px solid var(--border); }
+    .compare-line:last-child { border-bottom: none; font-weight: 600; color: var(--charcoal); }
+    .verdict { background: var(--navy); border-radius: 12px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; }
+    .verdict-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+    .verdict-sub { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+    .content-section { margin-top: 3rem; }
+    .content-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1rem; }
+    .content-section h3 { font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin: 1.5rem 0 0.5rem; }
+    .content-section p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.75rem; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .results-grid { grid-template-columns: 1fr; } .compare-row { grid-template-columns: 1fr; } }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Early Payoff Calculator",
+    "url": "https://autocalchub.com/tools/car-early-payoff-calculator.html",
+    "description": "Calculate how much interest you save and how many months you cut by making extra payments on your car loan.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Car Early Payoff Calculator</h1>
+    <p>Add extra payments and see exactly how much interest you save and how many months you cut from your loan.</p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>🚗 Your Loan Details</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Remaining Balance</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="balance" value="20000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="rate" value="7.5" min="0" max="30" step="0.1">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Months Remaining</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="months" value="48" min="1" max="96">
+          <span class="input-suffix">mo</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Extra Payment per Month</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="extra" value="100" min="0">
+        </div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Savings</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="verdict" id="verdict">
+      <div class="verdict-title" id="verdictTitle"></div>
+      <div class="verdict-sub" id="verdictSub"></div>
+    </div>
+
+    <div class="compare-row">
+      <div class="compare-box">
+        <h3>Standard Payoff</h3>
+        <div class="compare-line"><span>Monthly Payment</span><span id="r-stdMonthly"></span></div>
+        <div class="compare-line"><span>Payoff Time</span><span id="r-stdMonths"></span></div>
+        <div class="compare-line"><span>Total Interest</span><span id="r-stdInterest"></span></div>
+        <div class="compare-line"><span>Total Cost</span><span id="r-stdTotal"></span></div>
+      </div>
+      <div class="compare-box">
+        <h3>With Extra Payments</h3>
+        <div class="compare-line"><span>Monthly Payment</span><span id="r-newMonthly"></span></div>
+        <div class="compare-line"><span>Payoff Time</span><span id="r-newMonths"></span></div>
+        <div class="compare-line"><span>Total Interest</span><span id="r-newInterest"></span></div>
+        <div class="compare-line"><span>Total Cost</span><span id="r-newTotal"></span></div>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="r-interestSaved"></div>
+        <div class="result-label">Interest Saved</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="r-monthsCut"></div>
+        <div class="result-label">Months Cut</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="r-payoffDate"></div>
+        <div class="result-label">New Payoff</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2>How Extra Car Loan Payments Work</h2>
+    <p>Auto loans use simple interest — interest accrues daily on your remaining principal balance. Every dollar you pay above your minimum monthly payment goes directly toward reducing the principal. A smaller principal means less interest accrues going forward, which means each subsequent payment pays off more principal. This compounding effect is why even modest extra payments produce significant savings over time.</p>
+    <p>The earlier in the loan you start making extra payments, the more you save. Principal reduced in month 3 eliminates interest on that dollar for every remaining month of the loan. The same extra payment in month 45 of a 48-month loan saves very little.</p>
+
+    <h3>The Most Practical Extra Payment Strategies</h3>
+    <p><strong>Round up your payment.</strong> If your payment is $412/month, pay $450 or $500. The extra $38–$88 goes entirely to principal. Over a 48-month loan, rounding up by $50 can cut 4–6 months and save several hundred dollars in interest depending on your rate.</p>
+    <p><strong>Biweekly payments.</strong> Pay half your monthly payment every two weeks instead of the full payment monthly. There are 52 weeks in a year, so you make 26 half-payments — equivalent to 13 full monthly payments instead of 12. One extra payment per year without feeling the pinch month-to-month.</p>
+    <p><strong>Apply windfalls to principal.</strong> Tax refunds, work bonuses, and other lump sums applied directly to principal are highly effective because they immediately reduce the balance on which interest accrues. When making a lump-sum payment, contact your lender or specify in writing that it should be applied to principal — not to future scheduled payments.</p>
+
+    <h3>Important: Make Sure Extra Payments Go to Principal</h3>
+    <p>Not all lenders automatically apply overpayments to principal. Some hold the excess and apply it toward your next scheduled payment — which saves you no interest. Confirm with your lender how to properly designate extra payments as principal reduction. This is usually done by calling your lender, writing "apply to principal" in a payment note, or selecting "principal payment" in your online account if the option exists.</p>
+
+    <h3>When Early Payoff Isn't the Priority</h3>
+    <p>If you have credit card debt at 20%+ APR, paying that down first saves more money than extra car loan payments at 7–9%. If you have no emergency fund, build 1–3 months of expenses in savings before accelerating loan payoff. And if your employer offers a 401(k) match, always contribute enough to capture the full match before making extra loan payments — it's an immediate 50–100% return on that money.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;">Related Guides & Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/how-to-pay-off-car-loan-early.html" style="color:var(--orange);text-decoration:none;">How to Pay Off a Car Loan Early</a></li>
+        <li><a href="car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+        <li><a href="car-refinance-calculator.html" style="color:var(--orange);text-decoration:none;">Car Refinance Calculator</a></li>
+        <li><a href="../blog/how-does-car-loan-interest-work.html" style="color:var(--orange);text-decoration:none;">How Does Car Loan Interest Work?</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function pmt(principal, monthlyRate, months) {
+  if (monthlyRate === 0) return principal / months;
+  return principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+}
+
+function calcPayoff(balance, monthlyRate, payment) {
+  let bal = balance, months = 0, totalInterest = 0;
+  while (bal > 0.01 && months < 1000) {
+    const interest = bal * monthlyRate;
+    totalInterest += interest;
+    const principal = Math.min(payment - interest, bal);
+    bal -= principal;
+    months++;
+  }
+  return { months, totalInterest };
+}
+
+function calculate() {
+  const balance = parseFloat(document.getElementById('balance').value) || 0;
+  const rate    = parseFloat(document.getElementById('rate').value) / 100 / 12;
+  const months  = parseInt(document.getElementById('months').value) || 0;
+  const extra   = parseFloat(document.getElementById('extra').value) || 0;
+
+  const stdPayment = pmt(balance, rate, months);
+  const std = calcPayoff(balance, rate, stdPayment);
+  const newPayment = stdPayment + extra;
+  const nw  = calcPayoff(balance, rate, newPayment);
+
+  const interestSaved = std.totalInterest - nw.totalInterest;
+  const monthsCut     = std.months - nw.months;
+
+  const now = new Date();
+  const payoffDate = new Date(now.setMonth(now.getMonth() + nw.months));
+  const payoffStr  = payoffDate.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+  document.getElementById('r-stdMonthly').textContent   = fmt(stdPayment) + '/mo';
+  document.getElementById('r-stdMonths').textContent    = std.months + ' months';
+  document.getElementById('r-stdInterest').textContent  = fmt(std.totalInterest);
+  document.getElementById('r-stdTotal').textContent     = fmt(balance + std.totalInterest);
+  document.getElementById('r-newMonthly').textContent   = fmt(newPayment) + '/mo';
+  document.getElementById('r-newMonths').textContent    = nw.months + ' months';
+  document.getElementById('r-newInterest').textContent  = fmt(nw.totalInterest);
+  document.getElementById('r-newTotal').textContent     = fmt(balance + nw.totalInterest);
+  document.getElementById('r-interestSaved').textContent = fmt(interestSaved);
+  document.getElementById('r-monthsCut').textContent     = monthsCut + ' months';
+  document.getElementById('r-payoffDate').textContent    = payoffStr;
+
+  document.getElementById('verdictTitle').textContent = 'Pay off ' + monthsCut + ' months early, save ' + fmt(interestSaved);
+  document.getElementById('verdictSub').textContent   = 'Adding ' + fmt(extra) + '/mo extra cuts your payoff from ' + std.months + ' to ' + nw.months + ' months.';
+
+  document.getElementById('results').className = 'results show';
+}
+</script>
+</body>
+</html>
