@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Total Cost of Ownership Calculator (5-Year) | AutoCalcHub</title>
+  <meta name="description" content="Calculate the true 5-year cost of owning a car: purchase, loan interest, insurance, fuel, maintenance, and depreciation. Free total cost of ownership calculator.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-total-cost-of-ownership-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .tool-page { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .tool-header { margin-bottom: 2.5rem; }
+    .tool-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem,4vw,2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .tool-header p { color: var(--mid); font-size: 1rem; }
+    .calc-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+    .calc-card h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1.5rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    label { font-size: 0.85rem; font-weight: 500; color: var(--mid); }
+    .label-hint { font-size: 0.75rem; color: var(--light); margin-top: 0.1rem; }
+    .input-wrap { position: relative; }
+    .input-prefix, .input-suffix { position: absolute; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: var(--light); font-weight: 500; pointer-events: none; }
+    .input-prefix { left: 0.875rem; }
+    .input-suffix { right: 0.875rem; }
+    input[type="number"] { width: 100%; padding: 0.75rem 0.875rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem; font-family: 'Inter', sans-serif; color: var(--charcoal); background: white; transition: border-color 0.2s; -moz-appearance: textfield; }
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type="number"]:focus { outline: none; border-color: var(--orange); }
+    .has-prefix input { padding-left: 2rem; }
+    .has-suffix input { padding-right: 2.5rem; }
+    .calc-btn { width: 100%; margin-top: 1.5rem; background: var(--navy); color: white; border: none; border-radius: 8px; padding: 0.875rem; font-size: 1rem; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.2s; }
+    .calc-btn:hover { background: var(--navy-mid); }
+    .results { display: none; }
+    .results.show { display: block; }
+    .total-banner { background: var(--navy); border-radius: 12px; padding: 2rem; text-align: center; margin-bottom: 1.5rem; }
+    .total-label { color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-bottom: 0.5rem; }
+    .total-num { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; color: var(--orange); }
+    .total-sub { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.5rem; }
+    .breakdown { background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; }
+    .breakdown-row { display: flex; justify-content: space-between; align-items: center; padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .breakdown-row:last-child { border-bottom: none; font-weight: 700; font-size: 1rem; background: var(--off-white); }
+    .breakdown-label { color: var(--mid); }
+    .breakdown-value { font-weight: 600; color: var(--charcoal); }
+    .breakdown-bar { height: 6px; border-radius: 3px; margin-top: 0.3rem; }
+    .bar-wrap { flex: 1; margin: 0 1rem; }
+    .monthly-banner { background: var(--off-white); border-radius: 10px; padding: 1rem 1.5rem; text-align: center; margin-bottom: 1.5rem; }
+    .monthly-label { font-size: 0.85rem; color: var(--light); }
+    .monthly-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); }
+    .content-section { margin-top: 3rem; }
+    .content-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1rem; }
+    .content-section h3 { font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin: 1.5rem 0 0.5rem; }
+    .content-section p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.75rem; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Total Cost of Ownership Calculator",
+    "url": "https://autocalchub.com/tools/car-total-cost-of-ownership-calculator.html",
+    "description": "Calculate the true 5-year total cost of owning a car including purchase price, loan interest, insurance, fuel, maintenance, and depreciation.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Car Total Cost of Ownership Calculator</h1>
+    <p>The sticker price is just the beginning. Calculate the true 5-year cost including loan interest, insurance, fuel, maintenance, and depreciation.</p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <!-- PURCHASE -->
+  <div class="calc-card">
+    <h2>🚗 Purchase & Financing</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Vehicle Purchase Price</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="price" value="32000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Down Payment</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="downPayment" value="5000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Loan Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="apr" value="7" min="0" max="30" step="0.1">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Loan Term</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="loanTerm" value="60" min="12" max="96">
+          <span class="input-suffix">mo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPERATING COSTS -->
+  <div class="calc-card">
+    <h2>⛽ Annual Operating Costs</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Annual Insurance Cost</label>
+        <div class="label-hint">National avg: ~$1,800/yr</div>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="insurance" value="1800" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Annual Fuel Cost</label>
+        <div class="label-hint">Use fuel cost calculator to estimate</div>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="fuel" value="1800" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Annual Maintenance Cost</label>
+        <div class="label-hint">New car avg: ~$500/yr; older: $900+</div>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="maintenance" value="600" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Registration & Taxes (annual)</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="registration" value="300" min="0">
+        </div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate 5-Year Total Cost</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+    <div class="total-banner">
+      <div class="total-label">5-Year Total Cost of Ownership</div>
+      <div class="total-num" id="r-total"></div>
+      <div class="total-sub" id="r-residual"></div>
+    </div>
+
+    <div class="monthly-banner">
+      <div class="monthly-label">True Monthly Cost (all-in)</div>
+      <div class="monthly-num" id="r-monthly"></div>
+    </div>
+
+    <div class="breakdown">
+      <div class="breakdown-row">
+        <span class="breakdown-label">Down Payment</span>
+        <span class="breakdown-value" id="r-down"></span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">Loan Interest (5 yr)</span>
+        <span class="breakdown-value" id="r-interest"></span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">Insurance (5 yr)</span>
+        <span class="breakdown-value" id="r-insurance"></span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">Fuel (5 yr)</span>
+        <span class="breakdown-value" id="r-fuel"></span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">Maintenance (5 yr)</span>
+        <span class="breakdown-value" id="r-maintenance"></span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">Registration & Taxes (5 yr)</span>
+        <span class="breakdown-value" id="r-registration"></span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">Depreciation (value lost)</span>
+        <span class="breakdown-value" id="r-depreciation"></span>
+      </div>
+      <div class="breakdown-row">
+        <span class="breakdown-label">5-Year Total Cost</span>
+        <span class="breakdown-value" id="r-totalBottom"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2>Why the Sticker Price Is Just the Beginning</h2>
+    <p>The purchase price of a vehicle represents only 30–40% of what you'll actually spend over 5 years of ownership. The rest — interest, insurance, fuel, maintenance, registration, and depreciation — adds up to more than most buyers anticipate. A $28,000 car can easily cost $48,000–$55,000 over five years when all costs are included.</p>
+    <p>This is why comparing two vehicles purely on purchase price misses most of the financial picture. A $35,000 fuel-efficient sedan may cost less to own over 5 years than a $28,000 truck with higher insurance, fuel, and maintenance costs. Total cost of ownership is the only complete measure.</p>
+
+    <h3>Depreciation: The Largest Hidden Cost</h3>
+    <p>Depreciation is the loss in your vehicle's value over time, and it's consistently the largest cost of car ownership — often 35–45% of the total 5-year cost. New vehicles lose 15–25% of their value in the first year alone. By year 5, the typical vehicle retains only 40–55% of its original value depending on make and model.</p>
+    <p>This is why buying a 2–3 year old vehicle is often the most financially efficient move: someone else absorbed the steepest depreciation curve, and you're buying the "experienced" version at a significant discount. High-retention brands (Toyota, Honda, Subaru) minimize this cost further.</p>
+
+    <h3>Loan Interest: Often Underestimated</h3>
+    <p>On a $25,000 loan at 8% over 60 months, you pay about $5,400 in total interest — money that buys you nothing tangible. On a 72-month loan at the same rate, that rises to $6,500. Minimizing loan interest through a larger down payment, shorter term, and competitive rate reduces total ownership cost significantly. Even a 1% rate difference on a $25,000 loan saves about $650 over 60 months.</p>
+
+    <h3>Insurance: Often the Second Biggest Annual Cost</h3>
+    <p>Full coverage insurance on a new vehicle typically runs $1,500–$2,500/year depending on driver age, location, and vehicle type. Over 5 years, that's $7,500–$12,500. Sports cars, luxury vehicles, and EVs tend to cost more to insure due to higher repair costs. Shopping insurance annually and comparing at least 3 quotes each renewal cycle can reduce this cost by 10–25%.</p>
+
+    <h3>How to Use This Calculator</h3>
+    <p>Enter your vehicle's purchase price, financing details, and estimated annual costs for insurance, fuel, and maintenance. Use our fuel cost calculator to estimate your annual gas spend, and our insurance estimator for a rough coverage cost. The calculator estimates 5-year depreciation using standard rates (20% year 1, 15% years 2–3, 10% years 4–5) and shows your residual vehicle value at the end of year 5.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;">Related Tools & Guides</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="fuel-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Fuel Cost Calculator</a></li>
+        <li><a href="car-insurance-estimator.html" style="color:var(--orange);text-decoration:none;">Car Insurance Estimator</a></li>
+        <li><a href="car-depreciation-calculator.html" style="color:var(--orange);text-decoration:none;">Car Depreciation Calculator</a></li>
+        <li><a href="../blog/how-much-does-it-cost-to-own-car-per-month.html" style="color:var(--orange);text-decoration:none;">How Much Does It Cost to Own a Car Per Month?</a></li>
+        <li><a href="../blog/which-cars-hold-value-best.html" style="color:var(--orange);text-decoration:none;">Which Cars Hold Their Value Best?</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function pmt(principal, monthlyRate, months) {
+  if (monthlyRate === 0) return principal / months;
+  return principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+}
+
+function calculate() {
+  const price        = parseFloat(document.getElementById('price').value) || 0;
+  const down         = parseFloat(document.getElementById('downPayment').value) || 0;
+  const apr          = parseFloat(document.getElementById('apr').value) / 100 / 12;
+  const loanTerm     = parseInt(document.getElementById('loanTerm').value) || 60;
+  const insurance    = parseFloat(document.getElementById('insurance').value) || 0;
+  const fuel         = parseFloat(document.getElementById('fuel').value) || 0;
+  const maintenance  = parseFloat(document.getElementById('maintenance').value) || 0;
+  const registration = parseFloat(document.getElementById('registration').value) || 0;
+
+  const loanAmount = price - down;
+  const monthly = pmt(loanAmount, apr, loanTerm);
+  const totalPaid = monthly * loanTerm;
+  const totalInterest = totalPaid - loanAmount;
+  // Interest paid in first 60 months (if loan > 60mo, cap at 60)
+  const months60 = Math.min(loanTerm, 60);
+  let interest5yr = 0, bal = loanAmount;
+  for (let i = 0; i < months60; i++) {
+    const int = bal * apr;
+    interest5yr += int;
+    bal -= (monthly - int);
+  }
+
+  // Depreciation: 20% yr1, 15% yr2, 15% yr3, 10% yr4, 10% yr5
+  const depRates = [0.20, 0.15, 0.15, 0.10, 0.10];
+  let value = price;
+  for (const r of depRates) value *= (1 - r);
+  const depreciation = price - value;
+
+  const insurance5  = insurance * 5;
+  const fuel5       = fuel * 5;
+  const maint5      = maintenance * 5;
+  const reg5        = registration * 5;
+
+  const total5yr = down + interest5yr + insurance5 + fuel5 + maint5 + reg5 + depreciation;
+  const monthly5yr = total5yr / 60;
+
+  document.getElementById('r-down').textContent         = fmt(down);
+  document.getElementById('r-interest').textContent     = fmt(interest5yr);
+  document.getElementById('r-insurance').textContent    = fmt(insurance5);
+  document.getElementById('r-fuel').textContent         = fmt(fuel5);
+  document.getElementById('r-maintenance').textContent  = fmt(maint5);
+  document.getElementById('r-registration').textContent = fmt(reg5);
+  document.getElementById('r-depreciation').textContent = fmt(depreciation);
+  document.getElementById('r-total').textContent        = fmt(total5yr);
+  document.getElementById('r-totalBottom').textContent  = fmt(total5yr);
+  document.getElementById('r-monthly').textContent      = fmt(monthly5yr) + '/mo';
+  document.getElementById('r-residual').textContent     = 'Vehicle estimated worth ' + fmt(value) + ' after 5 years';
+
+  document.getElementById('results').className = 'results show';
+}
+</script>
+</body>
+</html>
