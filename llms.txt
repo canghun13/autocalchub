@@ -17,6 +17,12 @@
 - [Gas vs EV Savings Calculator](https://autocalchub.com/tools/gas-vs-ev-savings-calculator.html): Compare the total cost of driving a gas car versus an electric vehicle including fuel, charging, and maintenance.
 - [EV Charging Cost Calculator](https://autocalchub.com/tools/ev-charging-cost-calculator.html): Calculate the monthly and annual cost of charging an electric vehicle at home.
 - [Road Trip Cost Calculator](https://autocalchub.com/tools/road-trip-cost-calculator.html): Estimate the total fuel cost for any road trip based on distance, MPG, and current gas prices.
+- [Car Sales Tax Calculator](https://autocalchub.com/tools/car-sales-tax-calculator.html): Calculate car sales tax for any US state instantly, including trade-in deductions.
+- [Car Trade-In Value Estimator](https://autocalchub.com/tools/car-trade-in-value-estimator.html): Estimate what a dealer will offer for your car vs. private party value.
+- [GAP Insurance Calculator](https://autocalchub.com/tools/gap-insurance-calculator.html): Find out if you're underwater on your car loan and whether GAP insurance makes financial sense.
+- [Car Refinance Calculator](https://autocalchub.com/tools/car-refinance-calculator.html): See how much you could save by refinancing your car loan — monthly savings, total interest saved, and break-even point.
+- [Car Early Payoff Calculator](https://autocalchub.com/tools/car-early-payoff-calculator.html): Calculate how much interest you save and how many months you cut by making extra payments on your car loan.
+- [Car Total Cost of Ownership Calculator](https://autocalchub.com/tools/car-total-cost-of-ownership-calculator.html): Calculate the true 5-year cost of owning a car including purchase price, loan interest, insurance, fuel, maintenance, and depreciation.
 
 ## Guides: Buying a Car
 
@@ -64,10 +70,6 @@
 - [When Should You Trade In Your Car?](https://autocalchub.com/blog/when-to-trade-in-your-car.html): The right timing to trade in, how to avoid negative equity, and how to get a fair offer.
 - [How Car Depreciation Affects Resale Value](https://autocalchub.com/blog/how-does-car-depreciation-affect-resale-value.html): What accelerates depreciation, what slows it, and how to use the depreciation curve to your advantage when buying or selling.
 
-## Tools: Trade-In Value
-
-- [Car Trade-In Value Estimator](https://autocalchub.com/tools/car-trade-in-value-estimator.html): Estimate what a dealer will offer for your car vs. private party value, and decide which option makes more financial sense.
-
 ## Guides: Car Buying (Additional)
 
 - [How Much Should I Spend on a Car Based on My Salary?](https://autocalchub.com/blog/how-much-should-i-spend-on-a-car-based-on-salary.html): Income-based car budgets for $40K, $60K, $80K, and $100K salaries with real monthly breakdowns and down payment targets.
@@ -75,18 +77,12 @@
 - [Hidden Fees When Buying a Car: What Dealers Don't Tell You](https://autocalchub.com/blog/hidden-fees-when-buying-a-car.html): A full breakdown of dealer fees — which are required, which are negotiable, and which to refuse entirely.
 - [What Is a Good MPG for a Car?](https://autocalchub.com/blog/what-is-a-good-mpg-for-a-car.html): MPG benchmarks by vehicle type for 2026 — what counts as good, average, or poor fuel economy and how to calculate your real-world MPG.
 
-## Tools: Car Sales Tax
-
-- [Car Sales Tax Calculator](https://autocalchub.com/tools/car-sales-tax-calculator.html): Calculate car sales tax for any US state instantly. Enter your vehicle price and state to see exactly how much tax you'll owe, including trade-in deductions.
-
 ## Guides: Car Ownership (Additional)
 
 - [How to Minimize Car Depreciation](https://autocalchub.com/blog/how-to-minimize-car-depreciation.html): Practical strategies to slow your car's depreciation and protect resale value — from choosing the right vehicle to maintenance, mileage management, and timing your sale.
 
-## Tools: GAP Insurance
-
-- [GAP Insurance Calculator](https://autocalchub.com/tools/gap-insurance-calculator.html): Find out if you're underwater on your car loan and whether GAP insurance makes financial sense — compares loan balance to vehicle value and estimates how long you'll need coverage.
-
 ## Guides: Financing (Additional)
 
 - [How Does Car Loan Interest Work?](https://autocalchub.com/blog/how-does-car-loan-interest-work.html): Simple interest, amortization, and why early payments are mostly interest — explained with a real month-by-month breakdown and practical strategies for borrowers.
+- [How to Get Out of a Car Lease Early](https://autocalchub.com/blog/how-to-get-out-of-a-car-lease-early.html): All your options for exiting a lease early — lease transfer, buyout and sell, early termination, and trading in — with the real cost of each.
+- [What Happens When Your Car Loan Is Paid Off?](https://autocalchub.com/blog/what-happens-when-car-loan-is-paid-off.html): What actually happens after your final payment — title transfer, lien release, insurance changes, and what to do with the freed-up money.
