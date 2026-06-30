@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Refinance Calculator – See How Much You Could Save | AutoCalcHub</title>
+  <meta name="description" content="Should you refinance your car loan? Enter your current loan and a new rate to see monthly savings, total interest saved, and break-even point. Free calculator.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-refinance-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .tool-page { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .tool-header { margin-bottom: 2.5rem; }
+    .tool-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem,4vw,2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .tool-header p { color: var(--mid); font-size: 1rem; }
+    .calc-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+    .calc-card h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1.5rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group.full { grid-column: 1 / -1; }
+    label { font-size: 0.85rem; font-weight: 500; color: var(--mid); }
+    .input-wrap { position: relative; }
+    .input-prefix, .input-suffix { position: absolute; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: var(--light); font-weight: 500; pointer-events: none; }
+    .input-prefix { left: 0.875rem; }
+    .input-suffix { right: 0.875rem; }
+    input[type="number"] { width: 100%; padding: 0.75rem 0.875rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem; font-family: 'Inter', sans-serif; color: var(--charcoal); background: white; transition: border-color 0.2s; -moz-appearance: textfield; }
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type="number"]:focus { outline: none; border-color: var(--orange); }
+    .has-prefix input { padding-left: 2rem; }
+    .has-suffix input { padding-right: 2.5rem; }
+    .calc-btn { width: 100%; margin-top: 1.5rem; background: var(--navy); color: white; border: none; border-radius: 8px; padding: 0.875rem; font-size: 1rem; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.2s; }
+    .calc-btn:hover { background: var(--navy-mid); }
+    .results { display: none; }
+    .results.show { display: block; }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .result-box { background: var(--off-white); border-radius: 10px; padding: 1.25rem; text-align: center; }
+    .result-box.highlight { background: var(--navy); }
+    .result-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--navy); }
+    .result-box.highlight .result-num { color: var(--orange); }
+    .result-label { font-size: 0.75rem; color: var(--light); margin-top: 0.3rem; }
+    .result-box.highlight .result-label { color: rgba(255,255,255,0.6); }
+    .compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .compare-box { background: var(--off-white); border-radius: 12px; padding: 1.25rem; }
+    .compare-box h3 { font-size: 0.85rem; font-weight: 600; color: var(--light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    .compare-line { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--mid); padding: 0.3rem 0; border-bottom: 1px solid var(--border); }
+    .compare-line:last-child { border-bottom: none; font-weight: 600; color: var(--charcoal); }
+    .verdict { background: var(--navy); border-radius: 12px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; }
+    .verdict-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+    .verdict-sub { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+    .no-save { background: var(--off-white); }
+    .no-save .verdict-title { color: var(--charcoal); }
+    .no-save .verdict-sub { color: var(--mid); }
+    .content-section { margin-top: 3rem; }
+    .content-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1rem; }
+    .content-section h3 { font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin: 1.5rem 0 0.5rem; }
+    .content-section p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.75rem; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .results-grid { grid-template-columns: 1fr; } .compare-row { grid-template-columns: 1fr; } }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Refinance Calculator",
+    "url": "https://autocalchub.com/tools/car-refinance-calculator.html",
+    "description": "Calculate how much you could save by refinancing your car loan. Compare current vs new loan terms to see monthly savings and total interest saved.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Car Refinance Calculator</h1>
+    <p>See how much you could save by refinancing your auto loan — monthly savings, total interest saved, and break-even point.</p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <!-- CURRENT LOAN -->
+  <div class="calc-card">
+    <h2>📋 Current Loan</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Remaining Balance</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="currentBalance" value="18000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Current Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="currentRate" value="10.5" min="0" max="30" step="0.1">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Months Remaining</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="currentMonths" value="48" min="1" max="96">
+          <span class="input-suffix">mo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW LOAN -->
+  <div class="calc-card">
+    <h2>✨ New Loan (Refinance)</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>New Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="newRate" value="6.5" min="0" max="30" step="0.1">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>New Loan Term</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="newMonths" value="48" min="1" max="96">
+          <span class="input-suffix">mo</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Refinance Fees (if any)</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="refiFees" value="0" min="0">
+        </div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Savings</button>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+    <div class="verdict" id="verdict">
+      <div class="verdict-title" id="verdictTitle"></div>
+      <div class="verdict-sub" id="verdictSub"></div>
+    </div>
+
+    <div class="compare-row">
+      <div class="compare-box">
+        <h3>Current Loan</h3>
+        <div class="compare-line"><span>Monthly Payment</span><span id="r-curMonthly"></span></div>
+        <div class="compare-line"><span>Remaining Interest</span><span id="r-curInterest"></span></div>
+        <div class="compare-line"><span>Total Remaining Cost</span><span id="r-curTotal"></span></div>
+      </div>
+      <div class="compare-box">
+        <h3>Refinanced Loan</h3>
+        <div class="compare-line"><span>Monthly Payment</span><span id="r-newMonthly"></span></div>
+        <div class="compare-line"><span>Total Interest</span><span id="r-newInterest"></span></div>
+        <div class="compare-line"><span>Total Cost (inc. fees)</span><span id="r-newTotal"></span></div>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="r-monthlySave"></div>
+        <div class="result-label">Monthly Savings</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="r-totalSave"></div>
+        <div class="result-label">Total Interest Saved</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="r-breakeven"></div>
+        <div class="result-label">Break-Even Point</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2>When Does Refinancing Make Sense?</h2>
+    <p>Refinancing your car loan replaces your existing loan with a new one — ideally at a lower interest rate, a shorter term, or both. The most common reasons to refinance: your credit score has improved since the original loan, market rates have dropped, or you originally accepted dealer financing without shopping for alternatives.</p>
+    <p>As a general rule, refinancing is worth pursuing if you can reduce your rate by 1.5% or more. The monthly savings and total interest reduction from that size of a rate drop typically justify the time investment of applying, even with modest refinancing fees. If you can reduce your rate by 3% or more, the case is nearly always compelling.</p>
+
+    <h3>How Much Can You Save?</h3>
+    <p>On a $20,000 remaining balance with 48 months left, dropping from 10% to 6% APR saves about $80/month and nearly $3,800 in total interest over the loan. On a larger balance or higher rate differential, savings compound further. The calculator above shows your specific numbers — use the break-even point to see how quickly the savings outweigh any refinancing fees.</p>
+
+    <h3>Shorter Term vs Same Term</h3>
+    <p>When you refinance, you choose the new loan term. Refinancing into a shorter term than you have remaining increases your monthly payment but reduces total interest more aggressively. Refinancing into the same term keeps payments similar but still saves money if the rate is lower. Refinancing into a longer term reduces monthly payment but may cost more in total interest even at a lower rate — run the numbers carefully before extending your term.</p>
+
+    <h3>Where to Get the Best Refinance Rate</h3>
+    <p>Credit unions consistently offer the most competitive auto refinance rates — often 1–2% lower than traditional banks. Online lenders like LightStream, MyAutoLoan, and RefiJet specialize in auto refinancing and offer quick prequalification. Apply to 2–3 lenders within a 14-day window; multiple auto loan inquiries in this period count as a single hard pull on your credit score under FICO's rate-shopping rules.</p>
+
+    <h3>When Not to Refinance</h3>
+    <p>Avoid refinancing if you're close to paying off the loan (the interest savings won't justify the effort and fees), if your vehicle is old or high-mileage (some lenders restrict refinancing on vehicles over 7–10 years or 100,000+ miles), or if your current loan has a prepayment penalty that exceeds the savings. Also check that your current lender doesn't charge a payoff penalty before proceeding.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;">Related Guides & Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/how-to-refinance-a-car-loan.html" style="color:var(--orange);text-decoration:none;">How to Refinance a Car Loan</a></li>
+        <li><a href="car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+        <li><a href="../blog/what-is-good-interest-rate-car-loan.html" style="color:var(--orange);text-decoration:none;">What Is a Good Interest Rate on a Car Loan?</a></li>
+        <li><a href="../blog/how-to-pay-off-car-loan-early.html" style="color:var(--orange);text-decoration:none;">How to Pay Off a Car Loan Early</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+function fmtMo(n) { return Math.round(n) + ' mo'; }
+
+function pmt(principal, monthlyRate, months) {
+  if (monthlyRate === 0) return principal / months;
+  return principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+}
+
+function calculate() {
+  const balance    = parseFloat(document.getElementById('currentBalance').value) || 0;
+  const curRate    = parseFloat(document.getElementById('currentRate').value) / 100 / 12;
+  const curMonths  = parseInt(document.getElementById('currentMonths').value) || 0;
+  const newRate    = parseFloat(document.getElementById('newRate').value) / 100 / 12;
+  const newMonths  = parseInt(document.getElementById('newMonths').value) || 0;
+  const fees       = parseFloat(document.getElementById('refiFees').value) || 0;
+
+  const curMonthly  = pmt(balance, curRate, curMonths);
+  const curInterest = curMonthly * curMonths - balance;
+  const curTotal    = curMonthly * curMonths;
+
+  const newMonthly  = pmt(balance, newRate, newMonths);
+  const newInterest = newMonthly * newMonths - balance;
+  const newTotal    = newMonthly * newMonths + fees;
+
+  const monthlySave = curMonthly - newMonthly;
+  const totalSave   = curTotal - newTotal;
+  const breakeven   = monthlySave > 0 ? Math.ceil(fees / monthlySave) : 0;
+
+  document.getElementById('r-curMonthly').textContent  = fmt(curMonthly) + '/mo';
+  document.getElementById('r-curInterest').textContent = fmt(curInterest);
+  document.getElementById('r-curTotal').textContent    = fmt(curTotal);
+  document.getElementById('r-newMonthly').textContent  = fmt(newMonthly) + '/mo';
+  document.getElementById('r-newInterest').textContent = fmt(newInterest);
+  document.getElementById('r-newTotal').textContent    = fmt(newTotal);
+
+  document.getElementById('r-monthlySave').textContent = monthlySave > 0 ? fmt(monthlySave) + '/mo' : '$0/mo';
+  document.getElementById('r-totalSave').textContent   = totalSave > 0 ? fmt(totalSave) : '$0';
+  document.getElementById('r-breakeven').textContent   = fees > 0 && monthlySave > 0 ? fmtMo(breakeven) : 'Immediate';
+
+  const verdict = document.getElementById('verdict');
+  const title   = document.getElementById('verdictTitle');
+  const sub     = document.getElementById('verdictSub');
+
+  if (totalSave > 0) {
+    verdict.className = 'verdict';
+    title.textContent = 'Refinancing saves you ' + fmt(totalSave) + ' total';
+    sub.textContent   = monthlySave > 0
+      ? 'Your payment drops ' + fmt(monthlySave) + '/mo' + (fees > 0 ? ' — break-even in ' + breakeven + ' months.' : '.')
+      : 'Higher monthly payment but lower total interest cost.';
+  } else {
+    verdict.className = 'verdict no-save';
+    title.textContent = 'Refinancing may not save money in this scenario';
+    sub.textContent   = 'Try a lower rate or shorter term — or check if fees are reducing the benefit.';
+  }
+
+  document.getElementById('results').className = 'results show';
+}
+</script>
+</body>
+</html>
