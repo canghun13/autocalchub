@@ -24,7 +24,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -33,6 +34,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
   <script type="application/ld+json">
@@ -73,6 +75,8 @@
   <h2>Good Car Payment by Income</h2>
   <p>Here's what a sustainable car payment looks like at different income levels, using 10% of gross monthly income as the payment ceiling and assuming insurance costs of $150–$200/month:</p>
 
+  <div class="table-wrap">
+
   <table>
     <thead>
       <tr>
@@ -91,6 +95,7 @@
       <tr><td>$150,000</td><td>$12,500</td><td>~$1,000+</td><td>~$55,000–$65,000</td></tr>
     </tbody>
   </table>
+  </div>
 
   <p>These numbers assume a 60-month loan at 7% interest and a 20% down payment. Higher interest rates or shorter down payments reduce the car price you can afford at any given payment level.</p>
 
@@ -110,6 +115,7 @@
 
   <h2>How Interest Rate Changes Your Payment</h2>
   <p>Your credit score determines your interest rate, and that has a major impact on your monthly payment. On a $25,000 loan over 60 months:</p>
+  <div class="table-wrap">
   <table>
     <thead>
       <tr><th>Credit Score</th><th>Typical Rate</th><th>Monthly Payment</th><th>Total Interest</th></tr>
@@ -121,6 +127,7 @@
       <tr><td>600–649 (poor)</td><td>~14.5%</td><td>~$587</td><td>~$10,220</td></tr>
     </tbody>
   </table>
+  </div>
   <p>The difference between excellent and poor credit on a $25,000 loan is over $100/month and more than $6,000 in total interest. If your credit score is below 680, improving it before buying can save you thousands.</p>
 
   <h2>New vs. Used: Which Gives You a Better Payment?</h2>

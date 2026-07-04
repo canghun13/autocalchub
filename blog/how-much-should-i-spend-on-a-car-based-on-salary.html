@@ -24,7 +24,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -37,6 +38,7 @@
     .salary-card h3{margin:0 0 0.75rem;color:var(--navy)}
     .salary-card .max-price{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--orange);margin:0 0 0.5rem}
     .salary-card p{margin:0;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
   <script type="application/ld+json">
@@ -132,6 +134,7 @@
   <p>If you're already paying $800/month in student loans on a $5,000/month gross income (16% DTI), your remaining room for a car payment narrows significantly before you hit the 43% threshold. Run the numbers based on your actual financial picture, not just your income.</p>
 
   <h2>New Car vs. Used Car by Salary</h2>
+  <div class="table-wrap">
   <table>
     <thead>
       <tr><th>Annual Salary</th><th>New Car Feasibility</th><th>Best Used Car Strategy</th></tr>
@@ -143,6 +146,7 @@
       <tr><td>$100,000</td><td>Most mainstream vehicles</td><td>Near-new or used midsize SUV</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h2>The "Buy Below Your Means" Principle</h2>
   <p>Financial planners consistently note that the best car purchase is one well below what you can technically afford. If you can afford a $28,000 car, buying a $20,000 car puts $300–$400/month back in your budget for savings, investments, or debt payoff. A car is a depreciating asset — it loses value every day. The less you spend on a depreciating asset, the better your overall financial position.</p>

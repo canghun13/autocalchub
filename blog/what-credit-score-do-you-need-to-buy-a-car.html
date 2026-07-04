@@ -25,7 +25,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -34,6 +35,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -67,6 +69,7 @@
   <h2>Minimum Credit Score to Get a Car Loan</h2>
   <p>Technically, there's no universal minimum credit score to get a car loan — some lenders will approve almost anyone. But the terms get significantly worse as your score drops. With a score below 580, you may face rates of 15–25% APR and be limited to buy-here, pay-here dealerships with predatory terms. With a score above 720, you can qualify for rates as low as 5–7% APR from competitive lenders.</p>
   <h2>Credit Score Tiers and Typical Rates (2026)</h2>
+  <div class="table-wrap">
   <table>
     <tr><th>Credit Score</th><th>Tier</th><th>Typical New Car Rate</th><th>Typical Used Car Rate</th></tr>
     <tr><td>750+</td><td>Super Prime</td><td>5.0–6.5%</td><td>6.5–8.0%</td></tr>
@@ -75,6 +78,7 @@
     <tr><td>620–659</td><td>Subprime</td><td>11.0–15.0%</td><td>15.0–18.0%</td></tr>
     <tr><td>Below 620</td><td>Deep Subprime</td><td>15.0–20%+</td><td>18.0–25%+</td></tr>
   </table>
+  </div>
   <div class="highlight-box">
     <p>The difference between a 720 and a 620 credit score on a $25,000 60-month loan can mean paying $5,000–$8,000 more in total interest. That's a significant cost for the same car.</p>
   </div>

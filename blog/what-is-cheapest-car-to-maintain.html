@@ -25,7 +25,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -34,6 +35,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -76,6 +78,7 @@
   </ul>
 
   <h2>Cheapest Cars to Maintain in 2026</h2>
+  <div class="table-wrap">
   <table>
     <tr><th>Make/Model</th><th>Avg. Annual Repair Cost</th><th>Reliability Rating</th></tr>
     <tr><td>Toyota Corolla</td><td>~$362</td><td>Excellent</td></tr>
@@ -86,6 +89,7 @@
     <tr><td>Toyota RAV4</td><td>~$429</td><td>Very Good</td></tr>
     <tr><td>Subaru Forester</td><td>~$452</td><td>Good</td></tr>
   </table>
+  </div>
 
   <div class="highlight-box">
     <p>European luxury cars (BMW, Audi, Mercedes) average $1,000–$1,700/year in maintenance — 3–4x more than a reliable Japanese car over the same ownership period.</p>

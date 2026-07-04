@@ -25,7 +25,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -34,6 +35,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -73,6 +75,7 @@
 
   <h2>Average Home Electricity Rates by State (2026)</h2>
   <p>The national average is about $0.16/kWh, but rates vary dramatically by state:</p>
+  <div class="table-wrap">
   <table>
     <tr><th>State</th><th>Avg. Rate ($/kWh)</th><th>Cost per 100 miles*</th></tr>
     <tr><td>Hawaii</td><td>$0.33</td><td>$8.25</td></tr>
@@ -83,6 +86,7 @@
     <tr><td>Louisiana</td><td>$0.10</td><td>$2.50</td></tr>
     <tr><td>Idaho</td><td>$0.09</td><td>$2.25</td></tr>
   </table>
+  </div>
   <p style="font-size:0.8rem;color:var(--light)">*Assumes 4 miles/kWh efficiency (typical for midsize EV)</p>
 
   <div class="highlight-box">
@@ -100,6 +104,7 @@
 
   <h2>Monthly Charging Cost for a Typical EV Driver</h2>
   <p>The average American drives about 1,200 miles per month. Here's what that costs to charge at home across different electricity rates, assuming 4 miles/kWh efficiency:</p>
+  <div class="table-wrap">
   <table>
     <tr><th>Electricity Rate</th><th>kWh Needed/Month</th><th>Monthly Cost</th><th>Annual Cost</th></tr>
     <tr><td>$0.10/kWh (cheap)</td><td>300 kWh</td><td>$30</td><td>$360</td></tr>
@@ -107,9 +112,11 @@
     <tr><td>$0.22/kWh (expensive)</td><td>300 kWh</td><td>$66</td><td>$792</td></tr>
     <tr><td>$0.33/kWh (Hawaii)</td><td>300 kWh</td><td>$99</td><td>$1,188</td></tr>
   </table>
+  </div>
   <p>Compare that to a gas car getting 28 MPG at $3.40/gallon driving the same 1,200 miles: roughly <strong>$146/month</strong>. Even in high-cost electricity states, home EV charging is usually cheaper.</p>
 
   <h2>EV Charging Cost by Popular Model</h2>
+  <div class="table-wrap">
   <table>
     <tr><th>Vehicle</th><th>Battery (usable)</th><th>Cost to Full Charge*</th></tr>
     <tr><td>Tesla Model 3 (SR)</td><td>57 kWh</td><td>$9.12</td></tr>
@@ -118,6 +125,7 @@
     <tr><td>Ford F-150 Lightning</td><td>98 kWh</td><td>$15.68</td></tr>
     <tr><td>Rivian R1T</td><td>135 kWh</td><td>$21.60</td></tr>
   </table>
+  </div>
   <p style="font-size:0.8rem;color:var(--light)">*At $0.16/kWh national average</p>
 
   <h2>Tips to Reduce Your Home Charging Costs</h2>

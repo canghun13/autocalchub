@@ -25,7 +25,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -34,6 +35,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -66,6 +68,7 @@
   <p>72-month (6-year) car loans now account for a significant portion of all auto financing — their low monthly payment makes them appealing. But that low payment comes with real hidden costs that most buyers don't fully calculate before signing. Here's a clear breakdown of what a 72-month loan actually costs you.</p>
   <h2>The Monthly Payment Appeal</h2>
   <p>On a $30,000 car at 7% APR, here's how the monthly payment changes by loan term:</p>
+  <div class="table-wrap">
   <table>
     <tr><th>Loan Term</th><th>Monthly Payment</th><th>Total Interest</th><th>Total Cost</th></tr>
     <tr><td>48 months</td><td>$718</td><td>$4,455</td><td>$34,455</td></tr>
@@ -73,6 +76,7 @@
     <tr><td>72 months</td><td>$512</td><td>$6,863</td><td>$36,863</td></tr>
     <tr><td>84 months</td><td>$452</td><td>$8,152</td><td>$38,152</td></tr>
   </table>
+  </div>
   <p>The 72-month loan saves you $82/month compared to a 60-month loan — but costs you $1,224 more in total interest. And lenders typically charge a higher interest rate for longer terms, making the gap even wider in practice.</p>
   <div class="highlight-box">
     <p>With a 72-month loan, you'll often be "upside down" (owing more than the car is worth) for the first 2–3 years, because cars depreciate faster than you're paying down the loan in the early months.</p>

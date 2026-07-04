@@ -25,7 +25,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -34,6 +35,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -114,6 +116,7 @@
 
   <h2>Trade-In vs. Selling Privately</h2>
   <p>Trading in at a dealership is convenient, but you'll almost always get less for the car than you would selling privately. Dealers need to profit on resale, so they buy at wholesale and sell at retail. The gap can be anywhere from a few hundred to several thousand dollars, depending on the vehicle and demand.</p>
+  <div class="table-wrap">
   <table>
     <tr><th>Factor</th><th>Trade-In</th><th>Private Sale</th></tr>
     <tr><td>Sale price</td><td>Lower (wholesale)</td><td>Higher (retail)</td></tr>
@@ -122,6 +125,7 @@
     <tr><td>Tax benefit</td><td>Yes (in most states)</td><td>No</td></tr>
     <tr><td>Negotiation</td><td>Less control</td><td>Full control</td></tr>
   </table>
+  </div>
   <p>The tax benefit of a trade-in is real and often overlooked: in most states, sales tax is calculated on the difference between the new car's price and the trade-in value, not the full purchase price. On a $5,000 trade-in with a 7% sales tax rate, that's $350 in tax savings that partially offsets the lower trade-in offer.</p>
 
   <h2>How to Check Your Car's Current Value</h2>

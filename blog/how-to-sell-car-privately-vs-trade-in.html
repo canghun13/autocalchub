@@ -26,7 +26,8 @@
     strong{color:var(--charcoal)}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -42,6 +43,7 @@
     .scenario-box{background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin:1.25rem 0}
     .scenario-box h3{margin:0 0 0.75rem;font-size:1rem;font-weight:600;color:var(--charcoal)}
     .scenario-box p{margin:0;font-size:0.9rem;color:var(--mid);line-height:1.6}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -84,6 +86,7 @@
   </div>
 
   <h2>Side-by-Side Comparison</h2>
+  <div class="table-wrap">
   <table>
     <tr><th></th><th>Private Sale</th><th>Trade-In</th></tr>
     <tr><td>Money you get</td><td>Most (10–20% more)</td><td>Less</td></tr>
@@ -95,6 +98,7 @@
     <tr><td>Car with issues</td><td>Harder to sell, requires disclosure</td><td>Dealer takes it as-is</td></tr>
     <tr><td>Negotiation</td><td>You set the price</td><td>Dealer sets the offer</td></tr>
   </table>
+  </div>
 
   <h2>The Tax Angle: How Trade-Ins Can Narrow the Gap</h2>
   <p>In most US states, trading in your vehicle reduces the taxable amount on your new car purchase. This is one of the most overlooked financial advantages of trading in — and it can significantly close the price gap between the two options.</p>

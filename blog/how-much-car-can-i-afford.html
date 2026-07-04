@@ -46,7 +46,8 @@
       font-weight: 600; font-size: 0.9rem; transition: background 0.2s;
     }
     .cta-box a:hover { background: var(--orange-light); }
-    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th { background: var(--navy); color: white; padding: 0.75rem 1rem; text-align: left; font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
     td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); color: var(--mid); }
     tr:last-child td { border-bottom: none; }
@@ -57,6 +58,7 @@
     .related-links li { margin-bottom: 0.35rem; }
     .related-links a { color: var(--orange); text-decoration: none; font-size: 0.9rem; }
     .related-links a:hover { text-decoration: underline; }
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
@@ -117,6 +119,8 @@
   <h2>How Much Car Can You Afford by Income?</h2>
   <p>Rather than working backward from a car you want, start with what your income actually supports. Here's a realistic breakdown by annual salary, using the 20/4/10 rule and a 60-month loan at 7% interest (current average for good credit).</p>
 
+  <div class="table-wrap">
+
   <table>
     <thead>
       <tr>
@@ -133,6 +137,7 @@
       <tr><td>$100,000</td><td>~$700</td><td>~$35,000–$40,000</td><td>$7,500+</td></tr>
     </tbody>
   </table>
+  </div>
 
   <p>These numbers assume you're spending roughly half of your 10% budget on the car payment itself, leaving room for insurance. If you already have low insurance costs, you can stretch slightly. If your insurance is expensive (young driver, sports car, high-cost state), you'll need to trim the car price accordingly.</p>
 

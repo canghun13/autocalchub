@@ -29,7 +29,8 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -40,6 +41,7 @@
     .related-links li{margin-bottom:0.35rem}
     .related-links a{color:var(--orange);text-decoration:none;font-size:0.9rem}
     .related-links a:hover{text-decoration:underline}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -85,6 +87,8 @@
   <h2>Good MPG by Vehicle Type (2026)</h2>
   <p>There's no single answer to "what is good MPG" because the standard varies dramatically by vehicle class. Here's a breakdown by type:</p>
 
+  <div class="table-wrap">
+
   <table>
     <thead>
       <tr>
@@ -108,6 +112,7 @@
       <tr><td>Plug-In Hybrid (gas mode)</td><td>Below 35</td><td>35–42</td><td>43–50</td><td>51+</td></tr>
     </tbody>
   </table>
+  </div>
 
   <p>These ranges reflect 2026 EPA ratings for new vehicles in each category. If your car is older, slightly lower numbers are normal — engines lose some efficiency over time, and older models had lower baseline standards.</p>
 
@@ -156,6 +161,8 @@
   <h2>What Good MPG Means in Dollar Terms</h2>
   <p>At $3.40 per gallon (the approximate US average as of mid-2026), the difference between a 25 MPG car and a 35 MPG car on 15,000 miles per year is significant:</p>
 
+  <div class="table-wrap">
+
   <table>
     <thead>
       <tr>
@@ -174,6 +181,7 @@
       <tr><td>50 MPG (hybrid)</td><td>300 gallons</td><td>$1,020</td><td>$5,100</td></tr>
     </tbody>
   </table>
+  </div>
 
   <p>The difference between a 20 MPG vehicle and a 35 MPG vehicle is about $1,100 per year in gas costs, or $5,500 over five years. This is why MPG matters more than many buyers realize — it's a cost that compounds every year you own the car.</p>
 

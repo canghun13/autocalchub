@@ -25,7 +25,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -34,6 +35,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -86,6 +88,8 @@
   <h2>How Down Payment Affects Your Numbers</h2>
   <p>Let's make this concrete. Here's what different down payment amounts look like on a $35,000 car financed at 6.5% APR over 60 months:</p>
 
+  <div class="table-wrap">
+
   <table>
     <tr><th>Down Payment</th><th>Amount Down</th><th>Monthly Payment</th><th>Total Interest</th></tr>
     <tr><td>0%</td><td>$0</td><td>$684</td><td>$6,040</td></tr>
@@ -95,6 +99,7 @@
     <tr><td>25%</td><td>$8,750</td><td>$513</td><td>$4,530</td></tr>
     <tr><td>30%</td><td>$10,500</td><td>$479</td><td>$4,227</td></tr>
   </table>
+  </div>
 
   <p>Going from 0% to 20% down cuts your monthly payment by $137 and saves you over $1,200 in total interest. That's meaningful. Going from 20% to 30% saves an additional $600 in interest — valuable, but less dramatic. There's a point of diminishing returns as you push beyond 20%.</p>
 

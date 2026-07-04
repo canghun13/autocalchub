@@ -37,7 +37,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -46,6 +47,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
 </head>
 <body>
@@ -61,6 +63,8 @@
   <h2>The Depreciation Curve: How Value Actually Falls</h2>
   <p>Depreciation isn't linear. New cars lose value fastest in the early years, then the rate slows significantly as the vehicle ages:</p>
 
+  <div class="table-wrap">
+
   <table>
     <tr><th>Year</th><th>Typical Cumulative Loss</th><th>Annual Rate</th></tr>
     <tr><td>Year 1</td><td>~12–20%</td><td>Fastest — "new car premium" evaporates</td></tr>
@@ -69,6 +73,7 @@
     <tr><td>Year 5</td><td>~40–50%</td><td>5–8% per year at this stage</td></tr>
     <tr><td>Year 10</td><td>~65–75%</td><td>Slower decline, stabilizing</td></tr>
   </table>
+  </div>
 
   <p>The implication is straightforward: someone who buys a 3-year-old vehicle absorbs far less depreciation than the original buyer, while getting a car that still has most of its useful life ahead. This is the core financial argument for buying used.</p>
 

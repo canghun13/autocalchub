@@ -25,7 +25,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -34,6 +35,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -72,6 +74,7 @@
   </div>
   <h2>Fuel Costs: EVs Win Significantly</h2>
   <p>This is where EVs recoup their higher purchase price. At the national average of $0.16/kWh and typical EV efficiency of 4 miles/kWh, electricity costs about $0.04/mile. A 30 MPG gas car at $3.40/gallon costs $0.11/mile — nearly three times as much.</p>
+  <div class="table-wrap">
   <table>
     <tr><th>Annual Mileage</th><th>EV Fuel Cost</th><th>Gas Car Fuel Cost</th><th>Annual Savings</th></tr>
     <tr><td>10,000 miles</td><td>$400</td><td>$1,133</td><td>$733</td></tr>
@@ -79,6 +82,7 @@
     <tr><td>15,000 miles</td><td>$600</td><td>$1,700</td><td>$1,100</td></tr>
     <tr><td>20,000 miles</td><td>$800</td><td>$2,267</td><td>$1,467</td></tr>
   </table>
+  </div>
   <p>Over 5 years at 12,000 miles/year, fuel savings alone total approximately $4,400. In high-electricity-cost states like California or Hawaii, this advantage is smaller. In low-cost electricity states, it's even larger.</p>
   <h2>Maintenance: EVs Win Again</h2>
   <p>EVs have significantly lower maintenance costs due to their simpler drivetrains:</p>
@@ -97,6 +101,7 @@
   <p>Gas cars from reliable brands (Toyota, Honda) continue to hold their value predictably. If resale value is a priority, this is a meaningful consideration.</p>
   <h2>5-Year Total Cost Example</h2>
   <p>Comparing a $44,000 Tesla Model Y (after $7,500 federal credit: $36,500) vs a $32,000 Toyota RAV4, both driven 12,000 miles/year:</p>
+  <div class="table-wrap">
   <table>
     <tr><th>Cost Category</th><th>Tesla Model Y</th><th>Toyota RAV4</th></tr>
     <tr><td>Effective purchase price</td><td>$36,500</td><td>$32,000</td></tr>
@@ -105,6 +110,7 @@
     <tr><td>5-year insurance (est.)</td><td>$9,000</td><td>$8,000</td></tr>
     <tr><td><strong>5-year total cost</strong></td><td><strong>$49,400</strong></td><td><strong>$50,800</strong></td></tr>
   </table>
+  </div>
   <p>In this scenario, the EV comes out approximately $1,400 cheaper over 5 years after accounting for all major costs. The advantage grows with higher mileage and in states with lower electricity costs. It shrinks in states with expensive electricity or for buyers who don't qualify for the tax credit.</p>
   <h2>Who Benefits Most from an EV?</h2>
   <ul>

@@ -24,7 +24,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -37,6 +38,7 @@
     .fee-required{background:#fee2e2;color:#dc2626}
     .fee-negotiable{background:#dcfce7;color:#16a34a}
     .fee-avoid{background:#fef9c3;color:#ca8a04}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
   <script type="application/ld+json">
@@ -114,6 +116,7 @@
   </div>
 
   <h2>The Full Fee Breakdown: What to Expect</h2>
+  <div class="table-wrap">
   <table>
     <thead>
       <tr><th>Fee</th><th>Typical Range</th><th>Negotiable?</th></tr>
@@ -131,6 +134,7 @@
       <tr><td>Paint/fabric protection</td><td>$300–$800</td><td>Decline</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h2>How to Protect Yourself</h2>
   <ol>

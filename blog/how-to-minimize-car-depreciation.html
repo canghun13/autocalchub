@@ -30,7 +30,8 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -42,6 +43,7 @@
     .tip-card{background:white;border:1px solid var(--border);border-left:4px solid var(--orange);border-radius:0 12px 12px 0;padding:1.25rem 1.5rem;margin:1.25rem 0}
     .tip-card h3{margin:0 0 0.4rem;font-size:1rem;font-weight:600;color:var(--charcoal)}
     .tip-card p{margin:0;font-size:0.9rem;color:var(--mid);line-height:1.6}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -160,6 +162,7 @@
   <p>Dealers typically offer 10% to 20% less than private sale value for trade-ins. If you have the time and willingness to handle a private sale through platforms like Facebook Marketplace, Cars.com, or AutoTrader, you'll generally net more money. The tradeoff is the time, screening of buyers, and handling of paperwork. For high-value vehicles (over $20,000), the private sale premium is often worth the effort.</p>
 
   <h2>The Vehicles That Hold Value Best in 2026</h2>
+  <div class="table-wrap">
   <table>
     <thead>
       <tr><th>Vehicle</th><th>Category</th><th>Approx. 5-Year Retention</th></tr>
@@ -174,6 +177,7 @@
       <tr><td>Subaru Outback</td><td>Wagon/SUV</td><td>~47–52%</td></tr>
     </tbody>
   </table>
+  </div>
   <p style="font-size:0.82rem;color:var(--light);">Retention percentages are approximate and vary by trim, mileage, condition, and market conditions. Source: Kelley Blue Book, Edmunds residual value data.</p>
 
   <h2>What You Can't Control — and What That Means</h2>

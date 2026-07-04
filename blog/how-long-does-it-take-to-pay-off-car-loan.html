@@ -26,7 +26,8 @@
     strong{color:var(--charcoal)}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -39,6 +40,7 @@
     .related-links h3{margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal)}
     .related-links ul{margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8}
     .related-links a{color:var(--orange);text-decoration:none}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -74,6 +76,7 @@
 
   <h2>Common Car Loan Terms: The Real Numbers</h2>
   <p>The table below shows what a $25,000 loan at 7% APR looks like across different terms. These are standard numbers — your actual rate and loan amount will vary, but the relationships between terms hold regardless of the specifics.</p>
+  <div class="table-wrap">
   <table>
     <tr><th>Term</th><th>Monthly Payment</th><th>Total Interest</th><th>Total Cost</th></tr>
     <tr><td>36 months</td><td>$772</td><td>$2,789</td><td>$27,789</td></tr>
@@ -82,6 +85,7 @@
     <tr><td>72 months</td><td>$428</td><td>$5,854</td><td>$30,854</td></tr>
     <tr><td>84 months</td><td>$378</td><td>$6,752</td><td>$31,752</td></tr>
   </table>
+  </div>
   <p style="font-size:0.8rem;color:var(--light)">Based on $25,000 loan at 7.0% APR. Actual figures vary by loan amount and interest rate.</p>
 
   <p>The difference between a 36-month and 84-month loan on the same $25,000 at 7% is nearly $4,000 in interest. That's money paid purely for the privilege of spreading payments over more time. It also illustrates why the monthly payment shouldn't be the primary number you optimize for — it's the least informative figure in the entire loan structure.</p>

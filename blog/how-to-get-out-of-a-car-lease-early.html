@@ -25,7 +25,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -34,6 +35,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -85,6 +87,7 @@
   <p>Trading into a new lease at the same dealer is often the smoothest path when you want to stay in a vehicle and the car has little or no negative equity. But compare the out-the-door numbers carefully — the convenience factor sometimes comes with a premium on the new deal.</p>
 
   <h2>Comparing Your Options: Cost Summary</h2>
+  <div class="table-wrap">
   <table>
     <tr><th>Option</th><th>Typical Cost</th><th>Best For</th></tr>
     <tr><td>Lease Transfer</td><td>$300–$500 transfer fee</td><td>Most situations — lowest cost exit</td></tr>
@@ -92,6 +95,7 @@
     <tr><td>Early Termination</td><td>$3,000–$10,000+</td><td>Last resort only</td></tr>
     <tr><td>Dealer Trade-In</td><td>Variable (folded into new deal)</td><td>When upgrading to a new vehicle</td></tr>
   </table>
+  </div>
 
   <h2>How to Check Your Lease Payoff Amount</h2>
   <p>Call your leasing company or log into your account online to request a lease payoff quote. This is the amount needed to purchase the vehicle outright and close the lease today. It includes the residual value plus any remaining depreciation and fees. Note that this number changes daily as the lease progresses, so always get a current quote before making decisions.</p>

@@ -25,7 +25,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -34,6 +35,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -67,6 +69,7 @@
   <p>Car loan rates vary widely — from under 5% for buyers with excellent credit to 20%+ for buyers with poor credit. Knowing what's "good" for your situation helps you recognize whether the offer you're getting is fair, and whether it's worth shopping around. Here's a complete picture of car loan rates in 2026.</p>
 
   <h2>Average Car Loan Rates in 2026 by Credit Score</h2>
+  <div class="table-wrap">
   <table>
     <tr><th>Credit Score</th><th>Tier</th><th>New Car Rate</th><th>Used Car Rate</th></tr>
     <tr><td>750+</td><td>Super Prime</td><td>5.0–6.5%</td><td>6.5–8.0%</td></tr>
@@ -75,6 +78,7 @@
     <tr><td>620–659</td><td>Subprime</td><td>10.5–14.0%</td><td>14.0–18.0%</td></tr>
     <tr><td>Below 620</td><td>Deep Subprime</td><td>14.0–20%+</td><td>18.0–25%+</td></tr>
   </table>
+  </div>
 
   <div class="highlight-box">
     <p>A "good" rate in 2026 is generally below 7% for new cars and below 9% for used cars if you have good credit (700+). Anything above 12% on a used car is a signal to either improve your credit first or shop more lenders.</p>
@@ -91,6 +95,7 @@
 
   <h2>How Much Does Rate Actually Matter?</h2>
   <p>The difference between a good rate and a bad rate adds up significantly over the life of a loan:</p>
+  <div class="table-wrap">
   <table>
     <tr><th>Loan Amount</th><th>Rate</th><th>60-Month Payment</th><th>Total Interest Paid</th></tr>
     <tr><td>$25,000</td><td>5.5%</td><td>$479/mo</td><td>$2,733</td></tr>
@@ -98,6 +103,7 @@
     <tr><td>$25,000</td><td>12.0%</td><td>$556/mo</td><td>$8,374</td></tr>
     <tr><td>$25,000</td><td>18.0%</td><td>$635/mo</td><td>$13,083</td></tr>
   </table>
+  </div>
   <p>The difference between a 5.5% and an 18% rate on the same $25,000 loan is over $10,000 in extra interest. That's real money — and a strong argument for improving your credit before buying or shopping multiple lenders aggressively.</p>
 
   <h2>Where to Get the Best Rates</h2>

@@ -26,7 +26,8 @@
     strong{color:var(--charcoal)}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -42,6 +43,7 @@
     .math-box{background:var(--off-white);border-radius:10px;padding:1.25rem 1.5rem;margin:1.5rem 0;font-family:'Space Grotesk',sans-serif;font-size:0.9rem;color:var(--charcoal)}
     .math-box .formula{font-weight:700;color:var(--navy);margin-bottom:0.5rem}
     .math-box .example{color:var(--mid);font-size:0.85rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -90,6 +92,8 @@
   <p>Amortization is the process of spreading a loan's repayment across equal monthly payments over a fixed term. Each payment is the same dollar amount, but the split between interest and principal shifts every month. Early in the loan, more of your payment goes to interest. As the balance decreases, less interest accrues each month, so more of each payment chips away at principal.</p>
   <p>Here's what the first and last few months of a $20,000 loan at 7.2% over 60 months look like:</p>
 
+  <div class="table-wrap">
+
   <table>
     <tr><th>Month</th><th>Payment</th><th>Interest Portion</th><th>Principal Portion</th><th>Remaining Balance</th></tr>
     <tr><td>1</td><td>$396</td><td>$120</td><td>$276</td><td>$19,724</td></tr>
@@ -102,6 +106,7 @@
     <tr><td>58</td><td>$396</td><td>$14</td><td>$382</td><td>$2,000</td></tr>
     <tr><td>60</td><td>$396</td><td>$4</td><td>$392</td><td>$0</td></tr>
   </table>
+  </div>
   <p style="font-size:0.8rem;color:var(--light)">$20,000 loan at 7.2% APR over 60 months. Figures rounded for clarity.</p>
 
   <p>Notice that in month 1, only $276 of your $396 payment reduces what you owe. By month 48, $342 of the same $396 payment is going to principal. The math gradually shifts in your favor as the balance decreases.</p>

@@ -25,7 +25,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -40,6 +41,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -149,6 +151,7 @@
 
   <h2>How Much Can You Save?</h2>
   <p>The savings depend on your loan balance, the rate difference, and your remaining term. Here's what refinancing looks like on a $20,000 remaining balance over 48 months:</p>
+  <div class="table-wrap">
   <table>
     <tr><th>Current Rate</th><th>New Rate</th><th>Monthly Savings</th><th>Total Interest Saved</th></tr>
     <tr><td>10%</td><td>7%</td><td>$29/mo</td><td>~$1,400</td></tr>
@@ -156,6 +159,7 @@
     <tr><td>15%</td><td>8%</td><td>$62/mo</td><td>~$3,000</td></tr>
     <tr><td>18%</td><td>9%</td><td>$80/mo</td><td>~$3,800</td></tr>
   </table>
+  </div>
   <p>Buyers who took out loans with poor credit and have since improved their score tend to see the largest savings — sometimes $3,000–$5,000 over the remaining loan term.</p>
 
   <h2>Does Refinancing Hurt Your Credit Score?</h2>

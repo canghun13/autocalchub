@@ -37,7 +37,8 @@
     li{margin-bottom:0.4rem}
     .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:2rem 0}
     .highlight-box p{color:var(--charcoal);margin:0;font-weight:500}
-    table{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:0.9rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:480px;border-collapse:collapse;font-size:0.9rem;margin:0}
     th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
     td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
     tr:last-child td{border-bottom:none}
@@ -46,6 +47,7 @@
     .cta-box h3{color:white;margin:0 0 0.5rem;font-size:1.2rem}
     .cta-box p{color:rgba(255,255,255,0.7);margin:0 0 1.25rem}
     .cta-box a{display:inline-block;background:var(--orange);color:white;padding:0.75rem 1.75rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem}
+    @media(max-width:600px){table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
   </style>
 </head>
 <body>
@@ -99,6 +101,8 @@
   <p>Some vehicles cost significantly more to insure than others — not just because of price, but because of repair costs, theft rates, and safety ratings. Sports cars, luxury vehicles, and certain high-theft models carry higher premiums regardless of your driving record. Before buying a car, get an insurance quote on the specific make and model to avoid a premium surprise after purchase.</p>
   <p>Vehicles with strong safety ratings (IIHS Top Safety Pick) and advanced driver-assistance systems often qualify for safety discounts that partially offset higher sticker prices.</p>
 
+  <div class="table-wrap">
+
   <table>
     <tr><th>Strategy</th><th>Typical Savings</th><th>Effort</th></tr>
     <tr><td>Shop competing quotes annually</td><td>$200–$800/yr</td><td>Medium</td></tr>
@@ -109,6 +113,7 @@
     <tr><td>Improve credit score</td><td>$200–$600/yr</td><td>High (long-term)</td></tr>
     <tr><td>Bundle home + auto</td><td>$100–$400/yr</td><td>Medium</td></tr>
   </table>
+  </div>
 
   <div class="cta-box">
     <h3>What Should Your Insurance Actually Cost?</h3>
