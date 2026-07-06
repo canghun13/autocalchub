@@ -13,6 +13,8 @@
       path.indexOf('about') === -1 && path.indexOf('privacy') === -1 &&
       path.indexOf('contact') === -1);
 
+  var isToolsIndexPage = /\/tools\/(index\.html)?$/.test(path);
+
   function loadPartial(placeholderId, file, callback) {
     var el = document.getElementById(placeholderId);
     if (!el) return;
@@ -31,11 +33,11 @@
       if (a.href === window.location.href) a.classList.add('active');
     });
 
-    if (isToolPage) {
+    if (isToolPage && !isToolsIndexPage) {
       var nav = document.querySelector('nav');
       if (nav && !nav.querySelector('.nav-back')) {
         var back = document.createElement('a');
-        back.href = base + '#tools';
+        back.href = base + 'tools/';
         back.className = 'nav-back';
         back.textContent = '← All tools';
         nav.insertBefore(back, nav.querySelector('.nav-hamburger'));
