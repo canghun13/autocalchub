@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Negative Equity Rollover Calculator — Cost of Rolling Into a New Loan | AutoCalcHub</title>
+  <meta name="description" content="See exactly how much extra interest you'll pay if you roll your negative equity into a new car loan. Free negative equity rollover calculator.">
+  <link rel="canonical" href="https://autocalchub.com/tools/negative-equity-rollover-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .tool-page{max-width:760px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.5rem;margin-bottom:1.5rem;text-align:center}
+    .verdict-box.rollover-costly{background:#fff3e0;border:2px solid #f57c00}
+    .verdict-box.rollover-clean{background:#e8f5e9;border:2px solid #388e3c}
+    .verdict-icon{font-size:2rem;margin-bottom:0.5rem}
+    .verdict-title{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:0.4rem}
+    .verdict-box.rollover-costly .verdict-title{color:#e65100}
+    .verdict-box.rollover-clean .verdict-title{color:#2e7d32}
+    .verdict-sub{font-size:0.9rem;color:var(--mid)}
+    .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem}
+    .result-box{background:var(--off-white);border-radius:10px;padding:1.25rem;text-align:center}
+    .result-box.highlight{background:var(--navy)}
+    .result-num{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--navy)}
+    .result-box.highlight .result-num{color:var(--orange)}
+    .result-label{font-size:0.75rem;color:var(--light);margin-top:0.3rem}
+    .result-box.highlight .result-label{color:rgba(255,255,255,0.6)}
+    .breakdown-table{width:100%;border-collapse:collapse;font-size:0.9rem;margin-top:1rem}
+    .breakdown-table td{padding:0.65rem 0.75rem;border-bottom:1px solid var(--border);color:var(--charcoal)}
+    .breakdown-table tr:last-child td{border-bottom:none}
+    .breakdown-table td:last-child{text-align:right;font-weight:500}
+    .breakdown-table tr.highlight-row td{background:var(--orange-pale);font-weight:600}
+    .content-section{margin-top:3rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p{color:var(--mid);font-size:0.95rem;line-height:1.7;margin-bottom:0.75rem}
+    .content-section ul{color:var(--mid);font-size:0.95rem;line-height:1.8;margin:0.5rem 0 1rem 1.5rem}
+    .disclaimer{background:var(--off-white);border-radius:10px;padding:1.25rem 1.5rem;margin-top:2.5rem;font-size:0.82rem;color:var(--light);line-height:1.6}
+    .disclaimer strong{color:var(--mid)}
+    @media(max-width:600px){.form-grid{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}}
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Negative Equity Rollover Calculator",
+    "url": "https://autocalchub.com/tools/negative-equity-rollover-calculator.html",
+    "description": "Calculate exactly how much extra interest and monthly payment you take on when you roll negative equity from your current car loan into a new one.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {"@type":"Offer","price":"0","priceCurrency":"USD"},
+    "provider": {"@type":"Organization","name":"AutoCalcHub","url":"https://autocalchub.com"},
+    "dateModified": "2026-07-06"
+  }
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>⚠️ Negative Equity Rollover Calculator</h1>
+    <p>See exactly what rolling your old loan's negative equity into a new car loan really costs you.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>Enter your current and new loan details</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="oldBalance">Current Loan Payoff Amount</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="oldBalance" value="18000" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label for="tradeIn">Trade-In / Sale Value Offered</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="tradeIn" value="14000" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label for="newPrice">New Car Price</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="newPrice" value="32000" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label for="downPayment">Additional Down Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="downPayment" value="2000" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label for="apr">New Loan APR</label>
+        <div class="input-wrap has-suffix"><input type="number" id="apr" value="7.5" min="0" step="0.1"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label for="term">New Loan Term</label>
+        <div class="input-wrap has-suffix"><input type="number" id="term" value="60" min="12" step="1"><span class="input-suffix">months</span></div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Rollover Cost</button>
+  </div>
+
+  <div class="calc-card results" id="results">
+    <div class="verdict-box" id="verdictBox">
+      <div class="verdict-icon" id="verdictIcon">⚠️</div>
+      <div class="verdict-title" id="verdictTitle"></div>
+      <div class="verdict-sub" id="verdictSub"></div>
+    </div>
+
+    <h2>Your New Loan</h2>
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="newLoanAmount">$0</div>
+        <div class="result-label">New Loan Amount</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="newPayment">$0</div>
+        <div class="result-label">New Monthly Payment</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="rolledAmount">$0</div>
+        <div class="result-label">Negative Equity Rolled In</div>
+      </div>
+    </div>
+
+    <table class="breakdown-table">
+      <tr><td>Negative equity from old loan</td><td id="bd-negeq">$0</td></tr>
+      <tr><td>New loan amount (price + rolled equity − down payment)</td><td id="bd-loanamt">$0</td></tr>
+      <tr><td>What the loan would be with no rollover</td><td id="bd-cleanloan">$0</td></tr>
+      <tr><td>Extra monthly payment caused by the rollover</td><td id="bd-extramonthly">$0</td></tr>
+      <tr class="highlight-row"><td>Extra interest paid over the loan, just for the rolled-in amount</td><td id="bd-extrainterest">$0</td></tr>
+    </table>
+    <p style="font-size:0.85rem;color:var(--light);margin-top:0.75rem;" id="resultNote"></p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>What "Rolling In" Negative Equity Actually Means</h2>
+    <p>When your current car is worth less than what you owe on it, trading it in doesn't erase that difference — it just moves it. If the dealer offers $14,000 for a car you owe $18,000 on, that $4,000 gap doesn't disappear when you drive off in a new car. It gets added to your new loan amount, on top of the new car's price. You're financing a car you no longer own before you finance a penny of the one you're actually driving.</p>
+    <p>This calculator isolates exactly what that rolled-in amount costs you — not the total loan payment, but specifically the extra monthly payment and extra interest attributable to the negative equity itself, separate from the cost of the new car.</p>
+
+    <h3>Why the Extra Interest Is Bigger Than People Expect</h3>
+    <p>The rolled-in amount doesn't just add its own value to the loan — it gets financed at the same APR and term as the rest of the car, for the full length of the loan. A $4,000 rollover on a 60-month loan at 7.5% APR doesn't cost $4,000; it costs roughly $4,800–$5,000 by the time the loan is paid off, once interest is included. And because it's blended into one loan, that interest keeps compounding as if it were part of the new car's price, not a leftover debt from the old one.</p>
+
+    <h3>When Rolling It In Is (Relatively) Fine</h3>
+    <ul>
+      <li>The negative equity is small relative to the new loan (under 5-10%) and won't meaningfully affect your new loan-to-value ratio</li>
+      <li>You're already getting a strong APR on the new loan, minimizing how much the rolled amount actually costs in interest</li>
+      <li>You genuinely need to replace the vehicle now — a breakdown, a growing family, a job requiring different transportation — and waiting isn't realistic</li>
+    </ul>
+
+    <h3>When It Compounds Into a Real Problem</h3>
+    <p>Rolling in negative equity is riskiest when it's large relative to the new car's price, when it's combined with a long loan term (72+ months), or when it happens more than once — trading in an already-rolled-over car before it builds equity again. Each cycle adds another layer of debt that isn't attached to any car you currently own, and the new loan starts underwater from day one, often by more than the old one was.</p>
+    <p>If you're financing 84 months <em>and</em> rolling in negative equity <em>and</em> making a small down payment, you're stacking three of the exact conditions that create negative equity in the first place — see our guide on <a href="../blog/is-72-month-car-loan-bad-idea.html" style="color:var(--orange);text-decoration:none;">why long loan terms backfire</a> for how these factors interact.</p>
+
+    <h3>Alternatives Worth Considering First</h3>
+    <p>Before rolling negative equity into a new loan, it's worth checking whether you can close the gap another way. Paying down the current loan for another 6-12 months before trading in reduces or eliminates the amount you'd need to roll over. Selling the car privately instead of trading in typically nets 10-15% more than a dealer's trade-in offer, which can turn negative equity into a manageable out-of-pocket gap or eliminate it entirely. And if the real issue is simply an unaffordable payment rather than needing a different car, refinancing the existing loan — without buying anything new — sidesteps the rollover problem altogether.</p>
+    <p>Use our <a href="../tools/car-trade-in-value-estimator.html" style="color:var(--orange);text-decoration:none;">trade-in value estimator</a> to compare a private sale against a dealer's likely offer, and our <a href="../tools/car-refinance-calculator.html" style="color:var(--orange);text-decoration:none;">refinance calculator</a> to see if refinancing the current loan solves the underlying problem without a rollover at all.</p>
+  </div>
+
+  <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin:2.5rem 0">
+    <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal)">Related Guides & Tools</h3>
+    <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8">
+      <li><a href="../blog/what-is-negative-equity-on-a-car-loan.html" style="color:var(--orange);text-decoration:none">What Is Negative Equity on a Car Loan?</a></li>
+      <li><a href="../blog/should-you-roll-negative-equity-into-a-new-car-loan.html" style="color:var(--orange);text-decoration:none">Should You Roll Negative Equity Into a New Car Loan?</a></li>
+      <li><a href="../tools/gap-insurance-calculator.html" style="color:var(--orange);text-decoration:none">GAP Insurance Calculator</a></li>
+      <li><a href="../tools/car-trade-in-value-estimator.html" style="color:var(--orange);text-decoration:none">Car Trade-In Value Estimator</a></li>
+      <li><a href="../tools/car-refinance-calculator.html" style="color:var(--orange);text-decoration:none">Car Refinance Calculator</a></li>
+    </ul>
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This calculator provides estimates for informational and planning purposes only, based on standard loan amortization math. Actual loan terms, fees, taxes, and dealer add-ons will affect your real payment and total cost. This tool does not constitute financial advice. Consult a lender or financial professional before making a purchase decision.
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(Math.abs(n)).toLocaleString();}
+function payment(principal, aprPct, months){
+  if(principal<=0) return 0;
+  const r = aprPct/100/12;
+  if(r===0) return principal/months;
+  return principal*r*Math.pow(1+r,months)/(Math.pow(1+r,months)-1);
+}
+function calculate(){
+  const oldBalance = parseFloat(document.getElementById('oldBalance').value)||0;
+  const tradeIn    = parseFloat(document.getElementById('tradeIn').value)||0;
+  const newPrice   = parseFloat(document.getElementById('newPrice').value)||0;
+  const down       = parseFloat(document.getElementById('downPayment').value)||0;
+  const apr        = parseFloat(document.getElementById('apr').value)||0;
+  const term       = parseInt(document.getElementById('term').value)||60;
+
+  const equity = tradeIn - oldBalance; // negative = negative equity
+  const negEquity = equity < 0 ? -equity : 0;
+
+  const newLoanAmount = Math.max(0, newPrice - down - equity);
+  const cleanLoanAmount = Math.max(0, newLoanAmount - negEquity);
+
+  const pmt = payment(newLoanAmount, apr, term);
+  const cleanPmt = payment(cleanLoanAmount, apr, term);
+
+  const totalPaid = pmt*term;
+  const cleanTotalPaid = cleanPmt*term;
+  const totalInterest = totalPaid - newLoanAmount;
+  const cleanTotalInterest = cleanTotalPaid - cleanLoanAmount;
+  const extraInterest = totalInterest - cleanTotalInterest;
+  const extraMonthly = pmt - cleanPmt;
+
+  document.getElementById('newLoanAmount').textContent = fmt(newLoanAmount);
+  document.getElementById('newPayment').textContent = fmt(pmt)+'/mo';
+  document.getElementById('rolledAmount').textContent = fmt(negEquity);
+
+  document.getElementById('bd-negeq').textContent = negEquity>0 ? fmt(negEquity) : 'None — positive equity';
+  document.getElementById('bd-loanamt').textContent = fmt(newLoanAmount);
+  document.getElementById('bd-cleanloan').textContent = fmt(cleanLoanAmount);
+  document.getElementById('bd-extramonthly').textContent = negEquity>0 ? fmt(extraMonthly)+'/mo' : '$0/mo';
+  document.getElementById('bd-extrainterest').textContent = negEquity>0 ? fmt(extraInterest) : '$0';
+
+  const vbox = document.getElementById('verdictBox');
+  const vicon = document.getElementById('verdictIcon');
+  const vtitle = document.getElementById('verdictTitle');
+  const vsub = document.getElementById('verdictSub');
+  const vnote = document.getElementById('resultNote');
+
+  if(negEquity > 0){
+    vbox.className = 'verdict-box rollover-costly';
+    vicon.textContent = '⚠️';
+    vtitle.textContent = 'Rolling In ' + fmt(negEquity) + ' of Negative Equity';
+    vsub.textContent = `This adds ${fmt(extraMonthly)}/month to your payment and ${fmt(extraInterest)} in extra interest over the life of the loan — money spent on a car you no longer own.`;
+    vnote.textContent = `Your new loan starts at a higher loan-to-value ratio than the car purchase alone would suggest. If this negative equity is a large share of the new loan, consider the alternatives below before signing.`;
+  } else {
+    vbox.className = 'verdict-box rollover-clean';
+    vicon.textContent = '✅';
+    vtitle.textContent = 'No Negative Equity to Roll Over';
+    vsub.textContent = `Your trade-in value covers your payoff amount, so your new loan isn't carrying over any old debt.`;
+    vnote.textContent = `Your new loan amount is based purely on the new car's price, down payment, and any positive equity applied — a clean starting position.`;
+  }
+
+  document.getElementById('results').classList.add('show');
+}
+calculate();
+</script>
+</body>
+</html>

@@ -23,6 +23,7 @@
 - [Car Refinance Calculator](https://autocalchub.com/tools/car-refinance-calculator.html): See how much you could save by refinancing your car loan — monthly savings, total interest saved, and break-even point.
 - [Car Early Payoff Calculator](https://autocalchub.com/tools/car-early-payoff-calculator.html): Calculate how much interest you save and how many months you cut by making extra payments on your car loan.
 - [Car Total Cost of Ownership Calculator](https://autocalchub.com/tools/car-total-cost-of-ownership-calculator.html): Calculate the true 5-year cost of owning a car including purchase price, loan interest, insurance, fuel, maintenance, and depreciation.
+- [Negative Equity Rollover Calculator](https://autocalchub.com/tools/negative-equity-rollover-calculator.html): Calculate exactly how much extra interest and monthly payment you take on by rolling negative equity from your current loan into a new one.
 
 ## Guides: Buying a Car
 
@@ -45,6 +46,9 @@
 - [How Long Does It Take to Pay Off a Car Loan?](https://autocalchub.com/blog/how-long-does-it-take-to-pay-off-car-loan.html): How loan term affects total cost and how to choose the right payoff timeline.
 - [How Much Should You Put Down on a Car?](https://autocalchub.com/blog/how-much-should-i-put-down-on-a-car.html): The 20/4/10 rule, new vs. used car guidelines, and what happens when you put too little down.
 - [How to Refinance a Car Loan](https://autocalchub.com/blog/how-to-refinance-a-car-loan.html): When refinancing makes sense, how much you can save, and the step-by-step process.
+- [What Is Negative Equity on a Car Loan?](https://autocalchub.com/blog/what-is-negative-equity-on-a-car-loan.html): How negative equity happens, how to calculate it, and the real ways to fix it.
+- [Should You Roll Negative Equity Into a New Car Loan?](https://autocalchub.com/blog/should-you-roll-negative-equity-into-a-new-car-loan.html): The real cost of rolling negative equity forward, and the alternatives worth considering first.
+- [What Is Loan-to-Value (LTV) Ratio?](https://autocalchub.com/blog/what-is-loan-to-value-ratio-car-loan.html): How lenders use LTV to set your car loan approval odds, interest rate, and refinancing options.
 
 ## Guides: Running Costs
 
