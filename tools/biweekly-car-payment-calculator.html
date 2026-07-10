@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bi-Weekly Car Payment Calculator – Save on Interest | AutoCalcHub</title>
+  <meta name="description" content="See exactly how much interest and time you save by switching your car loan to bi-weekly payments instead of monthly. Free calculator, no signup.">
+  <link rel="canonical" href="https://autocalchub.com/tools/biweekly-car-payment-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .tool-page { max-width: 760px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .tool-header { margin-bottom: 2.5rem; }
+    .tool-header h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem,4vw,2.5rem); font-weight: 700; letter-spacing: -0.02em; color: var(--charcoal); margin-bottom: 0.5rem; }
+    .tool-header p { color: var(--mid); font-size: 1rem; }
+    .calc-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+    .calc-card h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1.5rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    label { font-size: 0.85rem; font-weight: 500; color: var(--mid); }
+    .input-wrap { position: relative; }
+    .input-prefix, .input-suffix { position: absolute; top: 50%; transform: translateY(-50%); font-size: 0.9rem; color: var(--light); font-weight: 500; pointer-events: none; }
+    .input-prefix { left: 0.875rem; }
+    .input-suffix { right: 0.875rem; }
+    input[type="number"] { width: 100%; padding: 0.75rem 0.875rem; border: 1.5px solid var(--border); border-radius: 8px; font-size: 0.95rem; font-family: 'Inter', sans-serif; color: var(--charcoal); background: white; transition: border-color 0.2s; -moz-appearance: textfield; }
+    input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    input[type="number"]:focus { outline: none; border-color: var(--orange); }
+    .has-prefix input { padding-left: 2rem; }
+    .has-suffix input { padding-right: 2.5rem; }
+    .calc-btn { width: 100%; margin-top: 1.5rem; background: var(--navy); color: white; border: none; border-radius: 8px; padding: 0.875rem; font-size: 1rem; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.2s; }
+    .calc-btn:hover { background: var(--navy-mid); }
+    .results { display: none; }
+    .results.show { display: block; }
+    .results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+    .result-box { background: var(--off-white); border-radius: 10px; padding: 1.25rem; text-align: center; }
+    .result-box.highlight { background: var(--navy); }
+    .result-num { font-family: 'Space Grotesk', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); }
+    .result-box.highlight .result-num { color: var(--orange); }
+    .result-label { font-size: 0.75rem; color: var(--light); margin-top: 0.3rem; }
+    .result-box.highlight .result-label { color: rgba(255,255,255,0.6); }
+    .compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+    .compare-box { background: var(--off-white); border-radius: 12px; padding: 1.25rem; }
+    .compare-box h3 { font-size: 0.85rem; font-weight: 600; color: var(--light); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    .compare-line { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--mid); padding: 0.3rem 0; border-bottom: 1px solid var(--border); }
+    .compare-line:last-child { border-bottom: none; font-weight: 600; color: var(--charcoal); }
+    .verdict { background: var(--navy); border-radius: 12px; padding: 1.5rem; text-align: center; margin-bottom: 1.5rem; }
+    .verdict-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; font-weight: 700; color: white; margin-bottom: 0.4rem; }
+    .verdict-sub { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+    .content-section { margin-top: 3rem; }
+    .content-section h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--charcoal); margin-bottom: 1rem; }
+    .content-section h3 { font-size: 1.05rem; font-weight: 600; color: var(--charcoal); margin: 1.5rem 0 0.5rem; }
+    .content-section p { color: var(--mid); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.75rem; }
+    .content-section ul { color: var(--mid); font-size: 0.95rem; line-height: 1.8; margin: 0.5rem 0 1rem 1.5rem; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .results-grid { grid-template-columns: 1fr; } .compare-row { grid-template-columns: 1fr; } }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Bi-Weekly Car Payment Calculator",
+    "url": "https://autocalchub.com/tools/biweekly-car-payment-calculator.html",
+    "description": "Calculate how much interest and time you save by switching your car loan to bi-weekly payments instead of monthly payments.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "provider": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-07-10"
+  }
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>📆 Bi-Weekly Car Payment Calculator</h1>
+    <p>See how much interest and time you save by paying half your car payment every two weeks instead of once a month.</p>
+  </div>
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>Your Loan Details</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label>Loan Balance</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="balance" value="25000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="rate" value="7.5" min="0" max="30" step="0.1">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Loan Term</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="term" value="60" min="12" max="96">
+          <span class="input-suffix">mo</span>
+        </div>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Bi-Weekly Savings</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="verdict" id="verdict">
+      <div class="verdict-title" id="verdictTitle"></div>
+      <div class="verdict-sub" id="verdictSub"></div>
+    </div>
+
+    <div class="compare-row">
+      <div class="compare-box">
+        <h3>Standard Monthly</h3>
+        <div class="compare-line"><span>Payment</span><span id="r-stdPayment"></span></div>
+        <div class="compare-line"><span>Payoff Time</span><span id="r-stdTime"></span></div>
+        <div class="compare-line"><span>Total Interest</span><span id="r-stdInterest"></span></div>
+        <div class="compare-line"><span>Total Cost</span><span id="r-stdTotal"></span></div>
+      </div>
+      <div class="compare-box">
+        <h3>Bi-Weekly</h3>
+        <div class="compare-line"><span>Payment</span><span id="r-biPayment"></span></div>
+        <div class="compare-line"><span>Payoff Time</span><span id="r-biTime"></span></div>
+        <div class="compare-line"><span>Total Interest</span><span id="r-biInterest"></span></div>
+        <div class="compare-line"><span>Total Cost</span><span id="r-biTotal"></span></div>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-box highlight">
+        <div class="result-num" id="r-interestSaved"></div>
+        <div class="result-label">Interest Saved</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="r-timeCut"></div>
+        <div class="result-label">Time Cut</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num" id="r-extraPerYear"></div>
+        <div class="result-label">Extra Paid Per Year</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2>How Bi-Weekly Car Payments Work</h2>
+    <p>A bi-weekly payment plan splits your monthly payment in half and charges it every two weeks instead of once a month. Because a year has 52 weeks, that works out to 26 half-payments — the equivalent of 13 full monthly payments instead of 12. You've made one extra full payment per year without ever having to find an extra lump sum; it happens automatically just because of how the calendar divides into two-week periods instead of true half-months.</p>
+    <p>That extra annual payment goes straight to principal, and because auto loans use simple interest that accrues on your remaining balance, a lower principal means less interest builds up for the rest of the loan. The effect compounds: every bi-weekly cycle chips away slightly more principal than the equivalent monthly schedule would, which is why the payoff-time reduction is consistently larger than the raw math of "one extra payment" might suggest.</p>
+
+    <h3>The Difference Between Bi-Weekly and Semi-Monthly</h3>
+    <p>These two get confused constantly, and the confusion matters. Bi-weekly means every two weeks — 26 payments a year, tied to a fixed 14-day cycle. Semi-monthly means twice a month — the 1st and 15th, for example — which is only 24 payments a year, exactly matching 12 monthly payments with no extra payment at all. If a lender or a third-party service offers you "semi-monthly" payments and calls it bi-weekly, you're not actually getting the acceleration effect — confirm the payment count is 26/year, not 24, before assuming you're getting the benefit this calculator shows.</p>
+
+    <h3>Confirm Your Lender Actually Supports It — For Free</h3>
+    <p>Not every auto lender processes true bi-weekly payments internally. Some do it for free through their online portal or autopay settings; others don't offer it at all, in which case you can replicate the exact same effect yourself by manually submitting an extra payment equal to 1/12 of your monthly payment each month, or one full extra payment once a year — both produce the same result as a true bi-weekly schedule.</p>
+    <p>Be cautious of third-party bi-weekly payment services that charge a setup fee or a per-transaction fee to "manage" this for you. These services aren't doing anything you can't do yourself for free directly with your lender — the fee buys convenience, not a better outcome. Before signing up for one, call your lender and ask directly whether they support bi-weekly payments internally at no cost.</p>
+
+    <h3>Confirm There's No Prepayment Penalty</h3>
+    <p>Nearly all auto loans allow extra principal payments without penalty, but it's worth a quick confirmation before you start, especially on older loans or loans from smaller/subprime lenders where prepayment penalties are more common. A two-minute call to your lender to confirm eliminates any surprise.</p>
+
+    <h3>Who Benefits Most from Switching</h3>
+    <ul>
+      <li><strong>Longer loans (60-72 months)</strong> — the compounding effect has more time to work, producing larger total interest savings than on a short loan</li>
+      <li><strong>Higher rates</strong> — the more interest you're paying per dollar of balance, the more a bi-weekly schedule saves by attacking that balance faster</li>
+      <li><strong>Biweekly paycheck earners</strong> — if you're paid every two weeks already, aligning your car payment to the same cadence makes budgeting simpler in addition to the interest savings</li>
+    </ul>
+    <p>If you'd rather compare a lump-sum extra-payment strategy instead of restructuring your payment schedule entirely, our <a href="car-early-payoff-calculator.html" style="color:var(--orange);text-decoration:none;">early payoff calculator</a> models that approach directly — both strategies save interest, but bi-weekly does it automatically while extra payments require you to actively send more money.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;">Related Guides & Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/biweekly-vs-monthly-car-payments.html" style="color:var(--orange);text-decoration:none;">Bi-Weekly vs Monthly Car Payments: Which Saves You More?</a></li>
+        <li><a href="../blog/how-to-set-up-biweekly-car-payments.html" style="color:var(--orange);text-decoration:none;">How to Set Up Bi-Weekly Car Payments With Your Lender</a></li>
+        <li><a href="car-early-payoff-calculator.html" style="color:var(--orange);text-decoration:none;">Car Early Payoff Calculator</a></li>
+        <li><a href="../blog/how-to-pay-off-car-loan-early.html" style="color:var(--orange);text-decoration:none;">How to Pay Off a Car Loan Early</a></li>
+        <li><a href="car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n) { return '$' + Math.round(n).toLocaleString(); }
+
+function pmt(principal, monthlyRate, months) {
+  if (monthlyRate === 0) return principal / months;
+  return principal * monthlyRate * Math.pow(1 + monthlyRate, months) / (Math.pow(1 + monthlyRate, months) - 1);
+}
+
+// Standard monthly amortization
+function calcMonthly(balance, monthlyRate, payment) {
+  let bal = balance, months = 0, totalInterest = 0;
+  while (bal > 0.01 && months < 1200) {
+    const interest = bal * monthlyRate;
+    totalInterest += interest;
+    const principal = Math.min(payment - interest, bal);
+    bal -= principal;
+    months++;
+  }
+  return { months, totalInterest };
+}
+
+// Bi-weekly amortization: 26 periods/year, period rate = annual/26, payment = monthly payment / 2
+function calcBiweekly(balance, annualRate, biweeklyPayment) {
+  const periodRate = annualRate / 26;
+  let bal = balance, periods = 0, totalInterest = 0;
+  while (bal > 0.01 && periods < 2600) {
+    const interest = bal * periodRate;
+    totalInterest += interest;
+    const principal = Math.min(biweeklyPayment - interest, bal);
+    bal -= principal;
+    periods++;
+  }
+  return { periods, totalInterest };
+}
+
+function formatTime(months) {
+  const y = Math.floor(months / 12);
+  const m = Math.round(months % 12);
+  if (y === 0) return m + ' mo';
+  if (m === 0) return y + ' yr';
+  return y + 'y ' + m + 'mo';
+}
+
+function calculate() {
+  const balance = parseFloat(document.getElementById('balance').value) || 0;
+  const aprPct  = parseFloat(document.getElementById('rate').value) || 0;
+  const term    = parseInt(document.getElementById('term').value) || 60;
+
+  const monthlyRate = aprPct / 100 / 12;
+  const annualRate  = aprPct / 100;
+
+  const stdPayment = pmt(balance, monthlyRate, term);
+  const std = calcMonthly(balance, monthlyRate, stdPayment);
+
+  const biPayment = stdPayment / 2;
+  const bi = calcBiweekly(balance, annualRate, biPayment);
+  const biMonthsEquivalent = bi.periods * 14 / 30.44; // convert periods (14-day cycles) to months
+
+  const interestSaved = std.totalInterest - bi.totalInterest;
+  const timeCutMonths = std.months - biMonthsEquivalent;
+  const extraPerYear = biPayment * 2; // one extra half-payment worth per year vs monthly total
+
+  document.getElementById('r-stdPayment').textContent  = fmt(stdPayment) + '/mo';
+  document.getElementById('r-stdTime').textContent     = formatTime(std.months);
+  document.getElementById('r-stdInterest').textContent = fmt(std.totalInterest);
+  document.getElementById('r-stdTotal').textContent    = fmt(balance + std.totalInterest);
+
+  document.getElementById('r-biPayment').textContent   = fmt(biPayment) + '/2wk';
+  document.getElementById('r-biTime').textContent      = formatTime(biMonthsEquivalent);
+  document.getElementById('r-biInterest').textContent  = fmt(bi.totalInterest);
+  document.getElementById('r-biTotal').textContent     = fmt(balance + bi.totalInterest);
+
+  document.getElementById('r-interestSaved').textContent = fmt(interestSaved);
+  document.getElementById('r-timeCut').textContent       = formatTime(timeCutMonths);
+  document.getElementById('r-extraPerYear').textContent  = fmt(extraPerYear - stdPayment * 12);
+
+  document.getElementById('verdictTitle').textContent = 'Save ' + fmt(interestSaved) + ' and pay off ' + formatTime(timeCutMonths) + ' early';
+  document.getElementById('verdictSub').textContent   = 'Just by switching from monthly to bi-weekly payments — no extra money out of pocket per pay period.';
+
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

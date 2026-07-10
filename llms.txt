@@ -24,6 +24,7 @@
 - [Car Early Payoff Calculator](https://autocalchub.com/tools/car-early-payoff-calculator.html): Calculate how much interest you save and how many months you cut by making extra payments on your car loan.
 - [Car Total Cost of Ownership Calculator](https://autocalchub.com/tools/car-total-cost-of-ownership-calculator.html): Calculate the true 5-year cost of owning a car including purchase price, loan interest, insurance, fuel, maintenance, and depreciation.
 - [Negative Equity Rollover Calculator](https://autocalchub.com/tools/negative-equity-rollover-calculator.html): Calculate exactly how much extra interest and monthly payment you take on by rolling negative equity from your current loan into a new one.
+- [Bi-Weekly Car Payment Calculator](https://autocalchub.com/tools/biweekly-car-payment-calculator.html): Calculate how much interest and time you save by switching your car loan to bi-weekly payments instead of monthly payments.
 
 ## Guides: Buying a Car
 
@@ -49,6 +50,8 @@
 - [What Is Negative Equity on a Car Loan?](https://autocalchub.com/blog/what-is-negative-equity-on-a-car-loan.html): How negative equity happens, how to calculate it, and the real ways to fix it.
 - [Should You Roll Negative Equity Into a New Car Loan?](https://autocalchub.com/blog/should-you-roll-negative-equity-into-a-new-car-loan.html): The real cost of rolling negative equity forward, and the alternatives worth considering first.
 - [What Is Loan-to-Value (LTV) Ratio?](https://autocalchub.com/blog/what-is-loan-to-value-ratio-car-loan.html): How lenders use LTV to set your car loan approval odds, interest rate, and refinancing options.
+- [Bi-Weekly vs Monthly Car Payments](https://autocalchub.com/blog/biweekly-vs-monthly-car-payments.html): How bi-weekly car payments save interest automatically compared to monthly payments, and which loans benefit most.
+- [How to Set Up Bi-Weekly Car Payments With Your Lender](https://autocalchub.com/blog/how-to-set-up-biweekly-car-payments.html): Step-by-step guide to setting up bi-weekly car loan payments, what to ask your lender, and how to do it yourself for free.
 
 ## Guides: Running Costs
 
