@@ -2,6 +2,12 @@
 
 > Free car calculators and guides to help you make smarter decisions when buying, financing, and owning a vehicle. All tools are free, no signup required.
 
+## About This Site
+
+- [About AutoCalcHub](https://autocalchub.com/about.html): Who we are and what we do.
+- [How We Calculate](https://autocalchub.com/methodology.html): The formulas, assumptions, and data sources (Experian, Bankrate, Edmunds, EIA, KBB) behind every calculator on the site.
+- [Editorial Policy](https://autocalchub.com/editorial-policy.html): How content is created, reviewed, and updated, and how advertising is kept separate from editorial content.
+
 ## Tools
 
 - [Car Loan Calculator](https://autocalchub.com/tools/car-loan-calculator.html): Calculate your monthly car payment, total interest, and full loan cost based on price, APR, and term.

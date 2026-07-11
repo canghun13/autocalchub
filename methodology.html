@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Calculate – Methodology & Data Sources | AutoCalcHub</title>
+  <meta name="description" content="The exact formulas, assumptions, and data sources behind every AutoCalcHub calculator — fully transparent, no black boxes.">
+  <link rel="canonical" href="https://autocalchub.com/methodology.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .page{max-width:760px;margin:0 auto;padding:4rem 2rem 6rem}
+    h1{font-family:'Space Grotesk',sans-serif;font-size:2.2rem;font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .subtitle{color:var(--mid);font-size:1.05rem;margin-bottom:1rem}
+    .updated-note{font-size:0.85rem;color:var(--light);margin-bottom:3rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+    h2{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--charcoal);margin:2.5rem 0 0.75rem}
+    h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    p{color:var(--mid);line-height:1.8;margin-bottom:1rem;font-size:0.95rem}
+    ul,ol{color:var(--mid);line-height:1.8;margin:0.5rem 0 1rem 1.5rem;font-size:0.95rem}
+    li{margin-bottom:0.4rem}
+    code{background:var(--off-white);padding:0.15rem 0.4rem;border-radius:4px;font-size:0.88rem;color:var(--charcoal)}
+    .formula-box{background:var(--off-white);border-radius:10px;padding:1.25rem 1.5rem;margin:1rem 0;font-size:0.9rem}
+    .source-list{background:#f8f9fa;border-radius:10px;padding:1.5rem;margin-top:1rem}
+    .source-list h3{margin-top:0}
+    .source-list li{font-size:0.88rem}
+    .disclaimer-box{background:#f8f9fa;border-radius:10px;padding:1.5rem;margin-top:2.5rem}
+    .disclaimer-box h2{margin-top:0}
+    .disclaimer-box p{font-size:0.875rem}
+  </style>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="page">
+  <h1>How We Calculate</h1>
+  <p class="subtitle">Every formula, assumption, and data source behind our calculators — no black boxes.</p>
+  <p class="updated-note">Last reviewed: July 2026 by the AutoCalcHub Team</p>
+
+  <p>We believe a calculator is only useful if you can trust the math behind it. This page documents exactly how each category of tool on AutoCalcHub works, what assumptions it makes, and where the underlying data comes from — so you're never taking our numbers on faith.</p>
+
+  <h2>Loan & Financing Calculators</h2>
+  <p>Our loan, affordability, down payment, refinance, and early payoff calculators all use the standard amortization formula used industry-wide by lenders:</p>
+  <div class="formula-box">
+    <code>Monthly Payment = P × r × (1 + r)ⁿ / ((1 + r)ⁿ − 1)</code><br>
+    <span style="color:var(--light);font-size:0.85rem;">Where P = principal (loan amount), r = monthly interest rate (APR ÷ 12), n = number of monthly payments</span>
+  </div>
+  <p>This is a fixed-rate, simple-interest amortization model — the same math used by virtually every auto lender in the United States. We don't apply any hidden fees, rounding tricks, or proprietary adjustments. What you enter is exactly what gets calculated.</p>
+  <p>Our <a href="tools/biweekly-car-payment-calculator.html" style="color:var(--orange);text-decoration:none;">bi-weekly payment calculator</a> uses the same amortization logic but recalculates on a 26-period annual cycle (every two weeks) instead of 12 monthly periods, which is the standard method lenders use to model bi-weekly repayment schedules.</p>
+
+  <h3>Interest Rate Benchmarks</h3>
+  <p>Where our content references "average" or "typical" interest rates by credit tier, those figures are sourced from Experian's quarterly State of the Automotive Finance Market report and cross-checked against Bankrate and Edmunds published lender surveys. We update these figures periodically as new quarterly data becomes available — we don't leave outdated rate tables live indefinitely.</p>
+
+  <h2>Depreciation & Resale Value Calculators</h2>
+  <p>Our depreciation calculator applies a declining-balance model: a larger percentage loss in year one (typically 15–25%, reflecting real-world new-car depreciation patterns), followed by a more gradual annual decline in subsequent years. This mirrors the shape of real depreciation curves reported by industry sources like KBB, Edmunds, and iSeeCars, rather than a flat straight-line reduction, which would understate early losses and overstate later ones.</p>
+  <p>Our used car value and trade-in estimators combine this depreciation curve with adjustments for mileage (relative to the age-adjusted average of roughly 12,000–15,000 miles/year) and reported condition, since these are the two factors that most directly affect real resale value beyond age alone.</p>
+
+  <h2>Fuel, Running Cost & EV Calculators</h2>
+  <p>Fuel and road trip cost calculators are driven entirely by the numbers you enter (MPG, distance, price per gallon) — there's no hidden estimation involved. Where we reference national average fuel prices or regional variation in our guides, those figures are based on publicly reported EIA (U.S. Energy Information Administration) data.</p>
+  <p>EV charging cost calculations use standard kWh-based math: <code>Cost = Battery Capacity (kWh) × Electricity Rate ($/kWh) ÷ Charging Efficiency</code>. Home electricity rate defaults reflect U.S. national residential averages; we recommend entering your actual utility rate for the most accurate result.</p>
+
+  <h2>Insurance Estimator</h2>
+  <p>Our insurance cost estimator provides a directional range based on commonly cited industry rating factors (age, driving record, coverage level, vehicle type) rather than a quote from any specific insurer. Actual insurance pricing varies significantly by carrier, state, and individual underwriting — our tool is meant to help you sanity-check a quote, not replace one.</p>
+
+  <h2>What We Don't Do</h2>
+  <ul>
+    <li>We don't sell leads, quotes, or your calculator inputs to lenders, insurers, or dealers</li>
+    <li>We don't adjust formulas to favor any product, lender, or advertiser</li>
+    <li>We don't use AI-generated statistics without cross-checking them against a named, verifiable source</li>
+    <li>We don't leave stale data tables live — pages with rate tables or market averages are reviewed and refreshed periodically, and each page shows when it was last updated</li>
+  </ul>
+
+  <div class="source-list">
+    <h3>Primary Data Sources We Reference</h3>
+    <ul>
+      <li>Experian — State of the Automotive Finance Market (quarterly)</li>
+      <li>Bankrate & Edmunds — published auto loan rate surveys</li>
+      <li>U.S. Energy Information Administration (EIA) — retail fuel price data</li>
+      <li>Kelley Blue Book (KBB) & Edmunds — depreciation and resale value benchmarks</li>
+      <li>Industry-standard amortization formulas — the same math used by lenders themselves</li>
+    </ul>
+  </div>
+
+  <p>See our <a href="editorial-policy.html" style="color:var(--orange);text-decoration:none;">editorial policy</a> for how we decide what to publish and how we handle updates, or our <a href="about.html" style="color:var(--orange);text-decoration:none;">About page</a> for more on who we are.</p>
+
+  <div class="disclaimer-box">
+    <h2>A Note on Accuracy</h2>
+    <p>Every calculator on this site is built to be as accurate as the formulas and data allow, but results are still estimates — actual loan terms, insurance premiums, and resale values depend on factors specific to you that a general calculator can't fully capture. Always confirm final numbers with your lender, insurer, or dealer before making a financial decision.</p>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="assets/js/components.js"></script>
+</body>
+</html>
