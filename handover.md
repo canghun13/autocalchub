@@ -15,13 +15,16 @@
 ## 2. 콘텐츠 현황 (2026-07-12 기준)
 - 블로그 44개 (`blog/` 폴더, index.html 제외)
 - 툴 21개 (`tools/` 폴더, index.html 제외)
-- sitemap.xml 총 URL 71개 (블로그+툴+정적페이지+blog/index+tools/index)
+- 정적 페이지: `about.html`, `contact.html`, `privacy-policy.html`, **`methodology.html`(신규)**, **`editorial-policy.html`(신규)**
+- sitemap.xml 총 URL 73개 (블로그+툴+정적페이지+blog/index+tools/index)
 - `tools/index.html` — 블로그 인덱스와 동일한 구조(카테고리별 그리드 + 검색기능)로 신규 생성됨 (기존엔 없었음)
+- **블로그 44개 전체**에 `<div class="blog-meta">...</div>` 줄에 "· Written by AutoCalcHub Team" 바이라인 통합 반영됨 (7/12) — 신규 블로그 작성 시 이 형식 유지할 것
 
 ### 사이트 구조 관련 중요 변경사항
 - **헤더 내비게이션**: 기존 "Calculators"/"Blog" 드롭다운 메뉴 → **단순 링크**로 전환. "Calculators" 명칭도 **"Tools"**로 변경됨. (`assets/partials/header.html`)
 - **"← All tools" 백링크**: `assets/js/components.js`에서 관리, `tools/index.html`로 연결됨 (예전엔 홈페이지 `#tools` 앵커였는데 수정함). 툴 목록 페이지 자체에서는 이 링크가 안 뜨도록 처리돼 있음.
 - 모든 페이지는 `assets/partials/header.html`, `footer.html`을 JS(`components.js`)로 fetch해서 공유 렌더링 — 헤더/푸터는 한 곳만 고치면 전체 사이트에 반영됨.
+- footer에 `methodology.html`, `editorial-policy.html` 링크 상시 노출 중 (전체 페이지 공통).
 
 ## 3. 작업 규칙 (반드시 지킬 것)
 1. **지시 있을 때만 작업, 먼저 진행하지 않음**
@@ -43,6 +46,7 @@
 7. **작업 완료 후 반드시 검증**: div 태그 밸런스, JSON-LD 유효성, sitemap XML 유효성, 내부링크 실존 여부를 스크립트로 재확인 후 커밋. (특히 str_replace로 CTA 박스나 섹션 헤딩을 편집할 때 old_str/new_str 경계에서 태그를 통째로 날려먹는 실수가 반복적으로 발생했음 — 편집 직후 grep으로 즉시 재확인하는 습관 필요)
 8. **대시보드나 시각화 자료는 만들지 말 것** (요청 시) — 분석 결과는 텍스트로만 전달
 9. **작업할 게 없으면 억지로 만들지 말 것** — 노출/클릭 데이터가 통계적으로 무의미한 수준(표본 수십 건 이하)이면 "오늘은 작업 없음"이라고 솔직하게 보고하는 게 맞음. 신규 콘텐츠를 무리하게 늘리면 크롤링 예산만 분산됨.
+10. **E-E-A-T/저자 신뢰도 작업 시 허위 경력·자격증 절대 지어내지 말 것** — "재무설계사 자격증을 가진 아무개" 같은 가짜 프로필은 Google 스팸 정책 위반이며 발각 시 페널티 리스크가 큼. 저자는 "AutoCalcHub Team"으로 익명 유지하고, 대신 방법론 투명성(`methodology.html`)·에디토리얼 정책(`editorial-policy.html`)·출처 표기 등 **조직 차원의 진짜 신뢰 신호**로 보강할 것.
 
 ## 4. 주간 루틴 (정기 작업, 일요일)
 - 매주 일요일: 블로그 3개 + 툴 1개 **신규 또는 보강**
@@ -97,15 +101,29 @@
 - 신규 툴: **Bi-Weekly Car Payment Calculator** (기존 car-early-payoff-calculator와 메커니즘 다르게 차별화 — 목돈 추가납입 vs 격주납 전환)
 - 신규 블로그 2개: "Bi-Weekly vs Monthly Car Payments", "How to Set Up Bi-Weekly Car Payments With Your Lender" (3번째 블로그는 억지로 안 채우고 2개로 마무리 — "확실한 것만 하고 없으면 스톱" 원칙 적용)
 
-### 7/12 세션: GSC 데이터 재확인, 작업 없음으로 결론
+### 7/12 세션 (1차): GSC 데이터 재확인, 작업 없음으로 결론
 - Performance + Coverage 리포트 확인. Coverage는 6/30 데이터까지만 반영(지연), Performance는 7/10 세션과 거의 동일한 패턴(노출 여전히 하루 0~4건, 신규 콘텐츠는 아직 노출 0건 — 정상적으로 너무 이름)
 - **신규 이슈 2건 조사**: "리디렉션 포함 페이지(실패함)" 1건, "적절한 표준 태그 대체 페이지" 1건 → 코드 전체 검증(http:// 하드코딩, www. 절대경로, 잘못된 canonical) 결과 전부 없음 확인 → **호스팅 레벨(Cloudflare/GitHub Pages)의 정상적인 http→https 리디렉션으로 판단, 코드 수정 불필요**
 - 수익화(AdSense) 관점에서 냉정하게 판단: 3개월 누적 클릭 0건인 상황에서 신규 콘텐츠를 더 만들어도 단기 매출 영향 없음 → **오늘은 작업 없음으로 결론**, 억지로 일 만들지 않음
 
-## 7. 다음 작업 후보 (아직 미착수)
-- negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 여부 1~2주 후 재확인 필요
+### 7/12 세션 (2차): E-E-A-T 개선 (장기 레버 관점)
+- "장기적으로 추가할만한 것" 질문에서 시작 — 백링크(이미 어느정도 있음, 우선순위 아님), FAQPage/HowTo 스키마(0% 사용 중, 다음 후보), **E-E-A-T 저자 신뢰도 부재**(3가지 중 최우선으로 결정) 발견
+- 원칙: **허위 경력/자격증 절대 지어내지 않음** (스팸 정책 위반 리스크). "AutoCalcHub Team"으로 익명 유지, 대신 조직 차원 투명성/전문성 신호로 보강
+- **신규 페이지 2개**: `methodology.html`(계산 공식·가정·데이터 출처 전체 공개, Experian/Bankrate/Edmunds/EIA/KBB 명시), `editorial-policy.html`(콘텐츠 제작/검수 기준, 광고-콘텐츠 분리 원칙, 제휴 관계 없음 명시, 정정 정책)
+- footer.html에 두 페이지 링크 추가 (전체 페이지에 자동 반영) + 오래된 저작권 연도(2025→2026) 수정
+- about.html에도 상호 링크 추가
+- **블로그 44개 전체**에 안전한 정규식 일괄 처리로 "· Written by AutoCalcHub Team" 바이라인을 기존 blog-meta 줄에 통합 (str_replace 개별 편집 대신 python 스크립트로 일괄 처리 — 44개 파일 각각 blog-meta div가 정확히 1개씩인지 사전 확인 후 처리, 태그 유실 리스크 회피)
+- **`car-insurance-estimator.html`(사이트 내 노출 1위, 1,074회) 보험료 평균치 갱신**: $1,700-2,100 → $2,200-2,600 (2026년 최신 데이터, U.S. News/ValuePenguin 출처 명시) — 방치 정책 유지하되 정확성/신뢰도는 유지
+- sitemap.xml(+2 URL, 73개), llms.txt("About This Site" 섹션 신규) 반영
+- 커밋 `31ee7fc`, 51개 파일
+
+## 7. E-E-A-T 관련 향후 후보 (미착수)
+- FAQPage/HowTo 구조화 데이터 — 현재 사이트 전체 사용률 0%. "What Is...", "How to...", "Should You..." 형태 글이 많아서 적용 후보 많음. 순위와 무관하게 리치 스니펫으로 CTR 개선 가능한 별개 레버.
+- 통계치 들어가는 나머지 페이지(감가상각률, 유지비 평균 등)의 출처 표기 확대 — 이번엔 최고 트래픽 페이지 1개만 처리, 나머지는 미착수.
+
+negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 여부 1~2주 후 재확인 필요
 - 색인 생성 수가 7/6~7/10 보강분 이후 실제로 늘었는지 Coverage 리포트로 확인 (지연 감안, 최소 2주 후)
-- `how-to-get-pre-approved-car-loan.html`처럼 "콘텐츠는 완벽한데 권위도 때문에 순위 안 나오는" 페이지들은 콘텐츠 작업 대신 **백링크/외부 채널 확대**가 근본 해법일 가능성 — 아직 미착수 영역
+- `how-to-get-pre-approved-car-loan.html`처럼 "콘텐츠는 완벽한데 권위도 때문에 순위 안 나오는" 페이지들은 콘텐츠 작업 대신 **백링크/외부 채널 확대**가 근본 해법일 가능성 — 아직 미착수 영역 (단, 7/12 세션에서 "백링크는 이미 어느정도 있다"는 피드백 있었음, 우선순위 아님)
 
 ## 8. 외부 채널 (변경 없음, 6/29 시점 기준)
 - 25개 사이트 등록 완료, footer 뱃지 6개 (NewTool, FoundrList, Fazier, Findly.tools, twelve.tools, PitchWall)
