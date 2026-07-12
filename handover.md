@@ -19,6 +19,7 @@
 - sitemap.xml 총 URL 73개 (블로그+툴+정적페이지+blog/index+tools/index)
 - `tools/index.html` — 블로그 인덱스와 동일한 구조(카테고리별 그리드 + 검색기능)로 신규 생성됨 (기존엔 없었음)
 - **블로그 44개 전체**에 `<div class="blog-meta">...</div>` 줄에 "· Written by AutoCalcHub Team" 바이라인 통합 반영됨 (7/12) — 신규 블로그 작성 시 이 형식 유지할 것
+- **블로그 44개 + 툴 21개 = 65개 페이지 전체**에 BreadcrumbList JSON-LD 스키마 반영됨 (7/12) — 신규 페이지 작성 시 이 패턴(Home > Blog/Tools > 페이지명) 동일하게 추가할 것. FAQPage/HowTo 스키마는 2026-05-07 Google이 리치 리절트를 폐지해서 더 이상 유효한 선택지 아님(추가하지 말 것).
 
 ### 사이트 구조 관련 중요 변경사항
 - **헤더 내비게이션**: 기존 "Calculators"/"Blog" 드롭다운 메뉴 → **단순 링크**로 전환. "Calculators" 명칭도 **"Tools"**로 변경됨. (`assets/partials/header.html`)
@@ -117,9 +118,17 @@
 - sitemap.xml(+2 URL, 73개), llms.txt("About This Site" 섹션 신규) 반영
 - 커밋 `31ee7fc`, 51개 파일
 
+### 7/12 세션 (3차): E-E-A-T 나머지 작업 — BreadcrumbList 스키마 + 출처 보강
+- **중요 정정**: 웹 검색 결과 Google이 2026-05-07에 FAQ 리치 리절트를 완전히 폐지한 것 확인 (HowTo는 2023년에 이미 폐지). 2차 세션에서 "FAQ/HowTo 스키마 = CTR 개선 레버"라고 안내한 게 최신 정보 기준 틀림 → **FAQ/HowTo 스키마 작업 후보에서 제외**
+- 대신 **BreadcrumbList 스키마**로 대체 진행 — Google이 여전히 지원하고 모바일 CTR 5~10% 개선 효과가 있다고 알려진 타입인데 사이트 전체 사용률 0%였음
+- **블로그 44개 + 툴 21개 = 65개 페이지 전체**에 BreadcrumbList JSON-LD 일괄 삽입 (Home > Blog/Tools > 페이지명, 각 페이지 기존 canonical URL/title 재사용, python 스크립트로 안전하게 일괄 처리 후 130개 JSON-LD 블록 전체 유효성 검증)
+- `tools/car-depreciation-calculator.html`의 "연간 15-25% 감가" 통계에 출처(KBB/Edmunds/iSeeCars) 추가
+- `tools/car-maintenance-cost-calculator.html`은 이미 RepairPal/AAA 출처 명시돼 있어서 손 안 댐
+- 커밋 `fa60353`, 66개 파일
+
 ## 7. E-E-A-T 관련 향후 후보 (미착수)
-- FAQPage/HowTo 구조화 데이터 — 현재 사이트 전체 사용률 0%. "What Is...", "How to...", "Should You..." 형태 글이 많아서 적용 후보 많음. 순위와 무관하게 리치 스니펫으로 CTR 개선 가능한 별개 레버.
-- 통계치 들어가는 나머지 페이지(감가상각률, 유지비 평균 등)의 출처 표기 확대 — 이번엔 최고 트래픽 페이지 1개만 처리, 나머지는 미착수.
+- ~~FAQPage/HowTo 구조화 데이터~~ — **2026-05-07 Google이 FAQ 리치 리절트 완전 폐지 확인, 후보에서 제외됨** (7/12 3차 세션에서 정정)
+- 통계치 들어가는 나머지 페이지(유지비 외 다른 페이지들)의 출처 표기 추가 확대 여지는 남아있음 — 이번엔 최고 트래픽 페이지 1개 + 감가상각 계산기만 처리
 
 negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 여부 1~2주 후 재확인 필요
 - 색인 생성 수가 7/6~7/10 보강분 이후 실제로 늘었는지 Coverage 리포트로 확인 (지연 감안, 최소 2주 후)
