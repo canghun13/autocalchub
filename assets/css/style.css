@@ -134,7 +134,7 @@ footer {
 }
 .footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; color: white; text-decoration: none; font-weight: 700; }
 .footer-logo span { color: var(--orange); }
-.footer-links { display: flex; gap: 1.5rem; }
+.footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem 1.5rem; }
 .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
 .footer-links a:hover { color: var(--orange); }
 .footer-copy { font-size: 0.8rem; }
@@ -195,4 +195,7 @@ footer {
   .nav-dropdown-label { padding: 0.625rem 1.5rem 0.25rem; color: rgba(255,255,255,0.4); }
   .nav-dropdown a { padding: 0.6rem 2rem; font-size: 0.9rem; color: rgba(255,255,255,0.7); white-space: normal; }
   .nav-dropdown a:hover { background: var(--navy-mid); color: var(--orange); }
+
+  .footer-inner { flex-direction: column; text-align: center; }
+  .footer-links { gap: 0.6rem 1rem; font-size: 0.8rem; }
 }
