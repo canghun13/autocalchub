@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-07-12 기준)
+# AutoCalcHub 인수인계 문서 (2026-07-13 기준)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -125,6 +125,31 @@
 - `tools/car-depreciation-calculator.html`의 "연간 15-25% 감가" 통계에 출처(KBB/Edmunds/iSeeCars) 추가
 - `tools/car-maintenance-cost-calculator.html`은 이미 RepairPal/AAA 출처 명시돼 있어서 손 안 댐
 - 커밋 `fa60353`, 66개 파일
+
+### 7/13 세션: AdSense "가치가 별로 없는 콘텐츠" 정책 위반 대응 (전체 사이트 콘텐츠 점검)
+- **트리거**: 7/11 AdSense가 사이트를 "가치가 별로 없는 콘텐츠(low value content)"로 플래그. 스크린샷 확인 후 즉시 전체 사이트 점검 지시받음.
+- **진단**: 65개 페이지(블로그44+툴21) 전수 단어수 스캔. 블로그는 전부 900~2,400단어로 양호. **툴 21개 중 11개가 800단어 미만**으로 확인 — 특히 `car-loan-calculator.html`(사이트 내 순위 1위, 4.07위, 트래픽 최상위)이 317단어로 최악. 계산기 위젯 + 짧은 설명 3~4문단짜리 "실속 없는 유틸리티 페이지" 패턴이 원인으로 판단. 광고 밀도·중복 콘텐츠는 스캔 결과 문제 없음으로 배제.
+- **조치**: 800단어 미만 툴 11개 전부를 900~1,040단어 수준으로 보강 (계산 공식/방법론 설명, 실제 숫자로 계산한 예시, 흔한 실수, 트레이드인/세금/신용점수 영향 등 엣지케이스 섹션 추가). `tools/index.html`도 인트로 문단 + 카테고리별 설명 추가 (451→650단어).
+  - car-loan-calculator.html: 317 → 1042
+  - car-early-payoff-calculator.html: 513 → 826
+  - car-refinance-calculator.html: 514 → 807
+  - car-total-cost-of-ownership-calculator.html: 587 → 940
+  - car-down-payment-calculator.html: 621 → 940
+  - car-trade-in-value-estimator.html: 662 → 919
+  - gap-insurance-calculator.html: 664 → 945
+  - biweekly-car-payment-calculator.html: 673 → 916
+  - car-maintenance-cost-calculator.html: 679 → 885
+  - fuel-cost-calculator.html: 746 → 971
+  - negative-equity-rollover-calculator.html: 774 → 1011
+- **부수적으로 발견한 오류 수정**: 콘텐츠 보강 과정에서 기존 예시 수치들을 실제 상환 공식으로 재검증하다가 오류 2건 발견해 수정함 — `car-refinance-calculator.html`(월 $80/총이자 $3,800 절감이라고 써있었는데 실제 계산은 월 $38/총이자 $1,800), `car-down-payment-calculator.html`(총이자 $2,400 절감이라고 써있었는데 실제는 $1,200). 새로 추가한 예시 수치도 전부 파이썬으로 실제 상환 공식 검증 후 게재.
+- **검증**: 12개 파일 전체 div 태그 밸런스, JSON-LD 유효성, 내부링크 실존 여부를 스크립트로 확인 후 커밋 (작업 중 gap-insurance-calculator.html에서 str_replace로 닫는 div 하나가 실제로 유실되는 사고 발생 → 즉시 재확인 습관 덕분에 커밋 전 잡아냄, 규칙 7의 사례 재확인됨).
+- sitemap.xml 12개 URL lastmod 갱신, dateModified(JSON-LD) 12개 파일 전체 갱신.
+- 커밋 `6a38ed2`, 13개 파일. **결과: 800단어 미만 페이지 11개 → 0개, 사이트 전체 최저 단어수 807단어.**
+- **다음에 할 일**: 이 배포 반영 후 AdSense에 재검토 요청 필요 (사용자가 직접 진행). Search Console에서 색인 변화 1~2주 후 재확인 (리포트 지연 감안).
+
+### 7/13 세션에서 갱신된 콘텐츠 볼륨 기준
+- 65개 페이지 전체 800단어 이상. 블로그 900~2,442단어, 툴 807~1,163단어.
+- 신규 툴/블로그 작성 시 최소 800단어, 가급적 900단어 이상을 목표로 할 것 (7/13 사건 이후 새 기준).
 
 ## 7. E-E-A-T 관련 향후 후보 (미착수)
 - ~~FAQPage/HowTo 구조화 데이터~~ — **2026-05-07 Google이 FAQ 리치 리절트 완전 폐지 확인, 후보에서 제외됨** (7/12 3차 세션에서 정정)
