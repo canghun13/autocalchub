@@ -135,7 +135,7 @@
       "name": "AutoCalcHub",
       "url": "https://autocalchub.com"
     },
-    "dateModified": "2026-07-08"
+    "dateModified": "2026-07-13"
   }
   </script>
   <script type="application/ld+json">
@@ -264,19 +264,36 @@
   <!-- CONTENT -->
   <div class="content-section">
     <h2>How to Use This Car Loan Calculator</h2>
-    <p>Enter your vehicle price, down payment, interest rate, and loan term to instantly see your monthly payment and the full cost of borrowing.</p>
+    <p>Enter your vehicle price, down payment, interest rate, and loan term to instantly see your monthly payment and the full cost of borrowing. You can also factor in a trade-in value and your local sales tax rate for a more accurate estimate — most online calculators skip these two, which can throw your numbers off by hundreds of dollars a month.</p>
+
+    <h3>How your monthly payment is actually calculated</h3>
+    <p>This calculator uses the standard amortized loan formula. First, your taxable loan amount is found by taking the vehicle price, adding sales tax, then subtracting your down payment and trade-in value. That remaining balance — the principal — is then spread across your loan term using this formula:</p>
+    <p><strong>M = P × [r(1+r)^n] / [(1+r)^n − 1]</strong></p>
+    <p>Where <strong>M</strong> is your monthly payment, <strong>P</strong> is the principal, <strong>r</strong> is your monthly interest rate (annual APR ÷ 12), and <strong>n</strong> is the number of monthly payments. Because the formula is exponential rather than linear, a small change in APR has an outsized effect on total interest — which is why the calculator recalculates the full amortization schedule, not just the monthly number, every time you adjust an input.</p>
+
+    <h3>Worked example: financing a $30,000 car</h3>
+    <p>Using the calculator's defaults — a $30,000 vehicle, $5,000 down, 6.5% APR, and a 60-month term with no trade-in or sales tax — the loan amount financed is $25,000. That works out to a monthly payment of roughly $489, with total interest of about $4,350 over the life of the loan, bringing the total cost of the car (including the down payment) to around $34,350. Change the term to 72 months and the monthly payment drops to about $420, but total interest paid rises to roughly $5,260 — nearly $900 more, for a car that's now financed a full year longer.</p>
 
     <h3>What is a good interest rate for a car loan?</h3>
-    <p>As of 2026, average auto loan rates range from around 5% to 9% for new cars and 7% to 14% for used cars, depending on your credit score. Buyers with excellent credit (720+) typically qualify for the lowest rates.</p>
+    <p>As of 2026, average auto loan rates range from around 5% to 9% for new cars and 7% to 14% for used cars, depending on your credit score. Buyers with excellent credit (720+) typically qualify for the lowest rates, while subprime borrowers (below 580) can see rates well above 15%. Used car loans carry higher rates than new car loans because lenders view older vehicles as riskier collateral — they depreciate faster and are more likely to need costly repairs during the loan term.</p>
 
     <h3>How long should my car loan be?</h3>
-    <p>A 48 to 60-month loan is generally recommended. Longer terms (72 or 84 months) lower your monthly payment but significantly increase total interest paid and can leave you "upside down" — owing more than the car is worth.</p>
+    <p>A 48 to 60-month loan is generally recommended. Longer terms (72 or 84 months) lower your monthly payment but significantly increase total interest paid and can leave you "upside down" — owing more than the car is worth — for a much longer stretch of the loan. Run both term lengths through the calculator above before deciding; the difference in total interest is usually larger than people expect.</p>
 
     <h3>How much should I put down on a car?</h3>
-    <p>Financial experts typically recommend a down payment of at least 20% for a new car and 10% for a used car. A larger down payment reduces your loan amount, monthly payment, and total interest.</p>
+    <p>Financial experts typically recommend a down payment of at least 20% for a new car and 10% for a used car. A larger down payment reduces your loan amount, monthly payment, and total interest — and it also reduces the risk of going underwater on the loan if the car depreciates faster than you pay it down, since new cars typically lose 20-25% of their value in the first year alone.</p>
+
+    <h3>How trade-in value and sales tax change your numbers</h3>
+    <p>Your trade-in value works the same way as a down payment in this calculator — it's subtracted directly from the amount you finance. In most states, trading in a vehicle also reduces the taxable amount of your new purchase, since sales tax is applied only to the price difference rather than the full vehicle price. Sales tax rates vary widely by state and even by county, ranging from 0% in a handful of states to over 8% in others, so it's worth checking your local rate before you rely on the numbers for budgeting — a few percentage points on a $30,000 purchase can add over $1,000 to what you finance.</p>
+
+    <h3>New car vs. used car loans</h3>
+    <p>Beyond the rate difference, new and used car loans behave differently over time. New cars depreciate fastest in the first year, which means a long loan term on a new car increases the odds of being underwater early on. Used cars have already absorbed much of that depreciation curve, so the payoff balance and the car's value tend to stay closer together — but used car loans also tend to come with shorter maximum terms and stricter age/mileage limits from lenders.</p>
+
+    <h3>Common car loan mistakes to avoid</h3>
+    <p>The most common mistake is focusing only on the monthly payment instead of the total cost of the loan — a lower payment achieved by stretching the term almost always costs more in interest. Others include skipping pre-approval and negotiating financing at the dealership (where rates are often marked up), rolling negative equity from an old loan into a new one without checking how much extra interest that adds, and forgetting to factor in sales tax, registration, and other fees when deciding how much car you can actually afford.</p>
 
     <h3>The 20/4/10 rule</h3>
-    <p>A common guideline: put 20% down, finance for no more than 4 years, and keep total monthly car expenses (payment + insurance) under 10% of your gross monthly income.</p>
+    <p>A common guideline: put 20% down, finance for no more than 4 years, and keep total monthly car expenses (payment + insurance) under 10% of your gross monthly income. It's a rule of thumb rather than a hard rule, but running your own numbers through this calculator against the 20/4/10 benchmarks is a fast way to sanity-check an offer before you sign.</p>
   </div>
 
   <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin:2.5rem 0;max-width:760px;margin-left:auto;margin-right:auto;">
