@@ -23,7 +23,7 @@
 - **블로그 44개 + 툴 21개 = 65개 페이지 전체**에 BreadcrumbList JSON-LD 스키마 반영됨 (7/12) — 신규 페이지 작성 시 이 패턴(Home > Blog/Tools > 페이지명) 동일하게 추가할 것. FAQPage/HowTo 스키마는 2026-05-07 Google이 리치 리절트를 폐지해서 더 이상 유효한 선택지 아님(추가하지 말 것).
 
 ### 사이트 구조 관련 중요 변경사항
-- **헤더 내비게이션**: 기존 "Calculators"/"Blog" 드롭다운 메뉴 → **단순 링크**로 전환. "Calculators" 명칭도 **"Tools"**로 변경됨. (`assets/partials/header.html`)
+- **헤더 내비게이션**: 기존 "Calculators"/"Blog" 드롭다운 메뉴 → **단순 링크**로 전환. "Calculators" 명칭도 **"Tools"**로 변경됨. **7/17 세션에서 "Glossary" 항목 추가** — 현재 Tools / Blog / Glossary / About 4개. (`assets/partials/header.html`)
 - **"← All tools" 백링크**: `assets/js/components.js`에서 관리, `tools/index.html`로 연결됨 (예전엔 홈페이지 `#tools` 앵커였는데 수정함). 툴 목록 페이지 자체에서는 이 링크가 안 뜨도록 처리돼 있음.
 - 모든 페이지는 `assets/partials/header.html`, `footer.html`을 JS(`components.js`)로 fetch해서 공유 렌더링 — 헤더/푸터는 한 곳만 고치면 전체 사이트에 반영됨.
 - footer에 `methodology.html`, `editorial-policy.html` 링크 상시 노출 중 (전체 페이지 공통).
@@ -255,9 +255,28 @@
   3. `blog/index.html`의 Latest 섹션이 이제 13개 항목으로 늘어남(원래 11개 안팎이었음) — 다음 세션에서 시각적으로 너무 길어 보이지 않는지 확인 권장. 카드 그리드라 무한정 늘어나도 레이아웃 자체는 깨지지 않지만, UX 관점에서 "Latest"를 최근 N개로 캡핑하는 정책을 도입할지 사용자와 논의해볼 만함.
   4. 다른 카테고리(신규 운전자, 차종별 가이드 등)도 사용자가 관심 보이면 같은 방식(경쟁강도 확인 → 기존 콘텐츠 재분류 가능 여부 확인 → 4개 내외로 시작)으로 확장 가능.
 
+## 6-6. 7/17 세션(6차): "Glossary" 신설 — Tools/Blog와 나란한 3번째 최상위 섹션
+- **배경**: 6-5에서 만든 게 Blog 하위 카테고리인 걸 사용자가 확인하면서 "Tool/Blog 외의 것"을 원한다는 게 명확해짐 — 헤더 내비게이션(Tools|Blog|About)에 새 항목이 생기는 수준의 진짜 3번째 섹션을 요청.
+- **방향 결정**: Glossary(용어사전)/State Guides(주별 가이드)/Reviews(차량 리뷰) 3개 옵션을 장단점과 함께 제시 → Reviews는 Edmunds/KBB급 완전 독점 + 사이트 정체성과 안 맞아 배제 추천, State Guides는 정확도 리스크+경쟁 문제로 2순위, Glossary를 1순위로 추천하고 승인받음.
+- **콘텐츠 설계 방향 수정**: 사용자가 "용어별로 낱개 페이지 만들면 또 저가치 콘텐츠 문제(7/13 AdSense 플래그 재발 우려)"를 정확히 짚음 → 용어 하나=페이지 하나 대신 **카테고리별로 묶어서 페이지당 여러 용어**로 설계 변경. 결과적으로 4페이지(재무/구매/소유가치/판매) 전부 800단어 이상 확보.
+- **신규 구조**: `/glossary/` 폴더 신설 — `index.html`(카테고리 랜딩), `financing-terms.html`(13개 용어, 825단어), `buying-terms.html`(10개 용어, 805단어), `ownership-value-terms.html`(9개 용어, 823단어), `selling-terms.html`(8개 용어, 812단어). 각 용어는 사전적 한 줄 정의가 아니라 맥락 설명(1~3문장) + 관련 있으면 기존 전체 가이드/계산기로 링크 — 그냥 정의만 나열하는 대신 사이트 내 기존 콘텐츠로 트래픽을 분산시키는 허브 역할도 겸함.
+- **사이트 구조 변경 (중요, 전체 페이지 영향)**:
+  - `assets/partials/header.html`에 "Glossary" 내비게이션 항목 추가 (Tools/Blog/**Glossary**/About) — 공유 파샬이라 전체 사이트에 자동 반영됨.
+  - `assets/partials/footer.html`에도 Glossary 링크 추가 — 이 덕분에 **glossary/index.html은 사이트의 모든 페이지(색인된 16개 포함)에서 자동으로 링크를 받음**, 별도 작업 불필요.
+  - `assets/js/components.js`의 `isToolPage` 판별 로직에 `/glossary/` 제외 조건 추가 — 안 했으면 글로서리 페이지에 엉뚱하게 "← All tools" 백링크가 뜰 뻔했음(배포 전 직접 발견하고 수정, 실제 사이트에 반영 안 됨).
+- **7/15 교훈 적용**: 카테고리 페이지 4개(index 제외, index는 푸터로 이미 충분) 전부 색인된 페이지로부터 링크 2개씩 확보 — `financing-terms`(car-loan-calculator, how-to-get-pre-approved-car-loan), `buying-terms`(how-to-negotiate-car-price-at-dealership, how-to-check-car-history-before-buying), `ownership-value-terms`(car-depreciation-calculator, how-much-car-can-i-afford), `selling-terms`(used-car-value-calculator, car-insurance-estimator).
+- **검증**: 태그밸런스(div/a/ul/li)·JSON-LD 유효성·헤더/푸터 파샬·`components.js` 문법(node로 검증)·사이트 전체 깨진링크(0건)·sitemap XML 유효성 전부 스크립트로 확인 완료.
+- sitemap.xml(+5 URL, 86개), llms.txt(신규 "Glossary" 섹션) 반영.
+- 커밋 `a41d617`, 18개 파일.
+- **최종 결과**: 사이트는 이제 Tools(22) + Blog(51) + **Glossary(4, 신규)** = 77페이지 + 정적페이지, sitemap 86개 URL. 헤더 내비게이션이 Tools\|Blog\|About 3개에서 Tools\|Blog\|**Glossary**\|About 4개로 늘어남 — **오늘 세션 중 유일하게 사이트 전체 헤더/푸터에 영향을 준 변경**이라 다음 세션에서 반드시 화면으로 확인할 것.
+- **⚠️ 다음 세션 필독**:
+  1. **최우선**: 헤더 내비게이션에 "Glossary"가 정상적으로 뜨는지, 모바일 햄버거 메뉴에서도 정상 작동하는지 화면으로 직접 확인. 오늘 세션 중 유일한 사이트 전체(헤더/푸터) 변경이라 다른 신규 페이지 확인보다 우선순위 높음.
+  2. 용어사전 4개 페이지도 색인 여부 확인 대상에 포함(1~2주 후).
+  3. 사이트에 이제 **3개의 신규/확장 축**이 동시에 진행 중: (a) 기존 미색인 50개 링크 보강(7/15), (b) Selling & Trade-In 블로그 카테고리(7/17 5차), (c) Glossary 섹션(7/17 6차). 다음 색인 데이터 확인할 때 이 세 가지를 각각 분리해서 어떤 게 효과 있었는지 비교해볼 것 — 한꺼번에 너무 많이 바뀌어서 "무엇 때문에 좋아졌는지" 헷갈릴 수 있으니 이 기록을 참고할 것.
+  4. Glossary도 사용자가 "확장 원한다"고 하면 같은 패턴(카테고리 묶음, 800단어 이상, 관련 가이드로 링크)으로 용어 추가 가능 — 예: EV 관련 용어, 보험 관련 용어(단, 보험은 이미 "방치 정책" 영역이라 우선순위 낮음).
 
-- ~~FAQPage/HowTo 구조화 데이터~~ — **2026-05-07 Google이 FAQ 리치 리절트 완전 폐지 확인, 후보에서 제외됨** (7/12 3차 세션에서 정정)
 ## 7. E-E-A-T 관련 향후 후보 (미착수)
+- ~~FAQPage/HowTo 구조화 데이터~~ — **2026-05-07 Google이 FAQ 리치 리절트 완전 폐지 확인, 후보에서 제외됨** (7/12 3차 세션에서 정정)
 - 통계치 들어가는 나머지 페이지(유지비 외 다른 페이지들)의 출처 표기 추가 확대 여지는 남아있음 — 이번엔 최고 트래픽 페이지 1개 + 감가상각 계산기만 처리
 
 negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 여부 1~2주 후 재확인 필요
