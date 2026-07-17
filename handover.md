@@ -13,7 +13,7 @@
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
 ## 2. 콘텐츠 현황 (2026-07-12 기준)
-- 블로그 45개 (`blog/` 폴더, index.html 제외) — 7/17 2차 세션에서 `should-you-pay-cash-or-finance-a-car.html` 추가
+- 블로그 47개 (`blog/` 폴더, index.html 제외) — 7/17 세션에서 3개 추가(`should-you-pay-cash-or-finance-a-car`, `is-certified-pre-owned-worth-it`, `is-extended-car-warranty-worth-it`)
 - 툴 22개 (`tools/` 폴더, index.html 제외) — 7/17 3차 세션에서 `cash-vs-finance-car-calculator.html` 추가
 - 정적 페이지: `about.html`, `contact.html`, `privacy-policy.html`, **`methodology.html`(신규)**, **`editorial-policy.html`(신규)**
 - sitemap.xml 총 URL 73개 (블로그+툴+정적페이지+blog/index+tools/index)
@@ -219,11 +219,19 @@
   1. 이번 세션에서 만든 블로그 1개 + 툴 1개 모두 색인 여부를 1~2주 후 확인 대상에 포함. 사이트는 이제 블로그 45개 + 툴 22개 = 67개 페이지, sitemap 총 URL 75개.
   2. 툴 페이지 하단 "21+"였던 스탯이 "22+"로 바뀐 것도 화면 확인 대상에 포함하면 좋음(숫자만 바뀐 텍스트라 레이아웃 깨질 요소는 없음).
 
-## 6-4. 7/17 세션(4차): 다음 신규 콘텐츠 후보 사전 조사 (발행 안 함, 리서치만 미리 해둠)
-- **배경**: 사용자가 "신규는 미리 해놓으면 좋다"고 언급 — 다만 지금은 색인 신뢰도가 회복 중(67페이지 중 16개만 색인)이라 한꺼번에 발행하면 역효과 우려. 그래서 **조사만 미리 해두고 발행은 페이스 조절**하기로 결정. 다음에 신규 만들 때 이 목록에서 바로 착수 가능.
-- **후보 1 — "Is Certified Pre-Owned (CPO) Worth It vs a Regular Used Car?"**: 기존 65개(당시 기준)와 중복 확인 결과 CPO는 산발적으로만 언급되고 전용 페이지 없음. 웹서치 결과 US News/Edmunds/Consumer Reports 같은 대형사이트도 있지만 딜러 블로그·중소 사이트가 많이 섞여 있어 경쟁이 파편화돼 있음(보험처럼 소수 대형사 독점 아님) — 오늘 만든 콘텐츠들과 비슷하거나 더 나은 승산. `used-car-value-calculator`, `car-trade-in-value-estimator`와 자연스럽게 연결 가능.
-- **후보 2 — "Is an Extended Car Warranty Worth It?"**: 중복 확인 결과 산발적 언급만 있고 전용 페이지 없음. 다만 이 영역은 ConsumerAffairs·coveragex.com 같은 워런티 판매/리드젠 목적 사이트가 많이 섞여있어 후보1보다 경쟁이 약간 더 셈 — 그래도 완전 불가능한 수준은 아님. `car-maintenance-cost-calculator`와 자연스럽게 연결 가능.
-- **다음 세션 진행 방법**: 이 두 후보는 이미 중복확인+경쟁강도 확인까지 끝난 상태라 다음에 "신규 진행해"라고만 해도 바로 작성 가능. 단, 착수 전에 (1) 그사이 색인 수가 회복됐는지 먼저 확인하고, (2) 혹시 그사이 사이트에 비슷한 콘텐츠가 생기지 않았는지 재확인할 것.
+## 6-4. 7/17 세션(4차): 백로그 후보 2건, 같은 세션에서 바로 발행으로 전환
+- 6-4 최초 버전에서는 "조사만 해두고 발행은 페이스 조절" 방침이었으나, 사용자가 "크롤 예산 걱정은 지금 사이트 규모(69페이지)엔 크게 해당 안 되는 얘기 아니냐"고 반박 — 맞는 지적이라 인정하고 **같은 세션에서 바로 발행**으로 전환. (크롤 예산 이슈는 통상 수천 페이지급 대형 사이트에 적용되는 개념이라 69페이지 사이트에는 과도한 걱정이었음.)
+- **신규 블로그 2개 발행 완료**:
+  - `blog/is-certified-pre-owned-worth-it.html` — CPO 프리미엄(\$1,000-3,000) 실제 상환 비교(8.77% Q1 2026 중고차 프라임 금리 기준 파이썬 검증), 1060단어. `used-car-value-calculator`, `car-trade-in-value-estimator`와 연결.
+  - `blog/is-extended-car-warranty-worth-it.html` — 자가보험(self-insure) vs 워런티 구매 비교(4% APY 복리 파이썬 검증), 932단어. `car-maintenance-cost-calculator`와 연결.
+  - 두 글 상호 링크 + `should-you-pay-cash-or-finance-a-car.html`과도 교차 링크(같은 세션 3차에서 만든 글).
+- **7/15 교훈 재적용**: 각각 색인된 페이지 3곳에서 링크 확보(홈페이지 latest-3 미리보기 + 전용 허브 2곳씩 — CPO는 `used-car-value-calculator`/`how-to-check-car-history-before-buying`, 워런티는 `car-insurance-estimator`/`how-to-negotiate-car-price-at-dealership` — 후자는 F&I 오피스 워런티 업셀이라는 자연스러운 연결 고리로 선정).
+- 사이트 전체 반영: `blog/index.html`(Latest + 각 카테고리 섹션), `index.html`(홈페이지 latest-3 전부 교체), `sitemap.xml`, `llms.txt`.
+- **작업 중 실수 1건 발견·수정**: 홈페이지 latest-3 교체 편집 중 str_replace 경계 문제로 이전 3번째 카드의 잔여 마크업(고아 태그)이 남는 사고 발생 → 재검증 스크립트(div/a 태그 밸런스)로 커밋 전 즉시 발견해서 수정 (규칙 7 사례 재확인).
+- **검증**: 태그밸런스/JSON-LD/사이트 전체 깨진링크 0건/sitemap 유효성/신규 페이지 참조횟수 전부 스크립트로 확인 완료.
+- 커밋 `ab80787`, 10개 파일.
+- **최종 결과**: 오늘 하루에 블로그 3개(cash-vs-finance, CPO, extended warranty) + 툴 1개(cash-vs-finance-calculator) 신규 발행. 사이트는 이제 블로그 47개 + 툴 22개 = 69개 페이지, sitemap 총 URL 77개.
+- **⚠️ 다음 세션 필독**: 오늘 신규 발행한 4개 전부(블로그 3개+툴 1개) 색인 여부를 1~2주 후 확인 대상에 포함. 색인된 페이지 발 링크는 전부 3개씩 확보된 상태로 시작했으니, 7/15에 검증된 방법론이 맞다면 무리 없이 색인될 것으로 예상 — 안 되면 "3링크로도 부족하다"는 신호이므로 원점 재검토 필요.
 
 
 ## 7. E-E-A-T 관련 향후 후보 (미착수)
