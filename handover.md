@@ -13,10 +13,11 @@
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
 ## 2. 콘텐츠 현황 (2026-07-12 기준)
-- 블로그 47개 (`blog/` 폴더, index.html 제외) — 7/17 세션에서 3개 추가(`should-you-pay-cash-or-finance-a-car`, `is-certified-pre-owned-worth-it`, `is-extended-car-warranty-worth-it`)
+- 블로그 51개 (`blog/` 폴더, index.html 제외) — 7/17 세션에서 7개 추가(`should-you-pay-cash-or-finance-a-car`, `is-certified-pre-owned-worth-it`, `is-extended-car-warranty-worth-it`, `carmax-vs-carvana-which-pays-more`, `how-to-price-car-for-private-sale`, `how-to-sell-car-with-loan-still-on-it`, `how-to-avoid-scams-selling-car-privately`)
 - 툴 22개 (`tools/` 폴더, index.html 제외) — 7/17 3차 세션에서 `cash-vs-finance-car-calculator.html` 추가
 - 정적 페이지: `about.html`, `contact.html`, `privacy-policy.html`, **`methodology.html`(신규)**, **`editorial-policy.html`(신규)**
-- sitemap.xml 총 URL 73개 (블로그+툴+정적페이지+blog/index+tools/index)
+- sitemap.xml 총 URL 81개 (블로그+툴+정적페이지+blog/index+tools/index, 7/17 세션 반영)
+- **블로그 태그 카테고리**: Financing / Buying / Running Costs / Ownership / EV / **Selling (7/17 신설)**. Selling은 "판매/처분" 콘텐츠 전용 — 신규 판매 관련 콘텐츠는 이 태그 사용할 것.
 - `tools/index.html` — 블로그 인덱스와 동일한 구조(카테고리별 그리드 + 검색기능)로 신규 생성됨 (기존엔 없었음)
 - **블로그 44개 전체**에 `<div class="blog-meta">...</div>` 줄에 "· Written by AutoCalcHub Team" 바이라인 통합 반영됨 (7/12) — 신규 블로그 작성 시 이 형식 유지할 것
 - **블로그 44개 + 툴 21개 = 65개 페이지 전체**에 BreadcrumbList JSON-LD 스키마 반영됨 (7/12) — 신규 페이지 작성 시 이 패턴(Home > Blog/Tools > 페이지명) 동일하게 추가할 것. FAQPage/HowTo 스키마는 2026-05-07 Google이 리치 리절트를 폐지해서 더 이상 유효한 선택지 아님(추가하지 말 것).
@@ -234,8 +235,29 @@
 - **⚠️ 다음 세션 필독**: 오늘 신규 발행한 4개 전부(블로그 3개+툴 1개) 색인 여부를 1~2주 후 확인 대상에 포함. 색인된 페이지 발 링크는 전부 3개씩 확보된 상태로 시작했으니, 7/15에 검증된 방법론이 맞다면 무리 없이 색인될 것으로 예상 — 안 되면 "3링크로도 부족하다"는 신호이므로 원점 재검토 필요.
 
 
-## 7. E-E-A-T 관련 향후 후보 (미착수)
+## 6-5. 7/17 세션(5차): "Selling & Trade-In" 카테고리 신설 (사용자 지시, 롱테일 초기 선점)
+- **배경**: 사용자가 "낱개 콘텐츠 하나 더 늘리기"가 아니라 "새 카테고리 추가"를 제안(헤더 내비게이션 얘기 아니라 블로그 태그 카테고리 얘기였음, 스크린샷으로 확인). "개수 픽스하지 말고 최대한, 100페이지도 환영"이라는 방향으로 승인.
+- **카테고리 선정 근거**: 기존 블로그 태그 분포(Financing/Buying/Running Costs/Ownership/EV) 확인 결과, "판매/처분" 콘텐츠가 Buying·Ownership에 흩어져 있고 독립 카테고리가 없었음 — "내 차를 사는 것"과 "내 차를 처분하는 것"은 다른 의사결정이라 분리가 타당하다고 판단, 제안 후 승인받고 진행.
+- **신규 4개 콘텐츠** (전부 웹서치로 경쟁강도 확인 + 기존 콘텐츠와 중복 확인 완료 후 작성, 900단어 내외):
+  - `carmax-vs-carvana-which-pays-more.html` (957단어) — 기존 `how-to-sell-car-privately-vs-trade-in.html`에 2문단짜리 "third-party buyer" 언급이 있었지만 CarMax/Carvana를 묶어서만 다뤘음 → 이번 글은 각 회사 프로세스를 개별적으로 깊게 비교(감정방식, 페이오프 처리속도 차이 등)해서 중복 아님.
+  - `how-to-price-car-for-private-sale.html` (896단어) — 기존 가치평가 계산기(`used-car-value-calculator`)와 다른 각도(가격 전략/네고 여지), 실제 검증된 예시표 포함.
+  - `how-to-sell-car-with-loan-still-on-it.html` (874단어) — 기존 글에 100단어짜리 "You still owe money" 시나리오박스가 있었지만 이번 글은 10일 페이오프 견적, 리엔 해제, 사설 매매 시 에스크로 처리 등 훨씬 깊게 다뤄서 중복 아님.
+  - `how-to-avoid-scams-selling-car-privately.html` (917단어) — 기존 `how-to-buy-used-car-without-getting-ripped-off.html`은 "구매자가 당하는 사기"였고 이번 글은 "판매자가 당하는 사기"라 반대 관점, 중복 아님.
+- **기존 2개 재분류(콘텐츠 변경 없음, 태그만 정정)**: `how-to-sell-car-privately-vs-trade-in.html`(Buying→Selling), `when-to-trade-in-your-car.html`(Ownership→Selling) — 새 카테고리가 첫날부터 6개 항목으로 시작하도록.
+- **7/15 교훈 재적용**: 신규 4개 전부 색인된 페이지 3곳씩 링크 확보(스크립트로 재검증 완료) — `used-car-value-calculator`(4개 전부), `car-depreciation-calculator`(2개), `how-much-car-can-i-afford`(2개), `how-to-check-car-history-before-buying`(1개), 홈페이지 latest-3(3개).
+- **사이트 전체 반영**: `blog/index.html`(Latest 섹션 최상단 갱신 + 신규 "🤝 Selling & Trade-In" 카테고리 섹션 신설, 기존 2개 카드는 원래 섹션에서 제거하고 이동), `index.html`(홈페이지 latest-3 전부 교체), `sitemap.xml`(81개 URL), `llms.txt`(신규 "Selling & Trade-In" 섹션 신설, 기존 2개 항목 이동).
+- **검증**: 태그밸런스(div/a/ul/li)·JSON-LD 유효성·사이트 전체 깨진링크(0건)·sitemap XML 유효성·신규 4개 전부 색인페이지 링크 3개씩 확보 여부를 전부 스크립트로 확인 완료.
+- 커밋 `226f6f9`, 14개 파일.
+- **최종 결과**: 사이트는 이제 블로그 51개 + 툴 22개 = 73개 페이지, sitemap 81개 URL. 오늘 하루 총 신규 발행: 블로그 7개(cash-vs-finance, CPO, extended warranty, CarMax vs Carvana, 가격책정, 대출차량판매, 사기예방) + 툴 1개(cash-vs-finance-calculator) = 8개.
+- **⚠️ 다음 세션 필독**:
+  1. 오늘 신규 발행한 8개 전부(+재분류 2개) 색인 여부를 1~2주 후 확인 대상에 포함. 특히 "Selling & Trade-In" 카테고리 전체(6개)가 하나의 신호 세트로 묶여서 움직이는지(전부 색인되거나 전부 안 되거나) 관찰하면 "카테고리 단위로 신뢰도가 쌓이는지" 여부에 대한 힌트가 될 수 있음.
+  2. 사용자가 "카테고리를 늘리는 게 색인에 도움될 것"이라는 가설을 갖고 있음 — 다음 세션에서 색인 데이터로 이 가설이 맞는지 실제로 검증할 것. 맞으면 카테고리 확장을 계속할 근거가 되고, 안 맞으면(콘텐츠 양보다 역시 링크/권위가 핵심이라면) 방향을 다시 사용자와 논의할 것.
+  3. `blog/index.html`의 Latest 섹션이 이제 13개 항목으로 늘어남(원래 11개 안팎이었음) — 다음 세션에서 시각적으로 너무 길어 보이지 않는지 확인 권장. 카드 그리드라 무한정 늘어나도 레이아웃 자체는 깨지지 않지만, UX 관점에서 "Latest"를 최근 N개로 캡핑하는 정책을 도입할지 사용자와 논의해볼 만함.
+  4. 다른 카테고리(신규 운전자, 차종별 가이드 등)도 사용자가 관심 보이면 같은 방식(경쟁강도 확인 → 기존 콘텐츠 재분류 가능 여부 확인 → 4개 내외로 시작)으로 확장 가능.
+
+
 - ~~FAQPage/HowTo 구조화 데이터~~ — **2026-05-07 Google이 FAQ 리치 리절트 완전 폐지 확인, 후보에서 제외됨** (7/12 3차 세션에서 정정)
+## 7. E-E-A-T 관련 향후 후보 (미착수)
 - 통계치 들어가는 나머지 페이지(유지비 외 다른 페이지들)의 출처 표기 추가 확대 여지는 남아있음 — 이번엔 최고 트래픽 페이지 1개 + 감가상각 계산기만 처리
 
 negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 여부 1~2주 후 재확인 필요
