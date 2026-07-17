@@ -110,3 +110,10 @@
 - [How Does Car Loan Interest Work?](https://autocalchub.com/blog/how-does-car-loan-interest-work.html): Simple interest, amortization, and why early payments are mostly interest — explained with a real month-by-month breakdown and practical strategies for borrowers.
 - [How to Get Out of a Car Lease Early](https://autocalchub.com/blog/how-to-get-out-of-a-car-lease-early.html): All your options for exiting a lease early — lease transfer, buyout and sell, early termination, and trading in — with the real cost of each.
 - [What Happens When Your Car Loan Is Paid Off?](https://autocalchub.com/blog/what-happens-when-car-loan-is-paid-off.html): What actually happens after your final payment — title transfer, lien release, insurance changes, and what to do with the freed-up money.
+
+## Glossary
+
+- [Car Financing & Loan Terms](https://autocalchub.com/glossary/financing-terms.html): APR, LTV, negative equity, amortization, credit tiers, GAP insurance, and more, explained in plain English.
+- [Car Buying Terms](https://autocalchub.com/glossary/buying-terms.html): MSRP, trim levels, CPO, doc fees, VIN, salvage titles, and more, explained in plain English.
+- [Car Ownership & Value Terms](https://autocalchub.com/glossary/ownership-value-terms.html): Depreciation, actual cash value, total loss, residual value, total cost of ownership, and more, explained in plain English.
+- [Car Selling & Trade-In Terms](https://autocalchub.com/glossary/selling-terms.html): Payoff quotes, lien release, bill of sale, instant offers, consignment sales, and more, explained in plain English.

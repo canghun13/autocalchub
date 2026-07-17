@@ -10,6 +10,7 @@
 
   var isToolPage = path.indexOf('/tools/') !== -1 ||
     (depth >= 1 && path.indexOf('/blog/') === -1 &&
+      path.indexOf('/glossary/') === -1 &&
       path.indexOf('about') === -1 && path.indexOf('privacy') === -1 &&
       path.indexOf('contact') === -1);
 
