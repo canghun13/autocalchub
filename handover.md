@@ -67,7 +67,7 @@
   - `car-down-payment-calculator.html` — 7.75위 (노출 4, 표본 작음)
   - `/` (홈페이지) — 12.06위 (노출 35)
   - `how-to-check-car-history-before-buying.html` — 9.6위 (노출 5, 표본 작음)
-  - **`how-much-car-can-i-afford.html` — 19.39위, 노출 110회로 사이트 전체에서 가장 많음.** "car affordability rules of thumb 2026" 단일 쿼리가 노출 11회에 **3.64위**, "car affordability calculator rules of thumb 2026"은 노출 6회에 **2.17위** — 확인된 사이트 최고 성과 클러스터. **이 페이지엔 아직 Quick answer 콜아웃이 없음(오늘 세션에서 놓친 후보) — 다음 세션 최우선 보강 후보로 판단.**
+  - **`how-much-car-can-i-afford.html` — 19.39위, 노출 110회로 사이트 전체에서 가장 많음.** "car affordability rules of thumb 2026" 단일 쿼리가 노출 11회에 **3.64위**, "car affordability calculator rules of thumb 2026"은 노출 6회에 **2.17위** — 확인된 사이트 최고 성과 클러스터. **7/19 세션에서 Quick answer 콜아웃 보강 완료**(20/4/10 규칙 + $5,000/월→$500 상한 예시, 기존 highlight-box 예시 수치 그대로 인용). 효과는 다음 GSC 확인(7/22 이후) 때 볼 것.
   - `what-is-good-interest-rate-car-loan.html` — 19.16위 (노출 19). "excellent/good/strong credit 2026" 계열 쿼리 7개가 여전히 17~20위대(예: average auto loan rates excellent credit 2026 노출2/20위, best car loan rates 2026 strong credit 노출1/17위). **7/17-1차 보강이 이 데이터 컷오프(7/17)와 같은 날 나가서 "보강 이후" 데이터가 사실상 0일치 — 아직 효과 판단 불가, 성급하게 추가로 손대지 말 것.**
   - `how-to-negotiate-car-price-at-dealership.html` — 47.17위로 하락(7/12 확인 27.5위 대비) — 표본 12회로 여전히 작음, 성급한 대응 금지(rule 6). 오늘 세션에 Quick answer 보강했으니 다음 확인 때 같이 볼 것.
 - **의도적으로 방치 중인 영역**: `car-insurance-estimator.html`(노출 1,074회, 사이트 전체 1위 노출량, 하지만 85.91위)를 포함한 **보험 계열 키워드 전체**. NerdWallet/Progressive/GEICO/Allstate 등이 74~100위권을 완전히 독점 중(쿼리 367개 중 절반 이상이 보험 관련, 전부 저순위). 추가 투자 무의미, 확인된 정책 계속 유지.
@@ -322,6 +322,13 @@
   2. 오늘 신규 발행한 3개(0% APR 툴/블로그, 리스 바이아웃 블로그) 색인 여부 1~2주 후 확인 대상 포함.
   3. `blog/index.html` Latest 섹션에서 뺀 6월 게재분 4개(`how-to-get-out-of-a-car-lease-early`, `what-happens-when-car-loan-is-paid-off`, `best-time-of-year-to-buy-a-car`, `what-credit-score-do-you-need-to-buy-a-car`) — 카테고리 섹션엔 남아있어 사이트에서 사라진 건 아니지만, 이 판단(Latest는 최근 N개로 캡핑)에 대해 사용자 확인 받을 것. 동의하면 이후 세션에도 이 방식(신규 추가 시 가장 오래된 것부터 정리) 유지, 반대하면 원복.
   4. 트랙 2에서 기각한 3개 주제(신협 vs 은행, 압류, 갭보험 worth-it)는 향후에도 재검토 불필요 — 각각 이유가 구조적(초포화/YMYL/보험 방치정책)이라 시간이 지나도 안 바뀔 가능성 높음.
+
+## 6-8. 7/19 세션 후속: 실제 GSC export 확인 + `how-much-car-can-i-afford.html` Quick answer 보강
+
+- 사용자가 깜빡했던 실제 서치콘솔 export(Coverage + Performance zip)를 뒤늦게 전달 — 압축 해제해서 전수 확인함. 상세 수치는 위 5번 섹션에 전부 반영 완료.
+- **핵심 결론**: 6-7 세션(같은 날 앞서 진행)의 판단 방향은 이 실제 데이터와 어긋나지 않음. 다만 실제 노출 데이터로 재확인하는 과정에서 **`how-much-car-can-i-afford.html`이 노출 110회로 사이트 전체 1위이고, 그 안의 "rules of thumb 2026" 쿼리 클러스터가 2~6위까지 나오는 확인된 사이트 최고 성과 페이지인데도 6-7 세션에서 Quick answer 보강 대상 5개에서 빠졌던 것**을 발견 → 이번에 추가로 보강함.
+- `blog/how-much-car-can-i-afford.html`: 인트로 문단 바로 뒤(첫 H2 앞)에 Quick answer 콜아웃 추가. 이미 본문에 있던 20/4/10 규칙 + "$5,000/월 소득 → $500/월 상한" 예시를 그대로 재사용(새 수치 추측 없음), 태그밸런스·JSON-LD 검증 완료, dateModified·sitemap lastmod 갱신.
+- **⚠️ 다음 세션 필독 추가**: 이 페이지 보강 효과는 다음 GSC 확인(최소 7/22 이후, Coverage 리포트 지연 감안) 때 "rules of thumb" 클러스터 순위·노출이 유지/개선됐는지로 판단할 것. 참고로 이 페이지는 노출 표본이 이미 110회로 사이트에서 가장 크기 때문에, 다른 소표본 페이지들과 달리 이번엔 순위 변화가 있다면 통계적으로 의미 있게 읽어도 됨(rule 6과 별개 취급).
 
 ## 7. E-E-A-T 관련 향후 후보 (미착수)
 - ~~FAQPage/HowTo 구조화 데이터~~ — **2026-05-07 Google이 FAQ 리치 리절트 완전 폐지 확인, 후보에서 제외됨** (7/12 3차 세션에서 정정)
