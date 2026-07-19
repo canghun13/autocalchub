@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0% APR vs Cash Rebate Calculator | AutoCalcHub</title>
+  <meta name="description" content="Compare a manufacturer's 0% APR financing offer against taking the cash rebate and financing at your own bank or credit union rate. See which saves more.">
+  <link rel="canonical" href="https://autocalchub.com/tools/zero-percent-apr-vs-rebate-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .highlight-box p{color:var(--charcoal);margin:0;font-weight:500;font-size:0.95rem}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:2.5rem}
+    .calc-btn{width:100%;margin-top:0.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none;margin-top:1.5rem}
+    .results.show{display:block}
+    .verdict{border-radius:14px;padding:1.75rem;text-align:center;margin-bottom:1.5rem}
+    .verdict.apr-wins{background:var(--navy)}
+    .verdict.rebate-wins{background:#1a3d2b}
+    .verdict h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:0.4rem}
+    .verdict p{color:rgba(255,255,255,0.7);font-size:0.9rem;margin:0}
+    .verdict .saving{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+    .compare-box{background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+    .compare-box.winner{border-color:var(--orange);border-width:2px}
+    .compare-box h4{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem;display:flex;align-items:center;gap:0.5rem}
+    .winner-badge{background:var(--orange);color:white;font-size:0.65rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:100px;text-transform:uppercase}
+    .compare-row{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.875rem}
+    .compare-row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .compare-row span:first-child{color:var(--mid)}
+    .compare-row span:last-child{color:var(--charcoal);font-weight:500}
+    .note-box{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.85rem;color:var(--mid);line-height:1.6}
+    .note-box strong{color:var(--charcoal)}
+    @media(max-width:640px){.calc-grid{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr}}
+  </style>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "0% APR vs Cash Rebate Calculator",
+    "url": "https://autocalchub.com/tools/zero-percent-apr-vs-rebate-calculator.html",
+    "description": "Compare a manufacturer's 0% APR financing offer against taking the cash rebate and financing at your own bank or credit union rate.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    },
+    "dateModified": "2026-07-19"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autocalchub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://autocalchub.com/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "0% APR vs Cash Rebate Calculator",
+      "item": "https://autocalchub.com/tools/zero-percent-apr-vs-rebate-calculator.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>0% APR vs Cash Rebate Calculator</h1>
+    <p>Manufacturers usually make you pick one: 0% financing, or a cash rebate with financing at market rates. See which one actually costs less for your numbers.</p>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Quick answer:</strong> 0% APR usually wins unless the rebate is large relative to your loan amount (typically 12–15%+ of the financed amount) or the market rate you'd otherwise pay is very low. Run your own numbers below — the crossover point depends heavily on your rebate size and market APR.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-grid">
+    <div class="calc-card">
+      <h2>🚘 The Deal</h2>
+      <div class="form-group">
+        <label>Vehicle Price</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="carPrice" value="32000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Down Payment</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="downPayment" value="4000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Loan Term (months)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="loanTerm" value="60" min="12" max="96">
+          <span class="input-suffix">mo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2>🏦 The Two Offers</h2>
+      <div class="form-group">
+        <label>Promotional APR (0% Offer)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="promoRate" value="0" min="0" max="10" step="0.1">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Cash Rebate Amount</label>
+        <div class="input-wrap has-prefix">
+          <span class="input-prefix">$</span>
+          <input type="number" id="rebateAmount" value="2000" min="0">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Market APR (If You Take the Rebate)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="marketRate" value="6.5" min="0" max="25" step="0.1">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="calc-btn" onclick="calculate()">Compare 0% APR vs Rebate →</button>
+
+  <div class="results" id="results">
+    <div class="verdict" id="verdict">
+      <h3 id="verdictTitle"></h3>
+      <span class="saving" id="verdictSaving"></span>
+      <p id="verdictNote"></p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-box" id="aprBox">
+        <h4>🎁 Take 0% APR <span class="winner-badge" id="aprBadge" style="display:none">Lower Cost</span></h4>
+        <div class="compare-row"><span>Amount financed</span><span id="r-aprFinanced"></span></div>
+        <div class="compare-row"><span>Monthly payment</span><span id="r-aprMonthly"></span></div>
+        <div class="compare-row"><span>Total interest paid</span><span id="r-aprInterest"></span></div>
+        <div class="compare-row"><span>Total cost (out the door)</span><span id="r-aprTotal"></span></div>
+      </div>
+      <div class="compare-box" id="rebateBox">
+        <h4>💵 Take Rebate <span class="winner-badge" id="rebateBadge" style="display:none">Lower Cost</span></h4>
+        <div class="compare-row"><span>Amount financed</span><span id="r-rebateFinanced"></span></div>
+        <div class="compare-row"><span>Monthly payment</span><span id="r-rebateMonthly"></span></div>
+        <div class="compare-row"><span>Total interest paid</span><span id="r-rebateInterest"></span></div>
+        <div class="compare-row"><span>Total cost (out the door)</span><span id="r-rebateTotal"></span></div>
+      </div>
+    </div>
+    <div class="note-box" id="noteBox"></div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section" style="margin-top:3rem">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">How This Comparison Works</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">Dealers and manufacturers almost never let you combine 0% APR with a cash rebate — you have to pick one. If you take the 0% offer, you finance the full amount (price minus down payment) at zero interest, so your total cost equals the vehicle price. If you take the rebate instead, the rebate reduces what you finance, but you pay whatever APR you can get from your bank, credit union, or the dealer's non-promotional rate. This calculator runs both amortization schedules side by side and shows which one leaves you paying less out the door.</p>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">The math comes down to a simple trade-off: does the interest you'd pay on the rebate route exceed the size of the rebate itself? If yes, 0% wins. If the rebate is bigger than the interest it would otherwise cost you, the rebate wins.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">Two Worked Examples</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem"><strong>Example 1 — moderate rebate:</strong> $32,000 car, $4,000 down, a $2,000 rebate, and a 6.5% market APR over 60 months if you skip 0%. The 0% APR route costs $32,000 total (your monthly payment is $466.67 with zero interest). The rebate route finances $26,000 at 6.5%, for a monthly payment of about $508.72 and roughly $2,523 more in total cost. <strong>0% APR wins by about $2,523.</strong></p>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem"><strong>Example 2 — large rebate:</strong> Same $32,000 car and $4,000 down, but this time the rebate is $5,000 instead of $2,000, at the same 6.5% market APR. The 0% route still costs $32,000 total. The rebate route now finances only $23,000, and even with 6.5% interest the total cost comes to about $31,001. <strong>The rebate wins by about $999</strong> — because this rebate is large enough that the interest it saves you from not financing that $5,000 outweighs the interest you pay on the rest.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">When 0% APR Usually Wins</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">0% financing tends to win when the rebate is small relative to the loan amount (roughly under 12-15% of what you'd otherwise finance) and the market APR you'd pay instead is anywhere near a typical rate (5% or higher). Since 0% financing means your total cost simply equals the sticker price, it's a hard baseline to beat once any real interest rate enters the picture. If you have <a href="../blog/what-is-good-interest-rate-car-loan.html" style="color:var(--orange);text-decoration:none;">excellent credit and would qualify for 0% anyway</a>, there's rarely a reason to give it up for a modest rebate.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">When the Rebate Usually Wins</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">The rebate pulls ahead when it's large (often $4,000+ on a $30,000-$35,000 vehicle) or when you already have access to a very low market rate — for example, a credit union offering 2-3% on top of the rebate. In those cases, the cash-in-hand value of the rebate outweighs the modest interest you'd pay on a smaller, cheaper loan. Shorter loan terms also favor the rebate slightly, since less total interest accrues either way, shrinking 0%'s natural advantage.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">The Most Common Mistake With This Decision</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">Buyers often assume "0% APR" is automatically the better deal because 0% sounds unbeatable — without ever running the actual rebate numbers. The reverse mistake also happens: taking a rebate that sounds generous without checking what APR you'd actually qualify for outside the promotion. Both offers are marketing, and the only way to know which is genuinely cheaper for your situation is to plug in your specific price, rebate, and rate and compare the total cost, not just the headline number.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">What This Calculator Doesn't Account For</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">It doesn't include sales tax, title, or registration fees (which apply equally to both options and don't change the comparison), dealer financing markups some lenders add on top of your approved rate, or the possibility that 0% offers are often restricted to shorter terms or specific trims than the rebate. It also assumes you'd qualify for the market APR you enter — 0% offers typically require excellent credit (720+), so if you wouldn't qualify for 0% in the first place, the rebate route may be your only real option regardless of the math.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/zero-percent-apr-vs-cash-rebate-which-is-better.html" style="color:var(--orange);text-decoration:none;">0% APR vs Cash Rebate: Which Is Better?</a></li>
+        <li><a href="car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+        <li><a href="../blog/what-is-good-interest-rate-car-loan.html" style="color:var(--orange);text-decoration:none;">What Is a Good Interest Rate on a Car Loan?</a></li>
+        <li><a href="../blog/how-to-negotiate-car-price-at-dealership.html" style="color:var(--orange);text-decoration:none;">How to Negotiate a Car Price at a Dealership</a></li>
+        <li><a href="cash-vs-finance-car-calculator.html" style="color:var(--orange);text-decoration:none;">Cash vs Finance Car Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+
+function amortizedMonthly(principal, aprPct, term){
+  const r = (aprPct/100)/12;
+  if(r === 0){ return principal/term; }
+  return principal * (r*Math.pow(1+r, term)) / (Math.pow(1+r, term)-1);
+}
+
+function calculate(){
+  const carPrice    = parseFloat(document.getElementById('carPrice').value)||0;
+  const downPayment = Math.min(parseFloat(document.getElementById('downPayment').value)||0, carPrice);
+  const loanTerm     = parseFloat(document.getElementById('loanTerm').value)||60;
+  const promoRate    = parseFloat(document.getElementById('promoRate').value)||0;
+  const rebateAmount = Math.min(parseFloat(document.getElementById('rebateAmount').value)||0, carPrice - downPayment);
+  const marketRate   = parseFloat(document.getElementById('marketRate').value)||0;
+
+  // 0% APR route
+  const finA = carPrice - downPayment;
+  const monthlyA = amortizedMonthly(finA, promoRate, loanTerm);
+  const interestA = (monthlyA*loanTerm) - finA;
+  const totalA = downPayment + (monthlyA*loanTerm);
+
+  // Rebate route
+  const finB = Math.max(carPrice - downPayment - rebateAmount, 0);
+  const monthlyB = amortizedMonthly(finB, marketRate, loanTerm);
+  const interestB = (monthlyB*loanTerm) - finB;
+  const totalB = downPayment + (monthlyB*loanTerm);
+
+  document.getElementById('r-aprFinanced').textContent = fmt(finA);
+  document.getElementById('r-aprMonthly').textContent = fmt(monthlyA)+'/mo';
+  document.getElementById('r-aprInterest').textContent = fmt(interestA);
+  document.getElementById('r-aprTotal').textContent = fmt(totalA);
+
+  document.getElementById('r-rebateFinanced').textContent = fmt(finB);
+  document.getElementById('r-rebateMonthly').textContent = fmt(monthlyB)+'/mo';
+  document.getElementById('r-rebateInterest').textContent = fmt(interestB);
+  document.getElementById('r-rebateTotal').textContent = fmt(totalB);
+
+  const aprWins = totalA <= totalB;
+  const diff = Math.abs(totalA - totalB);
+
+  const verdict = document.getElementById('verdict');
+  verdict.className = 'verdict ' + (aprWins ? 'apr-wins' : 'rebate-wins');
+  document.getElementById('verdictTitle').textContent = aprWins ? '0% APR financing comes out ahead' : 'The cash rebate comes out ahead';
+  document.getElementById('verdictSaving').textContent = fmt(diff) + ' difference';
+  document.getElementById('verdictNote').textContent = aprWins
+    ? 'The interest you would pay on the rebate route ('+fmt(interestB)+') outweighs the '+fmt(rebateAmount)+' rebate — 0% financing avoids that gap entirely.'
+    : 'The '+fmt(rebateAmount)+' rebate is worth more than the '+fmt(interestB)+' in interest you would pay to finance the smaller amount — taking the rebate wins here.';
+
+  document.getElementById('aprBadge').style.display = aprWins ? 'inline' : 'none';
+  document.getElementById('rebateBadge').style.display = aprWins ? 'none' : 'inline';
+  document.getElementById('aprBox').className = 'compare-box' + (aprWins ? ' winner' : '');
+  document.getElementById('rebateBox').className = 'compare-box' + (aprWins ? '' : ' winner');
+
+  document.getElementById('noteBox').innerHTML = '<strong>How this is calculated:</strong> Both routes are amortized with the standard loan formula over '+loanTerm+' months. The 0% route finances '+fmt(finA)+' at '+promoRate+'% APR. The rebate route finances '+fmt(finB)+' (after subtracting your '+fmt(rebateAmount)+' rebate) at '+marketRate+'% APR. Total cost = down payment + all monthly payments over the full term.';
+
+  document.getElementById('results').className = 'results show';
+}
+</script>
+</body>
+</html>

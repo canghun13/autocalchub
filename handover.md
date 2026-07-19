@@ -276,6 +276,51 @@
   4. Glossary도 사용자가 "확장 원한다"고 하면 같은 패턴(카테고리 묶음, 800단어 이상, 관련 가이드로 링크)으로 용어 추가 가능 — 예: EV 관련 용어, 보험 관련 용어(단, 보험은 이미 "방치 정책" 영역이라 우선순위 낮음).
   5. **(7차 추가)** Glossary 4페이지에 기술적 보강 완료: 용어 40개 전체 h2에 anchor id 추가(딥링크 가능) + DefinedTermSet JSON-LD에 hasDefinedTerm 배열로 용어 40개 개별 구조화 데이터 추가. 개별 용어 키워드 경쟁강도는 체크 안 함(Investopedia/NerdWallet급이 이미 장악, 개별 용어로 순위 경쟁은 비효율 판단) — 이건 신규 트래픽용이 아니라 검색엔진/AI검색이 페이지를 더 잘 파싱하게 하는 기술적 보강. 커밋 `a1d224f`.
 
+## 6-7. 7/19 세션: Quick answer 템플릿 확장 보강 + 신규 콘텐츠 2건(0% APR vs 리베이트, 리스 바이아웃)
+
+- **⚠️ 첨부파일 미수신**: 사용자가 서치콘솔 스크린샷을 첨부했다고 언급했으나 실제로는 업로드되지 않음(uploads 폴더 빈 상태로 확인). AdSense 재검토 결과도 여전히 미확인(7/13 제출 이후 계속). 이번 세션은 handover 7/17 시점의 마지막 확인된 GSC 데이터를 기준으로 판단해서 진행 — **다음 세션 시작 시 실제 GSC 스크린샷/자료 재요청 필요, AdSense 상태도 재확인 필요**.
+- **작업 우선순위 판단 기준**: 사용자가 "AI검색은 도메인 권위보다 콘텐츠 내용, 문제해결/비교분석이 유리"라고 명시적으로 언급 → (1) 이미 순위가 검증된 최상위 페이지들에 AI검색 대응 보강(Quick answer 콜아웃) 확장 적용, (2) 신규 롱테일 갭 발굴 두 트랙으로 진행.
+
+### 트랙 1 — Quick answer 콜아웃 확장 적용 (5개 페이지, 신규 콘텐츠 아님)
+7/17-1차 세션에서 만든 "Quick answer" 패턴(문제해결형 요약 박스, highlight-box 재사용)이 사이트 최상위 랭킹 페이지들엔 적용 안 돼 있던 것을 발견 — grep으로 전수 확인 후 다음 5개에 확장 적용. **전부 본문에 이미 있는 검증된 수치를 파이썬으로 재검증해서 그대로 인용**(신규 수치 추측 없음):
+- `tools/car-loan-calculator.html` (사이트 1위, 4.07위)
+- `tools/car-down-payment-calculator.html` (7.75위)
+- `tools/road-trip-cost-calculator.html` (7.44위)
+- `blog/how-to-check-car-history-before-buying.html` (9.6위)
+- `blog/how-to-negotiate-car-price-at-dealership.html` (27.5위)
+
+각각 dateModified(JSON-LD)와 sitemap lastmod 갱신, 태그밸런스 스크립트로 재검증 완료.
+
+### 트랙 2 — 롱테일 키워드 리서치 (웹서치로 경쟁강도 확인, 기존 콘텐츠 전수 대조)
+아래 5개 후보를 조사했고, 3개는 기각·2개는 채택:
+- ❌ **"credit union vs bank car loan"**: 개별 신협·은행들이 각자 자체 발행하는 초포화 주제(Broadview FCU, Solarity CU, Focus FCU 등 전부 동일한 글 발행) — 승산 없음, 기각.
+- ❌ **"차량 압류(repossession)"**: CFPB·FTC(정부)·Upsolve·Justia(법률구조단체)가 독점 + YMYL 리스크 높고 계산기 사이트 정체성과 안 맞음 — 기각.
+- ❌ **"gap insurance is it worth it"**: 보험 카테고리(기존에 "의도적 방치" 결정된 영역과 동일 성격) — 기각.
+- ❌ **"trade-in 세금 크레딧"**: `tools/car-sales-tax-calculator.html`에 이미 2,253단어로 충분히 다뤄짐 — 중복 확인, 기각.
+- ✅ **"0% APR financing vs cash rebate"**: Edmunds가 자체 계산기를 갖고 있지만(진짜 경쟁자), realcartips.com·mortgagecalculator.org·carleases.org 같은 소형 사이트도 섞여 있어 승산 있음. 기존 사이트에 "현금 vs 대출"(`should-you-pay-cash-or-finance-a-car`), "리파이낸스"(`car-refinance-calculator`)는 있지만 "0% APR vs 리베이트" 자체를 다루는 콘텐츠는 없음 — 진짜 갭 확인.
+- ✅ **"리스 만료 시 바이아웃 여부"**: leaseend.com(전용 계산기 보유한 소형 특화 사이트)이 섞여 있어 승산 있음. 기존 `should-i-buy-or-lease-a-car`(초기 리스 vs 구매 결정)·`how-to-get-out-of-a-car-lease-early`(조기 해지)와 겹치지 않는 "만료 시점 바이아웃 여부" 진짜 갭 확인.
+
+### 신규 콘텐츠 3건 (전부 900단어 이상 기준 충족, 파이썬/node로 수치·문법 이중 검증)
+- **`tools/zero-percent-apr-vs-rebate-calculator.html`** (871단어, 신규 툴): 0% APR 노선과 리베이트+시중금리 노선을 동시 amortize해서 비교. 두 노선 다 표준 상환공식 사용, JS 로직을 node로 별도 재계산해서 본문 수치와 일치 확인.
+- **`blog/zero-percent-apr-vs-cash-rebate-which-is-better.html`** (1,062단어, 신규 블로그, Financing 태그): 위 툴의 짝 콘텐츠. Quick answer 콜아웃 + Two Worked Examples + 비교표. **작업 중 발견한 실수**: Example 2의 이자 수치를 처음에 "$2,001"로 잘못 기재했다가 파이썬 재검증 과정에서 실제값 "$4,001"과 다른 것을 발견해 즉시 수정함(규칙 7 재확인 사례 — 발행 전 전수 재계산 습관이 실제로 오류를 잡아낸 케이스).
+- **`blog/should-you-buy-out-your-car-lease.html`** (955단어, 신규 블로그, Buying 태그): 리스 바이아웃 여부를 "잔존가치 vs 시장가치" 비교로 판단하는 가이드. 신규 전용 계산기는 만들지 않고 기존 `car-loan-calculator`(바이아웃 대출 시)·`used-car-value-calculator`(시장가치 확인)로 연결(CPO worth-it 글이 신규 계산기 없이 기존 `used-car-value-calculator`와 연결된 패턴과 동일).
+
+### 사이트 전체 반영
+- **내부링크(7/15 교훈 재적용)**: 신규 3개 전부 이미 색인된 페이지로부터 링크 확보. 단, `car-loan-calculator`(Related Guides 15개)·`used-car-value-calculator`(18개)·`how-much-car-can-i-afford`(16개)는 이미 리스트가 길다고 7/17 세션에서 지적된 페이지라 **의도적으로 제외**하고, 상대적으로 짧은 페이지 위주로 배분: `what-is-good-interest-rate-car-loan`(10→11)·`car-down-payment-calculator`(13→14) → 0% APR 툴 / `how-to-negotiate-car-price-at-dealership`(7→8)·`how-to-get-pre-approved-car-loan`(12→14) → 0% APR 블로그 / `car-depreciation-calculator`(13→14)·`how-to-check-car-history-before-buying`(7→8)·`how-to-get-pre-approved-car-loan` → 리스 바이아웃 블로그. 신규 3개 전부 인바운드 링크 4개 이상(홈페이지 포함) 확보 완료, 스크립트로 재확인.
+- **`blog/index.html` Latest 섹션 정리**: 신규 2개 추가 전 확인해보니 Latest가 이미 19개 항목까지 늘어나 있었음(7/17 5차 세션 예상치인 13개보다 훨씬 많음 — 그 뒤 세션들에서 계속 추가되며 누적된 것으로 보임). 사용자 지시 없이 큰 구조 변경은 하지 않되, "Latest"가 실제로 최신 항목만 보여주는 취지에 맞게 **6월 게재분(Updated 배지) 4개를 Latest 하이라이트에서만 제외**(카테고리 섹션에는 그대로 유지, 삭제 아님)하고 신규 2개를 최상단에 추가 — 최종 15개. **이건 제 판단으로 진행한 가벼운 정리라 다음 세션에서 사용자 확인 권장** (7/17 5차 세션에서 이미 "너무 길어지면 캡핑 정책 논의" 필요성이 언급된 바 있음).
+- `blog/index.html` Financing/Buying 카테고리 섹션에도 신규 2개 각각 최상단 추가.
+- `tools/index.html` Financing 섹션에 신규 툴 추가.
+- `index.html`: 툴 그리드에 신규 카드 추가, "22+"→"23+" 스탯 2곳(Free tools, Tools available) 갱신, 홈페이지 최신 블로그 3개 미리보기를 신규 2개 + 기존 최신 1개(CarMax vs Carvana)로 교체.
+- `sitemap.xml`: 신규 3개 URL 추가(89개), 보강 5개 페이지 lastmod 갱신.
+- `llms.txt`: 신규 3개 항목 각 카테고리에 추가.
+- **검증**: 태그밸런스(div/p/h1-3/ul/li/table/tr/th/td) 전체 스크립트 확인, JSON-LD 유효성 전체 확인, 사이트 전체 818개 href 전수 스캔(실제 깨진 링크 0건 — {{BASE}} 템플릿 플레이스홀더 관련 false positive 11건만 있었고 이는 header/footer partial이 JS로 처리되는 정상 패턴), sitemap XML 유효성(89 URL) 확인, 신규 3개 전부 인바운드 링크 4개 이상 확인. 전부 스크립트로 재확인 완료.
+- **최종 결과**: 블로그 51→53개, 툴 22→23개, sitemap 86→89 URL.
+- **⚠️ 다음 세션 필독**:
+  1. **최우선**: 실제 서치콘솔 자료 재요청, AdSense 재검토 결과 재확인 — 둘 다 이번 세션에서도 확인 못 함.
+  2. 오늘 신규 발행한 3개(0% APR 툴/블로그, 리스 바이아웃 블로그) 색인 여부 1~2주 후 확인 대상 포함.
+  3. `blog/index.html` Latest 섹션에서 뺀 6월 게재분 4개(`how-to-get-out-of-a-car-lease-early`, `what-happens-when-car-loan-is-paid-off`, `best-time-of-year-to-buy-a-car`, `what-credit-score-do-you-need-to-buy-a-car`) — 카테고리 섹션엔 남아있어 사이트에서 사라진 건 아니지만, 이 판단(Latest는 최근 N개로 캡핑)에 대해 사용자 확인 받을 것. 동의하면 이후 세션에도 이 방식(신규 추가 시 가장 오래된 것부터 정리) 유지, 반대하면 원복.
+  4. 트랙 2에서 기각한 3개 주제(신협 vs 은행, 압류, 갭보험 worth-it)는 향후에도 재검토 불필요 — 각각 이유가 구조적(초포화/YMYL/보험 방치정책)이라 시간이 지나도 안 바뀔 가능성 높음.
+
 ## 7. E-E-A-T 관련 향후 후보 (미착수)
 - ~~FAQPage/HowTo 구조화 데이터~~ — **2026-05-07 Google이 FAQ 리치 리절트 완전 폐지 확인, 후보에서 제외됨** (7/12 3차 세션에서 정정)
 - 통계치 들어가는 나머지 페이지(유지비 외 다른 페이지들)의 출처 표기 추가 확대 여지는 남아있음 — 이번엔 최고 트래픽 페이지 1개 + 감가상각 계산기만 처리

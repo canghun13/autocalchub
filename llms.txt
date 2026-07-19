@@ -32,6 +32,7 @@
 - [Car Total Cost of Ownership Calculator](https://autocalchub.com/tools/car-total-cost-of-ownership-calculator.html): Calculate the true 5-year cost of owning a car including purchase price, loan interest, insurance, fuel, maintenance, and depreciation.
 - [Negative Equity Rollover Calculator](https://autocalchub.com/tools/negative-equity-rollover-calculator.html): Calculate exactly how much extra interest and monthly payment you take on by rolling negative equity from your current loan into a new one.
 - [Bi-Weekly Car Payment Calculator](https://autocalchub.com/tools/biweekly-car-payment-calculator.html): Calculate how much interest and time you save by switching your car loan to bi-weekly payments instead of monthly payments.
+- [0% APR vs Cash Rebate Calculator](https://autocalchub.com/tools/zero-percent-apr-vs-rebate-calculator.html): Compare a manufacturer's 0% APR financing offer against taking the cash rebate and financing at your own bank or credit union rate.
 
 ## Guides: Buying a Car
 
@@ -43,6 +44,7 @@
 - [How to Negotiate Car Price at a Dealership](https://autocalchub.com/blog/how-to-negotiate-car-price-at-dealership.html): Tactics for getting a lower price and avoiding common dealer tricks.
 - [How to Check a Car's History Before Buying](https://autocalchub.com/blog/how-to-check-car-history-before-buying.html): What reports to pull, what red flags to look for, and what they don't tell you.
 - [Is It Worth Buying a Car With a Rebuilt Title?](https://autocalchub.com/blog/is-it-worth-buying-car-with-rebuilt-title.html): The real risks of rebuilt title vehicles and what to check before you buy.
+- [Should You Buy Out Your Car Lease?](https://autocalchub.com/blog/should-you-buy-out-your-car-lease.html): Compare your lease's residual value to the car's real market value to see if buying out makes financial sense.
 
 ## Guides: Selling & Trade-In
 
@@ -56,6 +58,7 @@
 ## Guides: Car Financing
 
 - [Should You Pay Cash or Finance a Car?](https://autocalchub.com/blog/should-you-pay-cash-or-finance-a-car.html): The opportunity-cost math for paying cash vs financing, and when 0% APR beats paying cash outright.
+- [0% APR vs Cash Rebate: Which Is Actually Better?](https://autocalchub.com/blog/zero-percent-apr-vs-cash-rebate-which-is-better.html): A numbers-based breakdown of when 0% financing wins and when a large enough rebate beats it instead.
 - [What Credit Score Do You Need to Buy a Car?](https://autocalchub.com/blog/what-credit-score-do-you-need-to-buy-a-car.html): How your credit score affects your interest rate and what to do if your score is low.
 - [What Is a Good Interest Rate on a Car Loan?](https://autocalchub.com/blog/what-is-good-interest-rate-car-loan.html): Average auto loan rates in 2026 by credit score tier and how to get the best deal.
 - [How to Pay Off a Car Loan Early](https://autocalchub.com/blog/how-to-pay-off-car-loan-early.html): Strategies to pay off your auto loan faster and how much interest you can save.
