@@ -33,6 +33,7 @@
 - [Negative Equity Rollover Calculator](https://autocalchub.com/tools/negative-equity-rollover-calculator.html): Calculate exactly how much extra interest and monthly payment you take on by rolling negative equity from your current loan into a new one.
 - [Bi-Weekly Car Payment Calculator](https://autocalchub.com/tools/biweekly-car-payment-calculator.html): Calculate how much interest and time you save by switching your car loan to bi-weekly payments instead of monthly payments.
 - [0% APR vs Cash Rebate Calculator](https://autocalchub.com/tools/zero-percent-apr-vs-rebate-calculator.html): Compare a manufacturer's 0% APR financing offer against taking the cash rebate and financing at your own bank or credit union rate.
+- [Auto Loan Cosigner Calculator](https://autocalchub.com/tools/auto-loan-cosigner-calculator.html): See how much a cosigner could lower your monthly payment and total interest by comparing your solo APR against a cosigned APR.
 
 ## Guides: Buying a Car
 
@@ -59,6 +60,7 @@
 
 - [Should You Pay Cash or Finance a Car?](https://autocalchub.com/blog/should-you-pay-cash-or-finance-a-car.html): The opportunity-cost math for paying cash vs financing, and when 0% APR beats paying cash outright.
 - [0% APR vs Cash Rebate: Which Is Actually Better?](https://autocalchub.com/blog/zero-percent-apr-vs-cash-rebate-which-is-better.html): A numbers-based breakdown of when 0% financing wins and when a large enough rebate beats it instead.
+- [Do You Need a Cosigner for a Car Loan?](https://autocalchub.com/blog/do-you-need-a-cosigner-for-a-car-loan.html): How much a cosigner actually saves you on APR and total interest, and what they're risking by agreeing.
 - [What Credit Score Do You Need to Buy a Car?](https://autocalchub.com/blog/what-credit-score-do-you-need-to-buy-a-car.html): How your credit score affects your interest rate and what to do if your score is low.
 - [What Is a Good Interest Rate on a Car Loan?](https://autocalchub.com/blog/what-is-good-interest-rate-car-loan.html): Average auto loan rates in 2026 by credit score tier and how to get the best deal.
 - [How to Pay Off a Car Loan Early](https://autocalchub.com/blog/how-to-pay-off-car-loan-early.html): Strategies to pay off your auto loan faster and how much interest you can save.
@@ -86,9 +88,10 @@
 
 ## Guides: Electric Vehicles
 
-- [Electric vs Gas Car: True Cost Comparison](https://autocalchub.com/blog/electric-vs-gas-car-true-cost.html): A full cost comparison of EVs vs gas cars including purchase price, fuel, insurance, and maintenance.
+- [Electric vs Gas Car: True Cost Comparison](https://autocalchub.com/blog/electric-vs-gas-car-true-cost.html): A full cost comparison of EVs vs gas cars including purchase price, fuel, insurance, and maintenance, updated for the post-tax-credit 2026 reality.
+- [EV Lease vs Buy in 2026](https://autocalchub.com/blog/ev-lease-vs-buy-2026.html): How the EV lease-vs-buy decision changed now that the lease tax credit loophole has ended.
 - [How Much Does It Cost to Charge an EV at Home?](https://autocalchub.com/blog/how-much-does-ev-cost-to-charge-at-home.html): How to calculate your actual home charging cost based on your electricity rate and battery size.
-- [EV Tax Credit 2026](https://autocalchub.com/blog/ev-tax-credit-2026.html): Which electric vehicles qualify for the federal EV tax credit in 2026 and how to claim it.
+- [EV Tax Credit 2026](https://autocalchub.com/blog/ev-tax-credit-2026.html): Why the $7,500 federal EV tax credit ended in September 2025, the one narrow exception, and what incentives remain.
 
 ## Guides: Car Ownership & Value
 
