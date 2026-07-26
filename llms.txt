@@ -34,6 +34,9 @@
 - [Bi-Weekly Car Payment Calculator](https://autocalchub.com/tools/biweekly-car-payment-calculator.html): Calculate how much interest and time you save by switching your car loan to bi-weekly payments instead of monthly payments.
 - [0% APR vs Cash Rebate Calculator](https://autocalchub.com/tools/zero-percent-apr-vs-rebate-calculator.html): Compare a manufacturer's 0% APR financing offer against taking the cash rebate and financing at your own bank or credit union rate.
 - [Auto Loan Cosigner Calculator](https://autocalchub.com/tools/auto-loan-cosigner-calculator.html): See how much a cosigner could lower your monthly payment and total interest by comparing your solo APR against a cosigned APR.
+- [Rideshare Car Cost-Per-Mile Calculator](https://autocalchub.com/tools/rideshare-car-cost-per-mile-calculator.html): Compare buying, renting, and leasing a car for Uber, Lyft, DoorDash, or Instacart on real cost per mile, including lease mileage overage fees.
+- [Car Tariff Impact Calculator](https://autocalchub.com/tools/car-tariff-impact-calculator.html): Check your vehicle's country of assembly from its VIN and estimate how much 2026 auto tariffs may be adding to its price and monthly payment.
+- [Car Subscription vs Lease vs Buy Calculator](https://autocalchub.com/tools/car-subscription-vs-lease-vs-buy-calculator.html): Compare the true monthly and total cost of a car subscription, a lease, and buying, including insurance and maintenance.
 
 ## Guides: Buying a Car
 
@@ -46,6 +49,8 @@
 - [How to Check a Car's History Before Buying](https://autocalchub.com/blog/how-to-check-car-history-before-buying.html): What reports to pull, what red flags to look for, and what they don't tell you.
 - [Is It Worth Buying a Car With a Rebuilt Title?](https://autocalchub.com/blog/is-it-worth-buying-car-with-rebuilt-title.html): The real risks of rebuilt title vehicles and what to check before you buy.
 - [Should You Buy Out Your Car Lease?](https://autocalchub.com/blog/should-you-buy-out-your-car-lease.html): Compare your lease's residual value to the car's real market value to see if buying out makes financial sense.
+- [Is a Car Subscription Worth It?](https://autocalchub.com/blog/is-a-car-subscription-worth-it.html): When the flat-fee flexibility of a car subscription (Care by Volvo, FINN, Autonomy) is actually worth the premium over buying or leasing.
+- [How Do Tariffs Affect Your Car Payment in 2026?](https://autocalchub.com/blog/how-do-tariffs-affect-your-car-payment-2026.html): How to check your vehicle's country of assembly from its VIN and estimate the real 2026 tariff impact on price and financing.
 
 ## Guides: Selling & Trade-In
 
@@ -61,6 +66,7 @@
 - [Should You Pay Cash or Finance a Car?](https://autocalchub.com/blog/should-you-pay-cash-or-finance-a-car.html): The opportunity-cost math for paying cash vs financing, and when 0% APR beats paying cash outright.
 - [0% APR vs Cash Rebate: Which Is Actually Better?](https://autocalchub.com/blog/zero-percent-apr-vs-cash-rebate-which-is-better.html): A numbers-based breakdown of when 0% financing wins and when a large enough rebate beats it instead.
 - [Do You Need a Cosigner for a Car Loan?](https://autocalchub.com/blog/do-you-need-a-cosigner-for-a-car-loan.html): How much a cosigner actually saves you on APR and total interest, and what they're risking by agreeing.
+- [Joint Auto Loan vs Cosigner: What's the Difference?](https://autocalchub.com/blog/joint-auto-loan-vs-cosigner.html): They sound similar but work very differently — ownership, liability, and how hard each is to undo.
 - [What Credit Score Do You Need to Buy a Car?](https://autocalchub.com/blog/what-credit-score-do-you-need-to-buy-a-car.html): How your credit score affects your interest rate and what to do if your score is low.
 - [What Is a Good Interest Rate on a Car Loan?](https://autocalchub.com/blog/what-is-good-interest-rate-car-loan.html): Average auto loan rates in 2026 by credit score tier and how to get the best deal.
 - [How to Pay Off a Car Loan Early](https://autocalchub.com/blog/how-to-pay-off-car-loan-early.html): Strategies to pay off your auto loan faster and how much interest you can save.
@@ -74,6 +80,10 @@
 - [What Is Loan-to-Value (LTV) Ratio?](https://autocalchub.com/blog/what-is-loan-to-value-ratio-car-loan.html): How lenders use LTV to set your car loan approval odds, interest rate, and refinancing options.
 - [Bi-Weekly vs Monthly Car Payments](https://autocalchub.com/blog/biweekly-vs-monthly-car-payments.html): How bi-weekly car payments save interest automatically compared to monthly payments, and which loans benefit most.
 - [How to Set Up Bi-Weekly Car Payments With Your Lender](https://autocalchub.com/blog/how-to-set-up-biweekly-car-payments.html): Step-by-step guide to setting up bi-weekly car loan payments, what to ask your lender, and how to do it yourself for free.
+
+## Guides: Gig & Rideshare
+
+- [Should You Buy a Car for Uber or Lyft?](https://autocalchub.com/blog/should-you-buy-a-car-for-uber-lyft-2026.html): Buy, rent, or lease for rideshare or delivery driving — the real cost-per-mile math, the lease mileage-cap trap, and the loan contract risk most drivers miss.
 
 ## Guides: Running Costs
 

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rideshare Car Cost-Per-Mile Calculator | AutoCalcHub</title>
+  <meta name="description" content="Compare the real cost per mile of buying, renting, or leasing a car for Uber, Lyft, DoorDash, or Instacart — including fuel, insurance, maintenance, and lease mileage overage.">
+  <link rel="canonical" href="https://autocalchub.com/tools/rideshare-car-cost-per-mile-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:940px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .highlight-box p{color:var(--charcoal);margin:0;font-weight:500;font-size:0.95rem}
+    .shared-card{background:white;border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin-bottom:1.25rem}
+    .shared-card h2{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:2px solid var(--orange)}
+    .shared-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:2px solid var(--orange)}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:0.9rem}
+    label{font-size:0.8rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.85rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.65rem 0.8rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.88rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:1.9rem}
+    .has-suffix input{padding-right:2.4rem}
+    .calc-btn{width:100%;margin-top:0.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none;margin-top:1.5rem}
+    .results.show{display:block}
+    .verdict{border-radius:14px;padding:1.75rem;text-align:center;margin-bottom:1.5rem;background:var(--navy)}
+    .verdict h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:0.4rem}
+    .verdict p{color:rgba(255,255,255,0.7);font-size:0.9rem;margin:0}
+    .verdict .saving{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+    .compare-box{background:white;border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+    .compare-box.winner{border-color:var(--orange);border-width:2px}
+    .compare-box h4{font-family:'Space Grotesk',sans-serif;font-size:0.9rem;font-weight:700;color:var(--charcoal);margin-bottom:0.9rem;display:flex;align-items:center;flex-wrap:wrap;gap:0.4rem}
+    .winner-badge{background:var(--orange);color:white;font-size:0.62rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:100px;text-transform:uppercase}
+    .compare-row{display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0;border-bottom:1px solid var(--border);font-size:0.8rem}
+    .compare-row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.65rem}
+    .compare-row span:first-child{color:var(--mid)}
+    .compare-row span:last-child{color:var(--charcoal);font-weight:500;text-align:right}
+    .note-box{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.85rem;color:var(--mid);line-height:1.6}
+    .note-box strong{color:var(--charcoal)}
+    .disclaimer-box{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    @media(max-width:800px){.calc-grid{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr}.shared-grid{grid-template-columns:1fr 1fr}}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Rideshare Car Cost-Per-Mile Calculator",
+    "url": "https://autocalchub.com/tools/rideshare-car-cost-per-mile-calculator.html",
+    "description": "Compare the real cost per mile of buying, renting, or leasing a car for Uber, Lyft, DoorDash, or Instacart — including fuel, insurance, maintenance, and lease mileage overage.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    },
+    "dateModified": "2026-07-22"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autocalchub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://autocalchub.com/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Rideshare Car Cost-Per-Mile Calculator",
+      "item": "https://autocalchub.com/tools/rideshare-car-cost-per-mile-calculator.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Rideshare Car Cost-Per-Mile Calculator</h1>
+    <p>Whether you drive for Uber, Lyft, DoorDash, or Instacart, your car is a business asset. This calculator compares buying, renting, and leasing on real cost-per-mile — including the mileage overage fees that catch full-time drivers off guard on a lease.</p>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Quick answer:</strong> Most profitable rideshare and delivery vehicles run $0.35–$0.45 per mile in total cost. Buying usually wins on cost-per-mile for high-mileage, full-time drivers, since a standard lease's mileage cap (often 10,000–12,000 miles/year) triggers steep overage fees well before a full-time driver's actual annual mileage. Renting (through programs like Uber Xchange or HyreCar) costs more per mile but requires no long-term commitment or good credit.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="shared-card">
+    <h2>📊 Your Driving Profile</h2>
+    <div class="shared-grid">
+      <div class="form-group">
+        <label>Monthly Business Miles</label>
+        <input type="number" id="monthlyMiles" value="3500" min="0">
+      </div>
+      <div class="form-group">
+        <label>Vehicle MPG</label>
+        <input type="number" id="mpg" value="40" min="1">
+      </div>
+      <div class="form-group">
+        <label>Fuel Price ($/gallon)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="fuelPrice" value="3.30" min="0" step="0.01"></div>
+      </div>
+      <div class="form-group">
+        <label>Monthly Insurance (rideshare-endorsed)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="insurance" value="220" min="0"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-grid">
+    <div class="calc-card">
+      <h2>🚗 Buy</h2>
+      <div class="form-group">
+        <label>Vehicle Price</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="buyPrice" value="24000" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Down Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="buyDown" value="2000" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Loan APR</label>
+        <div class="input-wrap has-suffix"><input type="number" id="buyApr" value="8.5" min="0" max="30" step="0.1"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label>Loan Term</label>
+        <div class="input-wrap has-suffix"><input type="number" id="buyTerm" value="60" min="12" max="96"><span class="input-suffix">mo</span></div>
+      </div>
+      <div class="form-group">
+        <label>Monthly Maintenance</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="buyMaintenance" value="90" min="0"></div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2>🔑 Rent</h2>
+      <div class="form-group">
+        <label>Weekly Rental Rate</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="weeklyRent" value="280" min="0"></div>
+      </div>
+      <p style="font-size:0.78rem;color:var(--light);margin-top:0.5rem;line-height:1.5">Rideshare rental programs (Uber Xchange, HyreCar, Lyft Express Drive) typically bundle insurance and maintenance into the weekly rate — you generally just add fuel.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>📄 Lease</h2>
+      <div class="form-group">
+        <label>Monthly Lease Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="leasePayment" value="380" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Annual Mileage Cap</label>
+        <input type="number" id="leaseCap" value="12000" min="0">
+      </div>
+      <div class="form-group">
+        <label>Overage Rate</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="overageRate" value="0.25" min="0" step="0.01"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="calc-btn" onclick="calculate()">Compare Cost Per Mile →</button>
+
+  <div class="results" id="results">
+    <div class="verdict" id="verdict">
+      <h3 id="verdictTitle"></h3>
+      <span class="saving" id="verdictSaving"></span>
+      <p id="verdictNote"></p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-box" id="buyBox">
+        <h4>🚗 Buy</h4>
+        <div class="compare-row"><span>Total monthly cost</span><span id="r-buyMonthly"></span></div>
+        <div class="compare-row"><span>Cost per mile</span><span id="r-buyCpm"></span></div>
+      </div>
+      <div class="compare-box" id="rentBox">
+        <h4>🔑 Rent</h4>
+        <div class="compare-row"><span>Total monthly cost</span><span id="r-rentMonthly"></span></div>
+        <div class="compare-row"><span>Cost per mile</span><span id="r-rentCpm"></span></div>
+      </div>
+      <div class="compare-box" id="leaseBox">
+        <h4>📄 Lease</h4>
+        <div class="compare-row"><span>Mileage overage fee</span><span id="r-leaseOverage"></span></div>
+        <div class="compare-row"><span>Total monthly cost</span><span id="r-leaseMonthly"></span></div>
+        <div class="compare-row"><span>Cost per mile</span><span id="r-leaseCpm"></span></div>
+      </div>
+    </div>
+    <div class="note-box" id="noteBox"></div>
+    <div class="disclaimer-box">⚠️ <strong>Check your loan or lease contract before you drive for hire.</strong> Many standard auto loans and leases restrict "commercial," "for-hire," or "livery" use of the financed vehicle — driving for Uber, Lyft, DoorDash, or Instacart can technically violate that clause even if the lender doesn't actively enforce it. If your contract restricts commercial use, consider refinancing to a rideshare-friendly lender before you start. Always confirm your specific insurance and platform eligibility requirements directly, since they vary by city and change over time.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section" style="margin-top:3rem">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Why Lease Mileage Caps Are the Hidden Trap</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">A lease payment often looks like the cheapest option on paper — until you account for the mileage cap. Standard leases cap you at 10,000–12,000 miles per year, with overage fees typically running $0.20–$0.30 per mile beyond that. A full-time rideshare or delivery driver easily covers 35,000–45,000 miles a year, which can turn an apparently cheap lease payment into the most expensive option once overage fees are included — exactly what this calculator's lease overage figure is designed to surface before you sign anything.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">Buy vs Rent vs Lease: The Real Trade-Offs</h2>
+    <ul style="color:var(--mid);line-height:1.8;margin:0.75rem 0 1rem 1.5rem;font-size:0.95rem">
+      <li><strong>Buy</strong> usually wins on cost-per-mile for full-time, high-mileage drivers — no mileage cap, and you build equity in a vehicle you'll likely need to replace anyway due to wear.</li>
+      <li><strong>Rent</strong> (Uber Xchange, HyreCar, Lyft Express Drive) costs more per mile but requires no loan approval, no long-term commitment, and usually bundles insurance and maintenance — a reasonable way to start driving before committing to a purchase.</li>
+      <li><strong>Lease</strong> rarely works well for full-time high-mileage driving once overage fees are included, though it can make sense for part-time drivers who stay under the mileage cap.</li>
+    </ul>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">The Loan Contract Risk Almost Nobody Checks</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">Most standard auto loan agreements include language restricting the vehicle from being used "for hire," in "livery service," or for other commercial purposes without the lender's written consent. Rideshare and delivery driving technically fall under that restriction at many lenders, even though it's rarely enforced day-to-day. The risk isn't hypothetical — if something goes wrong (an accident, a dispute, a loan review) and the lender discovers commercial use that wasn't disclosed, it can be treated as a contract violation. Before you start driving for hire in a financed vehicle, read your loan agreement's use restrictions, and if it's unclear, ask the lender directly in writing. A small number of lenders specifically cater to rideshare drivers and permit commercial use explicitly — refinancing to one of them removes this risk entirely.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">What This Calculator Doesn't Account For</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">It doesn't include EV-specific charging costs (see our <a href="ev-charging-cost-calculator.html" style="color:var(--orange);text-decoration:none;">EV charging cost calculator</a> if you're considering an electric vehicle), platform-specific EV bonuses some cities offer, or the standard mileage tax deduction, which can meaningfully offset your real after-tax cost regardless of which option you choose. It also doesn't account for faster depreciation on a high-mileage vehicle if you plan to sell it — budget for a shorter useful life than a typical personal-use car.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/should-you-buy-a-car-for-uber-lyft-2026.html" style="color:var(--orange);text-decoration:none;">Should You Buy a Car for Uber or Lyft?</a></li>
+        <li><a href="car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+        <li><a href="fuel-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Fuel Cost Calculator</a></li>
+        <li><a href="car-maintenance-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Car Maintenance Cost Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+function fmtCpm(n){return '$'+n.toFixed(3)+'/mi';}
+
+function amortizedMonthly(principal, aprPct, term){
+  const r = (aprPct/100)/12;
+  if(r === 0){ return principal/term; }
+  return principal * (r*Math.pow(1+r, term)) / (Math.pow(1+r, term)-1);
+}
+
+function calculate(){
+  const monthlyMiles = parseFloat(document.getElementById('monthlyMiles').value)||0;
+  const mpg = parseFloat(document.getElementById('mpg').value)||1;
+  const fuelPrice = parseFloat(document.getElementById('fuelPrice').value)||0;
+  const insurance = parseFloat(document.getElementById('insurance').value)||0;
+
+  const buyPrice = parseFloat(document.getElementById('buyPrice').value)||0;
+  const buyDown = parseFloat(document.getElementById('buyDown').value)||0;
+  const buyApr = parseFloat(document.getElementById('buyApr').value)||0;
+  const buyTerm = parseFloat(document.getElementById('buyTerm').value)||60;
+  const buyMaintenance = parseFloat(document.getElementById('buyMaintenance').value)||0;
+
+  const weeklyRent = parseFloat(document.getElementById('weeklyRent').value)||0;
+
+  const leasePayment = parseFloat(document.getElementById('leasePayment').value)||0;
+  const leaseCap = parseFloat(document.getElementById('leaseCap').value)||0;
+  const overageRate = parseFloat(document.getElementById('overageRate').value)||0;
+
+  const fuelCost = (monthlyMiles/mpg)*fuelPrice;
+
+  const financed = Math.max(buyPrice - buyDown, 0);
+  const buyLoanPayment = amortizedMonthly(financed, buyApr, buyTerm);
+  const buyMonthly = buyLoanPayment + insurance + buyMaintenance + fuelCost;
+  const buyCpm = monthlyMiles>0 ? buyMonthly/monthlyMiles : 0;
+
+  const rentMonthlyBase = weeklyRent*4.345;
+  const rentMonthly = rentMonthlyBase + fuelCost;
+  const rentCpm = monthlyMiles>0 ? rentMonthly/monthlyMiles : 0;
+
+  const leaseCapMonthly = leaseCap/12;
+  const overageMiles = Math.max(monthlyMiles - leaseCapMonthly, 0);
+  const overageFee = overageMiles*overageRate;
+  const leaseMonthly = leasePayment + insurance + (buyMaintenance*0.5) + fuelCost + overageFee;
+  const leaseCpm = monthlyMiles>0 ? leaseMonthly/monthlyMiles : 0;
+
+  document.getElementById('r-buyMonthly').textContent = fmt(buyMonthly)+'/mo';
+  document.getElementById('r-buyCpm').textContent = fmtCpm(buyCpm);
+  document.getElementById('r-rentMonthly').textContent = fmt(rentMonthly)+'/mo';
+  document.getElementById('r-rentCpm').textContent = fmtCpm(rentCpm);
+  document.getElementById('r-leaseOverage').textContent = fmt(overageFee)+'/mo';
+  document.getElementById('r-leaseMonthly').textContent = fmt(leaseMonthly)+'/mo';
+  document.getElementById('r-leaseCpm').textContent = fmtCpm(leaseCpm);
+
+  const options = [
+    {name:'Buying', cpm: buyCpm, id:'buyBox'},
+    {name:'Renting', cpm: rentCpm, id:'rentBox'},
+    {name:'Leasing', cpm: leaseCpm, id:'leaseBox'}
+  ];
+  document.getElementById('buyBox').className = 'compare-box';
+  document.getElementById('rentBox').className = 'compare-box';
+  document.getElementById('leaseBox').className = 'compare-box';
+
+  options.sort((a,b)=>a.cpm-b.cpm);
+  const winner = options[0];
+  document.getElementById(winner.id).className = 'compare-box winner';
+
+  document.getElementById('verdictTitle').textContent = winner.name + ' has the lowest cost per mile here';
+  document.getElementById('verdictSaving').textContent = fmtCpm(winner.cpm);
+  const benchmarkNote = winner.cpm <= 0.45 ? 'That\'s within the typical profitable range of $0.35\u2013$0.45/mile.' : 'That\'s above the typical $0.35\u2013$0.45/mile benchmark for profitable rideshare driving \u2014 worth reconsidering your vehicle choice or financing terms.';
+  document.getElementById('verdictNote').textContent = benchmarkNote;
+
+  document.getElementById('noteBox').innerHTML = '<strong>How this is calculated:</strong> Buy = loan payment (standard amortization) + insurance + maintenance + fuel. Rent = weekly rate × 4.345 (avg. weeks/month) + fuel. Lease = lease payment + insurance + half your entered maintenance (some covered under factory warranty) + fuel + mileage overage fees beyond your entered annual cap.';
+
+  document.getElementById('results').className = 'results show';
+}
+</script>
+</body>
+</html>

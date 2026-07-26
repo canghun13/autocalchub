@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Subscription vs Lease vs Buy Calculator | AutoCalcHub</title>
+  <meta name="description" content="Compare the true monthly and total cost of a car subscription, a lease, and buying — including insurance and maintenance — to see which actually costs less.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-subscription-vs-lease-vs-buy-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:900px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .highlight-box p{color:var(--charcoal);margin:0;font-weight:500;font-size:0.95rem}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.25rem;margin-bottom:1.5rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:2px solid var(--orange)}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:0.9rem}
+    label{font-size:0.82rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.7rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.9rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:2.5rem}
+    .calc-btn{width:100%;margin-top:0.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none;margin-top:1.5rem}
+    .results.show{display:block}
+    .verdict{border-radius:14px;padding:1.75rem;text-align:center;margin-bottom:1.5rem;background:var(--navy)}
+    .verdict h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:0.4rem}
+    .verdict p{color:rgba(255,255,255,0.7);font-size:0.9rem;margin:0}
+    .verdict .saving{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+    .compare-box{background:white;border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+    .compare-box.winner{border-color:var(--orange);border-width:2px}
+    .compare-box h4{font-family:'Space Grotesk',sans-serif;font-size:0.9rem;font-weight:700;color:var(--charcoal);margin-bottom:0.9rem;display:flex;align-items:center;flex-wrap:wrap;gap:0.4rem}
+    .winner-badge{background:var(--orange);color:white;font-size:0.62rem;font-weight:700;padding:0.15rem 0.5rem;border-radius:100px;text-transform:uppercase}
+    .compare-row{display:flex;justify-content:space-between;align-items:center;padding:0.45rem 0;border-bottom:1px solid var(--border);font-size:0.82rem}
+    .compare-row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.65rem}
+    .compare-row span:first-child{color:var(--mid)}
+    .compare-row span:last-child{color:var(--charcoal);font-weight:500;text-align:right}
+    .note-box{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.85rem;color:var(--mid);line-height:1.6}
+    .note-box strong{color:var(--charcoal)}
+    @media(max-width:800px){.calc-grid{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr}}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Subscription vs Lease vs Buy Calculator",
+    "url": "https://autocalchub.com/tools/car-subscription-vs-lease-vs-buy-calculator.html",
+    "description": "Compare the true monthly and total cost of a car subscription, a lease, and buying — including insurance and maintenance — to see which actually costs less.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    },
+    "dateModified": "2026-07-22"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autocalchub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://autocalchub.com/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Car Subscription vs Lease vs Buy Calculator",
+      "item": "https://autocalchub.com/tools/car-subscription-vs-lease-vs-buy-calculator.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Car Subscription vs Lease vs Buy Calculator</h1>
+    <p>Subscriptions bundle insurance and maintenance into one fee — buying and leasing usually don't. This calculator normalizes all three so you're comparing true monthly cost, not just the sticker payment.</p>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Quick answer:</strong> There's no universal winner — it depends on the specific lease deal or subscription quote you're comparing against your loan terms. A subsidized manufacturer lease can sometimes beat buying even over several years, since you're only financing the depreciation, not the full price. Subscriptions almost always cost the most per month, but they're the only option with no long-term commitment. Run your actual numbers below rather than assuming.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-grid">
+    <div class="calc-card">
+      <h2>🚗 Buy</h2>
+      <div class="form-group">
+        <label>Vehicle Price</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="buyPrice" value="32000" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Down Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="buyDown" value="3000" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Loan APR</label>
+        <div class="input-wrap has-suffix"><input type="number" id="buyApr" value="6.9" min="0" max="30" step="0.1"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label>Loan Term</label>
+        <div class="input-wrap has-suffix"><input type="number" id="buyTerm" value="60" min="12" max="96"><span class="input-suffix">mo</span></div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2>📄 Lease</h2>
+      <div class="form-group">
+        <label>Monthly Lease Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="leasePayment" value="420" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Due at Signing</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="leaseDown" value="1500" min="0"></div>
+      </div>
+      <p style="font-size:0.78rem;color:var(--light);margin-top:0.5rem;line-height:1.5">Use a real quote for your vehicle — lease pricing depends on the automaker's residual value and money factor, which vary too much to estimate generically.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>🔄 Subscription</h2>
+      <div class="form-group">
+        <label>Monthly Subscription Fee</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="subFee" value="650" min="0"></div>
+      </div>
+      <p style="font-size:0.78rem;color:var(--light);margin-top:0.5rem;line-height:1.5">Use the quote for your specific vehicle and term — subscription pricing varies widely by provider, model, and city (real 2026 examples run roughly $400–$1,050/month).</p>
+    </div>
+  </div>
+
+  <div class="calc-card" style="margin-bottom:1.5rem">
+    <h2>➕ Shared Costs (Buy &amp; Lease Only — Subscription Already Includes These)</h2>
+    <div class="calc-grid" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:0">
+      <div class="form-group">
+        <label>Monthly Insurance</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="insurance" value="150" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Monthly Maintenance (Buy only)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="maintenance" value="45" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Comparison Period</label>
+        <div class="input-wrap has-suffix"><input type="number" id="comparePeriod" value="36" min="6" max="96"><span class="input-suffix">mo</span></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="calc-btn" onclick="calculate()">Compare All Three →</button>
+
+  <div class="results" id="results">
+    <div class="verdict" id="verdict">
+      <h3 id="verdictTitle"></h3>
+      <span class="saving" id="verdictSaving"></span>
+      <p id="verdictNote"></p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-box" id="buyBox">
+        <h4>🚗 Buy</h4>
+        <div class="compare-row"><span>True monthly cost</span><span id="r-buyMonthly"></span></div>
+        <div class="compare-row"><span>Cash out over period</span><span id="r-buyTotal"></span></div>
+        <div class="compare-row"><span>Est. equity at end</span><span id="r-buyEquity"></span></div>
+        <div class="compare-row"><span>Net cost (cash out − equity)</span><span id="r-buyNet"></span></div>
+      </div>
+      <div class="compare-box" id="leaseBox">
+        <h4>📄 Lease</h4>
+        <div class="compare-row"><span>True monthly cost</span><span id="r-leaseMonthly"></span></div>
+        <div class="compare-row"><span>Cash out over period</span><span id="r-leaseTotal"></span></div>
+        <div class="compare-row"><span>Equity at end</span><span>$0</span></div>
+        <div class="compare-row"><span>Net cost</span><span id="r-leaseNet"></span></div>
+      </div>
+      <div class="compare-box" id="subBox">
+        <h4>🔄 Subscription</h4>
+        <div class="compare-row"><span>True monthly cost</span><span id="r-subMonthly"></span></div>
+        <div class="compare-row"><span>Cash out over period</span><span id="r-subTotal"></span></div>
+        <div class="compare-row"><span>Equity at end</span><span>$0</span></div>
+        <div class="compare-row"><span>Net cost</span><span id="r-subNet"></span></div>
+      </div>
+    </div>
+    <div class="note-box" id="noteBox"></div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section" style="margin-top:3rem">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Why This Comparison Needs Normalizing</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">A subscription's monthly fee looks expensive next to a loan or lease payment until you remember what it includes: insurance, maintenance, and often registration are usually bundled in. A loan or lease payment is just the financing cost — you still pay for insurance and upkeep separately. This calculator adds your insurance and maintenance costs to the buy and lease sides so all three numbers represent your actual total monthly outlay, not just the financing piece.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">A Worked Example</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">A $32,000 vehicle with $3,000 down, financed at 6.9% APR over 60 months, runs about $573/month in loan payments — add $150/month insurance and $45/month maintenance for a true cost of about $768/month. Over 36 months that's roughly $30,600 in cash out, offset by an estimated $16,600 in resale equity (using a rough depreciation estimate), for a net cost of around $26,800. A lease at $420/month plus insurance runs about $570/month true cost, or roughly $22,000 net over the same 36 months including the $1,500 due at signing — cheaper than buying here specifically because a subsidized lease payment finances only the car's depreciation, not its full price. A subscription at $650/month all-inclusive comes to about $23,400 over 36 months — more than the lease, less than buying in this example, but with no term commitment at all. <strong>The lesson isn't "leasing always wins" — it's that the specific lease or subscription quote you're looking at can beat buying, so it's worth running your real numbers instead of assuming buying is automatically cheaper.</strong></p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">When Each Option Actually Makes Sense</h2>
+    <ul style="color:var(--mid);line-height:1.8;margin:0.75rem 0 1rem 1.5rem;font-size:0.95rem">
+      <li><strong>Buy</strong> when you plan to keep the car 3+ years — the equity you build is real money back in your pocket, and it's usually the lowest net-cost option over time.</li>
+      <li><strong>Lease</strong> when you want a new car every 2–3 years with predictable costs and don't drive enough miles to trigger overage fees.</li>
+      <li><strong>Subscribe</strong> when you need a car for weeks or a few months — relocating, between cars, testing an EV before committing — and the ability to cancel on short notice is worth paying a premium for.</li>
+    </ul>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">What This Calculator Doesn't Account For</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">Real subscription pricing varies by provider, city, and vehicle — programs like Care by Volvo, FINN, and Autonomy have each priced very differently by model in 2026, so use an actual quote rather than a rough average. It also doesn't factor in mileage limits (leases and many subscriptions cap miles, buying doesn't), or the time value of the down payment you'd otherwise have invested. Run your own real numbers here as a starting point, then compare against actual quotes before deciding.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/is-a-car-subscription-worth-it.html" style="color:var(--orange);text-decoration:none;">Is a Car Subscription Worth It?</a></li>
+        <li><a href="car-lease-vs-buy-calculator.html" style="color:var(--orange);text-decoration:none;">Car Lease vs Buy Calculator</a></li>
+        <li><a href="../blog/should-i-buy-or-lease-a-car.html" style="color:var(--orange);text-decoration:none;">Should I Buy or Lease a Car?</a></li>
+        <li><a href="car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+
+function amortizedMonthly(principal, aprPct, term){
+  const r = (aprPct/100)/12;
+  if(r === 0){ return principal/term; }
+  return principal * (r*Math.pow(1+r, term)) / (Math.pow(1+r, term)-1);
+}
+
+function remainingBalance(principal, aprPct, term, paymentsMade){
+  const r = (aprPct/100)/12;
+  const payment = amortizedMonthly(principal, aprPct, term);
+  let bal = principal;
+  const n = Math.min(paymentsMade, term);
+  for(let i=0;i<n;i++){
+    const interest = bal*r;
+    const principalPaid = payment - interest;
+    bal -= principalPaid;
+  }
+  return Math.max(bal, 0);
+}
+
+function calculate(){
+  const buyPrice = parseFloat(document.getElementById('buyPrice').value)||0;
+  const buyDown = parseFloat(document.getElementById('buyDown').value)||0;
+  const buyApr = parseFloat(document.getElementById('buyApr').value)||0;
+  const buyTerm = parseFloat(document.getElementById('buyTerm').value)||60;
+  const leasePayment = parseFloat(document.getElementById('leasePayment').value)||0;
+  const leaseDown = parseFloat(document.getElementById('leaseDown').value)||0;
+  const subFee = parseFloat(document.getElementById('subFee').value)||0;
+  const insurance = parseFloat(document.getElementById('insurance').value)||0;
+  const maintenance = parseFloat(document.getElementById('maintenance').value)||0;
+  const period = parseFloat(document.getElementById('comparePeriod').value)||36;
+
+  const financed = Math.max(buyPrice - buyDown, 0);
+  const buyLoanPayment = amortizedMonthly(financed, buyApr, buyTerm);
+  const buyTrueMonthly = buyLoanPayment + insurance + maintenance;
+  const buyTotalCash = buyDown + buyTrueMonthly*period;
+
+  // Rough resale estimate: ~15%/yr straight-line-ish depreciation off price, floor 25% of price
+  const yearsElapsed = period/12;
+  let resaleFactor = 1 - 0.16*yearsElapsed;
+  if(resaleFactor < 0.25) resaleFactor = 0.25;
+  const estResale = buyPrice*resaleFactor;
+  const paymentsMadeByPeriod = Math.min(period, buyTerm);
+  const loanBalance = remainingBalance(financed, buyApr, buyTerm, paymentsMadeByPeriod);
+  const buyEquity = Math.max(estResale - loanBalance, 0);
+  const buyNet = buyTotalCash - buyEquity;
+
+  const leaseTrueMonthly = leasePayment + insurance;
+  const leaseTotalCash = leaseDown + leaseTrueMonthly*period;
+  const leaseNet = leaseTotalCash;
+
+  const subTrueMonthly = subFee;
+  const subTotalCash = subTrueMonthly*period;
+  const subNet = subTotalCash;
+
+  document.getElementById('r-buyMonthly').textContent = fmt(buyTrueMonthly)+'/mo';
+  document.getElementById('r-buyTotal').textContent = fmt(buyTotalCash);
+  document.getElementById('r-buyEquity').textContent = fmt(buyEquity);
+  document.getElementById('r-buyNet').textContent = fmt(buyNet);
+
+  document.getElementById('r-leaseMonthly').textContent = fmt(leaseTrueMonthly)+'/mo';
+  document.getElementById('r-leaseTotal').textContent = fmt(leaseTotalCash);
+  document.getElementById('r-leaseNet').textContent = fmt(leaseNet);
+
+  document.getElementById('r-subMonthly').textContent = fmt(subTrueMonthly)+'/mo';
+  document.getElementById('r-subTotal').textContent = fmt(subTotalCash);
+  document.getElementById('r-subNet').textContent = fmt(subNet);
+
+  const options = [
+    {name:'Buying', net: buyNet, id:'buyBox'},
+    {name:'Leasing', net: leaseNet, id:'leaseBox'},
+    {name:'Subscribing', net: subNet, id:'subBox'}
+  ];
+  document.getElementById('buyBox').className = 'compare-box';
+  document.getElementById('leaseBox').className = 'compare-box';
+  document.getElementById('subBox').className = 'compare-box';
+
+  options.sort((a,b)=>a.net-b.net);
+  const winner = options[0];
+  document.getElementById(winner.id).className = 'compare-box winner';
+  const winnerBadgeMap = {buyBox:'r-buyMonthly', leaseBox:'r-leaseMonthly', subBox:'r-subMonthly'};
+
+  document.getElementById('verdictTitle').textContent = winner.name + ' has the lowest net cost here';
+  const secondBest = options[1];
+  const diff = secondBest.net - winner.net;
+  document.getElementById('verdictSaving').textContent = fmt(diff) + ' less than the next-best option';
+  document.getElementById('verdictNote').textContent = 'Over ' + period + ' months, based on your inputs — including insurance, maintenance, and (for buying) estimated equity at the end of the period.';
+
+  document.getElementById('noteBox').innerHTML = '<strong>How this is calculated:</strong> Buy = loan payment (standard amortization) + insurance + maintenance, minus estimated resale equity at the end of your comparison period (a rough depreciation estimate — use a real valuation for your specific vehicle). Lease = your entered payment + insurance, no equity. Subscription = your entered fee only, since it already bundles insurance and maintenance.';
+
+  document.getElementById('results').className = 'results show';
+}
+</script>
+</body>
+</html>

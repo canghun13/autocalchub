@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Tariff Impact Calculator (2026) | AutoCalcHub</title>
+  <meta name="description" content="Check your vehicle's country of assembly from its VIN and estimate how much 2026 auto tariffs may be adding to its price — and your monthly payment.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-tariff-impact-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:900px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .highlight-box p{color:var(--charcoal);margin:0;font-weight:500;font-size:0.95rem}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    input[type="number"],select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .calc-btn{width:100%;margin-top:0.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none;margin-top:1.5rem}
+    .results.show{display:block}
+    .verdict{border-radius:14px;padding:1.75rem;text-align:center;margin-bottom:1.5rem;background:var(--navy)}
+    .verdict h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:0.4rem}
+    .verdict p{color:rgba(255,255,255,0.7);font-size:0.9rem;margin:0}
+    .verdict .saving{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+    .compare-box{background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+    .compare-box h4{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem}
+    .compare-row{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.875rem}
+    .compare-row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .compare-row span:first-child{color:var(--mid)}
+    .compare-row span:last-child{color:var(--charcoal);font-weight:500}
+    .note-box{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.85rem;color:var(--mid);line-height:1.6}
+    .note-box strong{color:var(--charcoal)}
+    .disclaimer-box{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    @media(max-width:640px){.calc-grid{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr}}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Tariff Impact Calculator",
+    "url": "https://autocalchub.com/tools/car-tariff-impact-calculator.html",
+    "description": "Check your vehicle's country of assembly from its VIN and estimate how much 2026 auto tariffs may be adding to its price and monthly payment.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    },
+    "dateModified": "2026-07-22"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autocalchub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://autocalchub.com/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Car Tariff Impact Calculator",
+      "item": "https://autocalchub.com/tools/car-tariff-impact-calculator.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Car Tariff Impact Calculator</h1>
+    <p>Check your vehicle's country of assembly from its VIN, then see roughly how much 2026 auto tariffs may be adding to the price — and what that means for your monthly payment.</p>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Quick answer:</strong> A vehicle assembled in the US typically carries the smallest tariff impact (roughly $1,600–$4,500 in added cost from parts-content exposure), while vehicles from Japan, South Korea, and the EU currently face a 15% tariff (commonly $5,000–$8,900 added), and vehicles from countries without a trade agreement can face the full 25% rate. These are national averages, not your exact number — always confirm the actual price with the dealer.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-grid">
+    <div class="calc-card">
+      <h2>🔎 Step 1: Check Your VIN</h2>
+      <div class="form-group">
+        <label>First Character of Your VIN</label>
+        <select id="vinChar">
+          <option value="1">1 — United States</option>
+          <option value="4">4 — United States</option>
+          <option value="5">5 — United States</option>
+          <option value="2">2 — Canada</option>
+          <option value="3">3 — Mexico</option>
+          <option value="J">J — Japan</option>
+          <option value="K">K — South Korea</option>
+          <option value="S">S — United Kingdom</option>
+          <option value="W">W — Germany</option>
+          <option value="Z">Z — Italy</option>
+          <option value="V">V — France / Spain</option>
+          <option value="L">L — China</option>
+          <option value="other">Other / Not Sure</option>
+        </select>
+      </div>
+      <p style="font-size:0.82rem;color:var(--light);line-height:1.6">Your VIN is on your registration, insurance card, or the driver-side dashboard (visible through the windshield). The first character identifies the country where the vehicle was assembled — not necessarily the brand's home country.</p>
+    </div>
+
+    <div class="calc-card">
+      <h2>💰 Step 2: Your Vehicle &amp; Loan</h2>
+      <div class="form-group">
+        <label>Vehicle Price (before tariff impact)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="basePrice" value="38000" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Down Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="downPayment" value="4000" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Loan APR (%)</label>
+        <input type="number" id="apr" value="6.9" min="0" max="30" step="0.1">
+      </div>
+      <div class="form-group">
+        <label>Loan Term (months)</label>
+        <input type="number" id="term" value="60" min="12" max="96">
+      </div>
+    </div>
+  </div>
+
+  <button class="calc-btn" onclick="calculate()">Estimate Tariff Impact →</button>
+
+  <div class="results" id="results">
+    <div class="verdict" id="verdict">
+      <h3 id="verdictTitle"></h3>
+      <span class="saving" id="verdictSaving"></span>
+      <p id="verdictNote"></p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-box">
+        <h4>📋 Without Tariff Impact</h4>
+        <div class="compare-row"><span>Vehicle price</span><span id="r-baseNoTariff"></span></div>
+        <div class="compare-row"><span>Monthly payment</span><span id="r-monthlyNoTariff"></span></div>
+        <div class="compare-row"><span>Total interest</span><span id="r-interestNoTariff"></span></div>
+      </div>
+      <div class="compare-box">
+        <h4>📈 Estimated With Tariff Impact</h4>
+        <div class="compare-row"><span>Estimated price</span><span id="r-baseTariff"></span></div>
+        <div class="compare-row"><span>Estimated monthly payment</span><span id="r-monthlyTariff"></span></div>
+        <div class="compare-row"><span>Estimated total interest</span><span id="r-interestTariff"></span></div>
+      </div>
+    </div>
+    <div class="note-box" id="noteBox"></div>
+    <div class="disclaimer-box">⚠️ <strong>These are national-average estimates, not your exact number.</strong> Actual tariff pass-through varies by manufacturer, model, trim, and how much of each vehicle's parts content is genuinely foreign — some automakers have absorbed part of the cost rather than passing it all to buyers, and the underlying trade rules are still actively changing in 2026 (including an ongoing USMCA review that could affect Canada/Mexico-assembled vehicles). Always confirm the actual out-the-door price with the dealer or manufacturer before budgeting around this estimate.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section" style="margin-top:3rem">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">How to Read Your VIN's Country of Assembly</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">Every VIN's first character identifies where the vehicle was assembled, per the international ISO 3779 standard — not the brand's home country. A Honda Civic can be assembled in Ohio (VIN starts with 1), and a Toyota RAV4 might be assembled in Kentucky (also 1) or Ontario (2, Canada). Checking this single character tells you far more about your tariff exposure than the badge on the hood.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">Why the Estimate Varies So Much by Country</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">As of mid-2026, industry analysts (Cox Automotive, Anderson Economic Group, J.P. Morgan) report that vehicles assembled in the US still carry a real tariff impact — typically $1,600–$4,500 — because even "American-made" cars use imported parts, steel, and aluminum. Vehicles imported from Japan, South Korea, and the EU currently face a 15% tariff rate under Section 232, adding roughly $5,000–$8,900 depending on the model. The UK has a reduced 10% rate up to an annual import quota. Canada and Mexico fall under USMCA rules — non-US content is taxed, but compliant vehicles get significant relief, so the real-world impact varies widely by model. Vehicles from countries without a US trade agreement can face the full 25% tariff.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">This Ripples Into Financing, Not Just the Sticker Price</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">A higher purchase price means a larger loan amount, which means more interest paid over the life of the loan — not just a bigger number at signing. This calculator applies the standard loan amortization formula to both the base price and the tariff-adjusted estimate so you can see the compounding effect on your actual monthly payment and total interest, not just the sticker shock.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">Common Mistakes With This Topic</h2>
+    <ul style="color:var(--mid);line-height:1.8;margin:0.75rem 0 1rem 1.5rem;font-size:0.95rem">
+      <li><strong>Assuming a domestic brand means no tariff exposure.</strong> Nearly every vehicle sold in the US — including from Ford, GM, and Tesla — includes some imported parts or materials, so "assembled here" reduces exposure but rarely eliminates it entirely.</li>
+      <li><strong>Assuming the sticker price already reflects the tariff.</strong> Some automakers have absorbed part of the cost rather than passing it all through immediately — the same model can carry different real-world markups depending on the brand's pricing strategy at the time.</li>
+      <li><strong>Treating this as a "buy now before it gets worse" countdown.</strong> Trade policy is genuinely volatile in 2026, including the ongoing USMCA review — the direction of the next change isn't guaranteed, so budget around today's confirmed numbers rather than speculation.</li>
+    </ul>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/how-do-tariffs-affect-your-car-payment-2026.html" style="color:var(--orange);text-decoration:none;">How Do Tariffs Affect Your Car Payment in 2026?</a></li>
+        <li><a href="car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+        <li><a href="../blog/how-to-negotiate-car-price-at-dealership.html" style="color:var(--orange);text-decoration:none;">How to Negotiate Car Price at a Dealership</a></li>
+        <li><a href="car-affordability-calculator.html" style="color:var(--orange);text-decoration:none;">Car Affordability Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+
+function amortizedMonthly(principal, aprPct, term){
+  const r = (aprPct/100)/12;
+  if(r === 0){ return principal/term; }
+  return principal * (r*Math.pow(1+r, term)) / (Math.pow(1+r, term)-1);
+}
+
+const tariffBands = {
+  '1': {label:'United States', low:1600, high:4500, note:'US-assembled vehicles still carry real tariff exposure from imported parts, steel, and aluminum — but the smallest of any category.'},
+  '4': {label:'United States', low:1600, high:4500, note:'US-assembled vehicles still carry real tariff exposure from imported parts, steel, and aluminum — but the smallest of any category.'},
+  '5': {label:'United States', low:1600, high:4500, note:'US-assembled vehicles still carry real tariff exposure from imported parts, steel, and aluminum — but the smallest of any category.'},
+  '2': {label:'Canada', low:2000, high:8000, note:'USMCA-compliant vehicles get relief on US-origin content, but the non-US portion is still tariffed — impact varies widely by model.'},
+  '3': {label:'Mexico', low:2000, high:8000, note:'USMCA-compliant vehicles get relief on US-origin content, but the non-US portion is still tariffed — impact varies widely by model. Watch the ongoing USMCA review for potential changes.'},
+  'J': {label:'Japan', low:5000, high:8900, note:'Subject to the 15% Section 232 tariff rate as of 2026.'},
+  'K': {label:'South Korea', low:5000, high:8900, note:'Subject to the 15% Section 232 tariff rate as of 2026.'},
+  'S': {label:'United Kingdom', low:3000, high:6000, note:'Reduced 10% tariff rate applies up to an annual import quota; above the quota, the standard rate applies.'},
+  'W': {label:'Germany', low:5000, high:10000, note:'Subject to the 15% Section 232 tariff rate as of 2026 — often toward the higher end given the luxury-leaning segment.'},
+  'Z': {label:'Italy', low:5000, high:10000, note:'Subject to the 15% Section 232 tariff rate as of 2026 — often toward the higher end given the luxury-leaning segment.'},
+  'V': {label:'France / Spain', low:5000, high:9000, note:'Subject to the 15% Section 232 tariff rate as of 2026.'},
+  'L': {label:'China', low:10000, high:25000, note:'Chinese-made passenger vehicles face very high tariffs and are rarely sold new through US dealer channels as a result — this is an approximate range, verify directly if relevant.'},
+  'other': {label:'Unspecified / no trade agreement', low:5000, high:15000, note:'Without a specific trade agreement, the standard 25% tariff rate can apply — this range is a broad placeholder, confirm your specific country.'}
+};
+
+function calculate(){
+  const vinChar = document.getElementById('vinChar').value;
+  const basePrice = parseFloat(document.getElementById('basePrice').value)||0;
+  const down = parseFloat(document.getElementById('downPayment').value)||0;
+  const apr = parseFloat(document.getElementById('apr').value)||0;
+  const term = parseFloat(document.getElementById('term').value)||60;
+
+  const band = tariffBands[vinChar] || tariffBands['other'];
+  const midImpact = (band.low + band.high)/2;
+
+  const financedNoTariff = Math.max(basePrice - down, 0);
+  const monthlyNoTariff = amortizedMonthly(financedNoTariff, apr, term);
+  const interestNoTariff = (monthlyNoTariff*term) - financedNoTariff;
+
+  const tariffPrice = basePrice + midImpact;
+  const financedTariff = Math.max(tariffPrice - down, 0);
+  const monthlyTariff = amortizedMonthly(financedTariff, apr, term);
+  const interestTariff = (monthlyTariff*term) - financedTariff;
+
+  document.getElementById('r-baseNoTariff').textContent = fmt(basePrice);
+  document.getElementById('r-monthlyNoTariff').textContent = fmt(monthlyNoTariff)+'/mo';
+  document.getElementById('r-interestNoTariff').textContent = fmt(interestNoTariff);
+
+  document.getElementById('r-baseTariff').textContent = fmt(tariffPrice) + ' (est.)';
+  document.getElementById('r-monthlyTariff').textContent = fmt(monthlyTariff)+'/mo';
+  document.getElementById('r-interestTariff').textContent = fmt(interestTariff);
+
+  const monthlyDiff = monthlyTariff - monthlyNoTariff;
+
+  document.getElementById('verdictTitle').textContent = band.label + ' — Estimated Tariff Impact';
+  document.getElementById('verdictSaving').textContent = fmt(band.low) + ' – ' + fmt(band.high);
+  document.getElementById('verdictNote').textContent = band.note + ' On your loan terms, that works out to roughly ' + fmt(monthlyDiff) + ' more per month, using the midpoint of the range.';
+
+  document.getElementById('noteBox').innerHTML = '<strong>How this is calculated:</strong> The tariff impact range is applied at its midpoint (' + fmt(midImpact) + ') on top of your entered vehicle price, then both scenarios run through the same standard loan amortization formula using your APR and term — so the payment difference reflects only the price change, not a different rate or term.';
+
+  document.getElementById('results').className = 'results show';
+}
+</script>
+</body>
+</html>
