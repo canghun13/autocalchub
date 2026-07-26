@@ -24,6 +24,7 @@
     .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.25rem;padding-bottom:0.6rem;border-bottom:2px solid var(--orange)}
     .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:0.9rem}
     label{font-size:0.82rem;font-weight:500;color:var(--mid)}
+    .shared-costs-row label{min-height:2.05rem;line-height:1.25;display:flex;align-items:flex-end}
     .input-wrap{position:relative}
     .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
     .input-prefix{left:0.875rem}
@@ -164,7 +165,7 @@
 
   <div class="calc-card" style="margin-bottom:1.5rem">
     <h2>➕ Shared Costs (Buy &amp; Lease Only — Subscription Already Includes These)</h2>
-    <div class="calc-grid" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:0">
+    <div class="calc-grid shared-costs-row" style="grid-template-columns:1fr 1fr 1fr;margin-bottom:0">
       <div class="form-group">
         <label>Monthly Insurance</label>
         <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="insurance" value="150" min="0"></div>
