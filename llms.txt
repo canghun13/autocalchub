@@ -37,6 +37,7 @@
 - [Rideshare Car Cost-Per-Mile Calculator](https://autocalchub.com/tools/rideshare-car-cost-per-mile-calculator.html): Compare buying, renting, and leasing a car for Uber, Lyft, DoorDash, or Instacart on real cost per mile, including lease mileage overage fees.
 - [Car Tariff Impact Calculator](https://autocalchub.com/tools/car-tariff-impact-calculator.html): Check your vehicle's country of assembly from its VIN and estimate how much 2026 auto tariffs may be adding to its price and monthly payment.
 - [Car Subscription vs Lease vs Buy Calculator](https://autocalchub.com/tools/car-subscription-vs-lease-vs-buy-calculator.html): Compare the true monthly and total cost of a car subscription, a lease, and buying, including insurance and maintenance.
+- [Lease Takeover Cost Calculator](https://autocalchub.com/tools/lease-takeover-cost-calculator.html): Compare the total remaining cost of taking over someone else's car lease against starting a new lease for the same term.
 
 ## Guides: Buying a Car
 
@@ -51,6 +52,7 @@
 - [Should You Buy Out Your Car Lease?](https://autocalchub.com/blog/should-you-buy-out-your-car-lease.html): Compare your lease's residual value to the car's real market value to see if buying out makes financial sense.
 - [Is a Car Subscription Worth It?](https://autocalchub.com/blog/is-a-car-subscription-worth-it.html): When the flat-fee flexibility of a car subscription (Care by Volvo, FINN, Autonomy) is actually worth the premium over buying or leasing.
 - [How Do Tariffs Affect Your Car Payment in 2026?](https://autocalchub.com/blog/how-do-tariffs-affect-your-car-payment-2026.html): How to check your vehicle's country of assembly from its VIN and estimate the real 2026 tariff impact on price and financing.
+- [Is Taking Over Someone Else's Car Lease a Good Deal?](https://autocalchub.com/blog/is-a-lease-takeover-a-good-deal.html): How to compare the total remaining cost of a lease takeover against a new lease for the same term, and what to inspect before signing.
 
 ## Guides: Selling & Trade-In
 
@@ -102,6 +104,7 @@
 - [EV Lease vs Buy in 2026](https://autocalchub.com/blog/ev-lease-vs-buy-2026.html): How the EV lease-vs-buy decision changed now that the lease tax credit loophole has ended.
 - [How Much Does It Cost to Charge an EV at Home?](https://autocalchub.com/blog/how-much-does-ev-cost-to-charge-at-home.html): How to calculate your actual home charging cost based on your electricity rate and battery size.
 - [EV Tax Credit 2026](https://autocalchub.com/blog/ev-tax-credit-2026.html): Why the $7,500 federal EV tax credit ended in September 2025, the one narrow exception, and what incentives remain.
+- [EV Registration Fees by State (2026)](https://autocalchub.com/blog/ev-registration-fees-by-state-2026.html): 41 states now charge EVs an extra annual registration fee — a state-by-state breakdown of how much and why.
 
 ## Guides: Car Ownership & Value
 

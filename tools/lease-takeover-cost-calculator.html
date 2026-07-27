@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lease Takeover Cost Calculator (2026) | AutoCalcHub</title>
+  <meta name="description" content="Compare the total remaining cost of taking over someone else's car lease against starting a new lease for the same term — transfer fees, payments, and incentives included.">
+  <link rel="canonical" href="https://autocalchub.com/tools/lease-takeover-cost-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:900px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .highlight-box p{color:var(--charcoal);margin:0;font-weight:500;font-size:0.95rem}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    input[type="number"],select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .calc-btn{width:100%;margin-top:0.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none;margin-top:1.5rem}
+    .results.show{display:block}
+    .verdict{border-radius:14px;padding:1.75rem;text-align:center;margin-bottom:1.5rem;background:var(--navy)}
+    .verdict h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:0.4rem}
+    .verdict p{color:rgba(255,255,255,0.7);font-size:0.9rem;margin:0}
+    .verdict .saving{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+    .compare-box{background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+    .compare-box h4{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem}
+    .compare-row{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.875rem}
+    .compare-row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .compare-row span:first-child{color:var(--mid)}
+    .compare-row span:last-child{color:var(--charcoal);font-weight:500}
+    .note-box{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.85rem;color:var(--mid);line-height:1.6}
+    .note-box strong{color:var(--charcoal)}
+    .disclaimer-box{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    @media(max-width:640px){.calc-grid{grid-template-columns:1fr}.compare-grid{grid-template-columns:1fr}}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Lease Takeover Cost Calculator",
+    "url": "https://autocalchub.com/tools/lease-takeover-cost-calculator.html",
+    "description": "Compare the total remaining cost of taking over someone else's car lease against starting a new lease for the same term.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    },
+    "dateModified": "2026-07-27"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autocalchub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://autocalchub.com/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Lease Takeover Cost Calculator",
+      "item": "https://autocalchub.com/tools/lease-takeover-cost-calculator.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Lease Takeover Cost Calculator</h1>
+    <p>Compare the total remaining cost of taking over someone else's lease against starting a brand-new lease for the same length of time — the only fair way to tell which one actually saves you money.</p>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Quick answer:</strong> A takeover's total cost is the transfer fee plus every remaining monthly payment, minus any incentive the current lessee offers. A new lease's total cost is its acquisition fee plus any money due at signing, plus the same number of months of payments. Whichever total is lower for the same term is the better deal — the monthly payment alone doesn't tell you that.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-grid">
+    <div class="calc-card">
+      <h2>🔄 Option 1: Lease Takeover</h2>
+      <div class="form-group">
+        <label>Months Remaining on the Lease</label>
+        <input type="number" id="takeoverMonths" value="12" min="1" max="48">
+      </div>
+      <div class="form-group">
+        <label>Monthly Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="takeoverPayment" value="420" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Transfer / Assumption Fee (one-time)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="transferFee" value="400" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Cash Incentive From Current Lessee (if any)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="incentive" value="0" min="0"></div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2>🆕 Option 2: New Lease (Same Term)</h2>
+      <div class="form-group">
+        <label>Monthly Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="newPayment" value="480" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Acquisition Fee (one-time)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="acqFee" value="695" min="0"></div>
+      </div>
+      <div class="form-group">
+        <label>Down Payment / Due at Signing</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="newDown" value="1500" min="0"></div>
+      </div>
+      <p style="font-size:0.82rem;color:var(--light);line-height:1.6">Uses the same number of months as the takeover so both totals cover an identical time period.</p>
+    </div>
+  </div>
+
+  <button class="calc-btn" onclick="calculate()">Compare Total Cost →</button>
+
+  <div class="results" id="results">
+    <div class="verdict" id="verdict">
+      <h3 id="verdictTitle"></h3>
+      <span class="saving" id="verdictSaving"></span>
+      <p id="verdictNote"></p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-box">
+        <h4>🔄 Lease Takeover — Total Cost</h4>
+        <div class="compare-row"><span>Remaining payments</span><span id="r-takeoverPayments"></span></div>
+        <div class="compare-row"><span>Transfer fee</span><span id="r-transferFee"></span></div>
+        <div class="compare-row"><span>Less: incentive received</span><span id="r-incentive"></span></div>
+        <div class="compare-row"><span>Total cost</span><span id="r-takeoverTotal"></span></div>
+      </div>
+      <div class="compare-box">
+        <h4>🆕 New Lease — Total Cost</h4>
+        <div class="compare-row"><span>Payments (same term)</span><span id="r-newPayments"></span></div>
+        <div class="compare-row"><span>Acquisition fee</span><span id="r-acqFee"></span></div>
+        <div class="compare-row"><span>Due at signing</span><span id="r-newDown"></span></div>
+        <div class="compare-row"><span>Total cost</span><span id="r-newTotal"></span></div>
+      </div>
+    </div>
+    <div class="note-box" id="noteBox"></div>
+    <div class="disclaimer-box">⚠️ <strong>This compares dollar totals for the term you enter — it doesn't price in mileage remaining, wear-and-tear liability, or vehicle condition.</strong> A takeover that wins on price can still be a poor deal if the remaining mileage allowance is nearly used up or the car has excess wear you'd inherit. Inspect the vehicle and review the lease's mileage and condition terms before deciding based on cost alone.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section" style="margin-top:3rem">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Why Compare Totals, Not Monthly Payments</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">A lease takeover with 8 months left at $500/month costs less in total than one with 20 months left at $450/month, even though the second one looks cheaper per month. The only fair comparison is the full remaining cost of each option over the same stretch of time — which is exactly what this calculator lines up side by side.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">Typical Fee Ranges to Expect</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">Transfer fees generally run $300–$500 at brands that allow assumptions (Toyota Financial, Honda Financial, and BMW Financial among them), though some marketplaces bundle in a credit application and disposition fee that can push the total closer to $600–$900. New-lease acquisition fees typically fall between $595 and $895 depending on the manufacturer's captive finance arm. Adjust the defaults above to match the actual figures quoted to you — these vary by brand and by leasing company.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">Common Mistakes With This Topic</h2>
+    <ul style="color:var(--mid);line-height:1.8;margin:0.75rem 0 1rem 1.5rem;font-size:0.95rem">
+      <li><strong>Comparing monthly payments instead of total cost for the same term.</strong> This is the single most common error — always match the time period on both sides.</li>
+      <li><strong>Forgetting the transfer fee is due immediately.</strong> Unlike a new lease's costs, which may be partly rolled into the payment, a takeover's transfer fee is typically due upfront in full.</li>
+      <li><strong>Ignoring remaining mileage allowance.</strong> A cheaper total cost doesn't help if you're inheriting a mileage bank that's nearly exhausted and will trigger overage fees at turn-in.</li>
+      <li><strong>Assuming every leasing company allows a transfer.</strong> Confirm this with the leasing company before running the numbers on a specific listing.</li>
+    </ul>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/is-a-lease-takeover-a-good-deal.html" style="color:var(--orange);text-decoration:none;">Is Taking Over Someone Else's Car Lease a Good Deal?</a></li>
+        <li><a href="../blog/how-to-get-out-of-a-car-lease-early.html" style="color:var(--orange);text-decoration:none;">How to Get Out of a Car Lease Early</a></li>
+        <li><a href="car-lease-vs-buy-calculator.html" style="color:var(--orange);text-decoration:none;">Car Lease vs Buy Calculator</a></li>
+        <li><a href="../blog/should-you-buy-out-your-car-lease.html" style="color:var(--orange);text-decoration:none;">Should You Buy Out Your Car Lease?</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+
+function calculate(){
+  const months = parseFloat(document.getElementById('takeoverMonths').value) || 0;
+  const takeoverPayment = parseFloat(document.getElementById('takeoverPayment').value) || 0;
+  const transferFee = parseFloat(document.getElementById('transferFee').value) || 0;
+  const incentive = parseFloat(document.getElementById('incentive').value) || 0;
+
+  const newPayment = parseFloat(document.getElementById('newPayment').value) || 0;
+  const acqFee = parseFloat(document.getElementById('acqFee').value) || 0;
+  const newDown = parseFloat(document.getElementById('newDown').value) || 0;
+
+  const takeoverPayments = takeoverPayment * months;
+  const takeoverTotal = takeoverPayments + transferFee - incentive;
+
+  const newPayments = newPayment * months;
+  const newTotal = newPayments + acqFee + newDown;
+
+  document.getElementById('r-takeoverPayments').textContent = fmt(takeoverPayments) + ' (' + months + ' mo)';
+  document.getElementById('r-transferFee').textContent = fmt(transferFee);
+  document.getElementById('r-incentive').textContent = '-' + fmt(incentive);
+  document.getElementById('r-takeoverTotal').textContent = fmt(takeoverTotal);
+
+  document.getElementById('r-newPayments').textContent = fmt(newPayments) + ' (' + months + ' mo)';
+  document.getElementById('r-acqFee').textContent = fmt(acqFee);
+  document.getElementById('r-newDown').textContent = fmt(newDown);
+  document.getElementById('r-newTotal').textContent = fmt(newTotal);
+
+  const diff = newTotal - takeoverTotal;
+
+  if(diff > 0){
+    document.getElementById('verdictTitle').textContent = 'Lease Takeover Costs Less';
+    document.getElementById('verdictSaving').textContent = fmt(Math.abs(diff));
+    document.getElementById('verdictNote').textContent = 'Taking over this lease costs less than a new lease over the same ' + months + '-month period — before factoring in mileage remaining or wear-and-tear risk.';
+  } else if(diff < 0){
+    document.getElementById('verdictTitle').textContent = 'New Lease Costs Less';
+    document.getElementById('verdictSaving').textContent = fmt(Math.abs(diff));
+    document.getElementById('verdictNote').textContent = 'A new lease actually costs less than this takeover over the same ' + months + '-month period — the transfer fee and remaining payments outweigh the convenience.';
+  } else {
+    document.getElementById('verdictTitle').textContent = 'Essentially a Tie';
+    document.getElementById('verdictSaving').textContent = fmt(0);
+    document.getElementById('verdictNote').textContent = 'Both options cost about the same over ' + months + ' months — the decision comes down to mileage, condition, and how quickly you need the car.';
+  }
+
+  document.getElementById('noteBox').innerHTML = '<strong>How this is calculated:</strong> Takeover total = (' + fmt(takeoverPayment) + ' × ' + months + ') + ' + fmt(transferFee) + ' transfer fee − ' + fmt(incentive) + ' incentive = ' + fmt(takeoverTotal) + '. New lease total = (' + fmt(newPayment) + ' × ' + months + ') + ' + fmt(acqFee) + ' acquisition fee + ' + fmt(newDown) + ' due at signing = ' + fmt(newTotal) + '.';
+
+  document.getElementById('results').className = 'results show';
+}
+</script>
+</body>
+</html>
