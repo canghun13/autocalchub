@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-07-22 기준)
+# AutoCalcHub 인수인계 문서 (2026-07-27 기준)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,15 +12,14 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (2026-07-12 기준)
-- 블로그 51개 (`blog/` 폴더, index.html 제외) — 7/17 세션에서 7개 추가(`should-you-pay-cash-or-finance-a-car`, `is-certified-pre-owned-worth-it`, `is-extended-car-warranty-worth-it`, `carmax-vs-carvana-which-pays-more`, `how-to-price-car-for-private-sale`, `how-to-sell-car-with-loan-still-on-it`, `how-to-avoid-scams-selling-car-privately`)
-- 툴 22개 (`tools/` 폴더, index.html 제외) — 7/17 3차 세션에서 `cash-vs-finance-car-calculator.html` 추가
-- 정적 페이지: `about.html`, `contact.html`, `privacy-policy.html`, **`methodology.html`(신규)**, **`editorial-policy.html`(신규)**
-- sitemap.xml 총 URL 81개 (블로그+툴+정적페이지+blog/index+tools/index, 7/17 세션 반영)
-- **블로그 태그 카테고리**: Financing / Buying / Running Costs / Ownership / EV / **Selling (7/17 신설)**. Selling은 "판매/처분" 콘텐츠 전용 — 신규 판매 관련 콘텐츠는 이 태그 사용할 것.
-- `tools/index.html` — 블로그 인덱스와 동일한 구조(카테고리별 그리드 + 검색기능)로 신규 생성됨 (기존엔 없었음)
+## 2. 콘텐츠 현황 (2026-07-27 기준)
+- 블로그 61개 (`blog/` 폴더, index.html 제외) — 7/27 세션에서 2개 추가(`ev-registration-fees-by-state-2026`, `is-a-lease-takeover-a-good-deal`)
+- 툴 28개 (`tools/` 폴더, index.html 제외) — 7/27 세션에서 `lease-takeover-cost-calculator.html` 추가
+- 정적 페이지: `about.html`, `contact.html`, `privacy-policy.html`, `methodology.html`, `editorial-policy.html`
+- sitemap.xml 총 URL 102개 (7/27 세션 반영, 신규 3 + lastmod 갱신 11)
+- **블로그 태그 카테고리**: Financing / Buying / Running Costs / Ownership / EV / Selling / Gig & Rideshare (7종). 신규 카테고리 확장 없이 기존 태그로 이번 세션 신규 2건 모두 분류됨(리스 테이크오버→Buying, EV 등록세→EV).
 - **블로그 44개 전체**에 `<div class="blog-meta">...</div>` 줄에 "· Written by AutoCalcHub Team" 바이라인 통합 반영됨 (7/12) — 신규 블로그 작성 시 이 형식 유지할 것
-- **블로그 44개 + 툴 21개 = 65개 페이지 전체**에 BreadcrumbList JSON-LD 스키마 반영됨 (7/12) — 신규 페이지 작성 시 이 패턴(Home > Blog/Tools > 페이지명) 동일하게 추가할 것. FAQPage/HowTo 스키마는 2026-05-07 Google이 리치 리절트를 폐지해서 더 이상 유효한 선택지 아님(추가하지 말 것).
+- **블로그+툴 전체**에 BreadcrumbList JSON-LD 스키마 반영됨 (7/12) — 신규 페이지 작성 시 이 패턴(Home > Blog/Tools > 페이지명) 동일하게 추가할 것. FAQPage/HowTo 스키마는 2026-05-07 Google이 리치 리절트를 폐지해서 더 이상 유효한 선택지 아님(추가하지 말 것).
 
 ### 사이트 구조 관련 중요 변경사항
 - **헤더 내비게이션**: 기존 "Calculators"/"Blog" 드롭다운 메뉴 → **단순 링크**로 전환. "Calculators" 명칭도 **"Tools"**로 변경됨. **7/17 세션에서 "Glossary" 항목 추가** — 현재 Tools / Blog / Glossary / About 4개. (`assets/partials/header.html`)
@@ -55,7 +54,7 @@
 - 작업 시작 전 GA4 + Search Console 리포트 캡처 받아서 방향 잡기
 - **정기 루틴과 별개로**, 세션 여유가 있을 때 GSC 데이터 기반 추가 보강/신규 작업을 하기도 함 (7/8, 7/10 세션이 이 케이스) — 이건 "주간 루틴 소진"과 무관하게 별도로 카운트됨
 
-## 5. SEO / Search Console 현황 (2026-07-19 기준 최신 확인 — 실제 GSC export 파일로 확인)
+## 5. SEO / Search Console 현황 (2026-07-19 기준 최신 확인 — 실제 GSC export 파일로 확인, 7/21·7/22·7/27 세션에서도 첨부 미수신으로 갱신 안 됨)
 - **노출수**: 5/14~5/20에 하루 200~270회로 급증(보험 키워드 초기 크롤링 테스트성 노출) → 5/21 이후 하루 0~4회로 계속 유지 중(7/17까지 확인, 9주째 동일 패턴). 정상적인 저권위 신규 도메인 baseline으로 계속 판단.
 - **클릭수**: 3개월 누적(5/10~7/17) **여전히 0건**. 노출 자체가 워낙 작아서(대부분 페이지 노출 4~183회) 통계적으로 이상 신호 아님 — rule 6 그대로 적용.
 - **색인 현황**: Coverage 리포트는 항상 1~2주 지연 반영됨 — 7/19에 받은 리포트도 7/10 데이터까지만 있음. **7/15 내부링크 보강, 7/17 세션들, 7/19 오늘 세션(보강 5개+신규 3개)의 효과는 전부 이 리포트에 아직 반영 안 됨** — 다음 확인은 최소 7/22 이후에.
@@ -432,7 +431,68 @@ negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 �
 - 25개 사이트 등록 완료, footer 뱃지 6개 (NewTool, FoundrList, Fazier, Findly.tools, twelve.tools, PitchWall)
 - **사용자가 총 11개 사이트를 운영 중** (autocalchub 포함). 필요시 본인 소유 다른 사이트에서 autocalchub로 상호링크 가능 — 7/15 세션에서 언급됨, **아직 착수 안 함, 지금 우선순위 아니라고 사용자가 명시적으로 보류함**. 다음에 백링크 관련 작업할 때 이 옵션 먼저 검토할 것. 단, 진행 시 유의점: (1) 상호링크가 명백히 기계적/전면적이면 Google 링크 스킴으로 인식될 리스크 있음 — 문맥상 자연스러운 곳에만 소량으로. (2) 나머지 10개 사이트가 뭔지, 주제가 얼마나 관련 있는지 다음 세션에서 먼저 파악 필요(사용자에게 목록 요청).
 
-## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
+## 6-11. 7/27 세션 (일요일 주간 루틴 앞당김): EV 등록세 신규글+보강, 리스 테이크오버 신규 블로그+계산기
+
+- **⚠️ 첨부파일 미수신**: 사용자가 서치콘솔+애널리틱스 자료를 첨부했다고 언급했으나 uploads 폴더 확인 결과 실제로는 업로드되지 않음 (7/19 세션과 동일 패턴, 이번이 두 번째). AdSense 재검토 결과도 여전히 미확인(7/13 제출 이후 계속). 이번 세션은 handover 7/21~7/22 시점의 마지막 확인된 GSC 데이터를 기준으로 판단해서 진행 — **다음 세션 시작 시 실제 GSC 자료 재요청 필요, AdSense 상태도 계속 재확인 필요**.
+- **작업 우선순위 판단 기준**: 사용자가 "AI검색은 도메인 권위보다 콘텐츠 내용, 문제해결/비교분석이 유리"라고 재차 강조 + 애드센스 수익화(트래픽/클릭) 관점 우선순위 지시 → 리서치로 확인한 진짜 갭 위주로 문제해결/비교분석 구조 콘텐츠 작성.
+
+### 리서치 (총 8개 후보 웹서치로 경쟁강도 확인, 6개 기각·2개 채택)
+- ❌ **차량수당(Car Allowance) vs 마일리지 상환**: MileIQ/CompanyMileage/mBurse/Cardata/Timeero/TripLog 등 B2B 마일리지 추적 SaaS 업체들이 완전 장악 + 오디언스도 "개인 차량 구매자"가 아닌 "회사 정책 설계자" 위주라 사이트 성격과 불일치 — 기각.
+- ❌ **리파이낸싱 없이 페이먼트 낮추기**: Bankrate/LendingTree/Experian/Kiplinger/Yahoo Finance급 대형 금융매체가 상위 완전 독점 — 기각.
+- ❌ **벌룬페이먼트 자동차 대출**: SoFi/LendingTree/Motley Fool(fool.com)/Car and Driver 등 대형 사이트 위주 — 기각.
+- ❌ **긱워커 1099 소득 대출승인**: Miramar Car Center/Dallas Lease Returns/Credit Acceptance/Auto Hive Direct 등 서브프라임 딜러 리드젠 사이트로 완전 포화(기존 "BHPH/신협vs은행" 기각 사례와 동일 구조) — 기각.
+- ❌ **오토론 조기상환 페널티**: `tools/car-early-payoff-calculator.html`과 `blog/how-does-car-loan-interest-work.html`(Rule of 78s/precomputed interest 섹션)에 이미 충분히 다뤄짐 확인 — 중복, 기각.
+- ❌ **리빌트/살비지 타이틀 파이낸싱**: `blog/is-it-worth-buying-car-with-rebuilt-title.html`에 "Financing a Rebuilt Title" 섹션으로 이미 다뤄짐 확인 — 중복, 기각.
+- ✅ **EV 주별 등록세**: freedomforallamericans.org/SlashGear/costtocharge.com(소형 EV 계산기 사이트)/vehicletaxcalculator.com 등 소형 사이트 위주 + 정부 1차 출처(afdc.energy.gov) 혼재, NerdWallet급 대형매체 없음 — 채택. 사이트 내 기존 EV 콘텐츠 4건(electric-vs-gas/ev-lease-vs-buy/ev-charging/ev-tax-credit) 전수 확인 결과 등록세 언급 전무 — 진짜 갭 확인.
+- ✅ **리스 테이크오버(취득자 관점)**: eautolease.com/capitalmotorcars.com/rusnakcars.com/drivespitzercdjr.com 등 개별 딜러 블로그 + lexingtonlaw.com 위주, 대형 금융매체 없음 — 채택. 기존 `how-to-get-out-of-a-car-lease-early.html`은 "양도자(세입자가 나가고 싶은 경우)" 관점만 다루고 "취득자(남의 리스를 넘겨받는 게 유리한지)" 관점은 전무 확인 — 차별화된 진짜 갭.
+
+### 신규 블로그 1 — EV 주별 등록세
+- `blog/ev-registration-fees-by-state-2026.html` (EV 태그, 약 950단어)
+- 41개 주가 EV에 추가 연간 등록세 부과(전국 중앙값 $150/년), 미시간 $267~367/년으로 확인된 최고 수준, 펜실베이니아/텍사스 등 주별 표
+- PHEV 차등부과(미시간 기준 EV의 절반 수준), 텍사스/뉴저지 등 일부 주는 신규등록 시 2~4년치를 한 번에 선납 청구하는 구조 등 문제해결형 콘텐츠로 구성
+- Related Guides로 electric-vs-gas-car-true-cost/ev-tax-credit-2026/TCO계산기/gas-vs-ev계산기 연결
+
+### 신규 블로그 2 — 리스 테이크오버(취득자 관점)
+- `blog/is-a-lease-takeover-a-good-deal.html` (Buying 태그, 약 1,050단어)
+- 총비용 비교 프레임 제시: (이관수수료 + 잔여 개월수×페이먼트) vs (신규리스 취득수수료+계약금+동일기간 페이먼트) — 월 페이먼트만 비교하는 흔한 실수를 지적하는 구조
+- 주행거리 잔여량/마모 상태 점검, 리스사별 이관 허용 여부(기존 `how-to-get-out-of-a-car-lease-early.html`에 이미 검증된 수치 그대로 재사용: 토요타/혼다/BMW는 $300~500 수수료로 허용, VW 등은 불허), 책임 해제 조건 등 실전 체크리스트 포함
+
+### 신규 툴 — 리스 테이크오버 비용 계산기
+- `tools/lease-takeover-cost-calculator.html`
+- 테이크오버 총비용(이관수수료+잔여 페이먼트-인센티브) vs 신규리스 총비용(취득수수료+계약금+동일기간 페이먼트) 비교, 복잡한 amortization 없이 단순 곱셈/덧셈 구조라 계산 오류 리스크 최소화
+- 파이썬 + node 목업 DOM으로 계산 로직 이중 검증(기본값: 테이크오버 $5,440 vs 신규리스 $7,955, 차이 $2,515로 일치 확인)
+
+### 보강 — EV 등록세 반영한 총비용 재계산
+- `blog/electric-vs-gas-car-true-cost.html`: 5년 총비용 표에 등록세 항목이 누락돼 있던 것을 발견(기존 표는 구매가/연료비/유지비/보험료만 반영, 등록비 자체가 없었음). 파이썬으로 재계산해 반영: 5년 격차 $6,100→**$6,850**, 20,000마일/년 시나리오 $3,165→**$3,915**, 8년/15,000마일 시나리오 $800→**$1,550**. 신규 등록세 글로 연결하는 문단 추가.
+- `tools/car-total-cost-of-ownership-calculator.html`: 등록세 설명 문단에 EV 서차지 관련 문장 추가, 신규 글로 연결.
+- **품질 관리 참고**: 이번에도 7/22 세션(서브스크립션 계산기 카피 모순 발견)과 같은 유형의 이슈 — 기존 콘텐츠의 총비용 계산에 누락된 항목이 있는지 재검토하는 습관이 실제로 부정확한 격차 수치를 잡아낸 사례. 다른 EV 관련 페이지들의 총비용 계산도 유사한 누락이 없는지 여유 있을 때 재점검 가치 있음.
+
+### 사이트 전체 반영 내역
+- `blog/index.html`: Latest 섹션 최상단에 신규 2개 추가(21→23개 — **트리밍 미적용, 이번에도 손 안 댐**, 계속 늘어나는 중이라 다음 세션에서 캡핑 여부 사용자 확인 필요), Buying/EV 카테고리 섹션에 각각 추가.
+- `tools/index.html`: Buying & Financing 섹션에 리스 테이크오버 계산기 카드 추가.
+- `index.html`: 최신 블로그 미리보기 3개를 신규 2개 + 기존 최신 1개(should-you-buy-a-car-for-uber-lyft-2026)로 교체, 툴 그리드에 리스 테이크오버 계산기 카드 추가, 스탯 카운터 "27+"→"28+" 2곳(Free tools, Tools available).
+- `sitemap.xml`: 신규 URL 3개 추가(99→102), 보강/링크추가 11개 파일(electric-vs-gas-car-true-cost, car-total-cost-of-ownership-calculator, gas-vs-ev-savings-calculator, ev-tax-credit-2026, how-much-does-ev-cost-to-charge-at-home, should-i-buy-or-lease-a-car, car-lease-vs-buy-calculator, how-to-get-out-of-a-car-lease-early, should-you-buy-out-your-car-lease, blog/, tools/, 홈페이지) lastmod 갱신.
+- `llms.txt`: Tools 목록에 리스 테이크오버 계산기, EV 가이드 섹션에 등록세 글, Buying 가이드 섹션에 리스 테이크오버 글 추가.
+- **내부링크(7/15 교훈 재적용)**: EV 관련 기존 페이지 3곳(ev-tax-credit-2026, gas-vs-ev-savings-calculator, how-much-does-ev-cost-to-charge-at-home), 리스 관련 기존 페이지 4곳(should-i-buy-or-lease-a-car, how-to-get-out-of-a-car-lease-early, should-you-buy-out-your-car-lease, car-lease-vs-buy-calculator)에서 신규 페이지로 링크 추가. 스크립트로 재확인한 인바운드 링크 수: `ev-registration-fees-by-state-2026`(7), `is-a-lease-takeover-a-good-deal`(6), `lease-takeover-cost-calculator`(4).
+
+### 검증
+- 신규/변경 파일 15개 전체: div/p/ul/li/a/table/tr/td/th/select/option/h1/h2/h3 태그밸런스 스크립트 확인, JSON-LD 유효성 확인 — 전부 통과.
+- sitemap.xml 유효성(102 URL) 확인.
+- 사이트 전체 .html 링크 844개 전수 스캔 — 깨진 링크 0건.
+- 신규 계산기 JS: node -c 문법 검증 + 목업 DOM으로 실제 로직 실행, 파이썬 계산 결과와 일치 재확인(규칙 7 그대로 적용).
+- 커밋 `9bad0b1`, 17개 파일 (신규 3 + 수정 14).
+- **최종 결과**: 블로그 59→61개, 툴 27→28개, sitemap 99→102 URL.
+
+### ⚠️ 다음 세션 필독
+1. **실제 서치콘솔/애널리틱스 자료 재요청 필요** — 이번이 두 번째 미수신(7/19, 7/27). 세션 시작 전에 첨부 여부를 먼저 확인하는 습관 필요.
+2. **AdSense 재검토 결과 여전히 미확인** — 7/13 제출 이후 계속 확인 안 됨, 다음 세션 최우선.
+3. 오늘 신규 발행 3개(EV 등록세 블로그, 리스 테이크오버 블로그+계산기) + 보강 2개(electric-vs-gas-car-true-cost, TCO계산기)의 색인 여부 향후 GSC 확인 시 포함해서 볼 것.
+4. blog/index.html Latest 섹션이 이제 23개 항목 — 계속 늘어나는 중, 트리밍(캡핑) 정책 여부 사용자 확인 필요(7/19에 제안했다 보류, 이후 세션들에서도 계속 미루는 중).
+5. 이번에 기각한 6개 주제(차량수당vs마일리지, 리파이낸싱없이 페이먼트낮추기, 벌룬페이먼트, 긱워커1099대출승인, 조기상환페널티, 리빌트타이틀파이낸싱)는 향후에도 재검토 불필요 — 각각 구조적 이유(SaaS경쟁/대형매체포화/중복콘텐츠)라 시간 지나도 안 바뀔 가능성 높음.
+6. **다른 EV 페이지들도 총비용 계산에 등록세 외 누락된 비용 항목이 없는지 여유 있을 때 재점검 가치 있음** — 이번에 electric-vs-gas-car-true-cost.html에서 실제로 누락을 발견한 사례가 있어서, 유사 패턴이 다른 총비용 비교 콘텐츠에도 있을 수 있음.
+7. EV 등록세는 주별로 매 회기 변경되는 항목 — 다음에 이 글 재검토할 때는 반기~1년 주기로 각 주 DMV 최신 수치 재확인 권장(관세 계산기와 유사한 시효성 이슈).
+
+
 - 이 저장소는 사용자가 매 세션 GitHub Personal Access Token을 직접 발급해서 대화 중에 전달하는 방식으로 운영됨. 토큰이 없으면 clone은 되지만(public repo) push는 불가.
 - 작업 시작 시: `git clone` → `git remote set-url origin https://<username>:<token>@github.com/canghun13/autocalchub.git` → `git config user.email/name` → `git pull`로 최신화 후 작업.
 - 작업은 사용자가 명시적으로 지시했을 때만 진행 (규칙 1). 신규 콘텐츠는 방향 보고 후 승인받고 작성 시작 (규칙 4).
