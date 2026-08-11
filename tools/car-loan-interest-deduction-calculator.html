@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Loan Interest Deduction Calculator (2025–2028) | AutoCalcHub</title>
+  <meta name="description" content="Estimate your OBBBA car loan interest deduction across the full 2025–2028 window, not just one tax year. Models the MAGI phase-out and shows how much of your total loan interest is actually deductible.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-loan-interest-deduction-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <style>
+    .tool-page{max-width:900px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .highlight-box{background:var(--orange-pale);border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:1.25rem 1.5rem;margin:1.5rem 0}
+    .highlight-box p{color:var(--charcoal);margin:0;font-weight:500;font-size:0.95rem}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem;margin-bottom:1rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"],select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:2rem}
+    .start-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem}
+    .calc-btn{width:100%;margin-top:0.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none;margin-top:1.5rem}
+    .results.show{display:block}
+    .verdict{border-radius:14px;padding:1.75rem;text-align:center;margin-bottom:1.5rem;background:var(--navy)}
+    .verdict h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:white;margin-bottom:0.4rem}
+    .verdict p{color:rgba(255,255,255,0.7);font-size:0.9rem;margin:0}
+    .verdict .saving{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 0 1.5rem;border-radius:8px}
+    table{width:100%;min-width:460px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    .summary-box{background:white;border:1px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+    .summary-box h4{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem}
+    .compare-row{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.875rem}
+    .compare-row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .compare-row span:first-child{color:var(--mid)}
+    .compare-row span:last-child{color:var(--charcoal);font-weight:500}
+    .note-box{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.85rem;color:var(--mid);line-height:1.6}
+    .note-box strong{color:var(--charcoal)}
+    .disclaimer-box{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    @media(max-width:640px){.calc-grid{grid-template-columns:1fr}.start-row{grid-template-columns:1fr}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Loan Interest Deduction Calculator",
+    "url": "https://autocalchub.com/tools/car-loan-interest-deduction-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Estimate the OBBBA car loan interest deduction across the full 2025-2028 window, including the MAGI phase-out and the share of total loan interest that falls outside the deductible years.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    },
+    "dateModified": "2026-08-11"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://autocalchub.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Tools",
+      "item": "https://autocalchub.com/tools/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Car Loan Interest Deduction Calculator",
+      "item": "https://autocalchub.com/tools/car-loan-interest-deduction-calculator.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Car Loan Interest Deduction Calculator</h1>
+    <p>Most calculators tell you what one tax year is worth. This one runs your loan across the entire 2025&ndash;2028 deduction window, applies the income phase-out year by year, and shows how much of your total loan interest never becomes deductible at all.</p>
+  </div>
+
+  <div class="highlight-box">
+    <p><strong>Quick answer:</strong> The deduction is capped at $10,000 of car loan interest per year for tax years 2025 through 2028, and it shrinks by $200 for every $1,000 of income above $100,000 (single) or $200,000 (joint). Because that reduction is subtracted from your <em>actual</em> interest and not from the $10,000 ceiling, a typical borrower paying $2,000&ndash;$3,000 of interest a year hits zero deduction far below the headline $150,000 cutoff.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-grid">
+    <div class="calc-card">
+      <h2>🚗 Your Loan</h2>
+      <div class="form-group">
+        <label>Amount Financed</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="loanAmount" value="42000" min="0" step="500"></div>
+      </div>
+      <div class="form-group">
+        <label>Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix"><input type="number" id="apr" value="7.2" min="0" max="36" step="0.1"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label>Loan Term</label>
+        <select id="term">
+          <option value="36">36 months</option>
+          <option value="48">48 months</option>
+          <option value="60" selected>60 months</option>
+          <option value="72">72 months</option>
+          <option value="84">84 months</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>First Payment</label>
+        <div class="start-row">
+          <select id="startMonth">
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">October</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+          </select>
+          <select id="startYear">
+            <option value="2025">2025</option>
+            <option value="2026" selected>2026</option>
+            <option value="2027">2027</option>
+            <option value="2028">2028</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2>🧾 Your Tax Situation</h2>
+      <div class="form-group">
+        <label>Filing Status</label>
+        <select id="status">
+          <option value="single" selected>Single / Head of Household</option>
+          <option value="joint">Married Filing Jointly</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Modified Adjusted Gross Income (MAGI)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="magi" value="85000" min="0" step="1000"></div>
+      </div>
+      <div class="form-group">
+        <label>Marginal Federal Tax Rate</label>
+        <select id="rate">
+          <option value="10">10%</option>
+          <option value="12">12%</option>
+          <option value="22" selected>22%</option>
+          <option value="24">24%</option>
+          <option value="32">32%</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Vehicle &amp; Loan Eligibility</label>
+        <select id="eligible">
+          <option value="yes" selected>New, US-assembled, personal use, loan after 12/31/2024</option>
+          <option value="no">Used vehicle, lease, or loan taken out before 2025</option>
+        </select>
+      </div>
+      <p style="font-size:0.82rem;color:var(--light);line-height:1.6">A deduction is only possible if every eligibility condition holds at once. Leases never qualify, and neither does any used vehicle.</p>
+    </div>
+  </div>
+
+  <button class="calc-btn" onclick="calculate()">Calculate Deduction Across 2025–2028 →</button>
+
+  <div class="results" id="results">
+    <div class="verdict" id="verdict">
+      <h3 id="verdictTitle"></h3>
+      <span class="saving" id="verdictSaving"></span>
+      <p id="verdictNote"></p>
+    </div>
+
+    <div class="table-wrap" id="yearTableWrap">
+      <table>
+        <thead>
+          <tr><th>Tax Year</th><th>Interest Paid</th><th>Deduction Allowed</th><th>Tax Saved</th></tr>
+        </thead>
+        <tbody id="yearRows"></tbody>
+      </table>
+    </div>
+
+    <div class="summary-box">
+      <h4>Where Your Interest Actually Goes</h4>
+      <div class="compare-row"><span>Total interest over the whole loan</span><span id="r-totalInterest"></span></div>
+      <div class="compare-row"><span>Interest paid inside the 2025–2028 window</span><span id="r-windowInterest"></span></div>
+      <div class="compare-row"><span>Interest paid after 2028 (never deductible)</span><span id="r-outsideInterest"></span></div>
+      <div class="compare-row"><span>Lost to the income phase-out</span><span id="r-phasedOut"></span></div>
+      <div class="compare-row"><span>Deduction you actually claim</span><span id="r-totalDeduction"></span></div>
+    </div>
+
+    <div class="note-box" id="noteBox"></div>
+    <div class="disclaimer-box">⚠️ <strong>This is an estimate, not tax advice.</strong> It assumes a standard amortizing loan held to term with no extra payments, a single marginal rate applied to the whole deduction, and no state-level treatment. Your actual deduction depends on the interest your lender reports on Form 1098-VLI, your VIN's verified final assembly location, and your return as filed. Confirm your situation with a tax professional before relying on these numbers.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section" style="margin-top:3rem">
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:1rem">Why a Single-Year Number Misleads You</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">Car loan interest is front-loaded: on a 60-month loan, the first year carries far more interest than the last. It also runs longer than the deduction does. The provision covers tax years 2025 through 2028 only, so a 60-month loan whose first payment lands in January 2026 pays interest through 2030 — and everything after 2028 is worth nothing on your return unless Congress extends the rule. On a $42,000 loan at 7.2%, that means roughly $8,100 of total interest of which about $6,700 falls inside the window. A one-year calculator can't show you that gap, which is exactly why this one runs the full amortization schedule.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">How the Income Phase-Out Really Works</h2>
+    <p style="color:var(--mid);line-height:1.8;font-size:0.95rem">The reduction is $200 for every $1,000 (or part of $1,000) of MAGI above $100,000 for single filers or $200,000 for joint filers, and it is subtracted from the deduction itself rather than from the $10,000 ceiling. That distinction matters enormously. A single filer at $110,000 loses $2,000 of deduction each year — which barely dents a $10,000 claim but wipes out most of a $2,800 one. The commonly quoted $150,000 and $250,000 cutoffs only describe the point where even a maxed-out $10,000 deduction reaches zero. For a normal car loan, your personal cutoff arrives much earlier, and this calculator shows you where.</p>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">What Has to Be True to Claim It</h2>
+    <ul style="color:var(--mid);line-height:1.8;margin:0.75rem 0 1rem 1.5rem;font-size:0.95rem">
+      <li><strong>The vehicle is new and you are its first owner.</strong> Used vehicles are excluded outright, no matter how the loan is structured.</li>
+      <li><strong>Final assembly happened in the United States.</strong> The brand's nationality is irrelevant — an imported Ford fails and a Kentucky-built Toyota passes. A VIN beginning with 1, 4, or 5 indicates US assembly, and the window sticker's final assembly point or the NHTSA VIN decoder confirms it.</li>
+      <li><strong>The loan was originated after December 31, 2024</strong> and is secured by a first lien on that vehicle.</li>
+      <li><strong>The vehicle is for personal use</strong> and rated under 14,000 pounds GVWR. Business, fleet, and salvage-title vehicles are out, as are loans from related parties.</li>
+      <li><strong>Leases never qualify</strong>, because a lease is not a purchase and the payments are not loan interest.</li>
+      <li><strong>You report the VIN on your return.</strong> The deduction is claimed on Schedule 1-A and is available whether or not you itemize, though it does not reduce your AGI.</li>
+    </ul>
+
+    <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 1rem">Common Mistakes With This Topic</h2>
+    <ul style="color:var(--mid);line-height:1.8;margin:0.75rem 0 1rem 1.5rem;font-size:0.95rem">
+      <li><strong>Treating the deduction as a credit.</strong> A $6,700 deduction at a 22% marginal rate is worth about $1,475, not $6,700.</li>
+      <li><strong>Assuming you qualify because you're under $150,000.</strong> The phase-out is applied against your real interest figure, so most borrowers zero out well below that.</li>
+      <li><strong>Stretching the term to harvest more interest.</strong> An 84-month loan does generate a bigger deduction than a 48-month one, but it costs thousands more in interest to get there — see the guide below for that math.</li>
+      <li><strong>Skipping the VIN check before signing.</strong> Assembly location is decided at the factory, not at the dealership, and it cannot be fixed afterward.</li>
+    </ul>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/how-much-is-car-loan-interest-deduction-worth.html" style="color:var(--orange);text-decoration:none;">How Much Is the Car Loan Interest Deduction Actually Worth?</a></li>
+        <li><a href="../blog/does-refinancing-affect-car-loan-interest-deduction.html" style="color:var(--orange);text-decoration:none;">Does Refinancing Kill Your Car Loan Interest Deduction?</a></li>
+        <li><a href="../blog/should-you-borrow-more-for-car-loan-interest-deduction.html" style="color:var(--orange);text-decoration:none;">Should You Borrow More to Get a Bigger Deduction?</a></li>
+        <li><a href="car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+        <li><a href="car-refinance-calculator.html" style="color:var(--orange);text-decoration:none;">Car Refinance Calculator</a></li>
+        <li><a href="cash-vs-finance-car-calculator.html" style="color:var(--orange);text-decoration:none;">Cash vs Finance Car Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function fmt(n){return '$'+Math.round(n).toLocaleString();}
+
+function calculate(){
+  const loan = parseFloat(document.getElementById('loanAmount').value) || 0;
+  const apr = parseFloat(document.getElementById('apr').value) || 0;
+  const term = parseInt(document.getElementById('term').value) || 60;
+  const startMonth = parseInt(document.getElementById('startMonth').value) || 1;
+  const startYear = parseInt(document.getElementById('startYear').value) || 2026;
+  const status = document.getElementById('status').value;
+  const magi = parseFloat(document.getElementById('magi').value) || 0;
+  const rate = (parseFloat(document.getElementById('rate').value) || 0) / 100;
+  const eligible = document.getElementById('eligible').value === 'yes';
+
+  const r = apr / 100 / 12;
+  const payment = r === 0 ? loan / term : loan * r / (1 - Math.pow(1 + r, -term));
+
+  const byYear = {};
+  let bal = loan, y = startYear, m = startMonth, totalInterest = 0;
+  for (let i = 0; i < term; i++) {
+    const interest = bal * r;
+    let principal = payment - interest;
+    if (principal > bal) principal = bal;
+    bal -= principal;
+    byYear[y] = (byYear[y] || 0) + interest;
+    totalInterest += interest;
+    m++;
+    if (m > 12) { m = 1; y++; }
+    if (bal <= 0.005) break;
+  }
+
+  const threshold = status === 'joint' ? 200000 : 100000;
+  const excess = Math.max(0, magi - threshold);
+  const reduction = 200 * Math.ceil(excess / 1000);
+
+  let rows = '', totalDeduction = 0, totalSaved = 0, windowInterest = 0;
+  for (let ty = 2025; ty <= 2028; ty++) {
+    const interest = byYear[ty] || 0;
+    windowInterest += interest;
+    const capped = Math.min(interest, 10000);
+    const deduction = eligible ? Math.max(0, capped - reduction) : 0;
+    const saved = deduction * rate;
+    totalDeduction += deduction;
+    totalSaved += saved;
+    rows += '<tr><td>' + ty + '</td><td>' + fmt(interest) + '</td><td>' + fmt(deduction) + '</td><td>' + fmt(saved) + '</td></tr>';
+  }
+  document.getElementById('yearRows').innerHTML = rows;
+
+  const outside = totalInterest - windowInterest;
+  const phasedOut = Math.max(0, windowInterest - outsideCapAdjust(byYear) - totalDeduction);
+
+  document.getElementById('r-totalInterest').textContent = fmt(totalInterest);
+  document.getElementById('r-windowInterest').textContent = fmt(windowInterest);
+  document.getElementById('r-outsideInterest').textContent = fmt(outside);
+  document.getElementById('r-phasedOut').textContent = eligible ? fmt(phasedOut) : fmt(0);
+  document.getElementById('r-totalDeduction').textContent = fmt(totalDeduction);
+
+  const share = totalInterest > 0 ? (totalDeduction / totalInterest * 100) : 0;
+
+  if (!eligible) {
+    document.getElementById('verdictTitle').textContent = 'This Loan Does Not Qualify';
+    document.getElementById('verdictSaving').textContent = fmt(0);
+    document.getElementById('verdictNote').textContent = 'The deduction is limited to new, US-assembled, personal-use vehicles financed with a loan originated after December 31, 2024. Used vehicles and leases are excluded entirely.';
+  } else if (totalDeduction <= 0) {
+    document.getElementById('verdictTitle').textContent = 'Phased Out Completely';
+    document.getElementById('verdictSaving').textContent = fmt(0);
+    document.getElementById('verdictNote').textContent = 'At ' + fmt(magi) + ' of MAGI your annual reduction is ' + fmt(reduction) + ', which exceeds the interest you pay in every year of the window. Nothing is left to deduct.';
+  } else {
+    document.getElementById('verdictTitle').textContent = 'Estimated Federal Tax Savings';
+    document.getElementById('verdictSaving').textContent = fmt(totalSaved);
+    document.getElementById('verdictNote').textContent = 'Across 2025–2028 you can deduct about ' + fmt(totalDeduction) + ' of the ' + fmt(totalInterest) + ' in interest this loan costs — roughly ' + share.toFixed(0) + '% of it — worth ' + fmt(totalSaved) + ' at a ' + (rate * 100).toFixed(0) + '% marginal rate.';
+  }
+
+  let note = '<strong>How this is calculated:</strong> A ' + fmt(loan) + ' loan at ' + apr + '% over ' + term + ' months gives a monthly payment of ' + fmt(payment) + ' and ' + fmt(totalInterest) + ' of total interest. Interest is allocated to each calendar year from the amortization schedule, capped at $10,000 per year';
+  if (reduction > 0) {
+    note += ', then reduced by ' + fmt(reduction) + ' per year — $200 for each $1,000 that your ' + fmt(magi) + ' MAGI exceeds the ' + fmt(threshold) + ' threshold for your filing status';
+  }
+  note += '. Only tax years 2025 through 2028 count.';
+  if (outside > 1) {
+    note += ' This loan pays ' + fmt(outside) + ' of interest after 2028, which is not deductible under current law.';
+  }
+  document.getElementById('noteBox').innerHTML = note;
+
+  document.getElementById('results').className = 'results show';
+}
+
+function outsideCapAdjust(byYear){
+  // interest above the $10,000 annual ceiling is lost to the cap, not to the phase-out
+  let lostToCap = 0;
+  for (let ty = 2025; ty <= 2028; ty++) {
+    const interest = byYear[ty] || 0;
+    if (interest > 10000) lostToCap += interest - 10000;
+  }
+  return lostToCap;
+}
+</script>
+</body>
+</html>

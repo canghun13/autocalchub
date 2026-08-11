@@ -28,6 +28,7 @@
 - [Car Trade-In Value Estimator](https://autocalchub.com/tools/car-trade-in-value-estimator.html): Estimate what a dealer will offer for your car vs. private party value.
 - [GAP Insurance Calculator](https://autocalchub.com/tools/gap-insurance-calculator.html): Find out if you're underwater on your car loan and whether GAP insurance makes financial sense.
 - [Car Refinance Calculator](https://autocalchub.com/tools/car-refinance-calculator.html): See how much you could save by refinancing your car loan — monthly savings, total interest saved, and break-even point.
+- [Car Loan Interest Deduction Calculator](https://autocalchub.com/tools/car-loan-interest-deduction-calculator.html): Estimate the 2025–2028 OBBBA car loan interest deduction across the full loan, with the MAGI phase-out applied year by year and the share of interest falling outside the deductible window.
 - [Car Early Payoff Calculator](https://autocalchub.com/tools/car-early-payoff-calculator.html): Calculate how much interest you save and how many months you cut by making extra payments on your car loan.
 - [Car Total Cost of Ownership Calculator](https://autocalchub.com/tools/car-total-cost-of-ownership-calculator.html): Calculate the true 5-year cost of owning a car including purchase price, loan interest, insurance, fuel, maintenance, and depreciation.
 - [Negative Equity Rollover Calculator](https://autocalchub.com/tools/negative-equity-rollover-calculator.html): Calculate exactly how much extra interest and monthly payment you take on by rolling negative equity from your current loan into a new one.
@@ -64,6 +65,9 @@
 - [When Should You Trade In Your Car?](https://autocalchub.com/blog/when-to-trade-in-your-car.html): The right timing to trade in, how to avoid negative equity, and how to get a fair offer.
 
 ## Guides: Car Financing
+- [How Much Is the Car Loan Interest Deduction Actually Worth?](https://autocalchub.com/blog/how-much-is-car-loan-interest-deduction-worth.html): Why the $10,000 headline is not what you receive — the marginal-rate reality, the 2028 expiry, and why the phase-out zeroes most borrowers out well below $150,000 MAGI.
+- [Does Refinancing Kill Your Car Loan Interest Deduction?](https://autocalchub.com/blog/does-refinancing-affect-car-loan-interest-deduction.html): Refinancing a qualifying loan keeps the deduction if the new loan is a first lien and does not exceed the old balance — plus the cash-out trap and why a lower rate still wins.
+- [Should You Borrow More to Get a Bigger Car Loan Interest Deduction?](https://autocalchub.com/blog/should-you-borrow-more-for-car-loan-interest-deduction.html): Why a smaller down payment or longer term produces a bigger deduction and a worse outcome, with the math on every version of the pitch.
 
 - [Should You Pay Cash or Finance a Car?](https://autocalchub.com/blog/should-you-pay-cash-or-finance-a-car.html): The opportunity-cost math for paying cash vs financing, and when 0% APR beats paying cash outright.
 - [0% APR vs Cash Rebate: Which Is Actually Better?](https://autocalchub.com/blog/zero-percent-apr-vs-cash-rebate-which-is-better.html): A numbers-based breakdown of when 0% financing wins and when a large enough rebate beats it instead.

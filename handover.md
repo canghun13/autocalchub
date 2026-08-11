@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-08-07 기준)
+# AutoCalcHub 인수인계 문서 (2026-08-11 기준)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,13 +12,13 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (2026-08-07 기준 — 8/7 세션 신규 발행 없음, 7/27과 동일)
-- 블로그 61개 (`blog/` 폴더, index.html 제외) — 7/27 세션에서 2개 추가(`ev-registration-fees-by-state-2026`, `is-a-lease-takeover-a-good-deal`)
-- 툴 28개 (`tools/` 폴더, index.html 제외) — 7/27 세션에서 `lease-takeover-cost-calculator.html` 추가
+## 2. 콘텐츠 현황 (2026-08-11 기준)
+- 블로그 64개 (`blog/` 폴더, index.html 제외) — 8/11 세션에서 3개 추가(car loan interest deduction 클러스터)
+- 툴 29개 (`tools/` 폴더, index.html 제외) — 8/11 세션에서 `car-loan-interest-deduction-calculator.html` 추가
 - 정적 페이지: `about.html`, `contact.html`, `privacy-policy.html`, `methodology.html`, `editorial-policy.html`
-- sitemap.xml 총 URL 102개 (7/27 세션 반영, 신규 3 + lastmod 갱신 11)
-- **블로그 태그 카테고리**: Financing / Buying / Running Costs / Ownership / EV / Selling / Gig & Rideshare (7종). 신규 카테고리 확장 없이 기존 태그로 이번 세션 신규 2건 모두 분류됨(리스 테이크오버→Buying, EV 등록세→EV).
-- **블로그 44개 전체**에 `<div class="blog-meta">...</div>` 줄에 "· Written by AutoCalcHub Team" 바이라인 통합 반영됨 (7/12) — 신규 블로그 작성 시 이 형식 유지할 것
+- sitemap.xml 총 URL 106개 (8/11 세션 반영, 신규 4 + lastmod 갱신 12)
+- **블로그 태그 카테고리**: Financing / Buying / Running Costs / Ownership / EV / Selling / Gig & Rideshare (7종). 8/11 신규 3건 전부 Financing으로 분류, 신규 카테고리 없음.
+- **블로그 전체**에 `<div class="blog-meta">...</div>` 줄에 "· Written by AutoCalcHub Team" 바이라인 통합 반영됨 (7/12) — 신규 블로그 작성 시 이 형식 유지할 것
 - **블로그+툴 전체**에 BreadcrumbList JSON-LD 스키마 반영됨 (7/12) — 신규 페이지 작성 시 이 패턴(Home > Blog/Tools > 페이지명) 동일하게 추가할 것. FAQPage/HowTo 스키마는 2026-05-07 Google이 리치 리절트를 폐지해서 더 이상 유효한 선택지 아님(추가하지 말 것).
 
 ### 사이트 구조 관련 중요 변경사항
@@ -537,6 +537,65 @@ negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 �
   - **교훈**: 지금 당장 할 수 있는 무료 작업(정책 문구 정리)을 "나중에 하겠다"고 미루면 안 됨 — 다음 세션에서 같은 판단 반복하지 말고, 실행 가능한 건 그 자리에서 바로 처리할 것.
 - 사용자가 8/6에 직접 커밋(`9e2a3ca`)으로 `index.html`에 boostdomainrating 배지 추가 — 백링크 작업을 사용자가 병행 중.
 - **다음 세션 확인 사항**: (1) 색인 수가 19개에서 더 올라갔는지, (2) 7/27 발행분 3개(EV 등록세, 리스 테이크오버 블로그+계산기)의 색인 여부, (3) 애드센스 재심사 결과 확인 여부, (4) 실제 제휴 프로그램 가입 시점 판단(트래픽 임계치 도달 여부).
+
+## 6-13. 8/11 세션 (일요일 주간 루틴 앞당김): 오토론 이자공제(OBBBA) 클러스터 신규 4건
+
+- **⚠️ 첨부파일 또 미수신 (3번째)**: 사용자가 서치콘솔+애널리틱스 자료를 첨부했다고 언급했으나 `/mnt/user-data/uploads` 확인 결과 비어 있음(7/19, 7/27에 이어 세 번째 동일 패턴). **"색인은 내가 준 걸로만 판단하면 된다"는 지시에 따라 5번 섹션의 8/7자 GSC 데이터를 기준으로 판단하고 진행함.** 다음 세션에서도 첨부 여부를 먼저 확인하고, 없으면 즉시 사용자에게 알린 뒤 마지막 확인 데이터로 진행할 것.
+- **지시 사항**: 공격적 확장 기조 유지(변경 금지), 수익화 관점 우선순위, 롱테일 전략, 경쟁 회피 장치, 대시보드/시각화 금지, 할 게 없으면 텍스트 보고만.
+
+### 주제 선정 근거 (수익화 우선순위 관점)
+- 5-1 수익화 정책상 **오토 리파이낸스 제휴가 단가 최상위($60~150/성사)**. 따라서 리파이낸스 의도 트래픽을 끌어오는 콘텐츠가 최우선이라고 판단.
+- 기존 사이트 전수 확인 결과, **OBBBA 오토론 이자공제($10,000, 2025~2028)를 다룬 전용 페이지가 0개**. 7개 페이지(how-much-car-can-i-afford, should-you-pay-cash-or-finance-a-car, car-loan-calculator, ev-lease-vs-buy-2026, ev-tax-credit-2026, gas-vs-ev-savings-calculator 등)에 **문단 1개씩만 언급**돼 있는 상태 — 7/22 세션의 "보강 1건"이 전부였음. 진짜 갭 확인.
+- 시효성: 2026 과세연도부터 Form 1098-VLI 발급 의무화, 공제는 2028년 종료 예정 → 지금이 검색수요 상승 구간.
+
+### 경쟁 회피 장치 (웹서치 3라운드로 확인)
+- 헤드텀 "car loan interest deduction (calculator)"은 **TurboTax/H&R Block/US Bank + 전용 도메인(notaxon.com, vehicleloaninterest.com, ustax.tools, trumptaxtools.com)으로 포화 → 정면 경쟁 회피**.
+- **"VIN으로 미국 조립 여부 확인" 앵글도 기각** — 딜러 블로그(Ford/Holler Ford/Phillips Buick GMC 등) + 전용 사이트로 이미 포화.
+- 대신 **세무 사이트가 안 다루는 "차량 구매 의사결정" 각도로 우회**: 리파이낸스와의 상호작용 / 다년도 실질가치 / 대출을 늘려야 하는가. 우리 사이트의 기존 권위(계산기·구매 의사결정)와 결이 맞고, 세무 사이트는 이 프레임을 쓰지 않음.
+- 롱테일 타깃 쿼리: "does refinancing affect car loan interest deduction", "can you deduct interest on a refinanced car loan", "how much is the car loan interest deduction worth", "should i put less down for the tax deduction".
+
+### 검증된 법령 사실 (다음 세션에서 재사용 가능, 출처 다중 교차확인)
+- 상한 연 $10,000, 과세연도 2025~2028. 항목별공제 여부 무관하나 **AGI를 낮추지는 않음**(Schedule 1-A, below-the-line). 신고 시 VIN 기재 필수.
+- 요건: 신차(최초 소유자) / 미국 최종조립 / 개인용 / GVWR 14,000파운드 미만 / 2024-12-31 이후 오리지네이션 / 차량 1순위 담보. **리스·중고차·특수관계자 대출·샐비지 타이틀·플릿은 전부 제외.**
+- 페이즈아웃: MAGI $100k(단독)/$200k(부부합산) 초과분 $1,000당 $200 감액. **감액이 $10,000 상한이 아니라 "실제 공제액"에서 차감되므로, 통상 대출자는 $150k/$250k 훨씬 이전에 0이 됨** — 이게 이번 콘텐츠의 핵심 차별 포인트.
+- 리파이낸스: **기존 적격 대출을 리파이하면 자격 유지.** 단 (1) 신규 대출이 동일 차량 1순위 담보이고 (2) 신규 대출 개시잔액이 기존 대출 종료잔액을 초과하지 않을 것. 초과분(캐시아웃) 이자는 공제 불가. **비적격 대출(2025년 이전 오리지네이션, 중고차)은 리파이해도 적격이 되지 않음.**
+- Form 1098-VLI: 연 $600 이상 시 대출기관 발급. 2025년은 Notice 2025-57 경과규정, **2026년 이자분부터 의무화**.
+- ⚠️ 검색 중 stevenjcpa.com이 페이즈아웃을 $75k/$150k로 기재했으나 **다수 출처와 불일치하는 이상치라 채택하지 않음**. 재확인 시 주의.
+
+### 신규 툴 — `tools/car-loan-interest-deduction-calculator.html`
+- 대출금/APR/기간/첫납입월 + 신고구분/MAGI/한계세율/적격여부 입력 → **2025~2028 연도별 이자·공제·절세액 테이블** 출력.
+- **차별화**: 경쟁 계산기는 전부 "단일 연도" 계산. 이건 상환스케줄 전체를 돌려서 (a) 2028년 이후 지급이자(영구 공제불가) (b) 페이즈아웃으로 날아간 금액 (c) 총이자 중 실제 공제 비율까지 분해해서 보여줌.
+- 검증: 파이썬 + node 목업 DOM 이중 실행 결과 완전 일치. 기본값($42,000/7.2%/60개월/2026-01/단독 MAGI $85,000/22%) → 월납 $836, 총이자 $8,137, 공제 $6,708(82%), 절세 $1,476, 2028년 이후 이자 $1,429. 페이즈아웃은 공표 예시(단독 $120k·이자 $8,000 → 공제 $4,000)와 일치 확인.
+
+### 신규 블로그 3건 (전부 1,000단어 이상)
+1. `blog/does-refinancing-affect-car-loan-interest-deduction.html` (Financing, 1,257단어) — **리파이낸스 제휴 유입 목적의 핵심 페이지.** 자격 유지 2요건, 캐시아웃 함정, 기간연장 시 2028년 밖으로 밀리는 문제. 워크드 이그잼플: 잔액 $35,000/48개월, 11.5%→6.9% 리파이 시 이자 $3,678 절감 vs 공제 세후가치 $746 손실 = **순이익 $2,932**. "공제 지키려고 비싼 대출 유지하지 말라"는 결론.
+2. `blog/how-much-is-car-loan-interest-deduction-worth.html` (Financing, 1,021단어) — $10,000 헤드라인이 아닌 실제 가치. 4단계 감액(한계세율 / 실제이자 / 2028 절벽 / 페이즈아웃). MAGI $110k에서 총공제가 $1,038로 붕괴하는 표가 핵심.
+3. `blog/should-you-borrow-more-for-car-loan-interest-deduction.html` (Financing, 1,104단어) — 미신 반박 4종(계약금 축소/기간연장/현금대신 대출/중고대신 신차). $42k→$47k 시 이자 $969 추가 vs 절세 $176 = **순손실 $793**. 48→84개월 시 절세 $331 늘리려고 이자 $5,130 추가.
+
+### 사이트 전체 반영 내역
+- `blog/index.html`: Latest 최상단 3건 추가(23→26개 — **트리밍 여전히 미적용**), Financing 카테고리 섹션에도 3건 추가.
+- `tools/index.html`: Financing 섹션에 계산기 카드 추가(car-refinance-calculator 바로 뒤).
+- `index.html`: 최신 블로그 미리보기 3개 전면 교체, 툴 그리드 카드 1개 추가, 스탯 카운터 "28+"→"29+" 2곳.
+- `sitemap.xml`: 신규 4 URL(102→106), lastmod 12건 갱신. `llms.txt`: Tools 1건 + Guides: Car Financing 3건 추가.
+- **내부링크(7/15 교훈)**: 기존 10개 페이지의 Related Guides에 신규 페이지 링크 삽입 — how-much-car-can-i-afford, should-you-pay-cash-or-finance-a-car, how-does-car-loan-interest-work, how-to-refinance-a-car-loan, how-much-should-i-put-down-on-a-car, is-72-month-car-loan-bad-idea, car-loan-calculator, car-refinance-calculator, car-down-payment-calculator, cash-vs-finance-car-calculator. 해당 10개 파일 `dateModified`도 전부 갱신.
+- 스크립트로 확인한 인바운드 링크 수: 계산기(8), how-much-is-worth(8), should-you-borrow-more(8), does-refinancing(6).
+- ⚠️ **Related Guides 헤딩이 파일마다 "Related Guides" / "Related Guides & Tools" 두 가지로 갈려 있음** — 일괄 스크립트 편집 시 정규식에 둘 다 넣을 것(이번에 1차 스크립트가 6개 파일을 놓쳤다가 2차로 처리함).
+
+### 검증
+- 변경/신규 19개 파일: div/p/ul/ol/li/a/table/tr/td/th/select/option/h1/h2/h3/span/tbody/thead/button/script/style/label/strong/em 태그 밸런스 스크립트 확인 — 전부 통과.
+- JSON-LD 전 블록 파싱 통과, sitemap.xml XML 파서 유효성 통과(106 URL).
+- 사이트 전체 .html 내부링크 895개 전수 스캔 — 깨진 링크 0건. (단, `assets/partials/*.html`의 `{{BASE}}` 6건은 components.js가 치환하는 플레이스홀더라 정상, 스캐너 오탐이니 다음에도 무시할 것.)
+- 계산기 JS: node 목업 DOM 실행 + 파이썬 독립 구현 대조, 전 시나리오(기본값/MAGI 110k/130k/비적격/84개월) 수치 일치.
+
+### ⚠️ 다음 세션 필독
+1. **GSC 자료 첨부 3연속 실패** — 세션 시작 시 uploads 폴더부터 확인하고, 없으면 바로 알릴 것.
+2. **AdSense 재검토 결과 여전히 미확인**(7/13 제출 이후 4주 이상). 다만 5-1 정책상 승인돼도 현 트래픽에선 실익 없음 — 확인만 하고 재심사 재제출은 하지 말 것.
+3. 8/11 신규 4건의 색인 여부를 다음 GSC 확인 시 포함해서 볼 것. 특히 **Financing 클러스터는 사이트에서 가장 내부링크가 촘촘한 신규 묶음**이라 색인 속도 비교 대조군으로 쓸 가치가 있음.
+4. **이 클러스터는 2028년 시효성 콘텐츠** — 의회가 연장하지 않으면 2029년 이후 가치가 급락. 또한 **연 1회는 IRS 가이던스 재확인 필요**(Form 1098-VLI 서식 확정, Schedule 1-A 변경, 페이즈아웃 인플레이션 조정 여부). EV 등록세·관세 계산기와 같은 시효성 관리 대상에 추가.
+5. blog/index.html Latest가 26개로 증가 — 트리밍(캡핑) 여부 **사용자 확인 필요**. 7/19에 처음 제안한 이후 5세션 연속 미결 상태.
+6. **리파이낸스 제휴 도입 시 이 클러스터가 최적 배치 지점** — `does-refinancing-affect-car-loan-interest-deduction.html`과 `tools/car-refinance-calculator.html`이 의도 가장 높은 페이지. 트래픽 임계치 도달 시 Caribou/RefiJet/myAutoloan 링크를 여기부터 넣을 것(FTC 고지 문구는 이미 editorial-policy.html에 준비돼 있음).
+7. 이번에 기각한 주제: VIN 미국조립 확인(딜러 블로그 포화), 이자공제 일반 가이드(TurboTax/HRBlock 포화) — 향후 재검토 불필요.
+
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 
