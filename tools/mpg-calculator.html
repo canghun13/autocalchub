@@ -67,7 +67,7 @@
       "name": "AutoCalcHub",
       "url": "https://autocalchub.com"
     },
-    "dateModified": "2026-07-04"
+    "dateModified": "2026-08-18"
   }
   </script>
   <script type="application/ld+json">
@@ -116,6 +116,28 @@
         <label for="gallons">Gallons Used</label>
         <div class="input-wrap has-suffix"><input type="number" id="gallons" value="12" min="0.1" step="0.1"><span class="input-suffix">gal</span></div>
       </div>
+      <div class="form-group">
+        <label for="vclass">Vehicle Type</label>
+        <select id="vclass" style="width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;">
+          <option value="compact-sedan">Compact Sedan</option>
+          <option value="midsize-sedan" selected>Midsize Sedan</option>
+          <option value="compact-suv">Compact SUV / Crossover</option>
+          <option value="midsize-suv">Midsize SUV</option>
+          <option value="fullsize-suv">Full-Size SUV / Minivan</option>
+          <option value="compact-pickup">Compact Pickup Truck</option>
+          <option value="fullsize-pickup">Full-Size Pickup Truck</option>
+          <option value="sports">Sports Car / Performance</option>
+          <option value="hybrid">Hybrid Sedan</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="annualMiles">Miles Driven Per Year</label>
+        <div class="input-wrap has-suffix"><input type="number" id="annualMiles" value="15000" min="0" step="1000"><span class="input-suffix">mi</span></div>
+      </div>
+      <div class="form-group">
+        <label for="gasPrice">Gas Price</label>
+        <div class="input-wrap has-suffix"><input type="number" id="gasPrice" value="3.30" min="0" step="0.05"><span class="input-suffix">$/gal</span></div>
+      </div>
     </div>
     <button class="calc-btn" onclick="calculate()">Calculate MPG</button>
   </div>
@@ -132,9 +154,10 @@
       </div>
       <div class="result-box">
         <div class="result-num" id="rating">-</div>
-        <div class="result-label">Efficiency Rating</div>
+        <div class="result-label">Rating for Your Class</div>
       </div>
     </div>
+    <div id="verdict" style="background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.9rem;color:var(--mid);line-height:1.7;margin-top:0.5rem;"></div>
   </div>
   <div class="ad-banner">Advertisement · Google AdSense</div>
   <div class="content-section">
@@ -171,6 +194,8 @@
     <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
       <h3 style="margin:0 0 0.75rem;font-size:1rem;">Related Guides</h3>
       <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+      <li><a href="../blog/is-a-high-mpg-car-worth-the-extra-cost.html" style="color:var(--orange);text-decoration:none;">Is a High-MPG Car Worth the Extra Cost?</a></li>
+      <li><a href="../blog/what-is-a-good-mpg-for-a-car.html" style="color:var(--orange);text-decoration:none;">What Is a Good MPG for a Car?</a></li>
         <li><a href="../blog/how-to-improve-car-gas-mileage.html" style="color:var(--orange);text-decoration:none;">How to Improve Your Car's Gas Mileage</a></li>
         <li><a href="../blog/what-is-a-good-mpg-for-a-car.html" style="color:var(--orange);text-decoration:none;">What Is a Good MPG for a Car?</a></li>
         <li><a href="../blog/how-to-calculate-fuel-cost-road-trip.html" style="color:var(--orange);text-decoration:none;">How to Calculate Fuel Cost for a Road Trip</a></li>
@@ -188,15 +213,62 @@
 <div id="footer-placeholder"></div>
 <script src="../assets/js/components.js"></script>
 <script>
+var MPG_CLASSES = {
+  'compact-sedan':   {name:'compact sedan',            poor:28, avg:32, good:38},
+  'midsize-sedan':   {name:'midsize sedan',            poor:24, avg:29, good:35},
+  'compact-suv':     {name:'compact SUV or crossover', poor:24, avg:28, good:33},
+  'midsize-suv':     {name:'midsize SUV',              poor:20, avg:24, good:29},
+  'fullsize-suv':    {name:'full-size SUV or minivan', poor:16, avg:20, good:24},
+  'compact-pickup':  {name:'compact pickup',           poor:20, avg:24, good:28},
+  'fullsize-pickup': {name:'full-size pickup',         poor:15, avg:19, good:23},
+  'sports':          {name:'sports car',               poor:18, avg:22, good:27},
+  'hybrid':          {name:'hybrid sedan',             poor:40, avg:48, good:55}
+};
+
 function calculate() {
   var miles = parseFloat(document.getElementById('miles').value) || 0;
   var gallons = parseFloat(document.getElementById('gallons').value) || 1;
+  var annualMiles = parseFloat(document.getElementById('annualMiles').value) || 0;
+  var gasPrice = parseFloat(document.getElementById('gasPrice').value) || 0;
+  var key = document.getElementById('vclass').value;
+  var c = MPG_CLASSES[key];
+
   var mpg = miles / gallons;
   var lper100 = 235.21 / mpg;
-  var rating = mpg >= 40 ? 'Excellent' : mpg >= 30 ? 'Good' : mpg >= 22 ? 'Average' : 'Below Avg';
+
+  var rating;
+  if (mpg < c.poor) rating = 'Poor';
+  else if (mpg <= c.avg) rating = 'Average';
+  else if (mpg <= c.good) rating = 'Good';
+  else rating = 'Excellent';
+
   document.getElementById('mpg').textContent = mpg.toFixed(1);
   document.getElementById('lper100').textContent = lper100.toFixed(1);
   document.getElementById('rating').textContent = rating;
+
+  var annualCost = mpg > 0 ? (annualMiles / mpg) * gasPrice : 0;
+  var money = function(n){ return '$' + Math.round(n).toLocaleString(); };
+
+  var msg = '<strong>' + mpg.toFixed(1) + ' MPG is ' + rating.toLowerCase() +
+            ' for a ' + c.name + '.</strong> That class runs about ' + c.poor + '–' + c.avg +
+            ' MPG on average, with ' + (c.avg + 1) + '–' + c.good + ' counting as good and above ' +
+            c.good + ' as excellent. At ' + money(annualMiles).replace('$','') + ' miles a year and $' +
+            gasPrice.toFixed(2) + ' a gallon, this works out to about ' + money(annualCost) + ' in fuel annually.';
+
+  // 같은 숫자를 다른 클래스에서 어떻게 평가하는지 — 블로그 룩업 표와 동일한 논리
+  var better = [], worse = [];
+  for (var k in MPG_CLASSES) {
+    if (k === key) continue;
+    var o = MPG_CLASSES[k];
+    if (mpg > o.good) better.push(o.name);
+    else if (mpg < o.poor) worse.push(o.name);
+  }
+  if (better.length) msg += ' The same number would be excellent for a ' + better[0] + '.';
+  if (worse.length)  msg += ' It would be poor for a ' + worse[0] + '.';
+
+  var box = document.getElementById('verdict');
+  if (box) box.innerHTML = msg;
+
   document.getElementById('results').classList.add('show');
 }
 calculate();

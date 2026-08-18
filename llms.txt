@@ -41,6 +41,7 @@
 - [Lease Takeover Cost Calculator](https://autocalchub.com/tools/lease-takeover-cost-calculator.html): Compare the total remaining cost of taking over someone else's car lease against starting a new lease for the same term.
 
 ## Guides: Buying a Car
+- [Does Buying a Car Out of State Save on Taxes?](https://autocalchub.com/blog/does-buying-a-car-out-of-state-save-on-taxes.html): Sales tax follows the registration state, not the seller. Covers the reciprocal credit cap, the no-tax-state myth, and the forfeited trade-in credit.
 
 - [Is Certified Pre-Owned (CPO) Worth It?](https://autocalchub.com/blog/is-certified-pre-owned-worth-it.html): The real CPO price premium, what you actually get for it, and when a regular used car with your own inspection wins instead.
 - [How Much Car Can I Afford?](https://autocalchub.com/blog/how-much-car-can-i-afford.html): How to figure out your real car budget using income, debt, and the 20/4/10 rule.
@@ -92,6 +93,7 @@
 - [Should You Buy a Car for Uber or Lyft?](https://autocalchub.com/blog/should-you-buy-a-car-for-uber-lyft-2026.html): Buy, rent, or lease for rideshare or delivery driving — the real cost-per-mile math, the lease mileage-cap trap, and the loan contract risk most drivers miss.
 
 ## Guides: Running Costs
+- [Is a High-MPG Car Worth the Extra Cost?](https://autocalchub.com/blog/is-a-high-mpg-car-worth-the-extra-cost.html): Why fuel savings are non-linear — a 5 MPG gain is worth 4.7x more at 15 MPG than at 35 MPG — plus payback tables by premium and annual mileage.
 
 - [Is an Extended Car Warranty Worth It?](https://autocalchub.com/blog/is-extended-car-warranty-worth-it.html): The real math on self-insuring vs. buying coverage, and when a warranty actually pays for itself.
 - [How Much Does It Cost to Own a Car Per Month?](https://autocalchub.com/blog/how-much-does-it-cost-to-own-car-per-month.html): Full breakdown of monthly car ownership costs including payment, insurance, gas, and maintenance.
