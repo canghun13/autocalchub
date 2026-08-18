@@ -27,6 +27,7 @@
 - [Car Sales Tax Calculator](https://autocalchub.com/tools/car-sales-tax-calculator.html): Calculate car sales tax for any US state instantly, including trade-in deductions.
 - [Car Trade-In Value Estimator](https://autocalchub.com/tools/car-trade-in-value-estimator.html): Estimate what a dealer will offer for your car vs. private party value.
 - [GAP Insurance Calculator](https://autocalchub.com/tools/gap-insurance-calculator.html): Find out if you're underwater on your car loan and whether GAP insurance makes financial sense.
+- [Totaled Car Settlement Calculator](https://autocalchub.com/tools/totaled-car-settlement-calculator.html): Tests a damaged vehicle against state total loss thresholds or the Total Loss Formula, then shows the settlement after deductible, whether it clears the loan balance, and the full cost of retaining the salvage.
 - [Car Refinance Calculator](https://autocalchub.com/tools/car-refinance-calculator.html): See how much you could save by refinancing your car loan — monthly savings, total interest saved, and break-even point.
 - [Car Loan Interest Deduction Calculator](https://autocalchub.com/tools/car-loan-interest-deduction-calculator.html): Estimate the 2025–2028 OBBBA car loan interest deduction across the full loan, with the MAGI phase-out applied year by year and the share of interest falling outside the deductible window.
 - [Car Early Payoff Calculator](https://autocalchub.com/tools/car-early-payoff-calculator.html): Calculate how much interest you save and how many months you cut by making extra payments on your car loan.
@@ -66,6 +67,7 @@
 - [When Should You Trade In Your Car?](https://autocalchub.com/blog/when-to-trade-in-your-car.html): The right timing to trade in, how to avoid negative equity, and how to get a fair offer.
 
 ## Guides: Car Financing
+- [Should You Sell Your Car Instead of Voluntary Surrender?](https://autocalchub.com/blog/should-you-sell-your-car-instead-of-voluntary-surrender.html): Why surrender leaves a larger deficiency balance than a private sale, how to bridge the payoff shortfall, and what to try before either route.
 - [How Much Is the Car Loan Interest Deduction Actually Worth?](https://autocalchub.com/blog/how-much-is-car-loan-interest-deduction-worth.html): Why the $10,000 headline is not what you receive — the marginal-rate reality, the 2028 expiry, and why the phase-out zeroes most borrowers out well below $150,000 MAGI.
 - [Does Refinancing Kill Your Car Loan Interest Deduction?](https://autocalchub.com/blog/does-refinancing-affect-car-loan-interest-deduction.html): Refinancing a qualifying loan keeps the deduction if the new loan is a first lien and does not exceed the old balance — plus the cash-out trap and why a lower rate still wins.
 - [Should You Borrow More to Get a Bigger Car Loan Interest Deduction?](https://autocalchub.com/blog/should-you-borrow-more-for-car-loan-interest-deduction.html): Why a smaller down payment or longer term produces a bigger deduction and a worse outcome, with the math on every version of the pitch.
@@ -103,6 +105,10 @@
 - [How Much Does Car Maintenance Cost Per Year?](https://autocalchub.com/blog/how-much-does-car-maintenance-cost-per-year.html): A full 2026 breakdown of annual maintenance costs by vehicle age, make type, and service category.
 - [How to Lower Your Car Insurance Premium](https://autocalchub.com/blog/how-to-lower-your-car-insurance-premium.html): The most effective ways to reduce your car insurance bill — from deductible adjustments to discounts most drivers never ask about.
 - [How Much Does It Cost to Fill Up a Car?](https://autocalchub.com/blog/how-much-does-it-cost-to-fill-up-a-car.html): What a full tank costs in 2026 by vehicle type and tank size.
+
+## Guides: Accidents & Claims
+- [Should You Keep Your Totaled Car?](https://autocalchub.com/blog/should-you-keep-your-totaled-car.html): Owner retention forfeits the salvage value and shifts repair risk to you, ending in a rebuilt title worth 20-40% less — with the cases where it still works.
+- [Is a Diminished Value Claim Worth Filing?](https://autocalchub.com/blog/is-a-diminished-value-claim-worth-filing.html): The eligibility gates that end most claims, what the 17c formula actually pays by damage level and mileage, and the breakeven against a $300-400 appraisal.
 
 ## Guides: Electric Vehicles
 

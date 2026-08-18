@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-08-18 기준)
+# AutoCalcHub 인수인계 문서 (2026-08-24 기준)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,12 +12,15 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (2026-08-18 기준)
-- 블로그 66개, 툴 29개 (index.html 제외). 8/18 세션에서 블로그 2개 추가.
+## 2. 콘텐츠 현황 (2026-08-24 기준)
+- 블로그 69개, 툴 30개 (index.html 제외). 8/24 세션에서 블로그 3 + 툴 1 추가.
 - 정적 페이지: `about.html`, `contact.html`, `privacy-policy.html`, `methodology.html`, `editorial-policy.html`
-- sitemap.xml 총 URL 108개
-- **블로그 태그 카테고리**: Financing / Buying / Running Costs / Ownership / EV / Selling / Gig & Rideshare (7종). blog/index.html의 실제 헤더 문자열은 `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare` — 스크립트로 편집할 때 이모지까지 정확히 맞춰야 함.
-- **블로그 전체**에 "· Written by AutoCalcHub Team" 바이라인, **블로그+툴 전체**에 BreadcrumbList JSON-LD 반영됨. 신규 페이지도 동일 패턴 유지할 것. FAQPage/HowTo 스키마는 2026-05-07 Google이 리치 리절트를 폐지해서 추가하지 말 것.
+- sitemap.xml 총 URL 112개
+- **블로그 태그 카테고리 8종** (8/24에 "Accidents & Claims" 신설): Financing / Buying / Running Costs / Ownership / EV / Selling / Gig & Rideshare / **Accidents & Claims**.
+  blog/index.html 실제 헤더 문자열: `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`. 스크립트 편집 시 이모지까지 정확히 맞출 것.
+  tools/index.html에도 동일하게 `🚨 Accidents &amp; Claims` 섹션 신설됨.
+- **카테고리 신설 시 필요한 작업**: blog/index.html에 `<div class="category-section" id="section-XXX">` 블록 추가(검색 필터는 `.category-section`을 querySelectorAll로 잡으므로 JS 수정 불필요), tools/index.html 섹션, llms.txt `## Guides: XXX` 섹션.
+- **블로그 전체**에 "· Written by AutoCalcHub Team" 바이라인, **블로그+툴 전체**에 BreadcrumbList JSON-LD 반영됨. FAQPage/HowTo는 2026-05-07 리치리절트 폐지로 추가 금지.
 
 ### 사이트 구조 관련 중요 변경사항
 - **헤더 내비게이션**: 기존 "Calculators"/"Blog" 드롭다운 메뉴 → **단순 링크**로 전환. "Calculators" 명칭도 **"Tools"**로 변경됨. **7/17 세션에서 "Glossary" 항목 추가** — 현재 Tools / Blog / Glossary / About 4개. (`assets/partials/header.html`)
@@ -666,6 +669,63 @@ negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 �
 4. `what-is-good-interest-rate-car-loan`의 실효 APR 섹션(8/11 추가)이 아직 구글 미반영 — 순위 변화 추적할 것.
 5. zip에 `freetooldev_com` 폴더가 섞여 있었음. **다른 사이트이므로 분석에 포함하지 말 것.** 사용자가 그 사이트 작업을 원하면 별도 지시가 있을 것.
 6. blog/index.html Latest 섹션이 계속 증가 중(트리밍 여부 6세션째 미결). 사용자 확인 필요.
+
+
+## 6-15. 8/24 세션 (사용자 지시: 신규 위주, 폭넓은 키워드 리서치): 신규 클러스터 "Accidents & Claims" 신설
+
+- **지시 사항**: 신규 중심. 키워드를 다양하게 폭넓게 뽑고 → 리스트 → 경쟁강도 체크 → 강하면 롱테일로 우회. 가급적 클러스터 단위, 새 클러스터도 환영. **GSC/보유 데이터 안에서만 보지 말고 구글·네이버·레딧 등에서 "문서수는 적은데 관심은 있는" 주제를 찾을 것.** 화면 깨짐 확인 필요한 페이지만 링크로 전달.
+- **이번엔 GSC/GA/Bing 자료 첨부 없음** — 지시대로 외부 소스 리서치 기반으로만 진행. 8/18자 데이터 판단(5번 섹션)은 그대로 유효.
+
+### 리서치 → 후보 리스트 → 경쟁강도 판정 (웹서치 5라운드)
+전체 콘텐츠 69개 전수 대조로 **완전 미커버 영역**을 먼저 특정: 사고/클레임, 압류/자진반납, 청소년 운전자, 클래식카, 견인/적재, IRS 마일리지 공제, 차량 기부, 겨울 타이어.
+그중 (a) 계산 가능하고 (b) 기존 툴과 로직이 안 겹치고 (c) 수익화 궁합이 맞는 **사고/클레임 + 압류**를 선택. 후보별 경쟁강도:
+
+| 후보 | 상위 노출 | 판정 |
+|---|---|---|
+| 사고 후 보험료 인상률 | NerdWallet·ValuePenguin·WalletHub·LendingTree·US News | **포화 → 기각** |
+| total loss threshold by state (주별 표) | Policygenius·WalletHub·SoFi·carinsurance.com | 표는 코모디티화 → 헤드텀 회피 |
+| 17c 감가상각 계산기 | The Zebra·toolcr·cdcalculators·secondappraisal·snapclaim | 계산기 자체는 포화 → **각도 전환** |
+| total loss 계산기 | The Zebra·calculator.academy·collisionhelp·mycarcalc | 포화 → **각도 전환** |
+| 자진반납 deficiency | NerdWallet·Chase·CapitalOne·Nolo·Experian(설명글) | **계산기는 0개 → 진입** |
+
+### 경쟁 회피 장치 (전부 "설명"이 아니라 "의사결정 + 계산"으로 우회)
+- **전손**: 경쟁사는 "전손인가?"에서 멈춤 → 우리는 **공제액 차감 후 실수령 → 대출 상환 가능 여부 → 잔존물 인수 시 총비용**까지 끝까지 계산.
+- **감가상각(DV)**: 경쟁사는 17c 숫자만 뱉음 → 우리는 **자격 게이트(1st-party 면책이라 대부분 청구 불가)** 를 앞에 세우고 **감정료 $300~400 대비 손익분기**를 계산. 이게 진짜 결정 변수인데 아무도 안 다룸.
+- **자진반납**: 설명글만 존재 → 우리는 **경매가 vs 직접매각 부족액 차이**를 수치화.
+
+### 신규 툴 — `tools/totaled-car-settlement-calculator.html` (873단어)
+- 입력: ACV, 수리비, 잔존가, 주 규칙(60~100% 임계 또는 TLF), 공제액, 과실 주체, 대출잔액, 갭 보유.
+- **기존 `gap-insurance-calculator`와 로직 미중복 확인**(그쪽은 사전적 "갭보험 살까?", 이쪽은 사고 후 정산). 규칙 4 준수.
+- 3분기 출력: 전손 판정 / 정산 내역(ACV−공제−대출) / **오너 리텐션 비교**(포기 정산액 + 자가수리비 vs 리빌트 타이틀 가치 20~40% 하락).
+- 검증: 파이썬 독립 구현 + node 목업 DOM 6시나리오 대조 **전부 일치**. TLF 케이스($13,000+$4,500=$17,500 < ACV $18,000 → 수리) 포함.
+- UX 보정 2건: 기본값을 전손 시나리오로($15,000 수리비 → 83%), 수리 판정 시 정산 카드 자동 숨김.
+
+### 신규 블로그 3건
+1. `blog/should-you-keep-your-totaled-car.html` (Accidents & Claims, 1,196단어) — **오너 리텐션은 검색량 대비 문서가 가장 적은 지점.** ACV $18,000/수리 $15,000/잔존 $4,500 기준 총 $19,500 써서 $10,800~$14,400짜리 차를 갖게 됨. 리텐션이 통하는 5가지 경우(센서發 전손, 저가차, 우박, 자가수리, 평생보유)와 실무 장애물(재보험 거절, 렌더 차단, 검사 탈락, 히든 데미지 무보증) 정리. 기존 `is-it-worth-buying-car-with-rebuilt-title`의 정확한 뒷면이라 내부링크 궁합 최상.
+2. `blog/is-a-diminished-value-claim-worth-filing.html` (Accidents & Claims, 1,206단어) — 자격 게이트 5종을 먼저 세움(**핵심: 대부분 약관이 1st-party DV를 면책 → 상대 과실일 때만 청구 가능, 조지아는 Mabry 판결로 예외**). 17c 표($28,000 기준 손상×주행거리 12칸) + 감정료 $350 손익분기표. 85,000마일이면 중간 손상도 적자.
+3. `blog/should-you-sell-your-car-instead-of-voluntary-surrender.html` (Financing, 1,102단어) — 잔액 $23,000/시세 $16,000 기준 자진반납 부족액 $12,300 vs 직접매각 $7,000 = **차이 $5,300 + 7년 신용기록 회피**. 부족액 브리징 3방법, 그 전에 시도할 것(리파이낸스·디퍼먼트·트레이드다운), 이미 반납한 경우 무담보채무化로 협상 가능.
+
+### 수익화 관점 우선순위 (5-1 정책 적용)
+- 3번 블로그가 **리파이낸스 제휴(단가 최상위 $60~150)** 와 직결 — "연체 전이면 리파이낸스가 답"이라는 구조로 `car-refinance-calculator`·`how-to-refinance-a-car-loan`에 링크. 압류 직전 사용자는 의도가 극도로 높음.
+- 1·2번은 `used-car-value-calculator`·중고차 인스턴트 오퍼(Peddle/CarMax) 제휴와 궁합. **단, 보험 쇼핑 제휴는 여전히 방치**(우리 보험 페이지 85위, 5-1 판단 유지).
+
+### 사이트 전체 반영
+- **blog/index.html에 `🚨 Accidents &amp; Claims` 카테고리 섹션 신설**(id=`section-accidents`, Gig & Rideshare 뒤). Latest에 3건, Financing에 1건 추가.
+- **tools/index.html에도 동일 카테고리 신설**(Electric Vehicles 앞) + 계산기 카드.
+- index.html 미리보기 3건 전면 교체, 툴 그리드 카드 추가, stat `29+`→`30+` 2곳.
+- sitemap 108→112 URL(lastmod 13건), llms.txt `## Guides: Accidents & Claims` 섹션 신설 + Tools 1 + Financing 1.
+- 내부링크 13개 페이지에서 연결. **구글/Bing 노출 확인된 페이지 우선**(used-car-value 64노출, car-depreciation 128노출, negative-equity Bing 2.88위, put-down Bing 6.75위). 인바운드 5~9개 확보.
+
+### 검증
+- 변경/신규 17개 파일 태그 밸런스·JSON-LD 전부 통과, sitemap XML 유효(112 URL).
+- 내부링크 980개 전수 스캔 깨진 링크 0건.
+- 계산기 JS 파이썬 대조 완료.
+
+### ⚠️ 다음 세션 필독
+1. **Accidents & Claims는 이번에 씨앗만 심은 상태.** 확장 후보(리서치는 했으나 이번엔 미발행): 사고 후 렌터카 커버리지, ACV 이의제기 실무(appraisal clause), 우박 피해 전손, 무보험 운전자 사고. **단 "사고 후 보험료 인상률"은 포화라 기각했으니 재검토 불필요.**
+2. **여전히 미커버인 영역**(다음 클러스터 후보): IRS 사업용 마일리지 공제(시즌성 큼), 청소년/신규 운전자 비용, 차량 기부 세금공제, 견인·적재량, 겨울타이어. 전부 이번에 리스트만 뽑고 미착수.
+3. 8/18에 교체한 MPG 페이지 메타의 **CTR 효과 확인이 여전히 최우선** — Bing 89노출/5.17위. 효과 확인되면 다른 Bing 상위 페이지로 확대.
+4. blog/index.html Latest 섹션 트리밍 여부 7세션째 미결.
 
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)

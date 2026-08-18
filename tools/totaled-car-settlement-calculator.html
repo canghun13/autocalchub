@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Totaled Car Settlement Calculator — Payout, Loan Gap &amp; Keeping the Car | AutoCalcHub</title>
+  <meta name="description" content="See whether your car will be declared a total loss, what the insurance payout works out to after your deductible, whether the loan is fully covered, and what keeping the salvage would really cost.">
+  <link rel="canonical" href="https://autocalchub.com/tools/totaled-car-settlement-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:2.5rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.6rem 0;border-bottom:1px solid var(--border);font-size:0.9rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.8rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul{margin:0.75rem 0 1rem 1.5rem}
+    @media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Totaled Car Settlement Calculator",
+    "url": "https://autocalchub.com/tools/totaled-car-settlement-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Estimate whether a damaged vehicle meets your state's total loss threshold, what the settlement pays after the deductible, whether it clears the loan balance, and the real cost of retaining the salvage.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-08-24"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Totaled Car Settlement Calculator", "item": "https://autocalchub.com/tools/totaled-car-settlement-calculator.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Totaled Car Settlement Calculator</h1>
+    <p>Most total loss calculators stop at "yes, it's totaled." This one carries the number all the way through: what the settlement actually pays after your deductible, whether it clears your loan, and what retaining the salvage would really cost you.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>🚗 Your Vehicle &amp; Claim</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="acv">Actual Cash Value (pre-accident)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="acv" value="18000" min="0" step="500"></div>
+        <span class="hint">What the car was worth right before the crash — not what you paid or what you owe.</span>
+      </div>
+      <div class="form-group">
+        <label for="repair">Estimated Repair Cost</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="repair" value="15000" min="0" step="500"></div>
+      </div>
+      <div class="form-group">
+        <label for="salvage">Salvage Value</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="salvage" value="4500" min="0" step="250"></div>
+        <span class="hint">Roughly 20–40% of ACV on a typical late-model car.</span>
+      </div>
+      <div class="form-group">
+        <label for="threshold">Your State's Total Loss Rule</label>
+        <select id="threshold">
+          <option value="60">60% threshold</option>
+          <option value="65">65% threshold</option>
+          <option value="70">70% threshold</option>
+          <option value="75" selected>75% threshold (most common)</option>
+          <option value="80">80% threshold</option>
+          <option value="100">100% threshold</option>
+          <option value="tlf">Total Loss Formula (repair + salvage ≥ ACV)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="deductible">Your Deductible</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="deductible" value="500" min="0" step="50"></div>
+      </div>
+      <div class="form-group">
+        <label for="fault">Who Was at Fault?</label>
+        <select id="fault">
+          <option value="you" selected>Me / unclear (my collision coverage)</option>
+          <option value="other">The other driver (their liability)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="loan">Loan or Lease Balance</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="loan" value="21000" min="0" step="500"></div>
+        <span class="hint">Enter 0 if the car is paid off.</span>
+      </div>
+      <div class="form-group">
+        <label for="gap">Do You Have GAP Coverage?</label>
+        <select id="gap">
+          <option value="no" selected>No</option>
+          <option value="yes">Yes</option>
+        </select>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate Settlement →</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="verdict-box">
+      <h3 id="vTitle"></h3>
+      <span class="big" id="vBig"></span>
+      <p id="vSub"></p>
+    </div>
+
+    <div class="calc-card" id="settlementCard">
+      <h2>💵 Settlement Breakdown</h2>
+      <div class="row"><span>Actual cash value</span><span id="rAcv"></span></div>
+      <div class="row"><span>Less deductible</span><span id="rDed"></span></div>
+      <div class="row"><span>Settlement paid to you</span><span id="rPayout"></span></div>
+      <div class="row"><span>Loan balance to clear</span><span id="rLoan"></span></div>
+      <div class="row" id="rowNet"><span id="rNetLabel">After paying off the loan</span><span id="rNet"></span></div>
+    </div>
+
+    <div class="calc-card" id="retainCard">
+      <h2>🔧 If You Keep the Car (Owner Retention)</h2>
+      <div class="row"><span>Settlement if you surrender the car</span><span id="rSurrender"></span></div>
+      <div class="row"><span>Settlement if you retain the salvage</span><span id="rRetain"></span></div>
+      <div class="row"><span>You give up</span><span id="rGiveUp"></span></div>
+      <div class="row"><span>Plus repairs you'd pay yourself</span><span id="rRepair"></span></div>
+      <div class="row"><span>Total cost to end up with a rebuilt-title car</span><span id="rRetainTotal"></span></div>
+      <div class="note" style="margin-top:1rem" id="retainNote"></div>
+    </div>
+
+    <div class="note" id="mainNote"></div>
+    <div class="disclaimer">⚠️ <strong>This is an estimate, not a claim determination.</strong> Only your insurer decides whether a vehicle is a total loss, and it uses its own valuation system (CCC, Mitchell, or Audatex) to set ACV. Thresholds and salvage-title rules vary by state and change over time, and some states add sales tax, title, and registration fees to the settlement. Verify your state's current rule with its insurance department before relying on these numbers.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>How the Total Loss Decision Actually Works</h2>
+    <p>Your insurer compares the repair estimate against the car's actual cash value, and states enforce that comparison in one of two ways. Most set a fixed percentage — if repairs reach, say, 75% of ACV, the car must be declared a total loss. A minority use the Total Loss Formula instead, where the car is totaled when repair cost plus salvage value equals or exceeds ACV.</p>
+    <p>The difference matters more than people expect. On an $18,000 car with $13,000 of damage and $4,500 of salvage value, repairs come to 72% of ACV. In a 60% or 70% state that car is totaled. In a 75%, 80%, or 100% state it gets repaired. Under the Total Loss Formula the sum is $17,500 against an $18,000 ACV, so it also gets repaired. Same damage, same car, opposite outcome.</p>
+
+    <h3>Why Newer Technology Totals Cars Earlier</h3>
+    <p>Modern bumpers house radar sensors, cameras, and parking assist modules, and a low-speed impact that once meant a $900 bumper cover can now trigger several thousand dollars in sensor replacement and recalibration. The repair estimate climbs toward the threshold much faster than the visible damage suggests.</p>
+
+    <h2>Actual Cash Value Is the Number Worth Arguing About</h2>
+    <p>Everything downstream depends on ACV, and it isn't the adjuster's personal opinion — insurers rely on third-party valuation platforms that pull comparable local sales from the prior month or two. That makes ACV disputable with evidence. If your car had new tires, recent major maintenance, a trim level or option package the valuation missed, or unusually low mileage for its age, those are concrete arguments. Pull three or four listings for genuinely comparable vehicles in your area and present them in writing.</p>
+    <p>Most policies also include an appraisal clause, which lets you and the insurer each hire an appraiser and, if they disagree, bring in a neutral umpire. It's a formal path that exists precisely for valuation disputes, and it's underused.</p>
+
+    <h2>When the Settlement Doesn't Cover the Loan</h2>
+    <p>The settlement pays the car's value, not your loan balance, and those two numbers drift apart fast on long loans with small down payments. If you owe $21,000 on a car worth $18,000 and your deductible is $500, the insurer pays $17,500 and you still owe $3,500 on a car you no longer have. GAP coverage exists to close exactly that hole; without it, the balance stays yours.</p>
+    <p>If you're not currently in a claim and just want to know whether you're exposed, the <a href="gap-insurance-calculator.html" style="color:var(--orange);text-decoration:none;">GAP insurance calculator</a> shows how long your loan stays underwater.</p>
+
+    <h2>Common Mistakes With Total Loss Claims</h2>
+    <ul>
+      <li><strong>Accepting the first ACV figure without checking comparables.</strong> It's an opening position produced by software, not a final number.</li>
+      <li><strong>Assuming the payout covers the loan.</strong> It covers the car's value; the gap is yours unless you bought GAP coverage.</li>
+      <li><strong>Retaining the salvage without pricing the rebuilt title.</strong> The reduced resale value usually outweighs the salvage credit.</li>
+      <li><strong>Forgetting sales tax and fees.</strong> Many states require insurers to include them in a total loss settlement — ask if they're in the offer.</li>
+      <li><strong>Cancelling insurance too early.</strong> Keep coverage until the title transfer and payout are complete.</li>
+    </ul>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/should-you-keep-your-totaled-car.html" style="color:var(--orange);text-decoration:none;">Should You Keep Your Totaled Car?</a></li>
+        <li><a href="../blog/is-a-diminished-value-claim-worth-filing.html" style="color:var(--orange);text-decoration:none;">Is a Diminished Value Claim Worth Filing?</a></li>
+        <li><a href="gap-insurance-calculator.html" style="color:var(--orange);text-decoration:none;">GAP Insurance Calculator</a></li>
+        <li><a href="used-car-value-calculator.html" style="color:var(--orange);text-decoration:none;">Used Car Value Calculator</a></li>
+        <li><a href="../blog/is-it-worth-buying-car-with-rebuilt-title.html" style="color:var(--orange);text-decoration:none;">Is a Rebuilt Title Car Worth Buying?</a></li>
+        <li><a href="../blog/what-is-negative-equity-on-a-car-loan.html" style="color:var(--orange);text-decoration:none;">What Is Negative Equity on a Car Loan?</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+
+function calculate(){
+  var acv       = parseFloat(document.getElementById('acv').value) || 0;
+  var repair    = parseFloat(document.getElementById('repair').value) || 0;
+  var salvage   = parseFloat(document.getElementById('salvage').value) || 0;
+  var thrRaw    = document.getElementById('threshold').value;
+  var deductible= parseFloat(document.getElementById('deductible').value) || 0;
+  var atFault   = document.getElementById('fault').value === 'you';
+  var loan      = parseFloat(document.getElementById('loan').value) || 0;
+  var hasGap    = document.getElementById('gap').value === 'yes';
+
+  // 1. Total loss determination
+  var isTotaled, ruleText, ratio = acv > 0 ? (repair / acv * 100) : 0;
+  if (thrRaw === 'tlf') {
+    isTotaled = (repair + salvage) >= acv;
+    ruleText = 'the Total Loss Formula (repair ' + money(repair) + ' + salvage ' + money(salvage) +
+               ' = ' + money(repair + salvage) + ' vs ACV ' + money(acv) + ')';
+  } else {
+    var thr = parseFloat(thrRaw);
+    isTotaled = repair >= acv * thr / 100;
+    ruleText = 'a ' + thr + '% threshold (repairs are ' + ratio.toFixed(0) + '% of ACV)';
+  }
+
+  // 2. Settlement — deductible applies only to your own collision claim
+  var ded = atFault ? deductible : 0;
+  var payout = Math.max(0, acv - ded);
+  var net = payout - loan;
+
+  document.getElementById('rAcv').textContent = money(acv);
+  document.getElementById('rDed').textContent = ded > 0 ? '−' + money(ded) : '$0 (other driver at fault)';
+  document.getElementById('rPayout').textContent = money(payout);
+  document.getElementById('rLoan').textContent = loan > 0 ? '−' + money(loan) : '$0 (paid off)';
+
+  var rowNet = document.getElementById('rowNet');
+  var netEl = document.getElementById('rNet');
+  var netLabel = document.getElementById('rNetLabel');
+  rowNet.className = 'row';
+  if (net >= 0) {
+    netLabel.textContent = 'Left over for your next car';
+    netEl.textContent = money(net);
+    rowNet.className = 'row good';
+  } else {
+    netLabel.textContent = hasGap ? 'Shortfall (covered by your GAP policy)' : 'You still owe after the car is gone';
+    netEl.textContent = money(Math.abs(net));
+    rowNet.className = hasGap ? 'row' : 'row warn';
+  }
+
+  // 3. Owner retention branch
+  var retainPayout = Math.max(0, payout - salvage);
+  var retainTotal = salvage + repair;
+  document.getElementById('rSurrender').textContent = money(payout);
+  document.getElementById('rRetain').textContent = money(retainPayout);
+  document.getElementById('rGiveUp').textContent = money(payout - retainPayout);
+  document.getElementById('rRepair').textContent = money(repair);
+  document.getElementById('rRetainTotal').textContent = money(retainTotal);
+
+  var rebuiltLow = acv * 0.6, rebuiltHigh = acv * 0.8;
+  document.getElementById('retainNote').innerHTML =
+    'Keeping the car costs you ' + money(payout - retainPayout) + ' in forfeited settlement, and you still have to pay for repairs. ' +
+    'Spending ' + money(retainTotal) + ' leaves you owning a vehicle that now carries a rebuilt title — typically worth ' +
+    money(rebuiltLow) + '–' + money(rebuiltHigh) + ' rather than the ' + money(acv) + ' it was worth before, since rebuilt titles usually trade 20–40% below clean ones. ' +
+    (retainTotal > rebuiltHigh
+      ? '<strong>On these numbers you would spend more than the repaired car is likely to be worth.</strong>'
+      : '<strong>On these numbers retention can work — but only if your repair estimate holds and you can live with the resale hit.</strong>');
+
+  // 4. Verdict
+  var vTitle = document.getElementById('vTitle');
+  var vBig = document.getElementById('vBig');
+  var vSub = document.getElementById('vSub');
+  document.getElementById('retainCard').style.display = isTotaled ? 'block' : 'none';
+  document.getElementById('settlementCard').style.display = isTotaled ? 'block' : 'none';
+
+  if (isTotaled) {
+    vTitle.textContent = 'Likely a Total Loss';
+    vBig.textContent = money(payout);
+    vSub.textContent = 'Under ' + ruleText + ', this vehicle meets the total loss test. The settlement works out to ' +
+      money(payout) + ' after your deductible' +
+      (loan > 0 ? (net >= 0 ? ', leaving ' + money(net) + ' once the loan is cleared.' :
+        ', which is ' + money(Math.abs(net)) + ' short of the ' + money(loan) + ' balance.') : '.');
+  } else {
+    vTitle.textContent = 'Likely Repairable';
+    vBig.textContent = money(repair);
+    vSub.textContent = 'Under ' + ruleText + ', this vehicle falls below the total loss test, so expect the insurer to repair it. ' +
+      'You would pay your ' + money(deductible) + ' deductible' + (atFault ? '' : ' only if you claim through your own policy') +
+      ' and keep the car — with an accident now on its history report.';
+  }
+
+  // 5. Main note
+  var note = '<strong>How this was calculated:</strong> Repairs of ' + money(repair) + ' were tested against an ACV of ' +
+             money(acv) + ' using ' + ruleText + '. ';
+  if (isTotaled) {
+    note += 'Total loss settlements pay the vehicle\'s value, not your loan balance. ';
+    if (loan > 0 && net < 0) {
+      note += hasGap
+        ? 'You are ' + money(Math.abs(net)) + ' short, which is what GAP coverage is designed to absorb — confirm your policy pays the deductible too, since many do not. '
+        : '<strong>You would still owe ' + money(Math.abs(net)) + ' on a car you no longer have, and without GAP coverage that balance remains your responsibility.</strong> ';
+    }
+    note += 'Many states also require sales tax, title, and registration fees to be included in the settlement, so ask whether the offer contains them.';
+  } else {
+    note += 'Because the car stays on the road with a reported accident on its history, it loses resale value even after a perfect repair — that loss is what a diminished value claim is meant to recover, and it is generally only available when someone else was at fault.';
+  }
+  document.getElementById('mainNote').innerHTML = note;
+
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>
