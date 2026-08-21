@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ship a Car or Drive It? Cost Calculator (2026) | AutoCalcHub</title>
+  <meta name="description" content="Compare auto transport against driving it yourself — fuel, hotels, food, wear, a one-way flight, and the value of your own time. Shows the breakeven distance for your situation.">
+  <link rel="canonical" href="https://autocalchub.com/tools/ship-car-vs-drive-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul{margin:0.75rem 0 1rem 1.5rem}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Ship a Car or Drive It Calculator",
+    "url": "https://autocalchub.com/tools/ship-car-vs-drive-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Compares the cost of auto transport against driving a vehicle yourself, including fuel, lodging, meals, vehicle wear, a one-way flight, and the value of your time.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-08-31"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Ship a Car or Drive It Calculator", "item": "https://autocalchub.com/tools/ship-car-vs-drive-calculator.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Ship a Car or Drive It?</h1>
+    <p>Transport companies publish shipping quotes. Almost nobody prices the alternative honestly. This runs both sides — fuel, hotels, meals, wear, the flight home, and what your own days are worth — and tells you where the breakeven actually falls.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>🚚 The Move</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="miles">Driving Distance</label>
+        <div class="input-wrap has-suffix"><input type="number" id="miles" value="1500" min="50" step="50"><span class="input-suffix">mi</span></div>
+        <span class="hint">Road miles, not straight-line distance.</span>
+      </div>
+      <div class="form-group">
+        <label for="carrier">Transport Type</label>
+        <select id="carrier">
+          <option value="open" selected>Open carrier (standard)</option>
+          <option value="enclosed">Enclosed carrier (+50%)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="size">Vehicle Size</label>
+        <select id="size">
+          <option value="sedan" selected>Sedan / compact</option>
+          <option value="large">SUV / pickup (+$150)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="runs">Is It Drivable?</label>
+        <select id="runs">
+          <option value="yes" selected>Yes</option>
+          <option value="no">No — inoperable (+$225)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quote">Actual Shipping Quote (optional)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="quote" value="" min="0" step="50" placeholder="Leave blank to estimate"></div>
+        <span class="hint">If you already have a quote, enter it to override the estimate.</span>
+      </div>
+      <div class="form-group">
+        <label for="flight">One-Way Flight / Travel Back</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="flight" value="250" min="0" step="25"></div>
+        <span class="hint">Only applies if shipping means you fly instead of drive. Enter 0 if you're travelling anyway.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h2>🚗 If You Drive It</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="mpg">Your Car's MPG</label>
+        <div class="input-wrap has-suffix"><input type="number" id="mpg" value="30" min="5" step="1"><span class="input-suffix">mpg</span></div>
+      </div>
+      <div class="form-group">
+        <label for="gas">Gas Price</label>
+        <div class="input-wrap has-suffix"><input type="number" id="gas" value="3.10" min="0" step="0.05"><span class="input-suffix">$/gal</span></div>
+      </div>
+      <div class="form-group">
+        <label for="hotel">Hotel Per Night</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="hotel" value="140" min="0" step="10"></div>
+      </div>
+      <div class="form-group">
+        <label for="food">Meals Per Day</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="food" value="60" min="0" step="5"></div>
+      </div>
+      <div class="form-group">
+        <label for="hoursday">Driving Hours Per Day</label>
+        <div class="input-wrap has-suffix"><input type="number" id="hoursday" value="8" min="2" max="14" step="1"><span class="input-suffix">hr</span></div>
+      </div>
+      <div class="form-group">
+        <label for="hourly">What Your Time Is Worth</label>
+        <div class="input-wrap has-suffix"><input type="number" id="hourly" value="25" min="0" step="5"><span class="input-suffix">$/hr</span></div>
+        <span class="hint">Enter 0 to compare cash costs only. This input usually decides the answer.</span>
+      </div>
+      <div class="form-group">
+        <label for="wear">Wear &amp; Depreciation</label>
+        <div class="input-wrap has-suffix"><input type="number" id="wear" value="0.10" min="0" max="1" step="0.01"><span class="input-suffix">$/mi</span></div>
+        <span class="hint">Tires, maintenance and mileage-driven value loss. Fuel is counted separately.</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Compare →</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="verdict-box">
+      <h3 id="vTitle"></h3>
+      <span class="big" id="vBig"></span>
+      <p id="vSub"></p>
+    </div>
+
+    <div class="two-col">
+      <div class="calc-card" style="margin:0">
+        <h2>🚚 Shipping</h2>
+        <div class="row"><span>Transport</span><span id="sTransport"></span></div>
+        <div class="row"><span>Flight / travel back</span><span id="sFlight"></span></div>
+        <div class="row"><span>Your time</span><span id="sTime"></span></div>
+        <div class="row"><span>Total</span><span id="sTotal"></span></div>
+      </div>
+      <div class="calc-card" style="margin:0">
+        <h2>🚗 Driving</h2>
+        <div class="row"><span>Fuel</span><span id="dFuel"></span></div>
+        <div class="row"><span>Lodging</span><span id="dHotel"></span></div>
+        <div class="row"><span>Meals</span><span id="dFood"></span></div>
+        <div class="row"><span>Wear &amp; depreciation</span><span id="dWear"></span></div>
+        <div class="row"><span>Your time</span><span id="dTime"></span></div>
+        <div class="row"><span>Total</span><span id="dTotal"></span></div>
+      </div>
+    </div>
+
+    <div class="note" id="mainNote"></div>
+    <div class="disclaimer">⚠️ <strong>Shipping figures are market estimates, not quotes.</strong> Auto transport is priced by a bidding marketplace, so real quotes for the same route vary widely by season, lane demand and how flexible your pickup window is. Get at least three quotes before committing, and enter the real number above to replace the estimate.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why Driving Usually Wins on Cash — and Loses on Time</h2>
+    <p>Run the cash costs alone and driving beats shipping on almost every route. A 1,500-mile trip in a 30 MPG car costs roughly $155 in fuel, and even with three hotel nights and four days of meals you're around $815. Shipping the same car runs about $1,250 plus a flight. On paper it isn't close.</p>
+    <p>The reason people ship anyway is that driving 1,500 miles costs you about 24 hours behind the wheel spread over four days. Price those days at anything at all and the comparison flips. At $25 an hour the breakeven lands near 1,500 miles; at $40 an hour it drops to about 1,000; at $15 an hour you'd have to be going past 2,000 miles before shipping makes sense. If your time is genuinely free — you wanted the road trip anyway, you have the days spare — driving stays cheaper right across the country.</p>
+    <p>That's the honest version of this decision, and it's why the input that matters most is the one transport companies never ask about.</p>
+
+    <h2>How Auto Transport Pricing Actually Works</h2>
+    <p>Most bookings go through a broker rather than the carrier itself. The broker posts your vehicle on a load board and drivers bid on it, which is why two quotes for the same route can differ by hundreds of dollars and why a "guaranteed" price sometimes moves before pickup.</p>
+    <p>A few patterns hold consistently:</p>
+    <ul>
+      <li><strong>Per-mile rates fall as distance grows.</strong> A 300-mile move can run well over $1.50 a mile; a cross-country haul drops toward $0.55–0.70. Short moves are the worst value.</li>
+      <li><strong>Enclosed transport adds roughly 30–60%.</strong> Worth it for classics and high-value cars, rarely otherwise.</li>
+      <li><strong>Flexibility is the biggest discount available.</strong> A three-to-five day pickup window typically saves 10–20% over demanding a specific date.</li>
+      <li><strong>Season moves prices.</strong> Summer and the autumn snowbird migration are the expensive windows.</li>
+      <li><strong>Major lanes are cheaper.</strong> Metro-to-metro on an interstate corridor draws more bidders than a rural pickup.</li>
+    </ul>
+
+    <h2>Costs People Leave Out of the Driving Side</h2>
+    <p>The driving estimate people carry in their head is usually just fuel, which is why shipping looks expensive by comparison. The full list is longer:</p>
+    <ul>
+      <li><strong>Lodging and meals</strong> for every night the trip takes — the largest cash item on any multi-day drive.</li>
+      <li><strong>Wear and mileage-driven depreciation.</strong> Adding 2,800 miles to the odometer measurably reduces what the car sells for. Ten to fifteen cents a mile is a conservative allowance once fuel is counted separately.</li>
+      <li><strong>Time off work</strong>, if the days aren't already part of the move.</li>
+      <li><strong>The risk of a breakdown</strong> far from home, which is a real consideration on an older vehicle.</li>
+    </ul>
+    <p>Shipping has hidden costs too: you're without the car for anywhere from a few days to two weeks, delivery windows are approximate, and carriers generally limit personal items to about 100 pounds in the trunk, uninsured.</p>
+
+    <h2>When the Answer Is Obvious Without Running Numbers</h2>
+    <ul>
+      <li><strong>Ship it</strong> if the car is a classic, a non-runner, or worth enough that adding thousands of miles matters more than the transport fee.</li>
+      <li><strong>Ship it</strong> if you're moving more vehicles than licensed drivers.</li>
+      <li><strong>Drive it</strong> under about 500 miles. Short-haul transport is priced badly and you'd arrive faster yourself.</li>
+      <li><strong>Drive it</strong> if the car is old enough that the transport cost is a large share of its value.</li>
+    </ul>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/should-you-ship-your-car-or-drive-it.html" style="color:var(--orange);text-decoration:none;">Should You Ship Your Car or Drive It?</a></li>
+        <li><a href="../blog/moving-to-another-state-what-to-do-with-your-car.html" style="color:var(--orange);text-decoration:none;">Moving to Another State: What to Do With Your Car</a></li>
+        <li><a href="road-trip-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Road Trip Cost Calculator</a></li>
+        <li><a href="fuel-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Fuel Cost Calculator</a></li>
+        <li><a href="../blog/does-buying-a-car-out-of-state-save-on-taxes.html" style="color:var(--orange);text-decoration:none;">Does Buying a Car Out of State Save on Taxes?</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+
+// Smooth, monotonic per-mile curve. Short hauls cost far more per mile than long ones.
+function shipRate(miles){ return 0.45 + 2.6 / (1 + miles / 260); }
+
+function calculate(){
+  var miles    = parseFloat(document.getElementById('miles').value) || 0;
+  var enclosed = document.getElementById('carrier').value === 'enclosed';
+  var large    = document.getElementById('size').value === 'large';
+  var inop     = document.getElementById('runs').value === 'no';
+  var quoteRaw = document.getElementById('quote').value;
+  var flight   = parseFloat(document.getElementById('flight').value) || 0;
+  var mpg      = parseFloat(document.getElementById('mpg').value) || 25;
+  var gas      = parseFloat(document.getElementById('gas').value) || 0;
+  var hotel    = parseFloat(document.getElementById('hotel').value) || 0;
+  var food     = parseFloat(document.getElementById('food').value) || 0;
+  var hrsDay   = parseFloat(document.getElementById('hoursday').value) || 8;
+  var hourly   = parseFloat(document.getElementById('hourly').value) || 0;
+  var wearRate = parseFloat(document.getElementById('wear').value) || 0;
+
+  // --- Shipping side ---
+  var usedQuote = quoteRaw !== '' && !isNaN(parseFloat(quoteRaw));
+  var transport;
+  if (usedQuote) {
+    transport = parseFloat(quoteRaw);
+  } else {
+    transport = miles * shipRate(miles);
+    if (enclosed) transport *= 1.5;
+    if (large) transport += 150;
+    if (inop) transport += 225;
+  }
+  // Shipping still costs you some time: booking, drop-off, pickup, waiting.
+  var shipHours = 4;
+  var shipTime = shipHours * hourly;
+  var shipTotal = transport + flight + shipTime;
+
+  // --- Driving side ---
+  var mph = 62;
+  var driveHours = miles / mph;
+  var days = Math.max(1, Math.ceil(driveHours / hrsDay));
+  var nights = Math.max(0, days - 1);
+  var fuel = miles / mpg * gas;
+  var lodging = nights * hotel;
+  var meals = days * food;
+  var wear = miles * wearRate;
+  var driveTime = driveHours * hourly;
+  var driveTotal = fuel + lodging + meals + wear + driveTime;
+
+  document.getElementById('sTransport').textContent = money(transport) + (usedQuote ? ' (your quote)' : '');
+  document.getElementById('sFlight').textContent = flight > 0 ? money(flight) : '$0';
+  document.getElementById('sTime').textContent = hourly > 0 ? money(shipTime) + ' (' + shipHours + ' hr)' : 'not counted';
+  document.getElementById('sTotal').textContent = money(shipTotal);
+
+  document.getElementById('dFuel').textContent = money(fuel);
+  document.getElementById('dHotel').textContent = money(lodging) + (nights > 0 ? ' (' + nights + ' night' + (nights > 1 ? 's' : '') + ')' : '');
+  document.getElementById('dFood').textContent = money(meals) + ' (' + days + ' day' + (days > 1 ? 's' : '') + ')';
+  document.getElementById('dWear').textContent = money(wear);
+  document.getElementById('dTime').textContent = hourly > 0 ? money(driveTime) + ' (' + driveHours.toFixed(0) + ' hr)' : 'not counted';
+  document.getElementById('dTotal').textContent = money(driveTotal);
+
+  var diff = Math.abs(driveTotal - shipTotal);
+  var shipWins = shipTotal < driveTotal;
+
+  document.getElementById('vTitle').textContent = shipWins ? 'Shipping Comes Out Ahead' : 'Driving Comes Out Ahead';
+  document.getElementById('vBig').textContent = money(diff);
+  document.getElementById('vSub').textContent =
+    (shipWins
+      ? 'Shipping totals ' + money(shipTotal) + ' against ' + money(driveTotal) + ' to drive it yourself'
+      : 'Driving totals ' + money(driveTotal) + ' against ' + money(shipTotal) + ' to ship it') +
+    ', a difference of ' + money(diff) + ' over ' + miles.toLocaleString() + ' miles.';
+
+  // --- Breakeven hourly rate: what would your time need to be worth? ---
+  var cashShip = transport + flight;
+  var cashDrive = fuel + lodging + meals + wear;
+  var hourGap = driveHours - shipHours;
+  var breakevenHourly = hourGap > 0 ? (cashShip - cashDrive) / hourGap : null;
+
+  var note = '<strong>How this was calculated:</strong> ';
+  note += usedQuote
+    ? 'Your quote of ' + money(transport) + ' was used for the shipping side. '
+    : 'Shipping was estimated at ' + money(transport) + ' using a market rate of about $' + shipRate(miles).toFixed(2) +
+      ' per mile for this distance' + (enclosed ? ', with a 50% enclosed-carrier premium' : '') +
+      (large ? ', plus $150 for a larger vehicle' : '') + (inop ? ', plus $225 for a non-running vehicle' : '') + '. ';
+  note += 'Driving assumes ' + mph + ' mph average, giving ' + driveHours.toFixed(0) + ' hours behind the wheel across ' +
+          days + ' day' + (days > 1 ? 's' : '') + '. ';
+
+  if (hourly === 0) {
+    note += '<strong>You set your time at $0, so this is a pure cash comparison</strong> — on cash alone, driving wins on nearly every route. ';
+    if (breakevenHourly !== null && breakevenHourly > 0) {
+      note += 'Shipping would only pull ahead once your time is worth about ' + money(breakevenHourly) +
+              ' an hour or more. Try entering a realistic figure to see how the answer changes.';
+    }
+  } else {
+    note += 'In cash terms alone it is ' + money(cashDrive) + ' to drive versus ' + money(cashShip) + ' to ship. ';
+    if (breakevenHourly !== null && breakevenHourly > 0) {
+      note += '<strong>The decision turns on your time:</strong> the two options break even when your time is worth about ' +
+              money(breakevenHourly) + ' an hour. You entered ' + money(hourly) + ', which is why ' +
+              (shipWins ? 'shipping' : 'driving') + ' comes out ahead here.';
+    } else {
+      note += 'Shipping is cheaper here even before counting your time.';
+    }
+  }
+  document.getElementById('mainNote').innerHTML = note;
+
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

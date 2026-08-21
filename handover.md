@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-08-24 기준)
+# AutoCalcHub 인수인계 문서 (2026-08-31 기준)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,15 +12,15 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (2026-08-24 기준)
-- 블로그 69개, 툴 30개 (index.html 제외). 8/24 세션에서 블로그 3 + 툴 1 추가.
-- 정적 페이지: `about.html`, `contact.html`, `privacy-policy.html`, `methodology.html`, `editorial-policy.html`
-- sitemap.xml 총 URL 112개
-- **블로그 태그 카테고리 8종** (8/24에 "Accidents & Claims" 신설): Financing / Buying / Running Costs / Ownership / EV / Selling / Gig & Rideshare / **Accidents & Claims**.
-  blog/index.html 실제 헤더 문자열: `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`. 스크립트 편집 시 이모지까지 정확히 맞출 것.
-  tools/index.html에도 동일하게 `🚨 Accidents &amp; Claims` 섹션 신설됨.
-- **카테고리 신설 시 필요한 작업**: blog/index.html에 `<div class="category-section" id="section-XXX">` 블록 추가(검색 필터는 `.category-section`을 querySelectorAll로 잡으므로 JS 수정 불필요), tools/index.html 섹션, llms.txt `## Guides: XXX` 섹션.
-- **블로그 전체**에 "· Written by AutoCalcHub Team" 바이라인, **블로그+툴 전체**에 BreadcrumbList JSON-LD 반영됨. FAQPage/HowTo는 2026-05-07 리치리절트 폐지로 추가 금지.
+## 2. 콘텐츠 현황 (2026-08-31 기준)
+- 블로그 72개, 툴 31개 (index.html 제외). 8/31 세션에서 블로그 3 + 툴 1 추가.
+- sitemap.xml 총 URL 116개
+- **블로그 태그 카테고리 9종** (8/24 "Accidents & Claims", 8/31 "Moving & Relocation" 신설):
+  `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`. 스크립트 편집 시 이모지까지 정확히 맞출 것.
+- tools/index.html에도 `🚚 Moving &amp; Relocation` 섹션 신설됨.
+- **카테고리 신설 절차**: blog/index.html에 `<div class="category-section" id="section-XXX">` 형제 블록 추가(검색 필터는 `.category-section`을 querySelectorAll로 잡으므로 JS 수정 불필요) → tools/index.html 섹션 → llms.txt `## Guides: XXX`.
+  ⚠️ **삽입 위치를 문자열 인덱스로 계산하면 직전 섹션의 닫는 `</div>` 안에 중첩되기 쉬움**(8/31에 실제 발생). 삽입 후 반드시 `category-section` 들여쓰기와 div 밸런스를 눈으로 확인할 것.
+- **블로그 전체**에 "· Written by AutoCalcHub Team" 바이라인, **블로그+툴 전체**에 BreadcrumbList JSON-LD. FAQPage/HowTo는 2026-05-07 리치리절트 폐지로 추가 금지.
 
 ### 사이트 구조 관련 중요 변경사항
 - **헤더 내비게이션**: 기존 "Calculators"/"Blog" 드롭다운 메뉴 → **단순 링크**로 전환. "Calculators" 명칭도 **"Tools"**로 변경됨. **7/17 세션에서 "Glossary" 항목 추가** — 현재 Tools / Blog / Glossary / About 4개. (`assets/partials/header.html`)
@@ -726,6 +726,62 @@ negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 �
 2. **여전히 미커버인 영역**(다음 클러스터 후보): IRS 사업용 마일리지 공제(시즌성 큼), 청소년/신규 운전자 비용, 차량 기부 세금공제, 견인·적재량, 겨울타이어. 전부 이번에 리스트만 뽑고 미착수.
 3. 8/18에 교체한 MPG 페이지 메타의 **CTR 효과 확인이 여전히 최우선** — Bing 89노출/5.17위. 효과 확인되면 다른 Bing 상위 페이지로 확대.
 4. blog/index.html Latest 섹션 트리밍 여부 7세션째 미결.
+
+
+## 6-16. 8/31 세션 (사용자 지시: 신규 위주, 폭넓은 키워드 리서치): 신규 클러스터 "Moving & Relocation" 신설 + EV 확장
+
+- **지시**: 신규 중심, 키워드 폭넓게 → 리스트 → 경쟁강도 → 강하면 롱테일 우회. 클러스터 단위, 새 클러스터 환영. GSC/보유 데이터 밖(구글·네이버·레딧 등)에서 문서수 적고 관심 있는 주제 발굴. 화면 깨짐 확인 필요한 페이지만 링크.
+- **GSC/GA/Bing 자료 첨부 없음** — 지시대로 외부 리서치만으로 진행. 8/18자 데이터 판단(5번 섹션) 그대로 유효.
+
+### 후보 리스트 → 경쟁강도 판정 (웹서치 4라운드)
+6-15에서 리스트만 뽑아둔 미커버 영역부터 착수. 판정 결과:
+
+| 후보 | 상위 노출 | 판정 |
+|---|---|---|
+| 차량 배송비(ship a car) 헤드텀 | RoadRunner·Sherpa·Nexus·AmeriFreight(브로커 리드젠) + Forbes·ConsumerAffairs | **포화 → 기각** |
+| **배송 vs 직접운전 결정** | Forbes·Move.org가 얕게 언급, **전용 계산기 0개** | **진입** |
+| EV 배터리 수명/교체비 헤드텀 | ConsumerAffairs·SoFi·Recurrent·다수 소형 | 포화 → 각도 전환 |
+| **워런티 만료 중고 EV 리스크 가격화** | 아무도 의사결정·기대값으로 안 다룸 | **진입** |
+| 10대 운전자 보험 | MoneyGeek·CarInsurance·Insurify·Progressive·Bankrate 전부 계산기 보유 | **기각**(+ 보험 방치 정책) |
+| 주 간 이전 시 차량 등록 절차 | 주별 DMV·이사업체 산발적, 통합 의사결정 문서 없음 | **진입** |
+
+### 경쟁 회피 장치
+- **배송**: 업계 콘텐츠는 전부 "배송비 얼마"에서 끝남 → 우리는 **반대편(직접운전)을 정직하게 가격화**. 숙박·식비·마모·편도항공·**시간가치**까지 넣으니 결론이 뒤집힘.
+- **EV 배터리**: 경쟁사는 "평균 열화율/교체비" 나열 → 우리는 **기대값 계산**(교체비 × 고장률 vs 중고 할인폭)으로 의사결정화.
+- **주 간 이전**: 주별 표 나열 회피 → **처리 순서(보험 먼저 → 검사 → 등록 → 면허)** 로 구성. 순서 틀리면 DMV 재방문이라는 게 핵심.
+
+### 신규 툴 — `tools/ship-car-vs-drive-calculator.html` (871단어)
+- 입력: 거리/캐리어종류/차량크기/가동여부/실제견적(선택)/편도항공 + MPG·유가·호텔·식비·일일운전시간·**시간가치**·마모비.
+- **핵심 발견**: 현금비용만 보면 운전이 거의 모든 구간에서 저렴. **시간가치가 답을 결정** — 시급 $0이면 대륙횡단도 운전 우세, $25면 손익분기 1,500마일, $40이면 1,000마일.
+- 결과에 **"당신의 시간이 시급 얼마 이상이어야 배송이 유리한지"** 를 역산해서 표시(경쟁사 전무).
+- per-mile 곡선은 `0.45 + 2.6/(1+miles/260)` 로 **단조 감소·연속** 처리(계단식 요율표는 300mi가 600mi보다 비싸지는 역전이 생겨 폐기).
+- 검증: 파이썬 독립 구현 + node 목업 DOM 6시나리오 일치. 1,500mi/시급$25에서 차이 $31 = 손익분기 근처로 파이썬 결과와 부합.
+
+### 신규 블로그 3건
+1. `blog/should-you-ship-your-car-or-drive-it.html` (Moving, 1,016단어) — 1,500마일 기준 운전 현금 $965 vs 배송 $1,501, 그러나 운전은 24시간 소요. 시간가치별 손익분기표. 브로커 입찰 구조·견적 편차 이유·개인물품 100파운드 미보험 등 실무.
+2. `blog/moving-to-another-state-what-to-do-with-your-car.html` (Moving, 1,202단어) — **보험 먼저** 순서 논리, 20~60일 데드라인, 검사/배출가스가 등록을 막는 구조, 융자차는 렌더 타이틀 요청에 수주 소요, 군인 SCRA·유학생 예외. 판매세는 재과세 안 됨(기존 out-of-state 글과 차별).
+3. `blog/should-you-buy-a-used-ev-out-of-battery-warranty.html` (EV, 1,103단어) — Geotab 22,700대 열화 2.3%/yr(최신팩 1.8%), 8년차 SOH 83%, 70% 도달 ~15년. 팩 크기별 교체비표. **기대값**: 할인 $5,000 + 연료절약 $3,763 − 리스크 $225 = **+$8,538**, 단 최악 시 −$2,487(꼬리 위험 명시). 주행거리보다 충전이력·기후가 중요.
+
+### 사이트 반영
+- blog/index.html·tools/index.html에 `🚚 Moving &amp; Relocation` 카테고리 신설, Latest 3건, EV 섹션 1건.
+- index.html 미리보기 3건 교체 + 툴카드, stat `30+`→`31+` 2곳.
+- sitemap 112→116 URL(lastmod 14건), llms.txt `## Guides: Moving & Relocation` 신설 + Tools 1 + EV 1.
+- 내부링크 14개 페이지. **구글/Bing 노출 확인 페이지 우선**(ev-charging 46노출, fuel-cost 42노출, gas-vs-ev 27노출, road-trip 11.5위, ev-registration Bing 7.88위, car-sales-tax Bing 6.20위). 인바운드 6~9개.
+
+### ⚠️ 이번에 실제로 발생한 사고 (재발 방지)
+- **블로그 3건 생성 시 템플릿 CSS를 `sed -n '13,45p'` 로 줄번호 추출했다가 gtag 스크립트와 JSON-LD 조각까지 삼킴** → 3파일 모두 `<style>` 안에 스크립트가 박히고 JSON-LD가 깨짐. **규칙 7 검증에서 잡아냄**(script 10/9 불균형 + JSON 파싱 실패).
+- 교훈: **템플릿 조각은 줄번호가 아니라 정규식 경계로 추출할 것** (`re.search(r'<style>\n(.*?)\n  </style>', src, re.S)`). 추출 직후 `assert 'gtag' not in css` 같은 오염 검사를 넣을 것.
+- 복구 후 재검증 전부 통과.
+
+### 검증
+- 변경/신규 18개 파일 태그 밸런스·JSON-LD 통과, sitemap XML 유효(116 URL), 내부링크 1,028개 전수 스캔 깨짐 0건.
+
+### ⚠️ 다음 세션 필독
+1. **Moving & Relocation 확장 후보**(리서치는 했으나 미발행): 이사 시 렌터카/트레일러 견인 비용, 스냅버드 계절 이전, 해외 파병·이주 시 차량 처리. **단 "차량 배송비 얼마"는 브로커 리드젠 포화라 재검토 불필요.**
+2. **여전히 미커버**(다음 클러스터 후보): IRS 사업용 마일리지 공제(시즌성 큼 — 연초 발행이 유리), 차량 기부 세금공제, 견인·적재량, 겨울타이어. 10대 운전자 보험은 8/31에 포화 확인해 기각.
+3. Accidents & Claims 확장 후보(6-15에서 이월): 사고 후 렌터카 커버리지, ACV 이의제기 실무, 우박 전손, 무보험 운전자 사고.
+4. **MPG 페이지 메타 CTR 효과 확인 여전히 미확인** — Bing 89노출/5.17위. GSC/Bing 자료 받으면 최우선.
+5. blog/index.html Latest 트리밍 여부 8세션째 미결.
 
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)

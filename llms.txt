@@ -24,6 +24,7 @@
 - [Gas vs EV Savings Calculator](https://autocalchub.com/tools/gas-vs-ev-savings-calculator.html): Compare the total cost of driving a gas car versus an electric vehicle including fuel, charging, and maintenance.
 - [EV Charging Cost Calculator](https://autocalchub.com/tools/ev-charging-cost-calculator.html): Calculate the monthly and annual cost of charging an electric vehicle at home.
 - [Road Trip Cost Calculator](https://autocalchub.com/tools/road-trip-cost-calculator.html): Estimate the total fuel cost for any road trip based on distance, MPG, and current gas prices.
+- [Ship a Car or Drive It Calculator](https://autocalchub.com/tools/ship-car-vs-drive-calculator.html): Compares auto transport against driving a vehicle yourself, pricing fuel, lodging, meals, wear, a one-way flight and the value of your time, and reporting the hourly rate at which the two break even.
 - [Car Sales Tax Calculator](https://autocalchub.com/tools/car-sales-tax-calculator.html): Calculate car sales tax for any US state instantly, including trade-in deductions.
 - [Car Trade-In Value Estimator](https://autocalchub.com/tools/car-trade-in-value-estimator.html): Estimate what a dealer will offer for your car vs. private party value.
 - [GAP Insurance Calculator](https://autocalchub.com/tools/gap-insurance-calculator.html): Find out if you're underwater on your car loan and whether GAP insurance makes financial sense.
@@ -110,7 +111,12 @@
 - [Should You Keep Your Totaled Car?](https://autocalchub.com/blog/should-you-keep-your-totaled-car.html): Owner retention forfeits the salvage value and shifts repair risk to you, ending in a rebuilt title worth 20-40% less — with the cases where it still works.
 - [Is a Diminished Value Claim Worth Filing?](https://autocalchub.com/blog/is-a-diminished-value-claim-worth-filing.html): The eligibility gates that end most claims, what the 17c formula actually pays by damage level and mileage, and the breakeven against a $300-400 appraisal.
 
+## Guides: Moving & Relocation
+- [Should You Ship Your Car or Drive It?](https://autocalchub.com/blog/should-you-ship-your-car-or-drive-it.html): Driving is cheaper than shipping on cash for nearly every route; the decision turns entirely on what you value your time at, with breakeven distances by hourly rate.
+- [Moving to Another State: What to Do With Your Car](https://autocalchub.com/blog/moving-to-another-state-what-to-do-with-your-car.html): The order to handle insurance, inspection, title, registration and license when relocating, plus the fees and deadlines that catch people out.
+
 ## Guides: Electric Vehicles
+- [Should You Buy a Used EV Out of Battery Warranty?](https://autocalchub.com/blog/should-you-buy-a-used-ev-out-of-battery-warranty.html): Degradation data, replacement costs by pack size, and how to price battery failure as an expected cost against the used-EV discount.
 
 - [Electric vs Gas Car: True Cost Comparison](https://autocalchub.com/blog/electric-vs-gas-car-true-cost.html): A full cost comparison of EVs vs gas cars including purchase price, fuel, insurance, and maintenance, updated for the post-tax-credit 2026 reality.
 - [EV Lease vs Buy in 2026](https://autocalchub.com/blog/ev-lease-vs-buy-2026.html): How the EV lease-vs-buy decision changed now that the lease tax credit loophole has ended.
