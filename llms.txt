@@ -18,6 +18,7 @@
 - [Used Car Value Calculator](https://autocalchub.com/tools/used-car-value-calculator.html): Estimate the current market value of a used vehicle based on year, mileage, condition, and model.
 - [Car Insurance Estimator](https://autocalchub.com/tools/car-insurance-estimator.html): Estimate your monthly car insurance cost based on your profile, vehicle, and coverage level.
 - [Car Lease vs Buy Calculator](https://autocalchub.com/tools/car-lease-vs-buy-calculator.html): Compare the true total cost of leasing versus buying a car over any time period.
+- [Lease Excess Mileage Calculator](https://autocalchub.com/tools/lease-excess-mileage-calculator.html): Projects lease-end excess mileage charges from your current pace, gives the daily mileage budget that would avoid them, and compares paying the penalty against buying miles upfront or buying out the lease.
 - [Cash vs Finance Car Calculator](https://autocalchub.com/tools/cash-vs-finance-car-calculator.html): Compare paying cash outright vs financing and investing the difference, including total interest and investment growth.
 - [Fuel Cost Calculator](https://autocalchub.com/tools/fuel-cost-calculator.html): Calculate how much you spend on gas per month or year based on your mileage and MPG.
 - [MPG Calculator](https://autocalchub.com/tools/mpg-calculator.html): Calculate your car's real-world fuel efficiency from fill-up data.
@@ -43,6 +44,7 @@
 - [Lease Takeover Cost Calculator](https://autocalchub.com/tools/lease-takeover-cost-calculator.html): Compare the total remaining cost of taking over someone else's car lease against starting a new lease for the same term.
 
 ## Guides: Buying a Car
+- [What Happens If You Go Over Your Lease Mileage?](https://autocalchub.com/blog/what-happens-if-you-go-over-lease-mileage.html): The four exits from a mileage overage — driving less, paying at turn-in, buying miles in advance at roughly half the rate, and buying out the lease, which erases the charge entirely.
 - [Does Buying a Car Out of State Save on Taxes?](https://autocalchub.com/blog/does-buying-a-car-out-of-state-save-on-taxes.html): Sales tax follows the registration state, not the seller. Covers the reciprocal credit cap, the no-tax-state myth, and the forfeited trade-in credit.
 
 - [Is Certified Pre-Owned (CPO) Worth It?](https://autocalchub.com/blog/is-certified-pre-owned-worth-it.html): The real CPO price premium, what you actually get for it, and when a regular used car with your own inspection wins instead.

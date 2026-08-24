@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lease Excess Mileage Calculator — Overage Charges &amp; Your Options | AutoCalcHub</title>
+  <meta name="description" content="Project your lease-end mileage overage charge, see the daily mileage budget that would avoid it, and compare paying the penalty against buying miles upfront or buying out the lease.">
+  <link rel="canonical" href="https://autocalchub.com/tools/lease-excess-mileage-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    @media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Lease Excess Mileage Calculator",
+    "url": "https://autocalchub.com/tools/lease-excess-mileage-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Projects lease-end excess mileage charges from your current pace, shows the daily mileage budget that avoids them, and compares paying the penalty against buying miles upfront or buying out the lease.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-09-07"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Lease Excess Mileage Calculator", "item": "https://autocalchub.com/tools/lease-excess-mileage-calculator.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Lease Excess Mileage Calculator</h1>
+    <p>Most mileage calculators stop at "here's your penalty." This one carries it through to the decision: the daily budget that would avoid the charge, what buying miles upfront saves, and whether buying out the lease beats paying the overage at all.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>📋 Your Lease</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="allowance">Annual Mileage Allowance</label>
+        <div class="input-wrap has-suffix"><input type="number" id="allowance" value="10000" min="1000" step="1000"><span class="input-suffix">mi</span></div>
+        <span class="hint">Usually 10,000, 12,000 or 15,000 — it's in your contract.</span>
+      </div>
+      <div class="form-group">
+        <label for="term">Lease Term</label>
+        <select id="term">
+          <option value="24">24 months</option>
+          <option value="36" selected>36 months</option>
+          <option value="39">39 months</option>
+          <option value="48">48 months</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="elapsed">Months Elapsed So Far</label>
+        <div class="input-wrap has-suffix"><input type="number" id="elapsed" value="24" min="1" step="1"><span class="input-suffix">mo</span></div>
+      </div>
+      <div class="form-group">
+        <label for="driven">Miles Driven So Far</label>
+        <div class="input-wrap has-suffix"><input type="number" id="driven" value="26000" min="0" step="500"><span class="input-suffix">mi</span></div>
+        <span class="hint">Current odometer minus the reading when you took delivery.</span>
+      </div>
+      <div class="form-group">
+        <label for="rate">Lease-End Overage Rate</label>
+        <div class="input-wrap has-suffix"><input type="number" id="rate" value="0.25" min="0" max="1" step="0.01"><span class="input-suffix">$/mi</span></div>
+        <span class="hint">Typically $0.15–0.30. Check your contract.</span>
+      </div>
+      <div class="form-group">
+        <label for="upfront">Upfront / Mid-Lease Mile Rate</label>
+        <div class="input-wrap has-suffix"><input type="number" id="upfront" value="0.12" min="0" max="1" step="0.01"><span class="input-suffix">$/mi</span></div>
+        <span class="hint">Usually $0.10–0.15 if your lessor sells extra miles. Enter 0 if unavailable.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h2>💰 Buyout Comparison (optional)</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="residual">Buyout Price / Residual</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="residual" value="18500" min="0" step="250"></div>
+        <span class="hint">The purchase option amount in your contract.</span>
+      </div>
+      <div class="form-group">
+        <label for="market">Car's Market Value at Your Mileage</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="market" value="17200" min="0" step="250"></div>
+        <span class="hint">Reflecting the higher mileage — that's the point.</span>
+      </div>
+      <div class="form-group">
+        <label for="fees">Buyout Fees</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="fees" value="350" min="0" step="25"></div>
+      </div>
+      <div class="form-group">
+        <label for="dispo">Disposition Fee (if you return it)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="dispo" value="395" min="0" step="25"></div>
+        <span class="hint">Charged when you hand the car back. Usually waived if you lease again.</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Calculate →</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="verdict-box">
+      <h3 id="vTitle"></h3>
+      <span class="big" id="vBig"></span>
+      <p id="vSub"></p>
+    </div>
+
+    <div class="calc-card">
+      <h2>📊 Where You Stand</h2>
+      <div class="row"><span>Total miles your lease allows</span><span id="rAllowed"></span></div>
+      <div class="row"><span>Your pace</span><span id="rPace"></span></div>
+      <div class="row"><span>Where you should be right now</span><span id="rShould"></span></div>
+      <div class="row" id="rowNow"><span id="rNowLabel"></span><span id="rNow"></span></div>
+      <div class="row"><span>Projected miles at lease end</span><span id="rProj"></span></div>
+      <div class="row" id="rowExcess"><span>Projected excess</span><span id="rExcess"></span></div>
+    </div>
+
+    <div class="calc-card" id="optionsCard">
+      <h2>🔀 Your Four Options</h2>
+      <div class="row"><span>1. Drive less — daily budget from here</span><span id="oBudget"></span></div>
+      <div class="row"><span>2. Pay the overage at turn-in</span><span id="oPenalty"></span></div>
+      <div class="row" id="rowUpfront"><span>3. Buy the miles in advance</span><span id="oUpfront"></span></div>
+      <div class="row"><span>4. Buy out the lease instead</span><span id="oBuyout"></span></div>
+    </div>
+
+    <div class="note" id="mainNote"></div>
+    <div class="disclaimer">⚠️ <strong>Estimates only — your contract governs.</strong> Overage rates, mileage allowances, purchase option amounts, disposition fees and whether extra miles can be bought all vary by lessor and by contract. Some lessors won't sell miles mid-lease, and some waive overage if you lease again with them. Read your lease agreement and call your lessor before acting on these numbers.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why Overage Charges Exist</h2>
+    <p>A lease payment is built on the difference between the car's price and its predicted value at turn-in — the residual. That residual assumes a specific mileage. Drive past it and the car is worth less than the lessor planned for, so the overage charge is their way of recovering the gap. It isn't arbitrary, which also means it's rarely forgiven.</p>
+    <p>Rates typically run $0.15 to $0.30 per mile, with $0.25 common on mainstream vehicles and higher figures on luxury models. At $0.25, being 9,000 miles over costs $2,250 — a bill that arrives all at once at the end of a lease you'd budgeted carefully.</p>
+
+    <h2>The Option Almost Nobody Calculates</h2>
+    <p>Here's the part that generic mileage calculators skip entirely: <strong>if you buy the car at lease end, the overage charge disappears.</strong> You can't owe the lessor for reduced resale value on a car you just bought from them. The disposition fee usually vanishes too.</p>
+    <p>That changes the comparison completely for anyone significantly over. Buying out means paying the residual for a car that may be worth less than that residual because of the miles — so you might be taking on negative equity. But you're avoiding a penalty at the same time. The right test is whether the overage you dodge exceeds the equity gap you accept, and that's a calculation, not a rule of thumb.</p>
+    <p>If the buyout comes out ahead and you don't want to keep the car, buying it and selling it privately is a further step worth pricing — though it means paying sales tax on the purchase in most states.</p>
+
+    <h2>Buying Miles Before You Need Them</h2>
+    <p>Many lessors sell additional miles in advance at a meaningfully lower rate than the lease-end penalty — commonly $0.10–0.15 against $0.20–0.30. On 9,000 excess miles that's roughly $1,080 instead of $2,250.</p>
+    <p>Two cautions. Prepaid miles are usually non-refundable, so overbuying wastes money outright — there's no credit for unused allowance. And not every lessor offers this mid-lease; some only allow it at signing. Ask early, because the option often narrows as you approach turn-in.</p>
+
+    <h2>Structuring the Next Lease Properly</h2>
+    <p>The cheapest fix happens before you sign. Raising the allowance from 10,000 to 12,000 miles a year typically adds $15–25 a month; going to 15,000 adds $30–50. Over 36 months that's $540–900 or $1,080–1,800 respectively, against a potential turn-in bill several times larger.</p>
+    <p>Be honest about the estimate. A 25-mile each-way commute is about 13,000 miles a year before any weekend driving. Take your actual mileage from the past two years and add a cushion rather than hoping.</p>
+
+    <h2>Common Mistakes With Lease Mileage</h2>
+    <ul>
+      <li><strong>Checking only at the end.</strong> By month 30 your options have narrowed to paying or buying out. Check quarterly.</li>
+      <li><strong>Assuming the penalty is negotiable.</strong> It occasionally is when you lease again with the same brand, but never count on it.</li>
+      <li><strong>Overbuying prepaid miles.</strong> Unused miles are not refunded.</li>
+      <li><strong>Ignoring the buyout option.</strong> For anyone far over, it's frequently the cheapest exit.</li>
+      <li><strong>Forgetting wear-and-tear charges.</strong> They're assessed separately from mileage and can add several hundred dollars more.</li>
+    </ul>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/what-happens-if-you-go-over-lease-mileage.html" style="color:var(--orange);text-decoration:none;">What Happens If You Go Over Your Lease Mileage?</a></li>
+        <li><a href="../blog/should-you-buy-out-your-car-lease.html" style="color:var(--orange);text-decoration:none;">Should You Buy Out Your Car Lease?</a></li>
+        <li><a href="../blog/how-to-get-out-of-a-car-lease-early.html" style="color:var(--orange);text-decoration:none;">How to Get Out of a Car Lease Early</a></li>
+        <li><a href="car-lease-vs-buy-calculator.html" style="color:var(--orange);text-decoration:none;">Car Lease vs Buy Calculator</a></li>
+        <li><a href="lease-takeover-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Lease Takeover Cost Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+function miles(n){ return Math.round(n).toLocaleString() + ' mi'; }
+
+function calculate(){
+  var allowance = parseFloat(document.getElementById('allowance').value) || 0;
+  var term      = parseFloat(document.getElementById('term').value) || 36;
+  var elapsed   = parseFloat(document.getElementById('elapsed').value) || 1;
+  var driven    = parseFloat(document.getElementById('driven').value) || 0;
+  var rate      = parseFloat(document.getElementById('rate').value) || 0;
+  var upfrontRt = parseFloat(document.getElementById('upfront').value) || 0;
+  var residual  = parseFloat(document.getElementById('residual').value) || 0;
+  var market    = parseFloat(document.getElementById('market').value) || 0;
+  var fees      = parseFloat(document.getElementById('fees').value) || 0;
+  var dispo     = parseFloat(document.getElementById('dispo').value) || 0;
+
+  if (elapsed > term) elapsed = term;
+  var remainingMo = Math.max(0, term - elapsed);
+
+  var allowedTotal = allowance * term / 12;
+  var allowedNow   = allowedTotal * elapsed / term;
+  var pacePerMo    = driven / elapsed;
+  var projected    = pacePerMo * term;
+  var excess       = Math.max(0, projected - allowedTotal);
+  var overNow      = driven - allowedNow;
+
+  var penalty  = excess * rate;
+  var upfront  = excess * upfrontRt;
+  var milesLeft = allowedTotal - driven;
+  var daysLeft  = remainingMo * 30.4;
+  var dailyBudget = daysLeft > 0 ? milesLeft / daysLeft : 0;
+
+  document.getElementById('rAllowed').textContent = miles(allowedTotal);
+  document.getElementById('rPace').textContent = miles(pacePerMo) + '/month (' + miles(pacePerMo * 12) + '/yr)';
+  document.getElementById('rShould').textContent = miles(allowedNow);
+
+  var rowNow = document.getElementById('rowNow');
+  document.getElementById('rNowLabel').textContent = overNow >= 0 ? 'You are over by' : 'You are under by';
+  document.getElementById('rNow').textContent = miles(Math.abs(overNow));
+  rowNow.className = overNow >= 0 ? 'row warn' : 'row good';
+
+  document.getElementById('rProj').textContent = miles(projected);
+  var rowEx = document.getElementById('rowExcess');
+  document.getElementById('rExcess').textContent = excess > 0 ? miles(excess) : 'None — on track';
+  rowEx.className = excess > 0 ? 'row warn' : 'row good';
+
+  // Four options
+  document.getElementById('oBudget').textContent = remainingMo <= 0
+    ? 'Lease is over'
+    : (milesLeft > 0
+        ? Math.round(dailyBudget) + ' mi/day to stay under'
+        : 'Already past the allowance');
+
+  document.getElementById('oPenalty').textContent = money(penalty + dispo) +
+    (dispo > 0 ? ' (incl. ' + money(dispo) + ' disposition)' : '');
+
+  var rowUp = document.getElementById('rowUpfront');
+  if (upfrontRt > 0 && excess > 0) {
+    document.getElementById('oUpfront').textContent = money(upfront + dispo) + ' — saves ' + money(penalty - upfront);
+    rowUp.className = 'row good';
+  } else {
+    document.getElementById('oUpfront').textContent = excess > 0 ? 'Not available' : 'Not needed';
+    rowUp.className = 'row';
+  }
+
+  // Buyout: overage and disposition both disappear; you take on the equity gap
+  var buyoutCost = residual + fees;
+  var equity = market - buyoutCost;          // negative = underwater
+  var turnInCost = penalty + dispo;          // what returning it costs you
+  var buyoutAdvantage = turnInCost + equity; // >0 means buyout is better in net terms
+  document.getElementById('oBuyout').textContent = residual > 0
+    ? money(buyoutCost) + ' for a car worth ' + money(market)
+    : 'Enter a buyout price above';
+
+  // Verdict
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  if (excess <= 0) {
+    vT.textContent = 'On Track — No Overage Expected';
+    vB.textContent = miles(Math.max(0, allowedTotal - projected));
+    vS.textContent = 'At your current pace of ' + miles(pacePerMo * 12) + ' a year you finish the lease about ' +
+      miles(Math.max(0, allowedTotal - projected)) + ' under the ' + miles(allowedTotal) + ' allowance. Keep an eye on it, but nothing to fix.';
+  } else {
+    vT.textContent = 'Projected Overage Charge';
+    vB.textContent = money(penalty);
+    vS.textContent = 'At ' + miles(pacePerMo * 12) + ' a year you finish about ' + miles(excess) +
+      ' over the ' + miles(allowedTotal) + ' allowance, which is ' + money(penalty) + ' at ' +
+      '$' + rate.toFixed(2) + ' a mile' + (dispo > 0 ? ', plus the ' + money(dispo) + ' disposition fee' : '') + '.';
+  }
+
+  // Note
+  var note = '<strong>How this was calculated:</strong> ' + miles(driven) + ' over ' + elapsed +
+    ' months is ' + miles(pacePerMo) + ' a month. Held to the end of a ' + term +
+    '-month term that projects to ' + miles(projected) + ' against an allowance of ' + miles(allowedTotal) + '. ';
+
+  if (excess <= 0) {
+    note += 'You have room to spare, so the options below are precautionary. ';
+    if (remainingMo > 0) note += 'You could drive up to ' + Math.round(dailyBudget) + ' miles a day for the rest of the lease and still finish under.';
+  } else {
+    if (remainingMo > 0 && milesLeft > 0) {
+      note += 'Cutting back to ' + Math.round(dailyBudget) + ' miles a day for the remaining ' + remainingMo +
+              ' months would avoid the charge entirely — worth checking before paying anything. ';
+    } else if (milesLeft <= 0) {
+      note += '<strong>You have already passed the full-term allowance</strong>, so driving less can no longer avoid a charge — it can only stop it growing. ';
+    }
+    if (upfrontRt > 0) {
+      note += 'Buying those miles in advance at $' + upfrontRt.toFixed(2) + ' rather than paying $' + rate.toFixed(2) +
+              ' at turn-in saves about ' + money(penalty - upfront) + ', though prepaid miles are not refundable if you overbuy. ';
+    }
+    if (residual > 0) {
+      if (buyoutAdvantage > 0) {
+        note += '<strong>Buying out the lease looks like the stronger exit here.</strong> Purchasing the car erases the ' +
+                money(penalty) + ' overage' + (dispo > 0 ? ' and the ' + money(dispo) + ' disposition fee' : '') +
+                '. You would pay ' + money(buyoutCost) + ' for a car worth about ' + money(market) + ', so you take on ' +
+                (equity < 0 ? money(Math.abs(equity)) + ' of negative equity' : money(equity) + ' of positive equity') +
+                ' — a net advantage of roughly ' + money(buyoutAdvantage) + ' against returning it.';
+      } else {
+        note += 'Buying out would erase the ' + money(turnInCost) + ' in turn-in costs, but you would pay ' +
+                money(buyoutCost) + ' for a car worth about ' + money(market) + ' — ' + money(Math.abs(equity)) +
+                ' underwater. On these numbers <strong>returning the car and paying the charge is the cheaper exit</strong>, by roughly ' +
+                money(Math.abs(buyoutAdvantage)) + '.';
+      }
+    }
+  }
+  document.getElementById('mainNote').innerHTML = note;
+
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>
