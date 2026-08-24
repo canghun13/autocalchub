@@ -55,7 +55,7 @@
     .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
     .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
     .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
-    @media(max-width:640px){.form-grid{grid-template-columns:1fr}}
+    @media(max-width:640px){.form-grid{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}}
   </style>
   <script type="application/ld+json">
   {
@@ -277,11 +277,23 @@ function calculate(){
   rowEx.className = excess > 0 ? 'row warn' : 'row good';
 
   // Four options
-  document.getElementById('oBudget').textContent = remainingMo <= 0
-    ? 'Lease is over'
-    : (milesLeft > 0
-        ? Math.round(dailyBudget) + ' mi/day to stay under'
-        : 'Already past the allowance');
+  var budgetEl = document.getElementById('oBudget');
+  var budgetRow = budgetEl.parentNode;
+  budgetRow.className = 'row';
+  if (remainingMo <= 0) {
+    budgetEl.textContent = 'Lease is over — no longer an option';
+    budgetRow.className = 'row warn';
+  } else if (milesLeft <= 0) {
+    budgetEl.textContent = 'Already past the full allowance — cannot be avoided';
+    budgetRow.className = 'row warn';
+  } else if (dailyBudget < 12) {
+    // A budget this low is arithmetically true but not a real-world option.
+    budgetEl.textContent = Math.round(dailyBudget) + ' mi/day — not realistic';
+    budgetRow.className = 'row warn';
+  } else {
+    budgetEl.textContent = Math.round(dailyBudget) + ' mi/day to stay under';
+    budgetRow.className = 'row good';
+  }
 
   document.getElementById('oPenalty').textContent = money(penalty + dispo) +
     (dispo > 0 ? ' (incl. ' + money(dispo) + ' disposition)' : '');
@@ -328,9 +340,13 @@ function calculate(){
     note += 'You have room to spare, so the options below are precautionary. ';
     if (remainingMo > 0) note += 'You could drive up to ' + Math.round(dailyBudget) + ' miles a day for the rest of the lease and still finish under.';
   } else {
-    if (remainingMo > 0 && milesLeft > 0) {
+    if (remainingMo > 0 && milesLeft > 0 && dailyBudget >= 12) {
       note += 'Cutting back to ' + Math.round(dailyBudget) + ' miles a day for the remaining ' + remainingMo +
               ' months would avoid the charge entirely — worth checking before paying anything. ';
+    } else if (remainingMo > 0 && milesLeft > 0) {
+      note += '<strong>Driving less is technically still possible but not a real option here:</strong> you have only ' +
+              miles(milesLeft) + ' of allowance left to spread over ' + remainingMo + ' months, which works out to about ' +
+              Math.round(dailyBudget) + ' miles a day. Treat the remaining three options as your actual choices. ';
     } else if (milesLeft <= 0) {
       note += '<strong>You have already passed the full-term allowance</strong>, so driving less can no longer avoid a charge — it can only stop it growing. ';
     }

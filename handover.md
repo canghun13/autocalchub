@@ -837,6 +837,19 @@ negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 �
 6. blog/index.html Latest 트리밍 여부 9세션째 미결.
 
 
+## 6-17-A. 9/7 세션 후속: 모바일 UI 버그 수정 (사용자 제보)
+
+- **사용자가 모바일 스크린샷으로 제보.** `.row` 클래스가 `display:flex; justify-content:space-between`인데 **미디어쿼리에 `.form-grid`만 넣고 `.row`를 빠뜨려서**, 좁은 화면에서 라벨이 2~3줄로 접히며 값과 어긋나 보임.
+- **8/24·8/31·9/7에 만든 툴 3개 전부 동일 버그**였음: `totaled-car-settlement-calculator`, `ship-car-vs-drive-calculator`, `lease-excess-mileage-calculator`. 한꺼번에 수정.
+- 수정 내용(640px 이하): `.row`를 `flex-direction:column; align-items:flex-start`로 세로 스택(라벨 위 / 값 아래), 라벨 0.82rem·값 0.95rem, `white-space:normal`, `.calc-card` 패딩 축소.
+- **⚠️ 다음에 `.row` 패턴으로 결과 행을 만드는 툴을 추가하면 미디어쿼리에 반드시 같은 블록을 넣을 것.** PC에서는 멀쩡해 보여서 놓치기 쉬움.
+
+### 함께 고친 로직 결함 — "하루 5마일" 안내
+- 같은 스크린샷에서 "16,833마일 초과" 상태인데 옵션1이 "5 mi/day to stay under"로 표시됨. **산술적으로는 맞지만**(총 허용 30,000 중 26,000 사용 → 남은 4,000을 25개월에 분배) 실질적으로 무의미한 안내.
+- `dailyBudget < 12`이면 "N mi/day — not realistic"로 표기하고 행을 warn(빨강) 처리, 노트도 "나머지 세 옵션이 실제 선택지"라고 안내하도록 수정.
+- 임계값 12는 블로그 본문(`what-happens-if-you-go-over-lease-mileage`)이 "하루 11마일은 운전 조정이 아니라 생활방식 변경"이라고 쓴 것과 일치시킨 값.
+- 검증: 여유 있는 케이스(31·34 mi/day)는 그대로 good(초록) 유지 확인.
+
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 
 - 이 저장소는 사용자가 매 세션 GitHub Personal Access Token을 직접 발급해서 대화 중에 전달하는 방식으로 운영됨. 토큰이 없으면 clone은 되지만(public repo) push는 불가.
