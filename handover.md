@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-09-07 기준)
+# AutoCalcHub 인수인계 문서 (2026-09-14 기준)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,11 +12,11 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (2026-09-07 기준)
-- 블로그 73개, 툴 32개 (index.html 제외). 9/7 세션에서 블로그 1 + 툴 1 추가, MPG 페이지 대폭 보강.
-- sitemap.xml 총 URL 118개
-- **블로그 태그 카테고리 9종**: `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`. 이모지까지 정확히 맞출 것.
-- **⚠️ Related Guides 헤딩이 3가지 변형**으로 존재: `<h3>Related Guides</h3>`, `<h3>Related Guides &amp; Tools</h3>`, **`<h2>Related Guides</h2>`(7개 파일)**. 일괄 스크립트 편집 시 정규식을 `<h[23][^>]*>Related Guides(?: &amp;| &)? ?(?:Tools)?</h[23]>` 로 쓸 것. h2 변형은 `<ul>` 들여쓰기가 4칸(다른 변형은 6칸)이라 삽입 문자열도 맞춰야 함.
+## 2. 콘텐츠 현황 (2026-09-14 기준)
+- 블로그 75개, 툴 33개 (index.html 제외). 9/14 세션에서 블로그 2 + 툴 1 추가.
+- sitemap.xml 총 URL 121개
+- **블로그 태그 카테고리 10종**: `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`(9/14 신설). 이모지까지 정확히 맞출 것.
+- **⚠️ Related Guides 헤딩 3가지 변형**: `<h3>Related Guides</h3>`, `<h3>Related Guides &amp; Tools</h3>`, `<h2>Related Guides</h2>`(7개 파일). 일괄 편집 정규식은 `<h[23][^>]*>Related Guides(?: &amp;| &)? ?(?:Tools)?</h[23]>` 를 쓸 것. **h2 변형은 `<ul>` 들여쓰기가 4칸**(나머지는 6칸)이라 삽입 문자열 들여쓰기도 분기해야 함 — 9/14에 이 방식으로 14개 파일을 한 번에 처리 성공.
 - **블로그 전체**에 "· Written by AutoCalcHub Team" 바이라인, **블로그+툴 전체**에 BreadcrumbList JSON-LD. FAQPage/HowTo는 2026-05-07 리치리절트 폐지로 추가 금지.
 
 ### 사이트 구조 관련 중요 변경사항
@@ -849,6 +849,56 @@ negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 �
 - `dailyBudget < 12`이면 "N mi/day — not realistic"로 표기하고 행을 warn(빨강) 처리, 노트도 "나머지 세 옵션이 실제 선택지"라고 안내하도록 수정.
 - 임계값 12는 블로그 본문(`what-happens-if-you-go-over-lease-mileage`)이 "하루 11마일은 운전 조정이 아니라 생활방식 변경"이라고 쓴 것과 일치시킨 값.
 - 검증: 여유 있는 케이스(31·34 mi/day)는 그대로 good(초록) 유지 확인.
+
+## 6-18. 9/14 세션 (사용자 지시: 신규 위주, 폭넓은 키워드 리서치): 신규 클러스터 "Repairs & Reliability" 신설
+
+- **지시**: 신규 중심, 키워드 폭넓게 → 리스트 → 경쟁강도 → 강하면 롱테일 우회. 클러스터 단위, 새 클러스터 환영. GSC/보유 데이터 밖에서 발굴. 화면 깨짐 확인 필요한 페이지만 링크.
+- **GSC/GA/Bing 자료 첨부 없음** — 외부 리서치만으로 진행. 9/7자 데이터 판단(5번 섹션) 그대로 유효.
+
+### 후보 리스트 → 경쟁강도 판정 (웹서치 3라운드)
+| 후보 | 상위 노출 | 판정 |
+|---|---|---|
+| 수리 vs 교체(50% 룰) 헤드텀 | Ramsey·Edmunds + 정비소 블로그 다수(chloesautorepair, expresslubearlington, hcsrepair, hv.auto) | 금융 권위 사이트 없음 → **각도 잡고 진입** |
+| **50% 룰의 결함 = 교체 비용 미반영** | 검색 결과 본문이 직접 이 한계를 지적하나 **아무도 계산하지 않음** | **진입 (핵심 웨지)** |
+| 타이어 비용/교체 시기 | 타이어샵 블로그 + mycarcalc·usecalcpro·howmuchisitworth 등 계산기 다수 | 코모디티 포화 → **기각** |
+| 변속기·엔진 교체 비용 | coveragex·autozone·carparts·정비소 블로그 | 비용 나열은 포화 → **"남은 수명 대비" 각도로 전환** |
+
+### 경쟁 회피 장치 — "50% 룰이 묻지 않는 것"
+- 경쟁 콘텐츠는 전부 **수리비 ÷ 차량가치 비율**에서 멈춤. 그 비율에는 **교체 대상의 가격이 들어있지 않음.**
+- 우리는 **월간 비용(cost per month)** 으로 양쪽을 계산: 유지(수리비+향후수리+보험/등록+가치하락−기말가치) vs 교체(납입액+운영비+포기한 중고차−기말 에쿼티).
+- **결정적 발견**: 같은 차($4,500), 같은 수리($3,200, 비율 71% → 50% 룰은 "교체")인데 — **신차 $28,000 대비 유지가 월 $277 저렴**, **중고 $13,000 대비 교체가 월 $5 저렴**. 같은 조건에서 답이 뒤집힘. 결론을 가른 변수가 50% 룰에 아예 없음.
+- 이 프레임은 어느 경쟁사도 쓰지 않으며, 우리 계산기 자산과 결이 정확히 맞음.
+
+### 신규 툴 — `tools/repair-or-replace-car-calculator.html` (912단어)
+- 입력: 수리비/수리후가치/향후수리(연)/현보험 + 교체가격/신차·중고/고장상태 가치/APR/기간/신규운영비/비교기간.
+- **양쪽 모두 에쿼티를 계상**하는 것이 핵심(수리한 차도 기말 가치가 있고, 할부금 일부는 소유권이 됨). 경쟁사는 "수리비 vs 월납"을 자산 없이 비교함.
+- 결과에 **50% 룰 판정과의 대조**를 자동 출력 — 둘이 갈리면 왜 갈리는지 설명.
+- **기존 툴과 로직 미중복 확인**: `car-maintenance-cost-calculator`(연간 정비예산), `car-total-cost-of-ownership-calculator`(신차 TCO, price/APR/term 기반)와 계산 구조가 다름. `when-to-trade-in-your-car`에 "When Repairs Signal It's Time to Trade" H2가 있으나 트레이드인 타이밍 글이라 중복 아님(오히려 좋은 링크 대상). 규칙 4 준수.
+- 검증: 파이썬 독립 구현 + node 목업 DOM **6시나리오 전부 일치**(중고교체/신차교체/추가수리급증/12개월시야/현금구매/수리비소액).
+
+### 신규 블로그 2건
+1. `blog/is-it-worth-fixing-your-car-or-buying-a-new-one.html` (1,118단어) — 50% 룰 정면 반박. 3열 비교표(유지 $360 / 신차 $638 / 중고 $355). "답을 가르는 4개 숫자"(교체 대상 가격·향후 수리비·수리가 사주는 기간·현금 여부). 돈으로 해결 안 되는 것(발이 묶이는 비용, 목돈 vs 월납 감당력)도 명시.
+2. `blog/which-car-repairs-are-worth-it.html` (1,211단어) — 수리별 비용 + **"사주는 남은 수명"** 표(경쟁사가 절대 안 적는 열). 변속기 교체는 워런티 때문에 오히려 유리, 엔진 교체는 고주행차에서 불리, 헤드가스켓은 가격보다 원인이 문제, 러스트는 이벤트가 아니라 과정. **범용 테스트**: 수리비 ÷ 사주는 개월 수 vs 교체 월납.
+
+### 사이트 반영
+- blog/index.html·tools/index.html에 `🔧 Repairs &amp; Reliability` 카테고리 신설(각각 Moving 뒤 / 앞). Latest 2건.
+- index.html 미리보기 3건 교체 + 툴카드, stat `32+`→`33+`.
+- sitemap 118→121 URL(lastmod 11건), llms.txt `## Guides: Repairs & Reliability` 섹션 신설 + Tools 1.
+- 내부링크 **14개 페이지 한 번에 성공**(3가지 헤딩 변형 + 들여쓰기 분기 처리). 인바운드 7·10·11개.
+
+### 검증 (9/7·8/31 교훈 반영)
+- 템플릿 CSS 정규식 경계 추출 + 오염검사 → 신규 블로그 script 6/6, style 1/1, JSON-LD 정상.
+- **검증 스크립트에 "모바일 `.row` 미디어쿼리 존재 여부" 항목 신규 추가** — 툴 4개 전부 OK 확인. 앞으로 `.row` 쓰는 툴은 이 검사에 자동으로 걸림.
+- 20개 파일 태그 밸런스·JSON-LD 통과, sitemap XML 유효(121 URL), 내부링크 1,099개 전수 스캔 깨짐 0건.
+
+### ⚠️ 다음 세션 필독
+1. **9/7 MPG 메타 재교체 효과 확인 여전히 미확인** — GSC/Bing 자료 받으면 최우선. 235노출/5.48위/0클릭이 클릭을 내는지.
+2. **Repairs & Reliability 확장 후보**(리서치했으나 미발행): 타이어 교체 2개 vs 4개 결정(비용 나열은 포화지만 AWD 트레드 매칭·리어액슬 규칙 등 의사결정 각도는 여지 있음), 차가 몇 마일까지 가나(보유자 관점 — 현재 `what-mileage-is-too-high-for-a-used-car`는 구매자 관점뿐), 정비소 견적 읽는 법.
+3. **이월 클러스터 후보**: IRS 사업용 마일리지 공제(연초 발행 유리), 차량 기부 세금공제, 견인·적재량, 겨울타이어. Accidents 확장(렌터카 커버리지·ACV 이의제기·우박 전손), Moving 확장(트레일러 견인·스냅버드).
+4. **구글 running/expense calculator 군집 7개(84~100위)** — `car-total-cost-of-ownership-calculator` 커버리지 확대 작업 미착수(9/7부터 이월).
+5. `car break even calculator`(구글 최다 쿼리 5노출) 통합 툴 후보 — 9/14 신규 계산기가 손익분기 성격을 일부 포함하나 전용 툴은 아직 없음.
+6. blog/index.html Latest 트리밍 여부 10세션째 미결.
+
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 

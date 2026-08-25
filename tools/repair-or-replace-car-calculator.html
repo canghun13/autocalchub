@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repair or Replace Your Car? Cost Per Month Calculator | AutoCalcHub</title>
+  <meta name="description" content="The 50% rule ignores what a replacement actually costs. Compare the true cost per month of fixing your car against buying another one, including depreciation and equity.">
+  <link rel="canonical" href="https://autocalchub.com/tools/repair-or-replace-car-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Repair or Replace Car Calculator",
+    "url": "https://autocalchub.com/tools/repair-or-replace-car-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Compares the true cost per month of repairing your current car against replacing it, including ongoing repairs, depreciation, financing and the equity you build in each case.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-09-14"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Repair or Replace Car Calculator", "item": "https://autocalchub.com/tools/repair-or-replace-car-calculator.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Repair or Replace Your Car?</h1>
+    <p>The popular "50% rule" compares the repair bill to your car's value and stops there — it never asks what you'd be replacing the car <em>with</em>. This works out the actual cost per month of each path, including depreciation and the equity you end up holding.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>🔧 Keep and Repair</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="repair">Repair Quote</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="repair" value="3200" min="0" step="100"></div>
+      </div>
+      <div class="form-group">
+        <label for="valAfter">Car's Value Once Repaired</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="valAfter" value="4500" min="0" step="250"></div>
+        <span class="hint">Private-party value in fair condition, running properly.</span>
+      </div>
+      <div class="form-group">
+        <label for="further">Further Repairs Expected</label>
+        <div class="input-wrap has-suffix"><input type="number" id="further" value="1400" min="0" step="100"><span class="input-suffix">$/yr</span></div>
+        <span class="hint">Be realistic — old cars rarely need just one thing.</span>
+      </div>
+      <div class="form-group">
+        <label for="insOld">Insurance + Registration Now</label>
+        <div class="input-wrap has-suffix"><input type="number" id="insOld" value="1280" min="0" step="50"><span class="input-suffix">$/yr</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h2>🚗 Replace It</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="price">Replacement Vehicle Price</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="price" value="13000" min="0" step="500"></div>
+        <span class="hint">This single input usually decides the answer.</span>
+      </div>
+      <div class="form-group">
+        <label for="newness">New or Used?</label>
+        <select id="newness">
+          <option value="new">New — steeper first-year depreciation</option>
+          <option value="used" selected>Used — gentler depreciation</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="asis">Your Car's Value As-Is (unrepaired)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="asis" value="1200" min="0" step="100"></div>
+        <span class="hint">Trade-in or private sale in its current broken state.</span>
+      </div>
+      <div class="form-group">
+        <label for="apr">Loan APR</label>
+        <div class="input-wrap has-suffix"><input type="number" id="apr" value="8.5" min="0" max="30" step="0.1"><span class="input-suffix">%</span></div>
+        <span class="hint">Enter 0 if paying cash.</span>
+      </div>
+      <div class="form-group">
+        <label for="term">Loan Term</label>
+        <select id="term">
+          <option value="0">Paying cash</option>
+          <option value="36">36 months</option>
+          <option value="48" selected>48 months</option>
+          <option value="60">60 months</option>
+          <option value="72">72 months</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="insNew">Insurance + Registration + Maintenance</label>
+        <div class="input-wrap has-suffix"><input type="number" id="insNew" value="2250" min="0" step="50"><span class="input-suffix">$/yr</span></div>
+        <span class="hint">Usually higher than your old car — full coverage costs more.</span>
+      </div>
+      <div class="form-group">
+        <label for="horizon">Compare Over</label>
+        <select id="horizon">
+          <option value="12">12 months</option>
+          <option value="24">24 months</option>
+          <option value="36" selected>36 months</option>
+          <option value="60">60 months</option>
+        </select>
+        <span class="hint">How long you'd realistically keep the repaired car.</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Compare Cost Per Month →</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="verdict-box">
+      <h3 id="vTitle"></h3>
+      <span class="big" id="vBig"></span>
+      <p id="vSub"></p>
+    </div>
+
+    <div class="two-col">
+      <div class="calc-card" style="margin:0">
+        <h2>🔧 Keep It</h2>
+        <div class="row"><span>Repair now</span><span id="kRepair"></span></div>
+        <div class="row"><span>Further repairs</span><span id="kFurther"></span></div>
+        <div class="row"><span>Insurance &amp; registration</span><span id="kIns"></span></div>
+        <div class="row"><span>Value lost to depreciation</span><span id="kDep"></span></div>
+        <div class="row"><span>Car still worth at the end</span><span id="kEnd"></span></div>
+        <div class="row"><span>Cost per month</span><span id="kMonth"></span></div>
+      </div>
+      <div class="calc-card" style="margin:0">
+        <h2>🚗 Replace It</h2>
+        <div class="row"><span>Your old car given up</span><span id="rTrade"></span></div>
+        <div class="row"><span>Loan payments made</span><span id="rPaid"></span></div>
+        <div class="row"><span>Insurance, reg &amp; upkeep</span><span id="rIns"></span></div>
+        <div class="row"><span>Loan balance remaining</span><span id="rBal"></span></div>
+        <div class="row"><span>Equity you end up holding</span><span id="rEquity"></span></div>
+        <div class="row"><span>Cost per month</span><span id="rMonth"></span></div>
+      </div>
+    </div>
+
+    <div class="note" id="mainNote"></div>
+    <div class="disclaimer">⚠️ <strong>An estimate, not a mechanical opinion.</strong> This models money only. It cannot judge whether your car is safe, whether the repair will actually hold, or how much a breakdown at the wrong moment would cost you. Depreciation is modelled at typical rates and varies a lot by model. Get a second repair quote and an honest read on the car's overall condition before deciding.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why the 50% Rule Gets This Wrong</h2>
+    <p>The rule you'll find everywhere says that if a repair costs more than half the car's value, replace it. It's easy to apply and it's missing the other half of the equation: <strong>a replacement has a cost too, and that cost varies by a factor of three depending on what you buy.</strong></p>
+    <p>Take a $4,500 car needing a $3,200 transmission. That's 71% of value, so the 50% rule says replace without hesitation. Run the actual money over three years and the picture splits in two. Against a $28,000 new car, keeping the old one costs about $277 a month <em>less</em>. Against a $13,000 used car, replacing costs about $5 a month less — essentially a tie.</p>
+    <p>Same car, same repair, opposite answers. The variable that decided it was never in the 50% rule at all.</p>
+
+    <h2>What This Calculator Counts</h2>
+    <p>Cost per month, over a horizon you choose, for both paths:</p>
+    <ul>
+      <li><strong>Keeping it:</strong> the repair, further repairs you expect, insurance and registration, plus the value the car keeps losing while you own it — offset by what it's still worth at the end.</li>
+      <li><strong>Replacing it:</strong> the old car you give up, loan payments made, higher running costs, minus the equity you've built in the replacement (its value less what you still owe).</li>
+    </ul>
+    <p>Counting equity on both sides matters. A common mistake is comparing a repair bill against a monthly payment as though the payment buys nothing — but part of each payment becomes ownership. Equally, the repaired car isn't worthless at the end of the horizon.</p>
+
+    <h2>Where Each Answer Tends to Win</h2>
+    <h3>Keeping usually wins when…</h3>
+    <ul>
+      <li>You'd be replacing with something new or near-new. First-year depreciation on a new car frequently exceeds the entire repair bill.</li>
+      <li>The repair is a one-off on an otherwise sound car — a water pump on a well-maintained vehicle, not the fourth failure this year.</li>
+      <li>You own the car outright and would need to finance the replacement.</li>
+      <li>The repair comes with a warranty. A remanufactured transmission with three years of coverage buys real certainty.</li>
+    </ul>
+    <h3>Replacing usually wins when…</h3>
+    <ul>
+      <li>The replacement is a modest used car rather than a new one.</li>
+      <li>Repairs are becoming a pattern. Once the annual repair bill climbs past roughly $2,500, keeping gets expensive fast.</li>
+      <li>The repair only buys you a short reprieve — a big bill on a car with other systems near failure.</li>
+      <li>Rust, frame damage, or a failing second major system means you're funding a decline rather than a fix.</li>
+    </ul>
+
+    <h2>The Things Money Can't Settle</h2>
+    <p>The calculation above is honest about dollars and silent on everything else. A car that strands you costs more than its repair bill if you lose work over it. A repair that fixes a symptom on a car with three other worn systems isn't really a fix. And if you can absorb a $3,000 repair from savings but a $300 monthly payment would strain your budget every month for four years, the cheaper-per-month option may still be the wrong one for you.</p>
+    <p>Get a second quote before any repair over about $1,500, and ask the mechanic to split the estimate into what must be fixed now and what can wait. That split tells you whether you're buying one more year or five.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/is-it-worth-fixing-your-car-or-buying-a-new-one.html" style="color:var(--orange);text-decoration:none;">Is It Worth Fixing Your Car or Buying a New One?</a></li>
+        <li><a href="../blog/which-car-repairs-are-worth-it.html" style="color:var(--orange);text-decoration:none;">Which Big Car Repairs Are Worth It?</a></li>
+        <li><a href="car-maintenance-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Car Maintenance Cost Calculator</a></li>
+        <li><a href="used-car-value-calculator.html" style="color:var(--orange);text-decoration:none;">Used Car Value Calculator</a></li>
+        <li><a href="../blog/when-to-trade-in-your-car.html" style="color:var(--orange);text-decoration:none;">When to Trade In Your Car</a></li>
+        <li><a href="../blog/is-extended-car-warranty-worth-it.html" style="color:var(--orange);text-decoration:none;">Is an Extended Car Warranty Worth It?</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+
+function calculate(){
+  var repair   = parseFloat(document.getElementById('repair').value) || 0;
+  var valAfter = parseFloat(document.getElementById('valAfter').value) || 0;
+  var further  = parseFloat(document.getElementById('further').value) || 0;
+  var insOld   = parseFloat(document.getElementById('insOld').value) || 0;
+  var price    = parseFloat(document.getElementById('price').value) || 0;
+  var isNew    = document.getElementById('newness').value === 'new';
+  var asis     = parseFloat(document.getElementById('asis').value) || 0;
+  var apr      = parseFloat(document.getElementById('apr').value) || 0;
+  var term     = parseFloat(document.getElementById('term').value) || 0;
+  var insNew   = parseFloat(document.getElementById('insNew').value) || 0;
+  var H        = parseFloat(document.getElementById('horizon').value) || 36;
+  var yrs = H / 12;
+
+  // --- Keep: old car depreciates ~15%/yr ---
+  var endVal   = valAfter * Math.pow(0.85, yrs);
+  var depLost  = valAfter - endVal;
+  var kFurther = further * yrs;
+  var kIns     = insOld * yrs;
+  var keepTotal = repair + kFurther + kIns + depLost;
+  var keepMonth = keepTotal / H;
+
+  document.getElementById('kRepair').textContent  = money(repair);
+  document.getElementById('kFurther').textContent = money(kFurther);
+  document.getElementById('kIns').textContent     = money(kIns);
+  document.getElementById('kDep').textContent     = money(depLost);
+  document.getElementById('kEnd').textContent     = money(endVal);
+  document.getElementById('kMonth').textContent   = money(keepMonth) + '/mo';
+
+  // --- Replace ---
+  var r = apr / 100 / 12;
+  var financed = Math.max(0, price - asis);
+  var pay = 0, bal = financed, paid = 0;
+  if (term > 0 && financed > 0) {
+    pay = r > 0 ? financed * r / (1 - Math.pow(1 + r, -term)) : financed / term;
+    var n = Math.min(H, term);
+    paid = pay * n;
+    for (var i = 0; i < n; i++) { bal -= (pay - bal * r); }
+    bal = Math.max(0, bal);
+  } else {
+    // cash purchase — the full amount leaves your pocket up front
+    paid = financed;
+    bal = 0;
+  }
+  var dep1 = isNew ? 0.20 : 0.13;
+  var depRest = isNew ? 0.13 : 0.11;
+  var newVal = yrs >= 1
+    ? price * (1 - dep1) * Math.pow(1 - depRest, yrs - 1)
+    : price * (1 - dep1 * yrs);
+  var equity = newVal - bal;
+  var rIns = insNew * yrs;
+  var replTotal = paid + asis + rIns - equity;
+  var replMonth = replTotal / H;
+
+  document.getElementById('rTrade').textContent  = money(asis);
+  document.getElementById('rPaid').textContent   = money(paid) + (pay > 0 ? ' (' + money(pay) + '/mo)' : ' (cash)');
+  document.getElementById('rIns').textContent    = money(rIns);
+  document.getElementById('rBal').textContent    = money(bal);
+  document.getElementById('rEquity').textContent = money(equity);
+  document.getElementById('rMonth').textContent  = money(replMonth) + '/mo';
+
+  var keepWins = keepMonth < replMonth;
+  var gap = Math.abs(keepMonth - replMonth);
+
+  document.getElementById('kMonth').parentNode.className = keepWins ? 'row good' : 'row';
+  document.getElementById('rMonth').parentNode.className = keepWins ? 'row' : 'row good';
+
+  var vT = document.getElementById('vTitle');
+  var vB = document.getElementById('vBig');
+  var vS = document.getElementById('vSub');
+
+  if (gap < 15) {
+    vT.textContent = 'Close to a Tie';
+    vB.textContent = money(gap) + '/mo';
+    vS.textContent = 'Keeping works out to ' + money(keepMonth) + ' a month against ' + money(replMonth) +
+      ' to replace — within ' + money(gap) + ' of each other over ' + H + ' months. At this margin the money is not deciding it, so let reliability, safety and how the payment fits your budget make the call.';
+  } else {
+    vT.textContent = keepWins ? 'Repairing Costs Less' : 'Replacing Costs Less';
+    vB.textContent = money(gap) + '/mo';
+    vS.textContent = (keepWins
+      ? 'Fixing it works out to ' + money(keepMonth) + ' a month against ' + money(replMonth) + ' to replace'
+      : 'Replacing works out to ' + money(replMonth) + ' a month against ' + money(keepMonth) + ' to keep fixing it') +
+      ', a difference of ' + money(gap * H) + ' over ' + H + ' months.';
+  }
+
+  // --- Note, including the 50% rule contrast ---
+  var pct = valAfter > 0 ? (repair / valAfter * 100) : 0;
+  var note = '<strong>How this was calculated:</strong> Over ' + H + ' months, keeping the car costs ' +
+    money(repair) + ' in repairs now, ' + money(kFurther) + ' in further repairs and ' + money(kIns) +
+    ' to insure and register, while the car itself falls from ' + money(valAfter) + ' to about ' + money(endVal) + '. ';
+  note += 'Replacing costs ' + money(paid) + ' in ' + (pay > 0 ? 'payments' : 'cash') + ' plus ' + money(rIns) +
+    ' in running costs, gives up your old car at ' + money(asis) + ', and leaves you ' + money(equity) +
+    ' of equity' + (bal > 0 ? ' after the ' + money(bal) + ' still owed' : '') + '. ';
+
+  if (valAfter > 0) {
+    note += '<br><br><strong>Against the 50% rule:</strong> your repair is ' + pct.toFixed(0) + '% of the car\'s value, ' +
+      'so that rule would tell you to ' + (pct > 50 ? 'replace' : 'repair') + '. ';
+    var ruleSaysReplace = pct > 50;
+    if (ruleSaysReplace === keepWins) {
+      note += 'The full cost comparison points the other way, because the rule never accounts for what a ' +
+        money(price) + ' replacement actually costs you.';
+    } else {
+      note += 'Here the full comparison agrees with it — but for a different reason: it is the ' + money(price) +
+        ' replacement price doing the work, not the ratio.';
+    }
+  }
+  if (further >= 2500) {
+    note += ' Note that at ' + money(further) + ' a year in expected further repairs, you are already spending like a car payment without owning anything newer.';
+  }
+  document.getElementById('mainNote').innerHTML = note;
+
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

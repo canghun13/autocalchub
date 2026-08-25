@@ -14,6 +14,7 @@
 - [Car Affordability Calculator](https://autocalchub.com/tools/car-affordability-calculator.html): Find out how much car you can afford based on your income, expenses, and the 20/4/10 rule.
 - [Car Down Payment Calculator](https://autocalchub.com/tools/car-down-payment-calculator.html): See how different down payment amounts affect your monthly payment, total interest, and equity position at purchase.
 - [Car Maintenance Cost Calculator](https://autocalchub.com/tools/car-maintenance-cost-calculator.html): Estimate your annual car maintenance budget based on your vehicle's make type, age, and mileage.
+- [Repair or Replace Car Calculator](https://autocalchub.com/tools/repair-or-replace-car-calculator.html): Compares the true cost per month of repairing your current car against replacing it, counting further repairs, depreciation, financing and the equity held at the end — the variables the 50% rule leaves out.
 - [Car Depreciation Calculator](https://autocalchub.com/tools/car-depreciation-calculator.html): Estimate how much your car loses in value over time and what it will be worth at any point in the future.
 - [Used Car Value Calculator](https://autocalchub.com/tools/used-car-value-calculator.html): Estimate the current market value of a used vehicle based on year, mileage, condition, and model.
 - [Car Insurance Estimator](https://autocalchub.com/tools/car-insurance-estimator.html): Estimate your monthly car insurance cost based on your profile, vehicle, and coverage level.
@@ -116,6 +117,10 @@
 ## Guides: Moving & Relocation
 - [Should You Ship Your Car or Drive It?](https://autocalchub.com/blog/should-you-ship-your-car-or-drive-it.html): Driving is cheaper than shipping on cash for nearly every route; the decision turns entirely on what you value your time at, with breakeven distances by hourly rate.
 - [Moving to Another State: What to Do With Your Car](https://autocalchub.com/blog/moving-to-another-state-what-to-do-with-your-car.html): The order to handle insurance, inspection, title, registration and license when relocating, plus the fees and deadlines that catch people out.
+
+## Guides: Repairs & Reliability
+- [Is It Worth Fixing Your Car or Buying a New One?](https://autocalchub.com/blog/is-it-worth-fixing-your-car-or-buying-a-new-one.html): Why the 50% rule fails — it never prices the replacement. The same repair on the same car beats a new car by $277 a month but ties a used one.
+- [Which Big Car Repairs Are Worth It?](https://autocalchub.com/blog/which-car-repairs-are-worth-it.html): Cost ranges and remaining life bought for transmission, engine, head gasket, timing belt and rust work, plus the cost-per-month-of-life test.
 
 ## Guides: Electric Vehicles
 - [Should You Buy a Used EV Out of Battery Warranty?](https://autocalchub.com/blog/should-you-buy-a-used-ev-out-of-battery-warranty.html): Degradation data, replacement costs by pack size, and how to price battery failure as an expected cost against the used-EV discount.
