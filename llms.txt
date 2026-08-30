@@ -34,7 +34,7 @@
 - [Car Refinance Calculator](https://autocalchub.com/tools/car-refinance-calculator.html): See how much you could save by refinancing your car loan — monthly savings, total interest saved, and break-even point.
 - [Car Loan Interest Deduction Calculator](https://autocalchub.com/tools/car-loan-interest-deduction-calculator.html): Estimate the 2025–2028 OBBBA car loan interest deduction across the full loan, with the MAGI phase-out applied year by year and the share of interest falling outside the deductible window.
 - [Car Early Payoff Calculator](https://autocalchub.com/tools/car-early-payoff-calculator.html): Calculate how much interest you save and how many months you cut by making extra payments on your car loan.
-- [Car Total Cost of Ownership Calculator](https://autocalchub.com/tools/car-total-cost-of-ownership-calculator.html): Calculate the true 5-year cost of owning a car including purchase price, loan interest, insurance, fuel, maintenance, and depreciation.
+- [Car Total Cost of Ownership Calculator](https://autocalchub.com/tools/car-total-cost-of-ownership-calculator.html): Calculate the true 5-year cost of owning a car including purchase price, loan interest, insurance, fuel, maintenance, and depreciation. Also serves as a car running cost and vehicle expense calculator, with cost per year, cost per mile, and break-even comparison between two vehicles.
 - [Negative Equity Rollover Calculator](https://autocalchub.com/tools/negative-equity-rollover-calculator.html): Calculate exactly how much extra interest and monthly payment you take on by rolling negative equity from your current loan into a new one.
 - [Bi-Weekly Car Payment Calculator](https://autocalchub.com/tools/biweekly-car-payment-calculator.html): Calculate how much interest and time you save by switching your car loan to bi-weekly payments instead of monthly payments.
 - [0% APR vs Cash Rebate Calculator](https://autocalchub.com/tools/zero-percent-apr-vs-rebate-calculator.html): Compare a manufacturer's 0% APR financing offer against taking the cash rebate and financing at your own bank or credit union rate.
@@ -111,6 +111,7 @@
 - [How Much Does It Cost to Fill Up a Car?](https://autocalchub.com/blog/how-much-does-it-cost-to-fill-up-a-car.html): What a full tank costs in 2026 by vehicle type and tank size.
 
 ## Guides: Accidents & Claims
+- [How Much Does an Accident Affect Your Trade-In Value?](https://autocalchub.com/blog/how-much-does-an-accident-affect-trade-in-value.html): Reconciles the 10-30% figure cited by law firms with Carfax's sub-$500 average retail impact, shows why structural damage is the dividing line, and covers the four ways to limit the loss.
 - [Should You Keep Your Totaled Car?](https://autocalchub.com/blog/should-you-keep-your-totaled-car.html): Owner retention forfeits the salvage value and shifts repair risk to you, ending in a rebuilt title worth 20-40% less — with the cases where it still works.
 - [Is a Diminished Value Claim Worth Filing?](https://autocalchub.com/blog/is-a-diminished-value-claim-worth-filing.html): The eligibility gates that end most claims, what the 17c formula actually pays by damage level and mileage, and the breakeven against a $300-400 appraisal.
 
