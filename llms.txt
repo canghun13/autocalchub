@@ -35,6 +35,7 @@
 - [Car Loan Interest Deduction Calculator](https://autocalchub.com/tools/car-loan-interest-deduction-calculator.html): Estimate the 2025–2028 OBBBA car loan interest deduction across the full loan, with the MAGI phase-out applied year by year and the share of interest falling outside the deductible window.
 - [Car Early Payoff Calculator](https://autocalchub.com/tools/car-early-payoff-calculator.html): Calculate how much interest you save and how many months you cut by making extra payments on your car loan.
 - [Car Total Cost of Ownership Calculator](https://autocalchub.com/tools/car-total-cost-of-ownership-calculator.html): Calculate the true 5-year cost of owning a car including purchase price, loan interest, insurance, fuel, maintenance, and depreciation. Also serves as a car running cost and vehicle expense calculator, with cost per year, cost per mile, and break-even comparison between two vehicles.
+- [Truck vs Rent Calculator](https://autocalchub.com/tools/truck-vs-rent-calculator.html): Compares the five-year cost of owning a pickup against a smaller vehicle plus truck rentals, isolating the daily fuel and insurance penalty and returning the number of hauls per year at which owning breaks even.
 - [Negative Equity Rollover Calculator](https://autocalchub.com/tools/negative-equity-rollover-calculator.html): Calculate exactly how much extra interest and monthly payment you take on by rolling negative equity from your current loan into a new one.
 - [Bi-Weekly Car Payment Calculator](https://autocalchub.com/tools/biweekly-car-payment-calculator.html): Calculate how much interest and time you save by switching your car loan to bi-weekly payments instead of monthly payments.
 - [0% APR vs Cash Rebate Calculator](https://autocalchub.com/tools/zero-percent-apr-vs-rebate-calculator.html): Compare a manufacturer's 0% APR financing offer against taking the cash rebate and financing at your own bank or credit union rate.
@@ -118,6 +119,10 @@
 ## Guides: Moving & Relocation
 - [Should You Ship Your Car or Drive It?](https://autocalchub.com/blog/should-you-ship-your-car-or-drive-it.html): Driving is cheaper than shipping on cash for nearly every route; the decision turns entirely on what you value your time at, with breakeven distances by hourly rate.
 - [Moving to Another State: What to Do With Your Car](https://autocalchub.com/blog/moving-to-another-state-what-to-do-with-your-car.html): The order to handle insurance, inspection, title, registration and license when relocating, plus the fees and deadlines that catch people out.
+
+## Guides: Trucks & Towing
+- [Do You Actually Need a Truck?](https://autocalchub.com/blog/do-you-actually-need-a-truck.html): A half-ton pickup costs roughly $231 a month more than the crossover alternative; that premium buys about 21 rental days a year, which is the real break-even. Covers when owning still wins, especially towing.
+- [How Much Can My SUV Actually Tow?](https://autocalchub.com/blog/how-much-can-my-suv-actually-tow.html): Why the advertised tow rating assumes an empty vehicle — tongue weight counts against payload, so a 5,000 lb rated SUV falls to about 2,667 lbs with a family and gear aboard.
 
 ## Guides: Repairs & Reliability
 - [Is It Worth Fixing Your Car or Buying a New One?](https://autocalchub.com/blog/is-it-worth-fixing-your-car-or-buying-a-new-one.html): Why the 50% rule fails — it never prices the replacement. The same repair on the same car beats a new car by $277 a month but ties a used one.

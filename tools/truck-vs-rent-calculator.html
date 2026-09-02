@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do You Actually Need a Truck? Own vs Rent Calculator | AutoCalcHub</title>
+  <meta name="description" content="Work out what a pickup costs you over a smaller vehicle, then see how many truck rentals that money buys. Find the number of hauls per year where owning finally wins.">
+  <link rel="canonical" href="https://autocalchub.com/tools/truck-vs-rent-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Truck vs Rent Calculator",
+    "url": "https://autocalchub.com/tools/truck-vs-rent-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Compares the five-year cost of owning a pickup against a smaller vehicle plus truck rentals, and finds the number of hauls per year at which owning breaks even.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-09-28"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Truck vs Rent Calculator", "item": "https://autocalchub.com/tools/truck-vs-rent-calculator.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Do You Actually Need a Truck?</h1>
+    <p>A pickup costs more to buy, more to fuel, and more to insure — every single day, whether or not you haul anything. This works out that premium, then converts it into the thing that actually matters: how many hauls a year you'd need before owning beats renting.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>🛻 The Truck</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="tPrice">Price</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="tPrice" value="48000" min="0" step="1000"></div>
+      </div>
+      <div class="form-group">
+        <label for="tMpg">Combined MPG</label>
+        <div class="input-wrap has-suffix"><input type="number" id="tMpg" value="20" min="5" step="1"><span class="input-suffix">mpg</span></div>
+      </div>
+      <div class="form-group">
+        <label for="tIns">Insurance + Registration</label>
+        <div class="input-wrap has-suffix"><input type="number" id="tIns" value="2420" min="0" step="50"><span class="input-suffix">$/yr</span></div>
+      </div>
+      <div class="form-group">
+        <label for="tMaint">Maintenance</label>
+        <div class="input-wrap has-suffix"><input type="number" id="tMaint" value="900" min="0" step="50"><span class="input-suffix">$/yr</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h2>🚙 The Vehicle You'd Buy Instead</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="cPrice">Price</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="cPrice" value="34000" min="0" step="1000"></div>
+      </div>
+      <div class="form-group">
+        <label for="cMpg">Combined MPG</label>
+        <div class="input-wrap has-suffix"><input type="number" id="cMpg" value="29" min="5" step="1"><span class="input-suffix">mpg</span></div>
+      </div>
+      <div class="form-group">
+        <label for="cIns">Insurance + Registration</label>
+        <div class="input-wrap has-suffix"><input type="number" id="cIns" value="1990" min="0" step="50"><span class="input-suffix">$/yr</span></div>
+      </div>
+      <div class="form-group">
+        <label for="cMaint">Maintenance</label>
+        <div class="input-wrap has-suffix"><input type="number" id="cMaint" value="700" min="0" step="50"><span class="input-suffix">$/yr</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h2>📦 Your Hauling &amp; Driving</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="miles">Miles Driven Per Year</label>
+        <div class="input-wrap has-suffix"><input type="number" id="miles" value="13000" min="0" step="1000"><span class="input-suffix">mi</span></div>
+      </div>
+      <div class="form-group">
+        <label for="gas">Gas Price</label>
+        <div class="input-wrap has-suffix"><input type="number" id="gas" value="3.10" min="0" step="0.05"><span class="input-suffix">$/gal</span></div>
+      </div>
+      <div class="form-group">
+        <label for="hauls">Times You'd Haul Per Year</label>
+        <div class="input-wrap has-suffix"><input type="number" id="hauls" value="6" min="0" step="1"><span class="input-suffix">×</span></div>
+        <span class="hint">Be honest. Count last year, not the year you imagine.</span>
+      </div>
+      <div class="form-group">
+        <label for="rentCost">Cost Per Haul If You Rent</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="rentCost" value="129" min="0" step="10"></div>
+        <span class="hint">Home Depot pickups run about $19 for 75 minutes or $129 a day; store delivery is often $79–99.</span>
+      </div>
+      <div class="form-group">
+        <label for="years">Compare Over</label>
+        <select id="years">
+          <option value="3">3 years</option>
+          <option value="5" selected>5 years</option>
+          <option value="8">8 years</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="tow">Do You Tow a Trailer?</label>
+        <select id="tow">
+          <option value="no" selected>No — just hauling in the bed</option>
+          <option value="yes">Yes — boat, camper or trailer</option>
+        </select>
+        <span class="hint">Towing regularly changes the answer; renting rarely covers it well.</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Find My Break-Even →</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="verdict-box">
+      <h3 id="vTitle"></h3>
+      <span class="big" id="vBig"></span>
+      <p id="vSub"></p>
+    </div>
+
+    <div class="two-col">
+      <div class="calc-card" style="margin:0">
+        <h2>🛻 Own the Truck</h2>
+        <div class="row"><span>Fuel</span><span id="tFuel"></span></div>
+        <div class="row"><span>Insurance, reg &amp; upkeep</span><span id="tRun"></span></div>
+        <div class="row"><span>Depreciation</span><span id="tDep"></span></div>
+        <div class="row"><span>Total cost</span><span id="tTotal"></span></div>
+      </div>
+      <div class="calc-card" style="margin:0">
+        <h2>🚙 Smaller Vehicle + Rentals</h2>
+        <div class="row"><span>Fuel</span><span id="cFuel"></span></div>
+        <div class="row"><span>Insurance, reg &amp; upkeep</span><span id="cRun"></span></div>
+        <div class="row"><span>Depreciation</span><span id="cDep"></span></div>
+        <div class="row"><span>Rentals</span><span id="cRent"></span></div>
+        <div class="row"><span>Total cost</span><span id="cTotal"></span></div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2>⚖️ The Break-Even</h2>
+      <div class="row"><span>What the truck costs you extra</span><span id="bGap"></span></div>
+      <div class="row"><span>Fuel penalty alone, every year</span><span id="bFuel"></span></div>
+      <div class="row"><span>Rentals that money would buy</span><span id="bRentals"></span></div>
+      <div class="row"><span>Hauls per year where owning wins</span><span id="bBreakeven"></span></div>
+    </div>
+
+    <div class="note" id="mainNote"></div>
+    <div class="disclaimer">⚠️ <strong>This models money, not need.</strong> It can't price convenience, having the truck at 6am on a Sunday, or work that requires one. Rental availability varies by area and some loads simply can't be rented for — towing in particular. Depreciation is modelled at typical rates and varies a lot by model; trucks often hold value better than the figures here assume, which narrows the gap.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>The Cost You Pay on the 359 Days You Don't Haul</h2>
+    <p>Truck buyers tend to compare sticker prices and stop there. The sticker is the smaller half of the difference. A pickup at 20 MPG against a crossover at 29 MPG, driven 13,000 miles a year at $3.10 a gallon, costs about <strong>$625 more in fuel every year</strong> — roughly $3,100 over five years — before you've hauled anything at all. Add higher insurance, higher registration in weight-based states, pricier tires, and more depreciation on a larger purchase, and a typical half-ton runs around $230 a month more than the vehicle you'd otherwise have bought.</p>
+    <p>That $230 a month is the real question. Not "can I afford the truck payment" but "is what I haul worth $230 a month?"</p>
+
+    <h2>What That Money Buys in Rentals</h2>
+    <p>Home Depot rents pickups and cargo vans at roughly $19 for 75 minutes, about $129 for a full day, with $5 per extra fifteen minutes and a deposit. U-Haul is comparable. Store delivery on furniture or building materials typically runs $79–99 and often gets waived above a spend threshold.</p>
+    <p>At $129 a day, a $13,900 five-year premium buys around <strong>107 full rental days</strong> — about 21 a year. Most people who tell themselves they need a truck haul something perhaps six to twelve times a year, and half of those are 75-minute trips that cost $19.</p>
+    <p>This is why the honest answer for a lot of buyers is that the truck is a preference rather than a requirement, and there's nothing wrong with that as long as it's priced correctly.</p>
+
+    <h2>When Owning Genuinely Wins</h2>
+    <ul>
+      <li><strong>You tow.</strong> Rental pickups usually aren't set up for towing, and rented tow vehicles are hard to find. A boat, camper or equipment trailer changes the calculation entirely.</li>
+      <li><strong>You haul for work.</strong> Daily or weekly use crosses the break-even easily, and business use may be deductible.</li>
+      <li><strong>You need it unplanned.</strong> Rental depends on availability and hours. If your hauling is unscheduled or urgent, that has real value.</li>
+      <li><strong>You live far from rental locations.</strong> A 40-minute drive each way to collect a truck erases the savings on short jobs.</li>
+      <li><strong>Loads that don't rent well.</strong> Livestock, dirty or hazardous materials, or anything you'd be charged a cleaning fee for.</li>
+    </ul>
+
+    <h2>Options Between the Two Extremes</h2>
+    <p>The choice isn't only "full-size pickup" or "nothing."</p>
+    <ul>
+      <li><strong>A mid-size truck</strong> narrows the fuel and price gap substantially while still covering most bed-hauling.</li>
+      <li><strong>An older second truck</strong> bought outright for occasional use can cost less to keep than the premium on a new one, though you pay insurance and registration on two vehicles.</li>
+      <li><strong>A trailer behind an SUV</strong> handles many loads for a fraction of a truck's cost, provided you stay inside the tow and payload ratings.</li>
+      <li><strong>Delivery</strong> covers the single most common reason people think they need a truck: getting large purchases home once.</li>
+    </ul>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/do-you-actually-need-a-truck.html" style="color:var(--orange);text-decoration:none;">Do You Actually Need a Truck?</a></li>
+        <li><a href="../blog/how-much-can-my-suv-actually-tow.html" style="color:var(--orange);text-decoration:none;">How Much Can My SUV Actually Tow?</a></li>
+        <li><a href="car-total-cost-of-ownership-calculator.html" style="color:var(--orange);text-decoration:none;">Car Running Cost Calculator</a></li>
+        <li><a href="fuel-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Fuel Cost Calculator</a></li>
+        <li><a href="../blog/is-a-high-mpg-car-worth-the-extra-cost.html" style="color:var(--orange);text-decoration:none;">Is a High-MPG Car Worth the Extra Cost?</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+
+function calculate(){
+  var tPrice = parseFloat(document.getElementById('tPrice').value) || 0;
+  var tMpg   = parseFloat(document.getElementById('tMpg').value) || 20;
+  var tIns   = parseFloat(document.getElementById('tIns').value) || 0;
+  var tMaint = parseFloat(document.getElementById('tMaint').value) || 0;
+  var cPrice = parseFloat(document.getElementById('cPrice').value) || 0;
+  var cMpg   = parseFloat(document.getElementById('cMpg').value) || 29;
+  var cIns   = parseFloat(document.getElementById('cIns').value) || 0;
+  var cMaint = parseFloat(document.getElementById('cMaint').value) || 0;
+  var miles  = parseFloat(document.getElementById('miles').value) || 0;
+  var gas    = parseFloat(document.getElementById('gas').value) || 0;
+  var hauls  = parseFloat(document.getElementById('hauls').value) || 0;
+  var rent   = parseFloat(document.getElementById('rentCost').value) || 0;
+  var yrs    = parseFloat(document.getElementById('years').value) || 5;
+  var tows   = document.getElementById('tow').value === 'yes';
+
+  function side(price, mpg, ins, maint){
+    var fuel = miles / mpg * gas * yrs;
+    var run  = (ins + maint) * yrs;
+    var end  = price * 0.80 * Math.pow(0.87, yrs - 1);
+    return { fuel: fuel, run: run, dep: price - end, total: fuel + run + (price - end) };
+  }
+
+  var T = side(tPrice, tMpg, tIns, tMaint);
+  var C = side(cPrice, cMpg, cIns, cMaint);
+  var rentTotal = hauls * rent * yrs;
+  var cTotalAll = C.total + rentTotal;
+
+  document.getElementById('tFuel').textContent = money(T.fuel);
+  document.getElementById('tRun').textContent  = money(T.run);
+  document.getElementById('tDep').textContent  = money(T.dep);
+  document.getElementById('tTotal').textContent = money(T.total) + ' (' + money(T.total / (yrs * 12)) + '/mo)';
+  document.getElementById('cFuel').textContent = money(C.fuel);
+  document.getElementById('cRun').textContent  = money(C.run);
+  document.getElementById('cDep').textContent  = money(C.dep);
+  document.getElementById('cRent').textContent = money(rentTotal) + (hauls > 0 ? ' (' + hauls + '×/yr)' : '');
+  document.getElementById('cTotal').textContent = money(cTotalAll) + ' (' + money(cTotalAll / (yrs * 12)) + '/mo)';
+
+  // Premium is measured before rentals — that is the budget rentals draw from
+  var gap = T.total - C.total;
+  var fuelPenalty = (miles / tMpg - miles / cMpg) * gas;
+  var rentalsBought = rent > 0 ? gap / rent : 0;
+  var breakeven = (rent > 0 && yrs > 0) ? gap / yrs / rent : 0;
+
+  document.getElementById('bGap').textContent = money(gap) + ' over ' + yrs + ' yrs (' + money(gap / (yrs * 12)) + '/mo)';
+  document.getElementById('bFuel').textContent = money(fuelPenalty) + '/yr';
+  document.getElementById('bRentals').textContent = Math.round(rentalsBought).toLocaleString() + ' rentals';
+  document.getElementById('bBreakeven').textContent = breakeven.toFixed(0) + '× per year';
+
+  var ownWins = T.total < cTotalAll;
+  var diff = Math.abs(T.total - cTotalAll);
+  document.getElementById('tTotal').parentNode.className = ownWins ? 'row good' : 'row';
+  document.getElementById('cTotal').parentNode.className = ownWins ? 'row' : 'row good';
+  document.getElementById('bGap').parentNode.className = gap > 0 ? 'row warn' : 'row good';
+
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  if (gap <= 0) {
+    vT.textContent = 'The Truck Is Not More Expensive';
+    vB.textContent = money(Math.abs(gap));
+    vS.textContent = 'On the figures you entered the truck costs no more than the alternative over ' + yrs +
+      ' years, so hauling frequency does not need to justify anything. Double-check the MPG and insurance numbers, since that is an unusual result.';
+  } else {
+    vT.textContent = ownWins ? 'Owning the Truck Wins' : 'Renting Wins';
+    vB.textContent = breakeven.toFixed(0) + '× a year';
+    vS.textContent = 'The truck costs ' + money(gap) + ' more over ' + yrs + ' years — about ' + money(gap / (yrs * 12)) +
+      ' a month. At ' + money(rent) + ' a rental you would need to haul about ' + breakeven.toFixed(0) +
+      ' times a year before owning pays for itself. You said ' + hauls + '.';
+  }
+
+  var note = '<strong>How this was calculated:</strong> Over ' + yrs + ' years the truck runs ' + money(T.total) +
+    ' against ' + money(C.total) + ' for the smaller vehicle — a premium of ' + money(gap) + '. ';
+  note += 'Adding ' + hauls + ' rentals a year at ' + money(rent) + ' brings the alternative to ' + money(cTotalAll) + '. ';
+  note += '<br><br><strong>The part people miss:</strong> the fuel penalty alone is ' + money(fuelPenalty) +
+    ' every year, and you pay it on the days you haul nothing. Over ' + yrs + ' years that is ' + money(fuelPenalty * yrs) +
+    ' spent on capability you used ' + hauls + ' times a year.';
+
+  if (tows) {
+    note += '<br><br><strong>You said you tow, which the money above cannot really capture.</strong> Rental pickups are usually not equipped for towing and rented tow vehicles are hard to come by, so the rental column understates what you would actually need. If you tow anything regularly, owning is likely the right answer even when the arithmetic says otherwise.';
+  } else if (!ownWins && hauls > 0) {
+    var short = breakeven - hauls;
+    note += '<br><br>You would need roughly ' + short.toFixed(0) + ' more hauls a year to justify the truck on cost alone. ' +
+      'That does not make owning wrong — convenience and availability are worth something — but it does put a price on it: about ' +
+      money(gap / (yrs * 12)) + ' a month.';
+  }
+  document.getElementById('mainNote').innerHTML = note;
+
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

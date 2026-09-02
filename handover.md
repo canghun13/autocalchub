@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-09-21 기준)
+# AutoCalcHub 인수인계 문서 (2026-09-28 기준)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,12 +12,14 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (2026-09-21 기준)
-- 블로그 76개, 툴 33개 (index.html 제외). 9/21 세션에서 블로그 1 추가 + 보강 2건.
-- sitemap.xml 총 URL 122개
-- **블로그 태그 카테고리 10종**: `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`. 이모지까지 정확히 맞출 것.
-- **Related Guides 헤딩 3가지 변형**: `<h3>Related Guides</h3>`, `<h3>Related Guides &amp; Tools</h3>`, `<h2>Related Guides</h2>`. 정규식 `<h[23][^>]*>Related Guides(?: &amp;| &)? ?(?:Tools)?</h[23]>` + h2는 들여쓰기 4칸 분기. 9/14·9/21 연속 성공.
-- **블로그 전체**에 "· Written by AutoCalcHub Team" 바이라인, **블로그+툴 전체**에 BreadcrumbList JSON-LD. FAQPage/HowTo는 추가 금지.
+## 2. 콘텐츠 현황 (2026-09-28 기준)
+- 블로그 78개, 툴 34개 (index.html 제외). 9/28 세션에서 블로그 2 + 툴 1 추가.
+- sitemap.xml 총 URL 125개
+- **블로그 태그 카테고리 11종**: `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`(9/28 신설). 이모지까지 정확히 맞출 것.
+- **⚠️ Related 링크 블록 헤딩이 5가지 변형**(9/28 전수 조사):
+  `Related Guides</h3>` 50개 / `Related Guides & Tools</h3>` 36개 / `Related Guides &amp; Tools</h3>` 19개 / `Related Guides</h2>` 7개 / **`Related Tools & Guides</h3>` 1개(순서 반대, `tools/car-total-cost-of-ownership-calculator.html`)**.
+  일괄 편집 정규식: `<h[23][^>]*>Related (?:Guides|Tools)(?: &amp;| &)? ?(?:Tools|Guides)?</h[23]>`. **h2 변형은 `<ul>` 들여쓰기 4칸**(나머지 6칸)이라 삽입 문자열도 분기 필요. 9/28에 TCO 계산기 1건을 이 변형 때문에 놓쳤다가 2차로 처리함.
+- **블로그 전체**에 "· Written by AutoCalcHub Team" 바이라인, **블로그+툴 전체**에 BreadcrumbList JSON-LD. FAQPage/HowTo 추가 금지.
 
 ### 사이트 구조 관련 중요 변경사항
 - **헤더 내비게이션**: 기존 "Calculators"/"Blog" 드롭다운 메뉴 → **단순 링크**로 전환. "Calculators" 명칭도 **"Tools"**로 변경됨. **7/17 세션에서 "Glossary" 항목 추가** — 현재 Tools / Blog / Glossary / About 4개. (`assets/partials/header.html`)
@@ -920,6 +922,57 @@ negative-equity/LTV/bi-weekly 클러스터(7/6·7/10 게시)의 색인·노출 �
 4. **연봉 기반 예산 클러스터가 새 승자**(salary 페이지 41노출/2클릭/4.68위). 확장 여지 검토 — 단 `how-much-car-can-i-afford`·`what-is-a-good-car-payment-per-month`·`car-affordability-calculator`와 카니발라이제이션 주의.
 5. 이월 클러스터 후보: IRS 사업용 마일리지 공제(연초), 차량 기부 세금공제, 견인·적재량, 겨울타이어. Repairs 확장(타이어 2 vs 4, 보유자 관점 주행거리 수명, 정비 견적 읽는 법). Accidents 확장(렌터카 커버리지·ACV 이의제기·우박 전손).
 6. blog/index.html Latest 트리밍 여부 11세션째 미결.
+
+
+## 6-20. 9/28 세션 (사용자 지시: 신규 위주, 폭넓은 키워드 리서치): 신규 클러스터 "Trucks & Towing" 신설
+
+- **지시**: 신규 중심, 키워드 폭넓게 → 리스트 → 경쟁강도 → 강하면 롱테일 우회. 새 클러스터 환영. GSC/보유 데이터 밖에서 발굴.
+- **GSC/GA/Bing 신규 자료 없음** — 외부 리서치 기반. Bing 8/30 판단(5번 섹션) 그대로 유효.
+
+### 착안점 — 9/21 인수인계의 이월 항목을 실마리로 사용
+Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc suburban how much do you pay to fill up full"은 실제 클릭 발생, "how much will it cost me to travel 1000 mile in a gmc yukon", "2018 bmw x5"). 이 오디언스를 정면으로 잡는 클러스터로 견인/트럭을 선택.
+
+### 후보 리스트 → 경쟁강도 판정 (웹서치 2라운드)
+| 후보 | 상위 노출 | 판정 |
+|---|---|---|
+| 견인 용량 계산기(payload/GVWR/GCWR) | fleetworthy·themotorguy·towingservicehub·haul-wise·autoreviewnest + KBB·Firestone·Curt | **포화 → 헤드텀 회피** |
+| 차종별 견인 스펙 나열 | autoreviewnest 등 스펙 사이트 다수 | 코모디티 → 기각 |
+| **"트럭을 소유할 것이냐"는 재무 비교** | **전무.** 렌트 관련 콘텐츠는 전부 렌탈 요율·U-Haul vs Home Depot 물류 안내뿐 | **진입 (핵심 웨지)** |
+| 견인 시 실제 여력(적재량 잠식) | themotorguy 정도가 계산, 나머지는 설명만 | 의사결정형으로 재구성해 진입 |
+
+### 경쟁 회피 장치
+- 견인 업계 사이트는 **기계적 스펙**을, 렌탈 콘텐츠는 **요율 안내**를 한다. **둘을 잇는 재무 의사결정("트럭이 필요한가")은 아무도 안 한다** — 우리 영역이고 9/21에 확인한 "의사결정형 쿼리 모양"과도 정확히 일치.
+- **결정적 수치**: 하프톤 픽업 $48,000 vs 크로스오버 $34,000, 연 13,000마일 기준 5년 총비용 $52,676 vs $38,815 → **프리미엄 $13,860 = 월 $231**. Home Depot 실제 요율($129/일)로 환산하면 **107 렌탈일 = 연 21회**가 손익분기. 대부분의 사람은 연 6~12회 견인하므로 렌트가 압승.
+- **연료 페널티만 따로 $625/년($3,127/5년)** — 견인을 한 번도 안 해도 매년 내는 돈. 이 프레이밍이 기존 콘텐츠에 전무.
+
+### 신규 툴 — `tools/truck-vs-rent-calculator.html` (824단어)
+- 트럭/대안차량 각각의 가격·MPG·보험등록·정비 + 주행거리·유가·연간 견인횟수·회당 렌트비·비교기간·견인여부.
+- 출력: 양쪽 5년 총비용, **프리미엄, 연료 페널티, 그 돈으로 살 수 있는 렌탈 횟수, 손익분기 연간 횟수**.
+- **견인 체크 시 별도 경고 출력** — 렌탈 픽업은 견인 장비가 없어 렌트 컬럼이 실제를 과소평가한다는 점을 명시(정직성 확보).
+- 기존 툴과 로직 미중복 확인: `car-total-cost-of-ownership-calculator`는 단일 차량 TCO, 이쪽은 **두 차량 + 렌탈 대체재 비교**. 규칙 4 준수.
+- 검증: 파이썬 독립 구현 + node 목업 DOM **5시나리오 전부 일치**(기본/연24회/견인/3년/대안도 대형차).
+
+### 신규 블로그 2건
+1. `blog/do-you-actually-need-a-truck.html` (1,121단어) — 손익분기 21회, 렌탈 요율별 환산표(75분 $19 → 연 146회분). "**작년 캘린더로 실제 횟수를 세라, 상상한 횟수 말고**"가 핵심 조언. 중간 옵션(중형 트럭·SUV+트레일러·중고 세컨 트럭·배송) 제시. 결론을 "사지 마라"가 아니라 **"월 $231을 편의에 쓰는 것임을 알고 사라"**로 맺음.
+2. `blog/how-much-can-my-suv-actually-tow.html` (1,038단어) — **텅웨이트가 견인정격이 아니라 적재량을 잠식**한다는 구조가 핵심. 5,000 정격 SUV가 4인+캠핑짐이면 **2,667로 하락**, 11,000 정격 픽업이 5인+장비면 **5,000으로 하락**. 도어잼 옐로 스티커·트레일러 실중량·80% 룰·부속 조건(WD히치·트레일러 브레이크·토우 패키지).
+
+### 사이트 반영
+- blog/index.html·tools/index.html에 `🛻 Trucks &amp; Towing` 카테고리 신설(Repairs 뒤/앞). Latest 2건. **div 밸런스 159/159 확인**(9/14 중첩 사고 방지).
+- index.html 미리보기 3건 교체 + 툴카드, stat `33+`→`34+`.
+- sitemap 122→125 URL(lastmod 11건), llms.txt `## Guides: Trucks & Towing` 섹션 신설 + Tools 1.
+- 내부링크 12개 페이지. 인바운드: 계산기 6, do-you-need-a-truck 12, suv-tow 7.
+
+### 검증
+- 템플릿 CSS 정규식 경계 추출 + 오염검사 → 오염 없음(신규 블로그 script 6/6, style 1/1).
+- 18개 파일 태그 밸런스·JSON-LD 통과, sitemap XML 유효(125 URL), **모바일 `.row` 미디어쿼리 검사 통과**, 내부링크 1,160개 전수 스캔 깨짐 0건.
+
+### ⚠️ 다음 세션 필독
+1. **의사결정형 쿼리 모양 원칙 유지**(9/21 발견). 정의형은 노출만 쌓이고 클릭 0. 이번 신규 3건 모두 의사결정형으로 작성함.
+2. **MPG 페이지 메타 재수정 금지**(2회 실패). 370노출/0클릭은 구조적.
+3. **Trucks & Towing 확장 후보**: 트레일러 구입 vs 렌트, 토우 패키지가 값어치를 하나, 견인 시 연비 손실(캠퍼 견인 MPG 반토막), 5th wheel vs 범퍼풀. 전부 의사결정형으로 가능.
+4. **차종별 각도는 여전히 미착수** — Bing에 "2017 dodge minivan", "jetta elantra sentra k4", "gmc yukon" 등 차종 특정 쿼리가 계속 등장. 차종별 유지비/연료비는 콘텐츠 팜 리스크가 있으니 **차종을 입력받는 도구 형태**로 접근할 것.
+5. 이월 클러스터 후보: IRS 사업용 마일리지 공제(연초 발행 유리), 차량 기부 세금공제, 겨울타이어. Repairs 확장(타이어 2 vs 4, 보유자 관점 수명, 정비 견적 읽는 법). Accidents 확장(렌터카 커버리지·ACV 이의제기·우박 전손).
+6. blog/index.html Latest 트리밍 여부 12세션째 미결.
 
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
