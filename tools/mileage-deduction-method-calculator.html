@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Standard Mileage vs Actual Expenses Calculator (5-Year, 2026) | AutoCalcHub</title>
+  <meta name="description" content="The first-year election is permanent. Compare standard mileage against actual expenses across five years — not just year one — before you lock yourself out of the better method.">
+  <link rel="canonical" href="https://autocalchub.com/tools/mileage-deduction-method-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .lockin{background:#fdecea;border:1px solid #f5b5ae;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.88rem;color:#8c2318;line-height:1.7;margin-bottom:1rem}
+    .lockin strong{color:#6d1a12}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Standard Mileage vs Actual Expenses Calculator",
+    "url": "https://autocalchub.com/tools/mileage-deduction-method-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Compares the standard mileage rate against the actual expense method across five years, accounting for the permanent first-year election, depreciation limits and Section 179.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-10-05"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Standard Mileage vs Actual Expenses Calculator", "item": "https://autocalchub.com/tools/mileage-deduction-method-calculator.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Standard Mileage vs Actual Expenses</h1>
+    <p>Every other calculator compares one tax year. But the choice you make in your vehicle's <em>first</em> business year is permanent in one direction — pick actual expenses and you can never use standard mileage on that car again. This runs both methods across five years, which is the only comparison that matters.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>🚗 Your Vehicle &amp; Business Use</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="price">Vehicle Cost</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="price" value="28000" min="0" step="1000"></div>
+      </div>
+      <div class="form-group">
+        <label for="vtype">Vehicle Type</label>
+        <select id="vtype">
+          <option value="car" selected>Passenger car / light SUV (under 6,000 lbs GVWR)</option>
+          <option value="heavy">Heavy SUV, pickup or van (over 6,000 lbs GVWR)</option>
+        </select>
+        <span class="hint">GVWR is on the driver's door jamb. Over 6,000 lbs unlocks much larger first-year write-offs.</span>
+      </div>
+      <div class="form-group">
+        <label for="bizMiles">Business Miles Per Year</label>
+        <div class="input-wrap has-suffix"><input type="number" id="bizMiles" value="15000" min="0" step="1000"><span class="input-suffix">mi</span></div>
+      </div>
+      <div class="form-group">
+        <label for="bizPct">Business Use Percentage</label>
+        <div class="input-wrap has-suffix"><input type="number" id="bizPct" value="80" min="1" max="100" step="1"><span class="input-suffix">%</span></div>
+        <span class="hint">Business miles ÷ total miles. Commuting doesn't count as business.</span>
+      </div>
+      <div class="form-group">
+        <label for="opCost">Annual Operating Costs</label>
+        <div class="input-wrap has-suffix"><input type="number" id="opCost" value="6800" min="0" step="100"><span class="input-suffix">$/yr</span></div>
+        <span class="hint">Fuel, insurance, repairs, tires, registration — everything except depreciation.</span>
+      </div>
+      <div class="form-group">
+        <label for="owned">Owned or Leased?</label>
+        <select id="owned">
+          <option value="own" selected>I own it (or am financing it)</option>
+          <option value="lease">I lease it</option>
+        </select>
+        <span class="hint">Leases have stricter rules — see the warning below the results.</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Compare Both Methods Over 5 Years →</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="verdict-box">
+      <h3 id="vTitle"></h3>
+      <span class="big" id="vBig"></span>
+      <p id="vSub"></p>
+    </div>
+
+    <div class="lockin" id="lockinBox"></div>
+
+    <div class="two-col">
+      <div class="calc-card" style="margin:0">
+        <h2>📏 Standard Mileage</h2>
+        <div class="row"><span>Year 1 (2026 blended rate)</span><span id="sY1"></span></div>
+        <div class="row"><span>Years 2–5</span><span id="sRest"></span></div>
+        <div class="row"><span>5-year total deduction</span><span id="sTotal"></span></div>
+      </div>
+      <div class="calc-card" style="margin:0">
+        <h2>🧾 Actual Expenses</h2>
+        <div class="row"><span>Year 1 depreciation</span><span id="aDep1"></span></div>
+        <div class="row"><span>Years 2–5 depreciation</span><span id="aDepRest"></span></div>
+        <div class="row"><span>Operating costs (business share)</span><span id="aOp"></span></div>
+        <div class="row"><span>5-year total deduction</span><span id="aTotal"></span></div>
+      </div>
+    </div>
+
+    <div class="calc-card">
+      <h2>⚠️ The Year-One Trap</h2>
+      <div class="row"><span>Year 1 only — standard mileage</span><span id="y1Std"></span></div>
+      <div class="row"><span>Year 1 only — actual expenses</span><span id="y1Act"></span></div>
+      <div class="row"><span>Year 1 alone would tell you to pick</span><span id="y1Verdict"></span></div>
+      <div class="row"><span>Five years says pick</span><span id="y5Verdict"></span></div>
+    </div>
+
+    <div class="note" id="mainNote"></div>
+    <div class="disclaimer">⚠️ <strong>An estimate, not tax advice.</strong> Depreciation is modelled using simplified MACRS with 2026 luxury-auto limits, Section 179 caps and 40% bonus depreciation; your actual figures depend on placed-in-service date, mid-quarter conventions, business-use percentage changes, state rules and your full return. Business-use percentage dropping below 50% can trigger depreciation recapture. Employees generally cannot deduct unreimbursed vehicle expenses under current federal law. Confirm everything with a CPA before filing — the first-year election is not something to guess at.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why the First Year Is Different</h2>
+    <p>The IRS rule most people meet too late: <strong>if you own the vehicle and use the actual expense method in its first business year, the standard mileage rate is off the table for that vehicle permanently.</strong> Start with standard mileage instead and you keep the option to switch to actual in any later year.</p>
+    <p>That asymmetry means the two choices are not equally risky. Standard mileage in year one preserves flexibility. Actual expenses in year one spends it.</p>
+    <p>Leases work differently and more strictly: choose standard mileage on a leased vehicle and you must keep it for the entire lease, renewals included.</p>
+
+    <h2>The 2026 Rates</h2>
+    <p>2026 is unusual because the rate changed mid-year. Business use is <strong>72.5 cents per mile from January 1 through June 30</strong>, and <strong>76 cents from July 1 through December 31</strong>. If your driving is spread evenly the blended figure is about 74.25 cents, but you should split your log at June 30 and apply each rate to the correct half rather than using an average.</p>
+    <p>Medical and qualifying moving mileage is 23.5 cents from July 1. The charitable rate stays at 14 cents, because that one is fixed by statute rather than recalculated by the IRS each year.</p>
+
+    <h2>Where Each Method Tends to Win</h2>
+    <h3>Standard mileage usually wins when…</h3>
+    <ul>
+      <li>You drive a lot of business miles — the deduction scales directly with mileage while actual costs don't.</li>
+      <li>The vehicle is inexpensive and fuel-efficient, so there's less real cost to deduct.</li>
+      <li>You want simplicity. One log, one multiplication, far less audit surface.</li>
+      <li>You plan to keep the car many years. Depreciation runs out; mileage doesn't.</li>
+    </ul>
+    <h3>Actual expenses usually wins when…</h3>
+    <ul>
+      <li>The vehicle is expensive, especially a heavy SUV or pickup over 6,000 lbs GVWR, where Section 179 and bonus depreciation can produce a very large first-year deduction.</li>
+      <li>Business miles are low but costs are high — a costly vehicle driven 6,000 business miles a year.</li>
+      <li>Running costs are unusually high: poor fuel economy, expensive insurance, heavy repairs.</li>
+    </ul>
+
+    <h2>What Counts, and What Doesn't</h2>
+    <ul>
+      <li><strong>Commuting is never deductible.</strong> Home to a regular workplace is personal travel regardless of method. A qualifying home office can change this, since your first trip then starts from your principal place of business.</li>
+      <li><strong>Parking and tolls</strong> for business trips are deductible on top of either method.</li>
+      <li><strong>Most employees can't deduct</strong> unreimbursed vehicle expenses under current federal rules. This is largely a self-employed and business-owner question.</li>
+      <li><strong>Five or more vehicles used simultaneously</strong> in the same business disqualifies you from the standard mileage rate entirely.</li>
+      <li><strong>You can't mix methods</strong> for the same vehicle in the same year, though you can use different methods for different vehicles.</li>
+    </ul>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/standard-mileage-vs-actual-expenses.html" style="color:var(--orange);text-decoration:none;">Standard Mileage vs Actual Expenses: The Choice You Can't Undo</a></li>
+        <li><a href="../blog/what-car-expenses-can-you-write-off.html" style="color:var(--orange);text-decoration:none;">What Car Expenses Can You Actually Write Off?</a></li>
+        <li><a href="rideshare-car-cost-per-mile-calculator.html" style="color:var(--orange);text-decoration:none;">Rideshare Cost Per Mile Calculator</a></li>
+        <li><a href="car-loan-interest-deduction-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Interest Deduction Calculator</a></li>
+        <li><a href="car-total-cost-of-ownership-calculator.html" style="color:var(--orange);text-decoration:none;">Car Running Cost Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+
+var RATE_2026 = (0.725 + 0.76) / 2;   // blended, evenly spread driving
+var RATE_FWD  = 0.76;                 // assumed flat for years 2-5
+var MACRS     = [0.20, 0.32, 0.192, 0.1152, 0.1152];
+var CAP_CAR_Y1 = 20300;               // 2026 luxury auto first-year cap with bonus
+var S179_SUV   = 30500;               // 2026 Section 179 cap for heavy SUVs
+var BONUS      = 0.40;                // 2026 bonus depreciation
+
+function calculate(){
+  var price   = parseFloat(document.getElementById('price').value) || 0;
+  var heavy   = document.getElementById('vtype').value === 'heavy';
+  var bizMi   = parseFloat(document.getElementById('bizMiles').value) || 0;
+  var bizPct  = (parseFloat(document.getElementById('bizPct').value) || 0) / 100;
+  var opCost  = parseFloat(document.getElementById('opCost').value) || 0;
+  var leased  = document.getElementById('owned').value === 'lease';
+
+  // --- Standard mileage ---
+  var stdY1   = bizMi * RATE_2026;
+  var stdRest = bizMi * RATE_FWD * 4;
+  var stdTotal = stdY1 + stdRest;
+
+  // --- Actual expenses: depreciation schedule ---
+  var dep = [];
+  if (leased) {
+    // Leases: no depreciation; the business share of lease payments is deducted instead.
+    // Approximated here as the operating-cost line already entered by the user.
+    for (var i = 0; i < 5; i++) dep.push(0);
+  } else if (heavy) {
+    var s179 = Math.min(S179_SUV, price);
+    var rem  = price - s179;
+    var bonus = rem * BONUS;
+    var rem2 = rem - bonus;
+    dep.push(s179 + bonus + rem2 * MACRS[0]);
+    for (var j = 1; j < 5; j++) dep.push(rem2 * MACRS[j]);
+  } else {
+    var y1 = Math.min(price * MACRS[0] + price * BONUS, CAP_CAR_Y1);
+    dep.push(y1);
+    var left = Math.max(0, price - y1);
+    var tailShare = MACRS[1] + MACRS[2] + MACRS[3] + MACRS[4];
+    for (var k = 1; k < 5; k++) dep.push(Math.min(left * MACRS[k] / tailShare, 19500 / 4));
+  }
+
+  var depTotal = dep.reduce(function(a, b){ return a + b; }, 0) * bizPct;
+  var depY1 = dep[0] * bizPct;
+  var depRest = depTotal - depY1;
+  var opTotal = opCost * 5 * bizPct;
+  var actTotal = depTotal + opTotal;
+
+  document.getElementById('sY1').textContent = money(stdY1);
+  document.getElementById('sRest').textContent = money(stdRest);
+  document.getElementById('sTotal').textContent = money(stdTotal);
+  document.getElementById('aDep1').textContent = money(depY1) + (leased ? ' (lease — n/a)' : '');
+  document.getElementById('aDepRest').textContent = money(depRest);
+  document.getElementById('aOp').textContent = money(opTotal);
+  document.getElementById('aTotal').textContent = money(actTotal);
+
+  var stdWins = stdTotal > actTotal;
+  var gap = Math.abs(stdTotal - actTotal);
+  document.getElementById('sTotal').parentNode.className = stdWins ? 'row good' : 'row';
+  document.getElementById('aTotal').parentNode.className = stdWins ? 'row' : 'row good';
+
+  // --- Year one in isolation, which is what every other calculator shows ---
+  var y1Std = stdY1;
+  var y1Act = (opCost + dep[0]) * bizPct;
+  var y1SaysStd = y1Std > y1Act;
+  document.getElementById('y1Std').textContent = money(y1Std);
+  document.getElementById('y1Act').textContent = money(y1Act);
+  document.getElementById('y1Verdict').textContent = y1SaysStd ? 'Standard mileage' : 'Actual expenses';
+  document.getElementById('y5Verdict').textContent = stdWins ? 'Standard mileage' : 'Actual expenses';
+  var conflict = (y1SaysStd !== stdWins);
+  document.getElementById('y1Verdict').parentNode.className = conflict ? 'row warn' : 'row';
+  document.getElementById('y5Verdict').parentNode.className = 'row good';
+
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  vT.textContent = stdWins ? 'Standard Mileage Deducts More' : 'Actual Expenses Deducts More';
+  vB.textContent = money(gap);
+  vS.textContent = 'Over five years, ' + (stdWins ? 'standard mileage' : 'actual expenses') + ' gives you ' +
+    money(gap) + ' more in total deductions — ' + money(stdWins ? stdTotal : actTotal) + ' against ' +
+    money(stdWins ? actTotal : stdTotal) + '.';
+
+  // --- Lock-in warning: the whole point of the tool ---
+  var lock = document.getElementById('lockinBox');
+  if (leased) {
+    lock.innerHTML = '<strong>Leased vehicle — different rule.</strong> If you choose the standard mileage rate on a leased car, you must use it for the <em>entire lease term, including renewals</em>. You cannot switch mid-lease. Depreciation does not apply to a lease; under the actual expense method you would deduct the business share of your lease payments instead, plus an income inclusion amount on more expensive vehicles. The depreciation figures above are therefore shown as zero — treat the actual-expense column here as indicative only and get a CPA to price the lease-payment route.';
+  } else if (conflict) {
+    lock.innerHTML = '<strong>⚠️ This is exactly the trap.</strong> Looking at year one alone, ' +
+      (y1SaysStd ? 'standard mileage' : 'actual expenses') + ' looks better — and that is the comparison almost every other calculator shows you. ' +
+      'Across five years the answer flips to <strong>' + (stdWins ? 'standard mileage' : 'actual expenses') + '</strong>. ' +
+      (!stdWins
+        ? 'Since actual expenses wins over the full period here, electing it in year one is defensible — but understand that doing so permanently bars this vehicle from the standard mileage rate.'
+        : 'If you elect actual expenses in year one because of that larger first-year number, you lose access to standard mileage on this vehicle forever, and give up about ' + money(gap) + ' of deduction over five years.');
+  } else {
+    lock.innerHTML = '<strong>Remember the one-way door.</strong> Electing <em>actual expenses</em> in the vehicle\'s first business year permanently bars you from ever using the standard mileage rate for it. Electing <em>standard mileage</em> first keeps both options open in later years. Here both the one-year and five-year comparisons point the same way (' +
+      (stdWins ? 'standard mileage' : 'actual expenses') + '), so the decision is less finely balanced — but the asymmetry still favours starting with standard mileage unless actual is clearly and durably ahead.';
+  }
+
+  var note = '<strong>How this was calculated:</strong> Standard mileage applies the blended 2026 rate of $' +
+    RATE_2026.toFixed(4) + ' per mile in year one (72.5¢ before July 1, 76¢ after) and $' + RATE_FWD.toFixed(2) +
+    ' for years two to five, on ' + bizMi.toLocaleString() + ' business miles a year. ';
+  if (!leased) {
+    note += 'Actual expenses combine ' + money(opTotal) + ' of operating costs at ' + (bizPct * 100).toFixed(0) +
+      '% business use with ' + money(depTotal) + ' of depreciation' +
+      (heavy ? ', including Section 179 expensing up to ' + money(S179_SUV) + ' and 40% bonus depreciation available on vehicles over 6,000 lbs GVWR' :
+               ', capped by the 2026 luxury-auto first-year limit of ' + money(CAP_CAR_Y1)) + '. ';
+  }
+  note += '<br><br><strong>Why five years and not one:</strong> depreciation front-loads heavily while the mileage deduction is steady. ' +
+    'A first-year snapshot flatters actual expenses on almost any vehicle, which is precisely how people talk themselves into an irreversible election. ' +
+    'The number that matters is the total across the years you will actually own the car.';
+  document.getElementById('mainNote').innerHTML = note;
+
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

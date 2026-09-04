@@ -41,6 +41,7 @@
 - [0% APR vs Cash Rebate Calculator](https://autocalchub.com/tools/zero-percent-apr-vs-rebate-calculator.html): Compare a manufacturer's 0% APR financing offer against taking the cash rebate and financing at your own bank or credit union rate.
 - [Auto Loan Cosigner Calculator](https://autocalchub.com/tools/auto-loan-cosigner-calculator.html): See how much a cosigner could lower your monthly payment and total interest by comparing your solo APR against a cosigned APR.
 - [Rideshare Car Cost-Per-Mile Calculator](https://autocalchub.com/tools/rideshare-car-cost-per-mile-calculator.html): Compare buying, renting, and leasing a car for Uber, Lyft, DoorDash, or Instacart on real cost per mile, including lease mileage overage fees.
+- [Standard Mileage vs Actual Expenses Calculator](https://autocalchub.com/tools/mileage-deduction-method-calculator.html): Compares both IRS vehicle deduction methods across five years rather than one, modelling Section 179, bonus depreciation and luxury-auto caps, and flagging when the year-one answer conflicts with the five-year answer — which matters because the first-year election is irreversible.
 - [Car Tariff Impact Calculator](https://autocalchub.com/tools/car-tariff-impact-calculator.html): Check your vehicle's country of assembly from its VIN and estimate how much 2026 auto tariffs may be adding to its price and monthly payment.
 - [Car Subscription vs Lease vs Buy Calculator](https://autocalchub.com/tools/car-subscription-vs-lease-vs-buy-calculator.html): Compare the true monthly and total cost of a car subscription, a lease, and buying, including insurance and maintenance.
 - [Lease Takeover Cost Calculator](https://autocalchub.com/tools/lease-takeover-cost-calculator.html): Compare the total remaining cost of taking over someone else's car lease against starting a new lease for the same term.
@@ -119,6 +120,10 @@
 ## Guides: Moving & Relocation
 - [Should You Ship Your Car or Drive It?](https://autocalchub.com/blog/should-you-ship-your-car-or-drive-it.html): Driving is cheaper than shipping on cash for nearly every route; the decision turns entirely on what you value your time at, with breakeven distances by hourly rate.
 - [Moving to Another State: What to Do With Your Car](https://autocalchub.com/blog/moving-to-another-state-what-to-do-with-your-car.html): The order to handle insurance, inspection, title, registration and license when relocating, plus the fees and deadlines that catch people out.
+
+## Guides: Business & Tax
+- [Standard Mileage vs Actual Expenses: The Choice You Can't Undo](https://autocalchub.com/blog/standard-mileage-vs-actual-expenses.html): Electing actual expenses in a vehicle's first business year permanently bars the standard mileage rate for that car. Depreciation front-loading makes year one flatter actual expenses, so the one-year comparison most sites show can lead to the wrong irreversible choice.
+- [What Car Expenses Can You Actually Write Off?](https://autocalchub.com/blog/what-car-expenses-can-you-write-off.html): Eligibility by worker type, why commuting never counts, the home-office exception that reclassifies most driving, business-use percentage and recapture, and the items deductible on top of the standard rate.
 
 ## Guides: Trucks & Towing
 - [Do You Actually Need a Truck?](https://autocalchub.com/blog/do-you-actually-need-a-truck.html): A half-ton pickup costs roughly $231 a month more than the crossover alternative; that premium buys about 21 rental days a year, which is the real break-even. Covers when owning still wins, especially towing.
