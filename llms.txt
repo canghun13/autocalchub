@@ -12,6 +12,7 @@
 
 - [Car Loan Calculator](https://autocalchub.com/tools/car-loan-calculator.html): Calculate your monthly car payment, total interest, and full loan cost based on price, APR, and term.
 - [Car Affordability Calculator](https://autocalchub.com/tools/car-affordability-calculator.html): Find out how much car you can afford based on your income, expenses, and the 20/4/10 rule.
+- [Car Affordability Rules Comparison](https://autocalchub.com/tools/car-affordability-rules-comparison.html): Applies six competing affordability rules of thumb — 20/4/10, 35% of income, 10% of gross, 15% of take-home, half your salary and one year's salary — to the same income side by side, showing they disagree by up to 8x and recommending which to follow for financed versus cash purchases.
 - [Car Down Payment Calculator](https://autocalchub.com/tools/car-down-payment-calculator.html): See how different down payment amounts affect your monthly payment, total interest, and equity position at purchase.
 - [Car Maintenance Cost Calculator](https://autocalchub.com/tools/car-maintenance-cost-calculator.html): Estimate your annual car maintenance budget based on your vehicle's make type, age, and mileage.
 - [Repair or Replace Car Calculator](https://autocalchub.com/tools/repair-or-replace-car-calculator.html): Compares the true cost per month of repairing your current car against replacing it, counting further repairs, depreciation, financing and the equity held at the end — the variables the 50% rule leaves out.
@@ -47,6 +48,7 @@
 - [Lease Takeover Cost Calculator](https://autocalchub.com/tools/lease-takeover-cost-calculator.html): Compare the total remaining cost of taking over someone else's car lease against starting a new lease for the same term.
 
 ## Guides: Buying a Car
+- [Which Car Affordability Rule Should You Actually Use?](https://autocalchub.com/blog/car-affordability-rules-which-one-should-you-use.html): Why the common rules diverge — payment caps versus price caps, whether running costs are counted, and the cash-purchase assumption behind the salary-multiple rules — and why 20/4/10 is the one worth following when financing.
 - [What Happens If You Go Over Your Lease Mileage?](https://autocalchub.com/blog/what-happens-if-you-go-over-lease-mileage.html): The four exits from a mileage overage — driving less, paying at turn-in, buying miles in advance at roughly half the rate, and buying out the lease, which erases the charge entirely.
 - [Does Buying a Car Out of State Save on Taxes?](https://autocalchub.com/blog/does-buying-a-car-out-of-state-save-on-taxes.html): Sales tax follows the registration state, not the seller. Covers the reciprocal credit cap, the no-tax-state myth, and the forfeited trade-in credit.
 

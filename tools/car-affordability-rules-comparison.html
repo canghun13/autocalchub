@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Affordability Rules Compared — What Each One Says for Your Salary | AutoCalcHub</title>
+  <meta name="description" content="The 10% rule, 20/4/10, 35% of income, half your salary, one year's salary — they disagree by nearly 4x on the same income. See what each says for your salary and which to actually use.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-affordability-rules-comparison.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .rule{border-bottom:1px solid var(--border);padding:0.9rem 0}
+    .rule:last-child{border-bottom:none}
+    .rule-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+    .rule-name{font-weight:600;color:var(--charcoal);font-size:0.92rem}
+    .rule-price{font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);white-space:nowrap;font-size:1rem}
+    .rule-sub{font-size:0.8rem;color:var(--light);margin-top:0.25rem;line-height:1.5}
+    .rule.pick .rule-name,.rule.pick .rule-price{color:#2e7d32}
+    .rule.loose .rule-price{color:#c62828}
+    .tag{display:inline-block;font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;padding:0.12rem 0.45rem;border-radius:4px;margin-left:0.4rem;vertical-align:middle}
+    .tag.rec{background:#e3f4e4;color:#2e7d32}
+    .tag.risk{background:#fdecea;color:#c62828}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    @media(max-width:640px){.form-grid{grid-template-columns:1fr}.rule-top{flex-direction:column;align-items:flex-start;gap:0.15rem}.rule-price{font-size:1.05rem}.calc-card{padding:1.5rem 1.25rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Affordability Rules Comparison",
+    "url": "https://autocalchub.com/tools/car-affordability-rules-comparison.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Applies six competing car affordability rules of thumb to your salary side by side, shows how far apart they land, and recommends which to use.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-10-12"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Car Affordability Rules Comparison", "item": "https://autocalchub.com/tools/car-affordability-rules-comparison.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Car Affordability Rules, Compared</h1>
+    <p>You'll be told to spend 35% of your income, or 10% of gross monthly, or half your salary, or one year's salary. These are quoted as if they're interchangeable. On the same income they land <strong>nearly four times apart</strong>. Here's what each one actually says for you, and which is worth following.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>💵 Your Numbers</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="salary">Annual Gross Salary</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="salary" value="60000" min="0" step="1000"></div>
+        <span class="hint">Before tax. Use household income if you're buying jointly.</span>
+      </div>
+      <div class="form-group">
+        <label for="takeHome">Take-Home Pay</label>
+        <div class="input-wrap has-suffix"><input type="number" id="takeHome" value="75" min="40" max="100" step="1"><span class="input-suffix">%</span></div>
+        <span class="hint">Roughly 70–80% for most people after tax and deductions.</span>
+      </div>
+      <div class="form-group">
+        <label for="apr">Loan APR</label>
+        <div class="input-wrap has-suffix"><input type="number" id="apr" value="7.2" min="0" max="30" step="0.1"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label for="runCost">Insurance, Fuel &amp; Upkeep</label>
+        <div class="input-wrap has-suffix"><input type="number" id="runCost" value="350" min="0" step="25"><span class="input-suffix">$/mo</span></div>
+        <span class="hint">Rules that cap "total car costs" count these, not just the payment.</span>
+      </div>
+      <div class="form-group">
+        <label for="otherDebt">Other Monthly Debt Payments</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="otherDebt" value="0" min="0" step="50"></div>
+        <span class="hint">Student loans, credit cards, mortgage. Leave 0 if none.</span>
+      </div>
+      <div class="form-group">
+        <label for="cash">Are You Paying Cash?</label>
+        <select id="cash">
+          <option value="no" selected>No — financing</option>
+          <option value="yes">Yes — buying outright</option>
+        </select>
+        <span class="hint">Cash buyers should judge against the salary-multiple rules, not payment rules.</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Compare All Six Rules →</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="verdict-box">
+      <h3 id="vTitle"></h3>
+      <span class="big" id="vBig"></span>
+      <p id="vSub"></p>
+    </div>
+
+    <div class="calc-card">
+      <h2>📐 What Each Rule Says</h2>
+      <div id="ruleList"></div>
+    </div>
+
+    <div class="note" id="mainNote"></div>
+    <div class="disclaimer">⚠️ <strong>Rules of thumb are starting points, not budgets.</strong> None of these know your rent, your savings, your job security, or whether you have an emergency fund. A number that clears every rule can still be wrong for you, and a number that fails one can be fine if the rest of your finances are solid. Use this to bound the range, then build an actual budget.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why They Disagree So Much</h2>
+    <p>The rules aren't measuring the same thing, which is why quoting them side by side without saying so is misleading.</p>
+    <ul>
+      <li><strong>Some cap the payment, some cap the price.</strong> "10% of gross monthly" limits what leaves your account each month; "35% of annual income" limits the sticker. Those produce very different answers depending on your loan term and rate.</li>
+      <li><strong>Some count all car costs, some only the loan.</strong> Insurance, fuel and maintenance run $300–450 a month for most drivers. A rule that includes them is far stricter than one that doesn't.</li>
+      <li><strong>Some assume financing, some assume cash.</strong> The salary-multiple rules — half your salary, one year's salary — were written for outright purchases. Applying them to a financed car ignores interest entirely.</li>
+      <li><strong>They were written for different eras.</strong> "One year's salary" dates from when the average new car cost a fraction of what it does now. It's the loosest rule on the list and the least useful today.</li>
+    </ul>
+
+    <h2>Which One to Actually Use</h2>
+    <p>If you're financing, <strong>20/4/10 is the one worth following</strong>: 20% down, no more than four years, and total car costs — payment plus insurance plus fuel plus maintenance — under 10% of gross income. It's the strictest of the common rules and it's strict for a reason. The 20% down payment keeps you from going underwater, the four-year term stops you paying interest on a depreciating asset for most of a decade, and the all-in cap prevents the classic mistake of budgeting for the payment and forgetting the insurance.</p>
+    <p>If you're paying cash, the salary-multiple rules make more sense, and <strong>half your annual salary</strong> is the sensible ceiling for most people. One year's salary is defensible only if you have no other debt, a full emergency fund, and you intend to keep the car a very long time.</p>
+    <p>The 35% rule sits in the middle and works reasonably as a quick sanity check on the sticker price before you look at financing at all.</p>
+
+    <h2>What None of Them Include</h2>
+    <p>Every rule here is built on income alone, which is their common weakness. They don't ask about:</p>
+    <ul>
+      <li><strong>Your housing cost.</strong> Someone paying 40% of income in rent cannot afford what these rules permit.</li>
+      <li><strong>Other debt.</strong> Student loans and credit cards compete for the same money.</li>
+      <li><strong>Your emergency fund.</strong> A large down payment that empties your savings trades one risk for a worse one.</li>
+      <li><strong>Job stability.</strong> A four-year commitment on unstable income is a different proposition.</li>
+      <li><strong>How long you'll keep it.</strong> Spending more on a car you'll own twelve years is very different from the same spend on a three-year trade cycle.</li>
+    </ul>
+    <p>Treat whichever rule you pick as an upper bound, then subtract for anything above that applies to you.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/car-affordability-rules-which-one-should-you-use.html" style="color:var(--orange);text-decoration:none;">Which Car Affordability Rule Should You Actually Use?</a></li>
+        <li><a href="../blog/how-much-should-i-spend-on-a-car-based-on-salary.html" style="color:var(--orange);text-decoration:none;">How Much Should I Spend on a Car Based on Salary?</a></li>
+        <li><a href="car-affordability-calculator.html" style="color:var(--orange);text-decoration:none;">Car Affordability Calculator</a></li>
+        <li><a href="../blog/how-much-car-can-i-afford.html" style="color:var(--orange);text-decoration:none;">How Much Car Can I Afford?</a></li>
+        <li><a href="../blog/how-much-should-i-put-down-on-a-car.html" style="color:var(--orange);text-decoration:none;">How Much Should I Put Down on a Car?</a></li>
+        <li><a href="../blog/what-is-a-good-car-payment-per-month.html" style="color:var(--orange);text-decoration:none;">What Is a Good Car Payment Per Month?</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+
+function priceFromPayment(m, apr, months, downPct){
+  if (m <= 0) return 0;
+  var r = apr / 100 / 12;
+  var financed = r > 0 ? m * (1 - Math.pow(1 + r, -months)) / r : m * months;
+  return financed / (1 - downPct);
+}
+function paymentFromPrice(price, apr, months, downPct){
+  var financed = price * (1 - downPct);
+  var r = apr / 100 / 12;
+  return r > 0 ? financed * r / (1 - Math.pow(1 + r, -months)) : financed / months;
+}
+
+function calculate(){
+  var salary  = parseFloat(document.getElementById('salary').value) || 0;
+  var thPct   = (parseFloat(document.getElementById('takeHome').value) || 75) / 100;
+  var apr     = parseFloat(document.getElementById('apr').value) || 0;
+  var run     = parseFloat(document.getElementById('runCost').value) || 0;
+  var debt    = parseFloat(document.getElementById('otherDebt').value) || 0;
+  var cash    = document.getElementById('cash').value === 'yes';
+
+  var gross = salary / 12;
+  var take  = salary * thPct / 12;
+
+  var rules = [];
+
+  // 1) 10% of gross — payment only, ignores running costs
+  var m1 = gross * 0.10;
+  rules.push({ name: '10% of gross income', price: priceFromPayment(m1, apr, 60, 0.10), pay: m1,
+    sub: 'Caps the payment at 10% of gross monthly income (' + money(m1) + '/mo), assuming 60 months and 10% down. Ignores insurance and fuel entirely.', type: 'finance' });
+
+  // 2) 20/4/10 — all-in cap, 20% down, 48 months
+  var cap2 = gross * 0.10;
+  var m2 = Math.max(0, cap2 - run);
+  var blocked = m2 <= 0;
+  rules.push({ name: '20/4/10 rule', price: priceFromPayment(m2, apr, 48, 0.20), pay: m2,
+    sub: blocked
+      ? 'The 10% cap on total car costs is ' + money(cap2) + '/mo, but you already spend ' + money(run) +
+        ' on insurance, fuel and upkeep. On this income the rule says there is nothing left for a payment at all.'
+      : '20% down, 48-month term, and total car costs under 10% of gross. After ' + money(run) +
+        ' of running costs that leaves ' + money(m2) + '/mo for the payment.',
+    type: 'finance', rec: !cash && !blocked, blocked: blocked });
+
+  // 3) 15% of take-home, all-in
+  var m3 = Math.max(0, take * 0.15 - run);
+  rules.push({ name: '15% of take-home (all-in)', price: priceFromPayment(m3, apr, 60, 0.10), pay: m3,
+    sub: 'Total car costs under 15% of take-home pay (' + money(take * 0.15) + '/mo), leaving ' + money(m3) + ' for the payment after running costs.', type: 'finance' });
+
+  // 4) 35% of annual income — price cap
+  var p4 = salary * 0.35;
+  rules.push({ name: '35% of annual income', price: p4, pay: paymentFromPrice(p4, apr, 60, 0.10),
+    sub: 'Caps the sticker price rather than the payment. A quick sanity check before you look at financing.', type: 'price' });
+
+  // 5) Half your annual salary
+  var p5 = salary * 0.50;
+  rules.push({ name: 'Half your annual salary', price: p5, pay: paymentFromPrice(p5, apr, 60, 0.10),
+    sub: 'A salary-multiple rule written for cash buyers. Sensible ceiling if you are paying outright.', type: 'price', rec: cash });
+
+  // 6) One year's salary
+  var p6 = salary * 1.00;
+  rules.push({ name: "One year's salary", price: p6, pay: paymentFromPrice(p6, apr, 60, 0.10),
+    sub: 'The loosest rule in common use, and a holdover from when cars cost far less relative to income.', type: 'price', loose: true });
+
+  var prices = rules.map(function(r){ return r.price; }).filter(function(p){ return p > 500; });
+  var lo = prices.length ? Math.min.apply(null, prices) : 0;
+  var hi = prices.length ? Math.max.apply(null, prices) : 0;
+  var spread = lo > 0 ? hi / lo : 0;
+
+  // Debt adjustment note
+  var debtBite = debt > 0 ? Math.min(1, debt / (gross * 0.36)) : 0;
+
+  var html = '';
+  rules.sort(function(a, b){ return a.price - b.price; });
+  rules.forEach(function(r){
+    var cls = 'rule' + (r.rec ? ' pick' : '') + (r.loose ? ' loose' : '');
+    var tag = r.rec ? '<span class="tag rec">Recommended</span>' : (r.loose ? '<span class="tag risk">Loosest</span>' : '');
+    if (r.blocked) { cls = 'rule loose'; tag = '<span class="tag risk">Fails outright</span>'; }
+    html += '<div class="' + cls + '"><div class="rule-top"><span class="rule-name">' + r.name + tag +
+            '</span><span class="rule-price">' + (r.blocked ? 'No room' : money(r.price)) + '</span></div>' +
+            '<div class="rule-sub">' + r.sub + (r.blocked ? '' : ' Works out to about ' + money(r.pay) + '/mo on the loan.') + '</div></div>';
+  });
+  document.getElementById('ruleList').innerHTML = html;
+
+  var recRule = rules.filter(function(r){ return r.rec; })[0];
+  document.getElementById('vTitle').textContent = 'The Rules Disagree by ' + spread.toFixed(1) + '×';
+  document.getElementById('vBig').textContent = money(lo) + ' – ' + money(hi);
+  document.getElementById('vSub').textContent = 'On a ' + money(salary) + ' salary, the six common rules put your ceiling anywhere from ' +
+    money(lo) + ' to ' + money(hi) + '. ' + (recRule
+      ? 'The one worth following is ' + recRule.name + ', which lands at ' + money(recRule.price) + '.'
+      : 'The strictest rule, 20/4/10, leaves no room at all once running costs are counted — see below.');
+
+  var note = '<strong>Why the spread is so wide:</strong> the strictest rules cap your <em>total</em> car costs — payment plus the ' +
+    money(run) + ' a month you spend on insurance, fuel and maintenance — while the loosest ones cap only the sticker price and ignore financing altogether. ' +
+    'That single difference accounts for most of the ' + spread.toFixed(1) + '× gap.';
+  note += '<br><br><strong>Our recommendation for your situation:</strong> ';
+  if (cash) {
+    note += 'you said you are paying cash, so the payment-based rules do not apply to you. <strong>Half your annual salary (' +
+      money(salary * 0.50) + ') is the sensible ceiling</strong>, and one year\'s salary is defensible only with no other debt and a full emergency fund. ' +
+      'Paying cash also removes interest entirely, which is worth more than any of these rules will tell you.';
+  } else {
+    if (blocked) {
+      note += '<strong>20/4/10 says you have no room to finance a car at this income while spending ' + money(run) +
+        ' a month to run one</strong>, because that alone exceeds the ' + money(cap2) +
+        ' the rule allows for all car costs combined. That is a real signal rather than a quirk of the maths. ' +
+        'The realistic options are a cheaper vehicle that costs less to insure and fuel, a larger down payment to shrink the loan, or waiting. ' +
+        'If you must buy now, the 15%-of-take-home figure of ' +
+        money(rules.filter(function(r){ return r.name === '15% of take-home (all-in)'; })[0].price) +
+        ' is the next-strictest number to work against.';
+    } else {
+      note += '<strong>follow 20/4/10 — ' + money(rules.filter(function(r){ return r.name === '20/4/10 rule'; })[0].price) +
+        '</strong>. It is the strictest here and deliberately so: the 20% down keeps you from going underwater, the 48-month term stops you paying interest on a depreciating asset for most of a decade, and the all-in cap catches the running costs people forget to budget.';
+    }
+  }
+  if (debt > 0) {
+    note += '<br><br><strong>You entered ' + money(debt) + ' of other monthly debt.</strong> None of these rules account for that — they all assume the car is your only obligation. ' +
+      'With existing payments that size, treat the figure above as an upper bound and reduce it' +
+      (debtBite > 0.5 ? ' substantially — your other debt is already consuming a large share of what lenders consider affordable.' : ' accordingly.');
+  }
+  document.getElementById('mainNote').innerHTML = note;
+
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>
