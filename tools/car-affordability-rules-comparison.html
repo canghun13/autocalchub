@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Car Affordability Rules Compared — What Each One Says for Your Salary | AutoCalcHub</title>
-  <meta name="description" content="The 10% rule, 20/4/10, 35% of income, half your salary, one year's salary — they disagree by nearly 4x on the same income. See what each says for your salary and which to actually use.">
+  <meta name="description" content="The 10% rule, 20/4/10, 35% of income, half your salary — they disagree by nearly 8x. See what each says for your salary, or run it backwards: what salary do you need for a $50,000 car?">
   <link rel="canonical" href="https://autocalchub.com/tools/car-affordability-rules-comparison.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,7 +73,7 @@
     "description": "Applies six competing car affordability rules of thumb to your salary side by side, shows how far apart they land, and recommends which to use.",
     "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
     "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
-    "dateModified": "2026-10-12"
+    "dateModified": "2026-10-19"
   }
   </script>
   <script type="application/ld+json">
@@ -93,7 +93,7 @@
 <div class="tool-page">
   <div class="tool-header">
     <h1>Car Affordability Rules, Compared</h1>
-    <p>You'll be told to spend 35% of your income, or 10% of gross monthly, or half your salary, or one year's salary. These are quoted as if they're interchangeable. On the same income they land <strong>nearly four times apart</strong>. Here's what each one actually says for you, and which is worth following.</p>
+    <p>You'll be told to spend 35% of your income, or 10% of gross monthly, or half your salary, or one year's salary. These are quoted as if they're interchangeable. On the same income they land <strong>nearly four times apart</strong>. Here's what each one actually says for you, and which is worth following. You can also run it backwards — enter a car price and see what salary each rule demands.</p>
   </div>
 
   <div class="ad-banner">Advertisement · Google AdSense</div>
@@ -102,6 +102,18 @@
     <h2>💵 Your Numbers</h2>
     <div class="form-grid">
       <div class="form-group">
+        <label for="dir">Which Way Round?</label>
+        <select id="dir" onchange="toggleDir()">
+          <option value="fwd" selected>I know my salary — what can I spend?</option>
+          <option value="rev">I know the car price — what salary do I need?</option>
+        </select>
+      </div>
+      <div class="form-group" id="grpPrice" style="display:none">
+        <label for="carPrice">Car Price</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="carPrice" value="50000" min="0" step="1000"></div>
+        <span class="hint">The sticker price of the car you're considering.</span>
+      </div>
+      <div class="form-group" id="grpSalary">
         <label for="salary">Annual Gross Salary</label>
         <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="salary" value="60000" min="0" step="1000"></div>
         <span class="hint">Before tax. Use household income if you're buying jointly.</span>
@@ -211,7 +223,77 @@ function paymentFromPrice(price, apr, months, downPct){
   return r > 0 ? financed * r / (1 - Math.pow(1 + r, -months)) : financed / months;
 }
 
+function toggleDir(){
+  var rev = document.getElementById('dir').value === 'rev';
+  document.getElementById('grpPrice').style.display = rev ? 'flex' : 'none';
+  document.getElementById('grpSalary').style.display = rev ? 'none' : 'flex';
+  calculate();
+}
+
+// Reverse mode: given a car price, what salary does each rule demand?
+function calculateReverse(){
+  var price = parseFloat(document.getElementById('carPrice').value) || 0;
+  var thPct = (parseFloat(document.getElementById('takeHome').value) || 75) / 100;
+  var apr   = parseFloat(document.getElementById('apr').value) || 0;
+  var run   = parseFloat(document.getElementById('runCost').value) || 0;
+  var cash  = document.getElementById('cash').value === 'yes';
+
+  var m48 = paymentFromPrice(price, apr, 48, 0.20);
+  var m60 = paymentFromPrice(price, apr, 60, 0.10);
+
+  var rules = [
+    { name: '20/4/10 rule', salary: (m48 + run) * 12 / 0.10, rec: !cash,
+      sub: '20% down over 48 months is ' + money(m48) + '/mo. Add ' + money(run) +
+           ' of running costs and the total must stay under 10% of gross income.' },
+    { name: '15% of take-home (all-in)', salary: ((m60 + run) * 12 / 0.15) / thPct,
+      sub: 'Total car costs of ' + money(m60 + run) + '/mo must fit inside 15% of take-home pay.' },
+    { name: '35% of annual income', salary: price / 0.35,
+      sub: 'Caps the sticker at 35% of gross annual income, ignoring the loan entirely.' },
+    { name: '10% of gross (payment only)', salary: m60 * 12 / 0.10,
+      sub: 'Only the ' + money(m60) + '/mo payment counts. The loosest of the payment rules because it ignores insurance and fuel.' },
+    { name: 'Half your annual salary', salary: price / 0.50, rec: cash,
+      sub: 'A cash-buyer rule: the car should cost no more than half a year of income.' },
+    { name: "One year's salary", salary: price / 1.00, loose: true,
+      sub: 'The loosest rule in common use, and a holdover from when cars cost far less relative to income.' }
+  ];
+
+  var sals = rules.map(function(r){ return r.salary; });
+  var lo = Math.min.apply(null, sals), hi = Math.max.apply(null, sals);
+
+  rules.sort(function(a, b){ return b.salary - a.salary; });
+  var html = '';
+  rules.forEach(function(r){
+    var cls = 'rule' + (r.rec ? ' pick' : '') + (r.loose ? ' loose' : '');
+    var tag = r.rec ? '<span class="tag rec">Recommended</span>' : (r.loose ? '<span class="tag risk">Loosest</span>' : '');
+    html += '<div class="' + cls + '"><div class="rule-top"><span class="rule-name">' + r.name + tag +
+            '</span><span class="rule-price">' + money(r.salary) + '</span></div>' +
+            '<div class="rule-sub">' + r.sub + '</div></div>';
+  });
+  document.getElementById('ruleList').innerHTML = html;
+
+  var recRule = rules.filter(function(r){ return r.rec; })[0];
+  document.getElementById('vTitle').textContent = 'Salary Needed for a ' + money(price) + ' Car';
+  document.getElementById('vBig').textContent = money(recRule.salary);
+  document.getElementById('vSub').textContent = 'The six common rules demand anywhere from ' + money(lo) + ' to ' +
+    money(hi) + ' of income for the same car. By ' + recRule.name + ' — the one worth following ' +
+    (cash ? 'for a cash purchase' : 'if you are financing') + ' — you would want about ' + money(recRule.salary) + '.';
+
+  var multiple = price > 0 ? recRule.salary / price : 0;
+  var note = '<strong>How this was calculated:</strong> each rule was run backwards from a ' + money(price) +
+    ' car. Financing it over 48 months with 20% down costs ' + money(m48) + '/mo; over 60 months with 10% down it is ' +
+    money(m60) + '/mo. Adding ' + money(run) + ' of insurance, fuel and maintenance is what separates the strict rules from the loose ones.';
+  note += '<br><br><strong>The rough shape of the answer:</strong> by 20/4/10 you want an income of roughly ' +
+    multiple.toFixed(1) + '× the car\'s price. That multiple <em>rises</em> on cheaper cars, because the fixed ' +
+    money(run) + ' of running costs is a bigger share of a small payment — a ' + money(25000) +
+    ' car works out near 4× while a ' + money(100000) + ' one is closer to 2.7×.';
+  note += '<br><br>If the figure above is well above your actual income, that is not a verdict on you — it is what the strictest mainstream rule demands. ' +
+    'Most buyers do not clear 20/4/10. Use it to see how far you are stretching, then decide deliberately rather than by accident.';
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+
 function calculate(){
+  if (document.getElementById('dir').value === 'rev') { calculateReverse(); return; }
   var salary  = parseFloat(document.getElementById('salary').value) || 0;
   var thPct   = (parseFloat(document.getElementById('takeHome').value) || 75) / 100;
   var apr     = parseFloat(document.getElementById('apr').value) || 0;

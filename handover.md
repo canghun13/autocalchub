@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-10-12 기준)
+# AutoCalcHub 인수인계 문서 (2026-10-19 기준)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,11 +12,11 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (2026-10-12 기준)
-- 블로그 81개, 툴 36개 (index.html 제외). 10/12 세션에서 블로그 1 + 툴 1 추가.
-- sitemap.xml 총 URL 130개
+## 2. 콘텐츠 현황 (2026-10-19 기준)
+- 블로그 82개, 툴 36개 (index.html 제외). 10/19 세션에서 블로그 1 추가 + 툴 1 기능 확장(신규 툴 없음 — 카니발라이제이션 회피).
+- sitemap.xml 총 URL 131개
 - **블로그 태그 카테고리 12종**: `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`, `💼 Business &amp; Tax`.
-- **Related 링크 블록 헤딩 5가지 변형** — 검증된 통합 정규식 `<h[23][^>]*>Related (?:Guides|Tools)(?: &amp;| &)? ?(?:Tools|Guides)?</h[23]>` + h2는 들여쓰기 4칸 분기.
+- **Related 링크 블록 헤딩 5가지 변형** — 통합 정규식 `<h[23][^>]*>Related (?:Guides|Tools)(?: &amp;| &)? ?(?:Tools|Guides)?</h[23]>` + h2는 들여쓰기 4칸 분기.
 - **블로그 전체**에 바이라인, **블로그+툴 전체**에 BreadcrumbList JSON-LD. FAQPage/HowTo 추가 금지.
 
 ### 사이트 구조 관련 중요 변경사항
@@ -53,35 +53,40 @@
 - 작업 시작 전 GA4 + Search Console 리포트 캡처 받아서 방향 잡기
 - **정기 루틴과 별개로**, 세션 여유가 있을 때 GSC 데이터 기반 추가 보강/신규 작업을 하기도 함 (7/8, 7/10 세션이 이 케이스) — 이건 "주간 루틴 소진"과 무관하게 별도로 카운트됨
 
-## 5. SEO / Search Console 현황 (2026-10-12 확인 · 구글 9/7자, Bing 9/6자)
+## 5. SEO / Search Console 현황 (2026-10-19 확인 · 구글 9/14자, Bing 9/13자)
 
-### ✅ 9/21 발견이 더 큰 표본으로 재확인됨 — 정의형 0%, 의사결정형 5%대
-Bing 9/6 자료(쿼리 235개, 노출 460, 클릭 22)에서 패턴이 그대로 유지:
-- **클릭 22건 중 대부분이 10~17단어의 개인 상황형 쿼리.** "how much should i pay for my car based off my salary"(2위), "is it better to put 5k or 10k down on a car"(2위), "how many months salary should a car cost cash payment"(2위), "if im buying a 47k car, what should i put down?"(2위).
-- **정의형은 순위가 좋아도 클릭 0**: "what is a good mpg for a car"(17노출/3.5위/0), "car sales tax calculator by state"(24노출/8.2위/0), "what is good mpg"(13노출/5.5위/0).
-- 예외적으로 짧은 쿼리 중 클릭이 난 건 "electric vs gas cars"(25노출/54.5위/1클릭) 정도.
+### 🚨 반드시 지킬 규칙 — 보강 전에 "그 페이지가 크롤링되고 있는지" 먼저 확인
+- **10/5에 TCO 계산기(`car-total-cost-of-ownership-calculator`)에 running cost·vehicle expense·break-even 용어를 넣어 구글 10쿼리에 대응했는데, 9/14 데이터에서 9개 쿼리 전부 노출·순위가 소수점까지 무변동**("car break even calculator" 8노출/89.12위 → 8노출/89.12위 등).
+- **원인 규명: TCO 계산기 자체가 미크롤링 목록(101개)에 있다.** 구글이 그 페이지를 읽은 적이 없으므로 본문을 어떻게 고쳐도 반영될 수 없었다. 8/11에 이미 "미색인 페이지 본문 보강은 효과 0"이라고 기록해 뒀는데 10/5에 이 원칙을 확인하지 않고 작업한 명백한 판단 오류.
+- **재발 방지 절차(보강 작업 시 필수)**: ① 대상 페이지가 GSC `페이지.csv`(노출 발생 목록)에 있는지 ② Coverage `테이블.csv`(미크롤링 목록)에 없는지 — **둘 다 확인한 뒤에만 구글 대상 보강을 할 것.** 미크롤링 페이지라면 보강 대신 **색인된 페이지에서 내부링크를 걸어 크롤링을 유도**하는 것이 유일하게 의미 있는 조치.
+- 참고: running/expense 쿼리는 색인된 페이지(홈 60노출/59.23위로 추정)가 받고 있다.
 
-### 🎉 Bing 폭발적 성장 (8/30 → 9/6, 1주)
-- **노출 730 → 1,334(+83%), 클릭 8 → 22(2.75배), 노출 페이지 29개.**
-- **연봉 기반 예산 페이지가 사이트 최고 전환 자산**: `how-much-should-i-spend-on-a-car-based-on-salary` **143노출 / 7클릭 / 3.62위 (CTR 4.9%)**. 클릭 쿼리 7건이 전부 "내 연봉으로 얼마"류.
-- 2위 `how-much-should-i-put-down-on-a-car` 150노출 / 5클릭 / 4.81위.
-- 그 외 클릭: fill-up(108노출/2), electric-vs-gas(90노출/2), depreciate-first-year(27노출/1), **auto-loan-cosigner-calculator(3노출/1클릭/2.00위)**.
-- **MPG 페이지 552노출(사이트 51%)/5.64위/클릭 1** — 9/7 메타 교체 후 첫 클릭이 났으나 CTR 0.18%. **구조적 천장이라는 판단은 유지**(정의형 쿼리군을 받고 있음). **3번째 메타 수정 금지.**
+### 구글 (9/14자) — 사실상 정체
+- **미색인 101개, 전부 최종크롤링 1970-01-01.** 9/7과 완전 동일(차트도 9/4에서 멈춤).
+- 3개월 노출 126 → 128, 노출 페이지 25 → 24개, 클릭 1건(홈페이지)로 변동 없음.
+- **10/5·9/28·9/14 신규 발행분 전부 미크롤링 확인**(mileage-deduction-method-calculator, standard-mileage-vs-actual-expenses, truck-vs-rent-calculator, repair-or-replace-car-calculator 등). 10/12 발행분(`car-affordability-rules-comparison`)은 아직 목록에도 없음.
+- 유의미한 변화: **코사이너 페이지 8 → 13노출**(84.08위), 쿼리도 "how much does a cosigner help on auto loans" 4→5노출. 구글에서 주제 자체는 수요가 늘고 있으나 순위가 80위대.
 
-### 구글 (9/7자)
-- **미색인 101개**(8/24 91개 → 증가), **전부 최종크롤링 1970-01-01 = 미크롤링.** 색인은 여전히 정체.
-- 3개월 노출 106 → **126**, **노출 발생 페이지 17개 → 25개로 증가.** 색인된 집합 안에서 커버리지는 넓어지는 중.
-- 홈페이지가 63노출/1클릭/55.06위로 1위(이전 1위였던 car-insurance-estimator는 13노출/18.38위로 정상화).
-- **코사이너 쿼리 군집 4개 신규 등장**: "how much does a cosigner help on auto loans"(4노출/83.5위), "do i need a cosigner for a car"(2), "will i need a cosigner for a car"(1), 서빙 페이지 `do-you-need-a-cosigner-for-a-car-loan` 8노출/81.5위. **Bing에서도 같은 주제로 1클릭(2.00위) — 양쪽 엔진 동시 신호.**
-- **바이위클리 쿼리 신규 2개**: "does paying half your car payment twice a month help"(58위), "paying car payment twice a month"(61위) → `biweekly-vs-monthly-car-payments` 6노출/50.67위.
-- **`car break even calculator` 8노출로 구글 최다 쿼리**(89.12위), running/expense 군집 여전히 84~99위 — **10/5에 TCO 계산기에 넣은 커버리지 확대가 아직 미반영**(크롤링 지연).
-- 신규 쿼리 `car life expectancy calculator`(86위) — 미커버 영역.
+### 🎉 Bing 계속 급성장 (9/6 → 9/13, 1주)
+- **노출 1,334 → 1,933(+45%), 클릭 22 → 38(+73%), 노출 페이지 34개.**
+- 클릭 기여 상위: **salary 238노출/11클릭/3.63위**, **put-down 252노출/8클릭/4.46위**, fill-up 189노출/5클릭, electric-vs-gas 90노출/2클릭, depreciate-first-year 38노출/2클릭, cost-to-own-per-month 13노출/2클릭/3.08위, **car-maintenance-cost-calculator 48→96노출/1클릭**(급성장), pre-approved 11노출/1클릭/4.55위.
+- **salary + put-down 두 페이지가 클릭 38건 중 19건(50%)** — 10/12 판단이 정확했고 계속 유효.
+- MPG 페이지 739노출(사이트 38%)/5.59위/**클릭 1**. CTR 0.14%. **3번째 메타 수정 금지 방침 유지.**
+- 9/21 발견(정의형 0% / 의사결정형 5%대) 재확인: 클릭 39건이 전부 개인 상황형 장문 쿼리.
 
-### 📌 전략적 결론 (10/12 갱신)
-1. **연봉·다운페이먼트 클러스터가 사이트의 수익 엔진.** Bing 클릭 22건 중 12건이 이 두 페이지에서 나옴. **여기를 넓히는 것이 가장 확실한 투자.**
-2. **콘텐츠 모양은 의사결정형으로 고정**(9/21 발견, 10/12 재확인).
-3. **MPG 메타 재수정 금지**(3회째 시도 금지).
-4. 구글 병목은 여전히 크롤링이나 **노출 페이지가 17→25로 늘어난 것은 개선 신호** — 색인된 집합 내 쿼리 커버리지 확대는 계속 효과가 있음.
+### Bing 신규 신호 (10/19 분석)
+- **역방향 쿼리 클릭 확인**: "how much should my slary be for a 56000 dollar car"(2위/클릭), "if im kaing 70k before tax, how much should i spend on my [car]"(2위/클릭). **차값 → 필요 연봉 방향은 우리 콘텐츠에 전무했음** → 이번 세션에서 대응.
+- "what percentage of salary should total car cost"(1위/클릭), "what percentage of salary auto price"(3위/클릭), "how much car on 90000 per year salary"(6위/클릭) — 연봉 클러스터가 계속 전환.
+- **사전승인 쿼리 2건 클릭(둘 다 1위)**: "should i get pre approved before going to buy a car and ho[w]", "nho to ask for a pre-approved loan for a car". 페이지 11노출/1클릭/4.55위 — 성장 여지.
+- **정비비 클러스터 클릭 발생**: "auto cost and maintenance calculator"(4위/클릭), "average car maintenance cost 2026"(3위/클릭). 계산기 96노출로 2배 성장.
+- 트레이드인 쿼리 클릭: "what will dealers typically pay for a trade in of a 2022 m[odel]"(3위/클릭) — 차종·연식 특정.
+- "how much does it cost for a typical car per mole"(per mile, 2위/클릭) — 마일당 비용 프레임.
+
+### 📌 전략적 결론 (10/19 갱신)
+1. **연봉·다운페이먼트 클러스터가 수익 엔진**(클릭 50%). 계속 넓히되 **정방향은 이미 두텁고 역방향이 비어 있었다** — 방향·프레임 단위로 갭을 찾는 것이 유효.
+2. **보강 작업 전 크롤링 여부 확인 필수**(위 규칙). 구글 대상 보강은 색인된 24개 페이지에만 의미가 있다.
+3. **콘텐츠 모양은 의사결정형 고정**(9/21 발견, 10/12·10/19 재확인).
+4. **MPG 메타 재수정 금지**(3회째 금지).
 5. **🚫 "GSC 색인 생성 요청 수동 제출" 제안 금지**(8/11 사용자 명시 기각).
 
 ## 5-1. 수익화 정책 (2026-08-07 사용자 지시로 확정 — 이후 세션 전부 이 기준 적용)
@@ -1084,6 +1089,58 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 5. `car life expectancy calculator` 신규 쿼리 — 단 carlifespancheck.com이 DB·계산기·유료 패스까지 갖춘 전문 사이트라 **헤드텀은 회피**. 진입한다면 "교체 자금을 언제부터 모을까" 같은 재무 의사결정 각도로만.
 6. 이월 클러스터 후보: 차량 기부 세금공제, 겨울타이어, Trucks 확장(트레일러 구입 vs 렌트·토우 패키지·견인 시 연비), Repairs 확장(타이어 2 vs 4·정비 견적 읽는 법), Accidents 확장(렌터카 커버리지·ACV 이의제기).
 7. blog/index.html Latest 트리밍 여부 14세션째 미결.
+
+
+## 6-23. 10/19 주간 세션: 연봉 클러스터 역방향 보강 + 10/5 판단 오류 규명
+
+- **자료**: 구글 GSC 9/14자, GA4 개요, **Bing 9/13자**. zip에 8/11~9/7 과거분과 `freetooldev_com`이 또 섞여 있었으나 제외(5회 연속).
+
+### ⚠️ 먼저: 10/5 작업이 무효였음을 확인하고 원인 규명
+- 이월과제 #3(구글 running/expense·break-even 군집 순위 변동 확인)을 실행한 결과 **9개 쿼리 전부 소수점까지 무변동**.
+- 원인은 **TCO 계산기가 미크롤링 상태**였던 것. 8/11에 확립한 "미색인 페이지 보강은 효과 0" 원칙을 10/5에 확인하지 않고 작업한 내 판단 오류.
+- **5번 섹션에 재발 방지 절차를 명문화**(보강 전 GSC 페이지목록 + Coverage 미크롤링목록 양쪽 확인). 이번 세션의 가장 중요한 산출물.
+
+### 작업 선정 근거 (수익화 우선순위)
+- Bing 클릭 38건 중 **19건이 salary + put-down 두 페이지**. 이월과제 #1이 정확했고 계속 유효.
+- **그 안에서 미커버 방향 발견**: 클릭된 쿼리에 "how much should my slary be for a 56000 dollar car"(2위), "if im kaing 70k before tax..."(2위)가 있는데 **우리 콘텐츠는 전부 연봉→차값 방향이고 차값→필요연봉 역방향이 전무**했음.
+- 경쟁 확인(웹서치 1라운드): 정방향은 Autotrader·Edmunds·CarSaver·CarWhere·whatcarcaniafford.com으로 포화. **역방향도 다루긴 하나 답이 제각각**($50k 차 → Autotrader식 3배, AOL $160k, whatcarcaniafford $150~180k) **이고 아무도 규칙별로 화해시키지 않음** → 진입.
+
+### 검증된 핵심 수치 — 역방향은 약 3배, 저가차일수록 배수가 커진다
+운영비 월 $350 / APR 7.2% 기준 20/4/10이 요구하는 연봉:
+| 차값 | 필요 연봉 | 배수 |
+|---|---|---|
+| $25,000 | $99,694 | **4.0×** |
+| $50,000 | $157,388 | 3.1× |
+| $100,000 | $272,776 | 2.7× |
+
+- **핵심 인사이트**: 운영비가 차값과 무관하게 고정($350)이므로 **저가차일수록 10% 상한에서 운영비 비중이 커져 배수가 악화**된다. 즉 "싼 차를 사면 상한을 피할 수 있다"는 통념이 틀렸고, 일정 소득 밑에서는 규칙이 "차 소유 자체가 무리"라고 말하는 셈.
+- 규칙 간 격차는 차값 $50,000에서 $50,000(1년치 연봉) ~ $157,388(20/4/10)로 3.1배.
+
+### 작업 1 — `tools/car-affordability-rules-comparison.html`에 역방향 모드 추가 (신규 툴 X)
+- **신규 페이지를 만들지 않고 10/12 툴에 방향 선택(정방향/역방향)을 추가.** 수학적으로 역함수 관계라 별도 페이지를 만들면 카니발라이제이션 위험이 컸음. 규칙 4 준수.
+- 역방향: 차값 입력 → 6규칙이 각각 요구하는 연봉, 현금 선택 시 추천 전환(20/4/10 → Half your salary), 필요연봉÷차값 배수와 그 배수가 저가차에서 커지는 이유를 노트에 설명.
+- 검증: 파이썬 독립 구현 + node 목업 DOM 4시나리오 일치(역방향 $56k/$25k/$100k현금/정방향 복귀).
+
+### 작업 2 (신규) — `blog/what-salary-do-you-need-for-a-50k-car.html` (Buying, 1,112단어)
+- 차값 6구간 × 4규칙 역방향 표, 배수 악화 구조, 20/4/10이 왜 그렇게 많이 요구하는지 분해($50k 차 = 월납 $962 + 운영비 $350 = $1,312 → 10% 상한 → $157,388), 소득이 부족할 때 효과 순서(싼 차 > 다운페이먼트 > 금리 > 운영비 > 기간연장은 최후), 현금 구매자 지침(이자 $9,500 차이).
+- **의사결정형 모양 유지** — 제목·H2 전부 "내 상황에서 얼마" 형태.
+
+### 사이트 반영
+- blog/index.html Latest + Buying a Car, index.html 미리보기 3건 교체(툴 신규 없으므로 stat 36+ 유지).
+- sitemap 130→131 URL(lastmod 10건), llms.txt Buying 1건 + Tools 설명에 양방향 문구 추가.
+- 내부링크 10개 페이지(전부 구글/Bing 노출 확인 페이지). 인바운드 12개.
+
+### 검증
+- CSS 정규식 경계 추출 + 오염검사 통과. 14개 파일 태그 밸런스·JSON-LD 통과, sitemap XML 유효(131 URL), 내부링크 1,247개 전수 스캔 깨짐 0건.
+
+### ⚠️ 다음 세션 필독
+1. **보강 작업 전 크롤링 여부 확인(5번 섹션 규칙).** 10/5 실수 재발 방지. 구글 대상 보강은 색인된 24개 페이지에만 의미 있음.
+2. **연봉·다운페이먼트 클러스터 계속 확장.** 남은 각도: 가구 합산 소득 기준, 첫 차 예산, 마일당 비용 프레임("how much does it cost for a typical car per mile" 클릭 확인).
+3. **사전승인 클러스터가 새 전환 후보** — Bing 2쿼리 클릭(둘 다 1위), 페이지 11노출/1클릭/4.55위, 구글 6노출/23위. **Bing/구글 양쪽에서 살아있고 콘텐츠가 1개뿐**이라 확장 여지가 가장 크다.
+4. **정비비 클러스터 성장 중** — car-maintenance-cost-calculator 48→96노출, "auto cost and maintenance calculator"·"average car maintenance cost 2026" 클릭 발생.
+5. **MPG 메타 3번째 수정 금지.** 739노출/1클릭은 쿼리 구조 탓.
+6. 이월: 차량 기부 세금공제, 겨울타이어, Trucks 확장(트레일러 구입 vs 렌트·토우 패키지·견인 연비), Repairs 확장(타이어 2 vs 4·정비 견적 읽는 법), Accidents 확장(렌터카 커버리지·ACV 이의제기). `car life expectancy`는 전문 사이트 포화라 헤드텀 회피.
+7. blog/index.html Latest 트리밍 여부 15세션째 미결.
 
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
