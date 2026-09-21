@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dealer Rate Markup Calculator — What the Dealer's Rate Really Costs | AutoCalcHub</title>
+  <meta name="description" content="Dealers mark up the lender's buy rate and keep the spread. Compare your pre-approved rate against the dealer's quote to see the markup, what it costs over the loan, and when the dealer actually wins.">
+  <link rel="canonical" href="https://autocalchub.com/tools/dealer-rate-markup-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Dealer Rate Markup Calculator",
+    "url": "https://autocalchub.com/tools/dealer-rate-markup-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Compares a pre-approved auto loan rate against a dealer's quoted rate to show the implied markup, its cost over the loan term, and whether the dealer's offer is actually better.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-10-26"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Dealer Rate Markup Calculator", "item": "https://autocalchub.com/tools/dealer-rate-markup-calculator.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>What Is the Dealer's Rate Really Costing You?</h1>
+    <p>The lender tells the dealer what rate you qualify for. The dealer is allowed to quote you a higher one and keep the difference. Nobody has to tell you this happened. Put your pre-approved rate next to the dealer's quote and the gap becomes visible — and sometimes the dealer genuinely wins.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>💳 The Two Offers</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="amount">Amount Financed</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="amount" value="32000" min="0" step="1000"></div>
+        <span class="hint">Price minus down payment and trade-in.</span>
+      </div>
+      <div class="form-group">
+        <label for="term">Loan Term</label>
+        <select id="term">
+          <option value="36">36 months</option>
+          <option value="48">48 months</option>
+          <option value="60" selected>60 months</option>
+          <option value="72">72 months</option>
+          <option value="84">84 months</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="preRate">Your Pre-Approved Rate</label>
+        <div class="input-wrap has-suffix"><input type="number" id="preRate" value="6.5" min="0" max="30" step="0.1"><span class="input-suffix">%</span></div>
+        <span class="hint">From your bank or credit union. Leave blank-equivalent (0) only if you have none.</span>
+      </div>
+      <div class="form-group">
+        <label for="dealerRate">Dealer's Quoted Rate</label>
+        <div class="input-wrap has-suffix"><input type="number" id="dealerRate" value="8.5" min="0" max="30" step="0.1"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label for="promo">Is the Dealer Rate a Manufacturer Promotion?</label>
+        <select id="promo">
+          <option value="no" selected>No — standard dealer-arranged financing</option>
+          <option value="yes">Yes — 0%, 1.9%, 2.9% captive-lender offer</option>
+        </select>
+        <span class="hint">Promotional rates are subsidised by the manufacturer and aren't marked up.</span>
+      </div>
+      <div class="form-group">
+        <label for="rebate">Rebate Forfeited by Taking the Promo</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="rebate" value="0" min="0" step="250"></div>
+        <span class="hint">Many 0% offers require giving up a cash rebate. Enter it if so.</span>
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculate()">Compare →</button>
+  </div>
+
+  <div class="results" id="results">
+    <div class="verdict-box">
+      <h3 id="vTitle"></h3>
+      <span class="big" id="vBig"></span>
+      <p id="vSub"></p>
+    </div>
+
+    <div class="two-col">
+      <div class="calc-card" style="margin:0">
+        <h2>🏦 Your Pre-Approval</h2>
+        <div class="row"><span>Rate</span><span id="pRate"></span></div>
+        <div class="row"><span>Monthly payment</span><span id="pPay"></span></div>
+        <div class="row"><span>Total interest</span><span id="pInt"></span></div>
+        <div class="row"><span>Total cost of the loan</span><span id="pTotal"></span></div>
+      </div>
+      <div class="calc-card" style="margin:0">
+        <h2>🏢 Dealer's Offer</h2>
+        <div class="row"><span>Rate</span><span id="dRate"></span></div>
+        <div class="row"><span>Monthly payment</span><span id="dPay"></span></div>
+        <div class="row"><span>Total interest</span><span id="dInt"></span></div>
+        <div class="row"><span>Total cost of the loan</span><span id="dTotal"></span></div>
+      </div>
+    </div>
+
+    <div class="calc-card" id="markupCard">
+      <h2>📊 The Markup</h2>
+      <div class="row"><span>Rate difference</span><span id="mSpread"></span></div>
+      <div class="row"><span>Extra per month</span><span id="mMonthly"></span></div>
+      <div class="row"><span>Extra over the full term</span><span id="mTotal"></span></div>
+      <div class="row"><span>Against the typical markup range</span><span id="mContext"></span></div>
+    </div>
+
+    <div class="note" id="mainNote"></div>
+    <div class="disclaimer">⚠️ <strong>This compares two rates you've been quoted — it can't see the dealer's actual buy rate.</strong> The gap between your pre-approval and the dealer's quote is not purely markup: your credit profile, the lender, the vehicle's age and the term all affect what each lender offers. A dealer quoting above your pre-approval may be marking up, or may simply be working with a lender that prices you differently. The reliable move is to treat your pre-approval as a benchmark and ask the dealer to beat it.</div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>How Dealer Reserve Works</h2>
+    <p>When a dealer arranges your financing, the lender sends back a <strong>buy rate</strong> — the minimum rate it will accept for your credit profile. Under the dealer's agreement with that lender, the dealer may add a markup, commonly capped at 2 to 2.5 percentage points, and present the result to you as "your rate." The spread is called <strong>dealer reserve</strong>, and the dealer keeps a share of it.</p>
+    <p>You never see the buy rate. It appears on no document you're given, and there's no obligation to disclose that a markup was applied at all.</p>
+    <p>How common is it? A 2023 MIT analysis cited by NerdWallet found roughly <strong>78% of dealer-arranged loans carried a marked-up rate, averaging 1.13 percentage points</strong>. Earlier work by the Center for Responsible Lending put the average higher at 2.47 points, and found used-car loans marked up far harder than new: around 2.91 points versus 1.01.</p>
+
+    <h2>What a Markup Actually Costs</h2>
+    <p>On a $32,000 loan, here's the extra interest by markup size and term:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Markup</th><th>60 months</th><th>72 months</th><th>84 months</th></tr></thead>
+        <tbody>
+          <tr><td>1.00 pts</td><td>$906</td><td>$1,106</td><td>$1,314</td></tr>
+          <tr><td>1.13 pts (MIT average)</td><td>$1,025</td><td>$1,252</td><td>$1,487</td></tr>
+          <tr><td>2.00 pts</td><td>$1,825</td><td>$2,231</td><td>$2,653</td></tr>
+          <tr><td>2.47 pts (CRL average)</td><td>$2,261</td><td>$2,766</td><td>$3,291</td></tr>
+          <tr><td>2.91 pts (used-car average)</td><td>$2,672</td><td>$3,271</td><td>$3,894</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Two points on a five-year loan is about $30 a month — small enough to disappear into a payment discussion, which is precisely why the conversation at the dealership is steered toward monthly payment rather than rate. <strong>Longer terms make markups worse</strong>, because you're paying the inflated rate on a slowly shrinking balance for longer.</p>
+
+    <h2>When the Dealer Genuinely Beats Your Pre-Approval</h2>
+    <p>Worth saying plainly, because most articles on this topic won't: dealer financing isn't automatically the worse deal, and a pre-approval isn't a rule that you must use it.</p>
+    <ul>
+      <li><strong>Manufacturer promotional rates.</strong> Captive lenders — Toyota Financial, Ford Credit, and the rest — offer subsidised rates like 0%, 1.9% or 2.9% on specific models. These are marketing spend, not marked-up money, and no credit union will beat 0%.</li>
+      <li><strong>The dealer shops more lenders than you did.</strong> A dealer may submit your application to a dozen lenders; you probably applied to one or two.</li>
+      <li><strong>Relationship pricing on your particular profile.</strong> Some lenders price thin-file or subprime borrowers better than a credit union will.</li>
+    </ul>
+    <p>The pre-approval's value isn't that you have to use it. It's that it gives you a number the dealer has to beat, which is the only reliable way to find out whether you were being marked up.</p>
+
+    <h2>The 0% vs Rebate Trap</h2>
+    <p>Promotional financing usually requires forfeiting a cash rebate, and the two aren't interchangeable. On a $32,000 loan over 60 months, 0% APR costs you $32,000 total. Taking a $2,500 rebate and financing $29,500 at 6.9% costs about $34,965 — so the 0% offer wins by roughly $2,965 here.</p>
+    <p>That flips when the rebate is large or the alternative rate is low. The calculator above accounts for a forfeited rebate if you enter one; our <a href="zero-percent-apr-vs-rebate-calculator.html" style="color:var(--orange);text-decoration:none;">0% APR vs rebate calculator</a> handles that comparison in more depth.</p>
+
+    <h2>How to Use This at the Dealership</h2>
+    <ol>
+      <li><strong>Get pre-approved before you go.</strong> A credit union or your own bank, a few days ahead. This is the whole mechanism — without a competing number you have no way to detect a markup.</li>
+      <li><strong>Negotiate the vehicle price first,</strong> completely separately from financing. Mixing them lets a dealer give ground on one and take it back on the other.</li>
+      <li><strong>Then say you have financing arranged and ask them to beat it.</strong> Often they can, because the buy rate was lower than what they first quoted.</li>
+      <li><strong>Compare the rate, not the payment.</strong> A lower payment on a longer term is not a better deal.</li>
+      <li><strong>If they beat it, take the dealer's loan.</strong> That's the pre-approval doing its job.</li>
+    </ol>
+    <p>And if you've already signed at a marked-up rate, refinancing is usually available after a few payments — the markup isn't permanent.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/dealer-financing-vs-pre-approval.html" style="color:var(--orange);text-decoration:none;">Dealer Financing vs Your Own Pre-Approval</a></li>
+        <li><a href="../blog/how-to-get-pre-approved-car-loan.html" style="color:var(--orange);text-decoration:none;">How to Get Pre-Approved for a Car Loan</a></li>
+        <li><a href="../blog/what-is-good-interest-rate-car-loan.html" style="color:var(--orange);text-decoration:none;">What Is a Good Interest Rate on a Car Loan?</a></li>
+        <li><a href="zero-percent-apr-vs-rebate-calculator.html" style="color:var(--orange);text-decoration:none;">0% APR vs Rebate Calculator</a></li>
+        <li><a href="car-refinance-calculator.html" style="color:var(--orange);text-decoration:none;">Car Refinance Calculator</a></li>
+        <li><a href="car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+function money2(n){ return '$' + n.toFixed(2); }
+
+function payment(P, apr, n){
+  var r = apr / 100 / 12;
+  return r > 0 ? P * r / (1 - Math.pow(1 + r, -n)) : P / n;
+}
+
+function calculate(){
+  var amount = parseFloat(document.getElementById('amount').value) || 0;
+  var term   = parseFloat(document.getElementById('term').value) || 60;
+  var pre    = parseFloat(document.getElementById('preRate').value) || 0;
+  var deal   = parseFloat(document.getElementById('dealerRate').value) || 0;
+  var promo  = document.getElementById('promo').value === 'yes';
+  var rebate = parseFloat(document.getElementById('rebate').value) || 0;
+
+  // Taking a promo rate means forfeiting the rebate, so the pre-approval side
+  // finances less: the rebate comes off the amount financed.
+  var preAmount = promo ? Math.max(0, amount - rebate) : amount;
+
+  var pPay = payment(preAmount, pre, term);
+  var pInt = pPay * term - preAmount;
+  var pTot = pPay * term;
+
+  var dPay = payment(amount, deal, term);
+  var dInt = dPay * term - amount;
+  var dTot = dPay * term;
+
+  document.getElementById('pRate').textContent = pre.toFixed(2) + '%' + (promo && rebate > 0 ? ' on ' + money(preAmount) : '');
+  document.getElementById('pPay').textContent  = money(pPay);
+  document.getElementById('pInt').textContent  = money(pInt);
+  document.getElementById('pTotal').textContent = money(pTot);
+  document.getElementById('dRate').textContent = deal.toFixed(2) + '%' + (promo ? ' (promo)' : '');
+  document.getElementById('dPay').textContent  = money(dPay);
+  document.getElementById('dInt').textContent  = money(dInt);
+  document.getElementById('dTotal').textContent = money(dTot);
+
+  var dealerWins = dTot < pTot;
+  var gap = Math.abs(dTot - pTot);
+  document.getElementById('pTotal').parentNode.className = dealerWins ? 'row' : 'row good';
+  document.getElementById('dTotal').parentNode.className = dealerWins ? 'row good' : 'row warn';
+
+  // Markup panel only makes sense for standard dealer-arranged financing
+  var spread = deal - pre;
+  var card = document.getElementById('markupCard');
+  card.style.display = (!promo && spread > 0) ? 'block' : 'none';
+  if (!promo && spread > 0) {
+    var samePay = payment(amount, pre, term);
+    document.getElementById('mSpread').textContent = '+' + spread.toFixed(2) + ' points';
+    document.getElementById('mMonthly').textContent = money2(dPay - samePay) + '/mo';
+    document.getElementById('mTotal').textContent = money(dTot - (samePay * term));
+    document.getElementById('mMonthly').parentNode.className = 'row warn';
+    document.getElementById('mTotal').parentNode.className = 'row warn';
+    var ctx;
+    if (spread <= 1.13) ctx = 'At or below the 1.13-point MIT average';
+    else if (spread <= 2.0) ctx = 'Above the MIT average, within typical caps';
+    else if (spread <= 2.5) ctx = 'Near the usual 2–2.5 point ceiling';
+    else ctx = 'Above the usual cap — worth questioning';
+    document.getElementById('mContext').textContent = ctx;
+    document.getElementById('mContext').parentNode.className = spread > 2.0 ? 'row warn' : 'row';
+  }
+
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  if (promo) {
+    vT.textContent = dealerWins ? "Take the Manufacturer's Rate" : 'Your Pre-Approval Still Wins';
+    vB.textContent = money(gap);
+    vS.textContent = dealerWins
+      ? 'The ' + deal.toFixed(2) + '% promotional rate costs ' + money(dTot) + ' against ' + money(pTot) +
+        ' on your pre-approval' + (rebate > 0 ? ' after forfeiting the ' + money(rebate) + ' rebate' : '') +
+        ' — better by ' + money(gap) + '. Promotional rates are subsidised, not marked up, so there is nothing to negotiate here.'
+      : 'Even at ' + deal.toFixed(2) + '%, the promotion costs ' + money(dTot) + ' against ' + money(pTot) +
+        ' if you take the ' + money(rebate) + ' rebate and use your own financing — better by ' + money(gap) + '.';
+  } else if (spread > 0) {
+    vT.textContent = 'The Dealer Is Quoting You ' + spread.toFixed(2) + ' Points Higher';
+    vB.textContent = money(dTot - payment(amount, pre, term) * term);
+    vS.textContent = 'That gap costs ' + money2(dPay - payment(amount, pre, term)) + ' a month and ' +
+      money(dTot - payment(amount, pre, term) * term) + ' across ' + term + ' months. Ask them to match your pre-approval — often they can.';
+  } else if (spread < 0) {
+    vT.textContent = 'The Dealer Beat Your Pre-Approval';
+    vB.textContent = money(gap);
+    vS.textContent = 'At ' + deal.toFixed(2) + '% the dealer is ' + Math.abs(spread).toFixed(2) +
+      ' points below your pre-approval, saving ' + money(gap) + ' over the term. Take it — this is exactly what the pre-approval was for.';
+  } else {
+    vT.textContent = 'The Two Offers Match';
+    vB.textContent = money(0);
+    vS.textContent = 'Both come to ' + money(dTot) + '. Either is fine; pick on servicing, autopay discounts and whether you want the relationship with your own bank.';
+  }
+
+  var note = '<strong>How this was calculated:</strong> ' + money(amount) + ' over ' + term + ' months at ' +
+    deal.toFixed(2) + '% gives a payment of ' + money(dPay) + ' and ' + money(dInt) + ' of interest' +
+    (promo && rebate > 0 ? ', against ' + money(preAmount) + ' financed at ' + pre.toFixed(2) +
+      '% once the ' + money(rebate) + ' rebate is applied to the price' : ', against ' + money(pPay) +
+      ' and ' + money(pInt) + ' at your ' + pre.toFixed(2) + '% pre-approval') + '.';
+
+  if (promo) {
+    note += '<br><br><strong>This is a promotional rate, so there is no markup to argue about.</strong> Captive lenders subsidise these offers as marketing spend. The real decision is the rebate trade-off: taking 0% usually means giving up cash back, and which wins depends on how large that rebate is relative to the interest you avoid.';
+  } else if (spread > 0) {
+    note += '<br><br><strong>What the gap means:</strong> a dealer receives a buy rate from the lender and may add a markup — commonly capped around 2 to 2.5 points — keeping the spread as dealer reserve. ' +
+      'A 2023 MIT analysis found about 78% of dealer-arranged loans were marked up, averaging 1.13 points. Your ' + spread.toFixed(2) +
+      '-point gap is ' + (spread > 1.13 ? 'above' : 'at or below') + ' that average.';
+    note += '<br><br>Some of the gap may not be markup at all — different lenders price the same borrower differently. ' +
+      'The way to find out is simple: tell them you have ' + pre.toFixed(2) + '% arranged and ask them to beat it. If they can, the markup was real and you have just removed it. ' +
+      'If you have already signed, refinancing after a few payments usually undoes it.';
+    if (term >= 72) {
+      note += '<br><br><strong>Note the term.</strong> At ' + term + ' months the same markup costs considerably more than it would over 60, because you pay the inflated rate on a slowly shrinking balance for longer.';
+    }
+  } else if (spread < 0) {
+    note += '<br><br><strong>Nothing to negotiate here — the dealer is cheaper.</strong> This happens when they shop more lenders than you did, or when a particular lender prices your profile better than your bank. Take the dealer loan and treat the pre-approval as having done its job: it proved the offer was genuine.';
+  }
+  document.getElementById('mainNote').innerHTML = note;
+
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>
