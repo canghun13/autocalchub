@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gas Tank Fill-Up Cost Calculator — What a Fill Costs From Any Tank Level | AutoCalcHub</title>
+  <meta name="description" content="Work out what it costs to fill your tank from wherever the needle is now — quarter, half, three-quarters or empty. Pick your vehicle class for tank size, choose regular, mid or premium, and see the cost, the range it buys and your annual fuel bill.">
+  <link rel="canonical" href="https://autocalchub.com/tools/gas-tank-fill-cost-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Gas Tank Fill-Up Cost Calculator",
+    "url": "https://autocalchub.com/tools/gas-tank-fill-cost-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Calculates the cost of filling a vehicle's fuel tank from any current gauge level, using tank capacity by vehicle class, fuel grade pricing, the driving range the fill buys and the resulting annual fuel cost.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-09-28"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Gas Tank Fill-Up Cost Calculator", "item": "https://autocalchub.com/tools/gas-tank-fill-cost-calculator.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>What Does It Cost to Fill Your Tank From Here?</h1>
+    <p>Almost nobody pulls in on a dry tank. The needle is at a quarter, or a half, and the question is what this particular stop is going to cost — not what a full tank costs from empty. Pick your vehicle class for the tank size, tell it where the needle is, and choose the grade you actually put in.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>⛽ Your Tank Right Now</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="vclass">Vehicle Class</label>
+        <select id="vclass">
+          <option value="11">Subcompact car — about 11 gal</option>
+          <option value="12.4">Compact car — about 12.4 gal</option>
+          <option value="14.5" selected>Midsize sedan — about 14.5 gal</option>
+          <option value="18">Full-size sedan — about 18 gal</option>
+          <option value="11.5">Hybrid car or crossover — about 11.5 gal</option>
+          <option value="14.5">Compact SUV / crossover — about 14.5 gal</option>
+          <option value="19">Midsize / 3-row SUV — about 19 gal</option>
+          <option value="24">Full-size SUV — about 24 gal</option>
+          <option value="19.5">Minivan — about 19.5 gal</option>
+          <option value="23">Half-ton pickup — about 23 gal</option>
+          <option value="34">Heavy-duty pickup — about 34 gal</option>
+          <option value="custom">Custom — I know my tank size</option>
+        </select>
+        <span class="hint">Sets the tank size below. Your exact figure is in the owner's manual under Capacities.</span>
+      </div>
+      <div class="form-group">
+        <label for="tank">Tank Size</label>
+        <div class="input-wrap has-suffix"><input type="number" id="tank" value="14.5" min="1" max="80" step="0.1"><span class="input-suffix">gal</span></div>
+        <span class="hint">Override this with your own number any time.</span>
+      </div>
+      <div class="form-group">
+        <label for="level">Where the Needle Is Now</label>
+        <select id="level">
+          <option value="0">Empty / light on</option>
+          <option value="0.125">1/8 tank</option>
+          <option value="0.25" selected>1/4 tank</option>
+          <option value="0.375">3/8 tank</option>
+          <option value="0.5">1/2 tank</option>
+          <option value="0.625">5/8 tank</option>
+          <option value="0.75">3/4 tank</option>
+        </select>
+        <span class="hint">Also used as your refill habit, to work out how often you stop.</span>
+      </div>
+      <div class="form-group">
+        <label for="grade">Fuel Grade</label>
+        <select id="grade">
+          <option value="regular" selected>Regular (87 octane)</option>
+          <option value="mid">Midgrade (89)</option>
+          <option value="premium">Premium (91–93)</option>
+          <option value="diesel">Diesel</option>
+        </select>
+        <span class="hint">Sets the default price. National averages, week of Sept 21, 2026.</span>
+      </div>
+      <div class="form-group">
+        <label for="price">Price per Gallon</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="price" value="4.48" min="0.5" max="15" step="0.01"></div>
+        <span class="hint">Put in your local pump price — it swings from about $3.90 in Indiana to $6.35 in California.</span>
+      </div>
+      <div class="form-group">
+        <label for="mpg">Your Combined MPG</label>
+        <div class="input-wrap has-suffix"><input type="number" id="mpg" value="28" min="5" max="130" step="0.1"><span class="input-suffix">mpg</span></div>
+        <span class="hint">What you really average, not the window sticker.</span>
+      </div>
+      <div class="form-group">
+        <label for="miles">Miles You Drive per Month</label>
+        <div class="input-wrap has-suffix"><input type="number" id="miles" value="1000" min="0" max="10000" step="50"><span class="input-suffix">mi</span></div>
+        <span class="hint">About 1,000 for the average US driver.</span>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="verdict-box">
+        <h3 id="vTitle"></h3>
+        <span class="big" id="vBig"></span>
+        <p id="vSub"></p>
+      </div>
+
+      <div class="two-col">
+        <div class="calc-card" style="margin:0">
+          <h2>This Fill</h2>
+          <div class="row"><span>Gallons needed</span><span id="oGal"></span></div>
+          <div class="row"><span>Cost at the pump</span><span id="oCost"></span></div>
+          <div class="row"><span>A full tank from empty</span><span id="oFull"></span></div>
+          <div class="row"><span>Range this fill buys</span><span id="oRange"></span></div>
+        </div>
+        <div class="calc-card" style="margin:0">
+          <h2>What Driving Costs You</h2>
+          <div class="row"><span>Fuel cost per mile</span><span id="oCpm"></span></div>
+          <div class="row"><span>Stops per month at this habit</span><span id="oFills"></span></div>
+          <div class="row"><span>Fuel per month</span><span id="oMonth"></span></div>
+          <div class="row"><span>Fuel per year</span><span id="oYear"></span></div>
+        </div>
+      </div>
+
+      <div class="calc-card" id="gradeCard">
+        <h2>Grade Check — A Year of Driving</h2>
+        <div class="row"><span>On regular</span><span id="gReg"></span></div>
+        <div class="row"><span>On midgrade</span><span id="gMid"></span></div>
+        <div class="row"><span>On premium</span><span id="gPrem"></span></div>
+        <div class="row"><span>Premium costs you</span><span id="gPen"></span></div>
+      </div>
+
+      <div class="note" id="mainNote"></div>
+      <div class="disclaimer">⚠️ <strong>The gauge is an estimate and so is this.</strong> Fuel gauges are deliberately conservative at the bottom and slow to move at the top, and the rated tank capacity includes fuel the pump cannot practically deliver, so a real fill usually comes out one to two gallons under the figure here. Tank sizes also vary by trim, drivetrain and model year within the same class — check Capacities in your owner's manual for your exact number.</div>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why "What Does a Fill-Up Cost?" Has No Single Answer</h2>
+    <p>The average American fill-up is often quoted at somewhere around $60, and that number is close to useless for any individual driver. Three things move it, and they multiply rather than add.</p>
+    <p><strong>Tank size varies by a factor of three.</strong> A Nissan Versa holds about 10.8 gallons. A Chevrolet Suburban holds about 28. A Silverado 3500HD holds about 36. At $4.48 a gallon that is a $48 stop against a $161 stop, in the same country on the same day.</p>
+    <p><strong>Grade changes the price by about a fifth.</strong> In the week of September 21, 2026 the national averages ran $4.48 regular, $5.06 midgrade, $5.46 premium and $6.53 diesel. Premium is roughly 98 cents a gallon above regular, so on a 19-gallon SUV tank that is about $19 extra per stop.</p>
+    <p><strong>State prices vary by more than 60%.</strong> $3.90 in Indiana against $6.35 in California at the same moment. Same car, same tank, a $34 difference on a 14-gallon fill.</p>
+    <p>Which is why the calculator asks for your tank, your grade and your price rather than handing you an average.</p>
+
+    <h2>Typical Tank Capacity by Vehicle Class</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Class</th><th>Typical tank</th><th>Full tank at $4.48</th><th>Range at typical MPG</th></tr></thead>
+        <tbody>
+          <tr><td>Subcompact car</td><td>~11 gal</td><td>$49</td><td>~360 mi @ 33 mpg</td></tr>
+          <tr><td>Compact car</td><td>~12.4 gal</td><td>$56</td><td>~440 mi @ 35 mpg</td></tr>
+          <tr><td>Midsize sedan</td><td>~14.5 gal</td><td>$65</td><td>~450 mi @ 31 mpg</td></tr>
+          <tr><td>Full-size sedan</td><td>~18 gal</td><td>$81</td><td>~470 mi @ 26 mpg</td></tr>
+          <tr><td>Hybrid car / crossover</td><td>~11.5 gal</td><td>$52</td><td>~550 mi @ 48 mpg</td></tr>
+          <tr><td>Compact SUV / crossover</td><td>~14.5 gal</td><td>$65</td><td>~420 mi @ 29 mpg</td></tr>
+          <tr><td>Midsize / 3-row SUV</td><td>~19 gal</td><td>$85</td><td>~475 mi @ 25 mpg</td></tr>
+          <tr><td>Full-size SUV</td><td>~24 gal</td><td>$108</td><td>~430 mi @ 18 mpg</td></tr>
+          <tr><td>Minivan</td><td>~19.5 gal</td><td>$87</td><td>~450 mi @ 23 mpg</td></tr>
+          <tr><td>Half-ton pickup</td><td>~23 gal</td><td>$103</td><td>~460 mi @ 20 mpg</td></tr>
+          <tr><td>Heavy-duty pickup</td><td>~34 gal</td><td>$152</td><td>~510 mi @ 15 mpg</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>These are class midpoints, not specifications. Within a single nameplate the tank can change with drivetrain and trim — all-wheel-drive versions frequently carry a slightly smaller tank than front-wheel-drive ones, and hybrids give up tank volume to the battery pack while still going further on a fill. Use the table to sanity-check, then put your real number in the box.</p>
+
+    <h2>Filling From a Quarter Tank, Not From Empty</h2>
+    <p>This is the part most fill-up calculators skip. If your tank is 14.5 gallons and the needle sits at a quarter, you are buying about 10.9 gallons, not 14.5 — roughly $49 rather than $65. Getting that wrong by a quarter tank is a 25% error on the number you actually care about.</p>
+    <p>There is a second wrinkle. A quarter on the gauge is not a quarter of the fuel. Gauges are tuned to read conservatively as they approach empty, and the low-fuel light typically comes on with 2 to 3 gallons left — about 10% to 15% of capacity — not at zero. So a fill from "light on" is usually a gallon or two smaller than a fill from a genuinely empty tank, which is why the pump total comes in under the rated capacity almost every time.</p>
+
+    <h2>What a Fill Buys You, in Miles</h2>
+    <p>Cost per stop is the number you see, but cost per mile is the number that decides your budget. Divide the pump price by your real MPG: $4.48 at 28 mpg is 16.0 cents a mile; the same gas at 18 mpg is 24.9 cents. Over 12,000 miles a year that is $1,920 against $2,988 — a $1,068 difference driven entirely by the vehicle, not by where you fill up or how you drive.</p>
+    <p>This is also why filling more often does not cost more. Your monthly fuel bill is set by miles driven, MPG and price per gallon. Topping off at a half tank instead of running to a quarter doubles your number of stops and halves the size of each one, and the monthly total does not move. The calculator shows both so you can see they are unrelated — if you want to change the annual figure, the levers are the car, the mileage and the grade.</p>
+
+    <h2>Is Premium Actually Costing You Anything?</h2>
+    <p>At about 98 cents a gallon over regular, premium adds roughly 21% to every gallon. On a driver covering 12,000 miles a year at 28 mpg, that is about 429 gallons, so premium costs around $420 a year more than regular.</p>
+    <p>Whether that money is wasted depends on one word in your owner's manual. If premium is <strong>required</strong>, the engine's knock control will pull timing on lower octane, and you lose power and some efficiency — the saving is partly illusory, and long-term you are working against the engine's design. If premium is merely <strong>recommended</strong>, the car is designed to run safely on regular with a small reduction in output, and for ordinary driving the $420 buys you very little. If the manual says regular, premium does nothing at all; octane is a resistance-to-knock rating, not a quality or cleaning rating.</p>
+    <p>The grade card above prices out all three so you can see the annual figure rather than the 98 cents.</p>
+
+    <h2>How to Cut the Number Down</h2>
+    <ol>
+      <li><strong>Check whether premium is required or recommended.</strong> The single largest lever available to most drivers who currently buy it, worth a few hundred dollars a year for no change in behaviour.</li>
+      <li><strong>Fix the tyre pressure.</strong> Underinflation is the most common quiet fuel cost, and checking it monthly costs nothing.</li>
+      <li><strong>Drop the roof box and the roof rack when you're not using them.</strong> Aerodynamic drag at highway speed is a much bigger penalty than the weight.</li>
+      <li><strong>Watch highway speed rather than acceleration.</strong> Fuel use rises steeply above about 60 mph; a 70-to-62 mph habit change is worth more than driving gently around town.</li>
+      <li><strong>Don't chase cheap gas across town.</strong> Saving 15 cents a gallon on a 14-gallon fill is $2.10. A 6-mile detour at 25 mpg and $4.48 costs about $1.08 plus your time, so the margin is thinner than it looks.</li>
+      <li><strong>Price fuel before you buy the car, not after.</strong> The gap between a 20 mpg and a 30 mpg vehicle is roughly $900 a year at current prices — larger than most of the other differences buyers spend weeks arguing about.</li>
+    </ol>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/how-much-does-it-cost-to-fill-up-a-car.html" style="color:var(--orange);text-decoration:none;">How Much Does It Cost to Fill Up a Car?</a></li>
+        <li><a href="../blog/should-you-fill-up-at-quarter-tank.html" style="color:var(--orange);text-decoration:none;">Should You Fill Up at a Quarter Tank or Run It Lower?</a></li>
+        <li><a href="../blog/what-is-a-good-mpg-for-a-car.html" style="color:var(--orange);text-decoration:none;">What Is a Good MPG for a Car?</a></li>
+        <li><a href="fuel-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Fuel Cost Calculator</a></li>
+        <li><a href="mpg-calculator.html" style="color:var(--orange);text-decoration:none;">MPG Calculator</a></li>
+        <li><a href="road-trip-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Road Trip Cost Calculator</a></li>
+        <li><a href="car-total-cost-of-ownership-calculator.html" style="color:var(--orange);text-decoration:none;">Total Cost of Ownership Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+var PRICE = {regular:4.48, mid:5.06, premium:5.46, diesel:6.53};
+var DIFF  = {regular:0, mid:0.58, premium:0.98};
+var GRADE_NAME = {regular:'regular', mid:'midgrade', premium:'premium', diesel:'diesel'};
+
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+function money2(n){ return '$' + n.toFixed(2); }
+function frac(l){
+  var map = {0:'empty',0.125:'an eighth',0.25:'a quarter',0.375:'three eighths',0.5:'half',0.625:'five eighths',0.75:'three quarters'};
+  return map[l] || (l + ' of a tank');
+}
+function fracTitle(l){
+  var map = {0.125:'an Eighth of a Tank',0.25:'a Quarter Tank',0.375:'Three Eighths',0.5:'Half a Tank',0.625:'Five Eighths',0.75:'Three Quarters'};
+  return map[l] || 'Here';
+}
+
+var classSel = document.getElementById('vclass');
+var tankIn   = document.getElementById('tank');
+var gradeSel = document.getElementById('grade');
+var priceIn  = document.getElementById('price');
+
+classSel.addEventListener('change', function(){
+  if (this.value !== 'custom') { tankIn.value = this.value; }
+  calculate();
+});
+tankIn.addEventListener('input', function(){
+  if (classSel.value !== 'custom' && parseFloat(this.value) !== parseFloat(classSel.value)) {
+    classSel.value = 'custom';
+  }
+  calculate();
+});
+gradeSel.addEventListener('change', function(){
+  priceIn.value = PRICE[this.value].toFixed(2);
+  calculate();
+});
+['level','price','mpg','miles'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', calculate);
+});
+document.getElementById('level').addEventListener('change', calculate);
+
+function calculate(){
+  var tank  = parseFloat(tankIn.value) || 0;
+  var level = parseFloat(document.getElementById('level').value) || 0;
+  var grade = gradeSel.value;
+  var price = parseFloat(priceIn.value) || 0;
+  var mpg   = parseFloat(document.getElementById('mpg').value) || 0;
+  var miles = parseFloat(document.getElementById('miles').value) || 0;
+
+  if (tank <= 0 || price <= 0 || mpg <= 0) { return; }
+
+  var need     = tank * (1 - level);
+  var costNow  = need * price;
+  var costFull = tank * price;
+  var rangeAdd = need * mpg;
+  var cpm      = price / mpg;
+  var perFill  = tank * (1 - level) * mpg;
+  var fills    = perFill > 0 ? miles / perFill : 0;
+  var monthly  = miles / mpg * price;
+  var annual   = monthly * 12;
+  var galYr    = miles * 12 / mpg;
+
+  var base = price - (DIFF[grade] || 0);
+  var gReg = galYr * base;
+  var gMid = galYr * (base + DIFF.mid);
+  var gPrm = galYr * (base + DIFF.premium);
+  var penalty = gPrm - gReg;
+
+  document.getElementById('oGal').textContent   = need.toFixed(1) + ' gal';
+  document.getElementById('oCost').textContent  = money2(costNow);
+  document.getElementById('oFull').textContent  = money2(costFull);
+  document.getElementById('oRange').textContent = Math.round(rangeAdd).toLocaleString() + ' mi';
+  document.getElementById('oCpm').textContent   = '$' + cpm.toFixed(3) + ' / mi';
+  document.getElementById('oFills').textContent = fills.toFixed(1) + ' stops';
+  document.getElementById('oMonth').textContent = money(monthly);
+  document.getElementById('oYear').textContent  = money(annual);
+
+  var gradeCard = document.getElementById('gradeCard');
+  gradeCard.style.display = (grade === 'diesel') ? 'none' : 'block';
+  if (grade !== 'diesel') {
+    document.getElementById('gReg').textContent  = money(gReg);
+    document.getElementById('gMid').textContent  = money(gMid);
+    document.getElementById('gPrem').textContent = money(gPrm);
+    document.getElementById('gPen').textContent  = money(penalty) + ' more than regular';
+  }
+
+  var vT = document.getElementById('vTitle');
+  var vB = document.getElementById('vBig');
+  var vS = document.getElementById('vSub');
+
+  if (level === 0) {
+    vT.textContent = 'A Full Tank From Empty';
+  } else {
+    vT.textContent = 'Filling From ' + fracTitle(level);
+  }
+  vB.textContent = money2(costNow);
+  vS.textContent = need.toFixed(1) + ' gallons of ' + GRADE_NAME[grade] + ' at ' + money2(price) +
+    ' a gallon, which buys about ' + Math.round(rangeAdd).toLocaleString() + ' miles at ' + mpg + ' mpg' +
+    (level > 0 ? '. A full tank from empty would be ' + money2(costFull) + '.' : '.');
+
+  var note = '<strong>How this was calculated:</strong> a ' + tank.toFixed(1) + '-gallon tank at ' +
+    frac(level) + ' needs ' + need.toFixed(1) + ' gallons, so ' + need.toFixed(1) + ' × ' + money2(price) +
+    ' = ' + money2(costNow) + '. At ' + mpg + ' mpg that is ' + Math.round(rangeAdd).toLocaleString() +
+    ' miles of range, or ' + '$' + cpm.toFixed(3) + ' a mile in fuel.';
+
+  if (level === 0) {
+    note += '<br><br><strong>On running it to empty:</strong> the low-fuel light usually comes on with 2 to 3 gallons left — 10% to 15% of capacity — so "empty" on the gauge is not a dry tank, and your actual pump total will land under ' +
+      money2(costNow) + '. AAA advises keeping at least a quarter tank, and half in extreme-weather regions, because the fuel pump is cooled by the fuel around it and a fuel pump replacement runs $250 to $1,200 against a tow of $40 to $150 plus $2 to $7 a mile.';
+  } else if (level >= 0.5) {
+    note += '<br><br><strong>You are topping off early, and that is cheap insurance.</strong> Filling at ' + frac(level) +
+      ' means about ' + fills.toFixed(1) + ' stops a month instead of ' + (miles / (tank * mpg)).toFixed(1) +
+      ' on a tank-to-empty habit — but your monthly fuel cost of ' + money(monthly) +
+      ' does not change, because that is set by miles, MPG and price, not by how often you stop. The only real cost is your time at the pump.';
+  } else {
+    note += '<br><br><strong>Filling at ' + frac(level) + ' is the usual sweet spot.</strong> It is above the level where the pump runs hot and sediment gets pulled into the filter, and it still gives you roughly ' +
+      fills.toFixed(1) + ' stops a month rather than one every few days.';
+  }
+
+  if (grade === 'premium') {
+    note += '<br><br><strong>About the premium:</strong> at these prices you are spending roughly ' + money(penalty) +
+      ' a year more than the same driving on regular. That is money well spent if your manual says premium is <em>required</em> — the engine will pull timing on 87 octane and you lose both power and some efficiency. If it only says <em>recommended</em>, the car is built to run on regular with a modest drop in output, and most ordinary driving will not notice the difference. If the manual says regular, premium does nothing: octane measures resistance to knock, not cleanliness or quality.';
+  } else if (grade === 'mid') {
+    note += '<br><br><strong>About midgrade:</strong> very few vehicles specify 89 octane. Unless your manual asks for it by name, you are paying about ' +
+      money(gMid - gReg) + ' a year over regular for a grade your engine was not tuned around.';
+  } else if (grade === 'diesel') {
+    note += '<br><br><strong>On diesel:</strong> at ' + money2(price) +
+      ' a gallon diesel carries a large premium per gallon, but diesel engines typically return 20% to 30% better fuel economy, so compare cost per mile rather than price per gallon. Your ' +
+      '$' + cpm.toFixed(3) + ' a mile is the number to hold against a gasoline equivalent.';
+  } else {
+    note += '<br><br><strong>Grade check:</strong> a year of this driving costs ' + money(gReg) + ' on regular against ' +
+      money(gPrm) + ' on premium — a difference of ' + money(penalty) +
+      '. Worth knowing before you upgrade a grade on the assumption that it is better for the engine.';
+  }
+
+  if (cpm >= 0.22) {
+    note += '<br><br><strong>Your fuel cost per mile is high.</strong> At $' + cpm.toFixed(3) +
+      ' a mile you are spending ' + money(annual) + ' a year on fuel alone at ' + miles.toLocaleString() +
+      ' miles a month. Most of that is the vehicle rather than your habits — a 10 mpg improvement would save about ' +
+      money(annual - (miles * 12 / (mpg + 10)) * price) + ' a year.';
+  }
+
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

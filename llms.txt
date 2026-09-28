@@ -23,6 +23,7 @@
 - [Lease Excess Mileage Calculator](https://autocalchub.com/tools/lease-excess-mileage-calculator.html): Projects lease-end excess mileage charges from your current pace, gives the daily mileage budget that would avoid them, and compares paying the penalty against buying miles upfront or buying out the lease.
 - [Cash vs Finance Car Calculator](https://autocalchub.com/tools/cash-vs-finance-car-calculator.html): Compare paying cash outright vs financing and investing the difference, including total interest and investment growth.
 - [Fuel Cost Calculator](https://autocalchub.com/tools/fuel-cost-calculator.html): Calculate how much you spend on gas per month or year based on your mileage and MPG.
+- [Gas Tank Fill-Up Cost Calculator](https://autocalchub.com/tools/gas-tank-fill-cost-calculator.html): Cost to fill a tank from any gauge level, with tank size by vehicle class, regular/mid/premium pricing, range added and annual fuel cost.
 - [MPG Calculator](https://autocalchub.com/tools/mpg-calculator.html): Calculate your car's real-world fuel efficiency from fill-up data.
 - [Gas vs EV Savings Calculator](https://autocalchub.com/tools/gas-vs-ev-savings-calculator.html): Compare the total cost of driving a gas car versus an electric vehicle including fuel, charging, and maintenance.
 - [EV Charging Cost Calculator](https://autocalchub.com/tools/ev-charging-cost-calculator.html): Calculate the monthly and annual cost of charging an electric vehicle at home.
@@ -115,6 +116,7 @@
 - [What Is the Cheapest Car to Maintain?](https://autocalchub.com/blog/what-is-cheapest-car-to-maintain.html): Which vehicles have the lowest long-term maintenance costs and why.
 - [How Much Does Car Maintenance Cost Per Year?](https://autocalchub.com/blog/how-much-does-car-maintenance-cost-per-year.html): A full 2026 breakdown of annual maintenance costs by vehicle age, make type, and service category.
 - [How to Lower Your Car Insurance Premium](https://autocalchub.com/blog/how-to-lower-your-car-insurance-premium.html): The most effective ways to reduce your car insurance bill — from deductible adjustments to discounts most drivers never ask about.
+- [Should You Fill Up at a Quarter Tank or Run It Lower?](https://autocalchub.com/blog/should-you-fill-up-at-quarter-tank.html): The fuel-weight saving is about $2/year against a $250-$1,200 fuel pump; why fill frequency does not change your monthly fuel cost.
 - [How Much Does It Cost to Fill Up a Car?](https://autocalchub.com/blog/how-much-does-it-cost-to-fill-up-a-car.html): What a full tank costs in 2026 by vehicle type and tank size.
 
 ## Guides: Accidents & Claims
