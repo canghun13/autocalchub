@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-09-28 세션 기준 · 구글/Bing 9/28자)
+# AutoCalcHub 인수인계 문서 (2026-10-05 세션 기준 · 구글 10/5자, Bing 10/4자)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,9 +12,10 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (9/28 세션 기준)
-- 블로그 84개, 툴 38개 (index.html 제외). 9/28 세션에서 블로그 1 + 툴 1 추가, fill-up 블로그 가격 전면 갱신.
-- sitemap.xml 총 URL 135개. 홈 stat `38+`.
+## 2. 콘텐츠 현황 (10/5 세션 기준)
+- 블로그 85개, 툴 39개 (index.html 제외). 10/5 세션에서 블로그 1 + 툴 1 추가.
+- sitemap.xml 총 URL 137개. 홈 stat `39+`.
+- **GitHub push는 Claude GitHub App 연결로 동작**(9/28부터). 세션 프록시가 토큰 직접 push를 막으므로 토큰이 아니라 앱 연결이 필요함. 커밋 작성자는 `Claude <noreply@anthropic.com>`.
 - **블로그 태그 카테고리 12종**: `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`, `💼 Business &amp; Tax`.
 - **Related 링크 블록 헤딩 5가지 변형** — 통합 정규식 `<h[23][^>]*>Related (?:Guides|Tools)(?: &amp;| &)? ?(?:Tools|Guides)?</h[23]>` + h2는 들여쓰기 4칸 분기.
 - **블로그 전체**에 바이라인, **블로그+툴 전체**에 BreadcrumbList JSON-LD. FAQPage/HowTo 추가 금지.
@@ -58,6 +59,16 @@
 ### 🚨 보강 전 필수 확인 절차 (10/19 확립, 계속 유효)
 - **구글 대상 보강은 ① GSC `페이지.csv`(노출 발생 목록)에 있고 ② Coverage `테이블.csv`(미크롤링 목록)에 없는 페이지에만 의미가 있다.** 10/5에 이 확인 없이 미크롤링 상태인 TCO 계산기를 보강해 효과가 0이었던 사례가 있음.
 - 미크롤링 페이지는 보강 대신 **색인된 페이지에서 내부링크를 걸어 크롤링을 유도**하는 것이 유일한 조치.
+
+### 📥 10/5자 자료 요약 (10/5 세션)
+- **구글**: 미크롤링 107개 그대로(차트 9/21에서 멈춤), "크롤링됨-미색인" 0. 노출 페이지 25개, 클릭 1(홈). 변화 없음.
+- **Bing(9/28→10/4, 1주)**: 총 노출 약 3,300 → **4,816**, 클릭 72 → **98**, 페이지 43개.
+  - **salary 468→819노출, 19→35클릭(CTR 4.27%, 3.80위)** — 단독으로 클릭 36%. 최대 엔진.
+  - put-down 622/14, fill-up 730/11, MPG 1,244/4, EV vs gas 229/5, 정비계산기 160/4, 정비비 블로그 158/3, 사전승인 100/4, 월 보유비용 82/4.
+  - **9/28 신규 `gas-tank-fill-cost-calculator`가 1주 만에 213노출/3클릭/4.78위** — 툴 진입 적중. 분율 블로그는 아직 노출 없음.
+  - 판매세 계산기 31→89노출(6.37위), "car sales tax calculator by state" 29노출/8.1위 — 헤드텀에 붙고 있음.
+- **GA4(9/7~10/4)**: 활성 227(196), 참여 50.5초. salary 페이지 53뷰·**이탈률 30%**. fill-up 이탈률 79%(가격 수정 직후라 아직 판단 불가). bing 93세션·구글 1.
+- **salary 클러스터 클릭 쿼리의 새 모양**: 연봉→차값이 아니라 **"이 할부금이 내 소득에 과한가"**("i make 3600 a month, is a 750 car payment too much", "is 680 a month for a car payment good or bad?"(클릭), "if my take home pay is $8,997 can i get a 47k car", "keep my payments under $600") + **대출 승인**("how much does cmb car loans give depending on your salary"(클릭), "can i finance a 50 percent car of my salary"). → 10/5 작업으로 대응.
 
 ### 📥 9/28자 자료 요약 (9/28 세션)
 - **구글**: 미크롤링 104 → **107개**, 전부 1970-01-01. 3개월 노출 페이지 25개, 클릭 1(홈). running/expense·break-even 9쿼리 또 무변동(TCO 미크롤링, 예상대로). 구글 크롤링 확인 페이지 25개 목록은 이번 자료 `페이지.csv` 기준 — 연료 쪽은 `fuel-cost-calculator`(4.5위)·`mpg-calculator`·`road-trip-cost-calculator`·`gas-vs-ev-savings`·`ev-charging-cost`가 크롤링됨.
@@ -1270,6 +1281,52 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 - **미래 날짜 일괄 정정**(미결 #6 해소): JSON-LD 35건·화면 표시 "October 2026" 17건·sitemap lastmod 30건 → 2026-09-29 / September 2026. **앞으로 날짜는 반드시 실제 날짜로 찍을 것.**
 - 개인정보처리방침은 AdSense 쿠키·개인화 광고·Ads Settings/NAI 옵트아웃·파트너 사이트 정책 링크 다 있음 → 수정 불필요. About/Contact/Editorial/Methodology 존재.
 - 남은 리스크(통제 불가): 7/13 반려 사유였던 "가치가 별로 없는 콘텐츠". 구글 색인이 여전히 25개 수준이라 재반려 가능성은 있음. 승인 후 EEA/UK 트래픽에 광고를 내려면 Google 인증 CMP(동의 배너) 설정 필요 — AdSense 대시보드 "개인정보 보호 및 메시지"에서 켜면 됨.
+
+## 6-26. 10/5 세션: salary 클러스터 — 할부금·소득 비율 툴 + 대출 승인 한도 블로그 + 가격 갱신 2건
+
+- **자료**: 구글 GSC 10/5자(Coverage 2종 + 실적), GA4 9/7~10/4, Bing 10/4자. 요약은 5번 섹션.
+
+### 작업 선정 근거 (수익화)
+- salary 페이지가 Bing 클릭 36%(35건)로 압도적 1위 + 사이트 최저 이탈률(30%). 수익화 경로도 최상위(대출 승인 → 사전승인 → 오토론 마켓플레이스·리파이 제휴).
+- 기존 커버리지: 연봉→차값(salary 블로그·affordability 계산기·rules 비교 툴 양방향), by-income 할부금 표(good-car-payment 블로그). **"주어진 할부금을 소득 대비 평가" + "대출기관 승인 기준(PTI/DTI)"을 다루는 툴·글은 0개.** 규칙 4 통과(입력·로직 비중복: 기존 툴은 소득→가격, 신규는 할부금→비율·승인 한도·갭).
+- "is my car payment too high"는 NerdWallet·Bankrate 포화 → 헤드라인 회피. "how much car loan will I be approved for"는 Edmunds·Autotrader·thecarconnection(승인 추정기만 있고 예산 규칙과 비교 안 함). **"승인액 vs 감당가능액 갭"을 한 화면에 보여주는 곳 없음** → 이 각도로 진입.
+
+### 검증된 사실·수치
+- 대출기관 PTI 15~20%(보험 포함하는 곳 다수), DTI 45~50%, 서브프라임 최소소득 월 $1,500~2,500(thecarconnection·autocreditexpress).
+- Experian Q2 2026: 평균 할부금 신차 **$765**/중고 $542, 평균 대출 $43,610/$27,852, APR 6.35%/11.19%.
+- 6.35%/60개월/보험 $200 기준 승인 갭: $40k $6,839 · $60k $15,388 · $80k $23,937 · $100k $32,485 · $150k $53,857.
+- $765는 10% 규칙이면 연봉 $91,800 필요, 20% PTI 대출기관은 $57,900에 승인.
+- **역전 사례**: 연봉 $30k + 기타부채 $900이면 DTI가 막아서 대출기관이 10% 규칙보다 엄격(할부 여유 $75~200 vs 규칙 $250).
+
+### 신규 툴 — `tools/car-payment-to-income-calculator.html` (1,175단어)
+- 입력 8개: 연봉, 실수령(연봉 입력 시 76%로 자동 채움, 직접 수정하면 고정), 할부금, 보험, 연료·정비, 기타부채, APR, 기간.
+- 출력: 내 예산 시각(총소득·실수령 대비 %, 전체 차량비 % 실수령) / 대출기관 시각(PTI·DTI vs 한도) / 각 기준이 허용하는 할부금→대출액 + **승인 갭**(음수면 "대출기관이 더 엄격").
+- 판정 4단계: 10% 이하 Comfortable / 15% 이하 Stretch / 그 이상 Approvable but Heavy / PTI>20% 또는 DTI>50% Past Most Lenders' Limits. 노트에 갭·실수령 20% 초과·월소득 $1,500 미만·72개월 이상 분기.
+- 검증: 파이썬 독립 구현 + node 목업 DOM 6시나리오 일치(반올림 1건 차이만). Playwright 390/1280px 오버플로 0, JS 오류 0.
+
+### 신규 블로그 — `blog/how-much-car-loan-will-i-be-approved-for.html` (Financing, 1,296단어)
+- PTI/DTI 설명, 연봉별 승인액 표(10% 규칙 vs 15%·20% PTI), $765 평균 할부금 사례, 대출기관이 더 엄격해지는 경우, 한도까지 빌릴 때 비용($100k 연봉: 이자 $7,256 vs $12,771, 월 $634 차이), 총소득 vs 실수령 착시, 승인 활용 5단계.
+
+### 보강
+- **salary 블로그(최대 엔진)** "Debt Changes the Calculation" 섹션에 승인 한도 문단 + 신규 툴·블로그 본문 링크 1문단 추가. title/meta 미변경.
+- **낡은 휘발유 가격 2건 수정**(9/28 이월 #2 중 트래픽 상위): `electric-vs-gas-car-true-cost`(GA 2위 페이지) $3.40→$4.48, 마일당 $0.11→$0.15, 연간 절감 표 재계산(15k mi $1,100→$1,640). `what-is-a-good-mpg-for-a-car` 비용 표 $3.40→$4.48 재계산(20 vs 35mpg 차이 $1,100→$1,440/년), 클래스 표 주석에 $4.48 배수(1.36) 추가. MPG title/meta는 금지 규칙대로 미변경.
+
+### 사이트 반영
+- blog/index Latest + Financing, tools/index Buying & Financing, index.html 툴카드 + stat `38+`→`39+` + 미리보기 교체.
+- sitemap 135→137(lastmod 17건), llms.txt 2건, 내부링크 28개/14개 페이지(salary·put-down·afford·사전승인·딜러마크업·신용점수·50k 연봉 클러스터). 인바운드 툴 17 / 블로그 17.
+
+### 검증
+- CSS 경계 추출 + 오염검사 통과. 변경 21개 파일 태그·JSON-LD 통과, sitemap XML 유효(137), 전체 툴 39개 모바일 `.row` 통과, 내부링크 1,507개 깨짐 0.
+
+### ⚠️ 다음 세션 필독
+1. **신규 2건 효과 확인**: salary 쿼리 중 "is $X payment too much", "lender approve on salary" 류가 신규 툴·블로그로 가는지. salary 페이지 클릭이 줄면 카니발라이제이션 점검.
+2. **낡은 휘발유 가격 9개 페이지 남음**: `grep -lE '3\.40|\$3\.[123][0-9]' blog/*.html tools/*.html`. 트래픽 상위 2개는 처리 완료.
+3. **판매세 계산기가 헤드텀에 붙는 중**(89노출/6.37위, "by state" 쿼리) — 과세표준 질문 클릭 이력도 있음. 보강 1순위 후보(단 구글 미크롤링 여부 확인 후 Bing 대상으로).
+4. 대출 상환기간 클러스터(20노출/0클릭/3위) 계속 관찰.
+5. 연봉 클러스터 잔여 각도: 가구 합산 소득, 첫 차 예산.
+6. MPG 메타 3번째 수정 금지 유지(1,244노출/4클릭).
+7. 이월: 차량 기부 세금공제, 겨울타이어, Trucks/Repairs/Accidents 확장. blog/index.html Latest 트리밍 18세션째 미결.
+
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 

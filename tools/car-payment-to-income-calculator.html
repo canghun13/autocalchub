@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Payment to Income Calculator — What a Lender Approves vs What You Can Afford | AutoCalcHub</title>
+  <meta name="description" content="Enter your salary and a car payment to see it as a share of gross and take-home pay, how lenders read it (payment-to-income and debt-to-income limits), and how far a lender's approval runs past what budgeting rules say you can afford.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-payment-to-income-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Car Payment to Income Calculator",
+    "url": "https://autocalchub.com/tools/car-payment-to-income-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Evaluates a car payment against gross and take-home income, applies typical auto-lender payment-to-income and debt-to-income limits, and compares the loan a lender would approve with the loan personal budgeting rules support.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-10-05"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Car Payment to Income Calculator", "item": "https://autocalchub.com/tools/car-payment-to-income-calculator.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Is This Car Payment Too Much for Your Income?</h1>
+    <p>There are two different answers to that question, and they rarely agree. Budgeting rules say what you can comfortably carry. Lenders say what they will let you borrow — and on most incomes that is a much larger number. Put in your salary and the payment you're looking at, and see both side by side.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>💵 Your Income and the Payment</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="salary">Annual Gross Salary</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="salary" value="75000" min="0" step="1000"></div>
+        <span class="hint">Before taxes. Lenders work from this number.</span>
+      </div>
+      <div class="form-group">
+        <label for="take">Monthly Take-Home Pay</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="take" value="4750" min="0" step="50"></div>
+        <span class="hint">What lands in your account. Pre-filled at about 76% of gross — replace it with your real figure.</span>
+      </div>
+      <div class="form-group">
+        <label for="pay">Car Payment You're Considering</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="pay" value="650" min="0" step="10"></div>
+        <span class="hint">The average new-car payment was $765 in Q2 2026; used, $542.</span>
+      </div>
+      <div class="form-group">
+        <label for="ins">Monthly Insurance</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="ins" value="180" min="0" step="10"></div>
+        <span class="hint">Many lenders count this alongside the payment.</span>
+      </div>
+      <div class="form-group">
+        <label for="run">Fuel &amp; Maintenance per Month</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="run" value="250" min="0" step="10"></div>
+        <span class="hint">Lenders ignore this. Your budget can't.</span>
+      </div>
+      <div class="form-group">
+        <label for="other">Other Monthly Debt Payments</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="other" value="300" min="0" step="25"></div>
+        <span class="hint">Rent or mortgage, student loans, card minimums. Used for debt-to-income.</span>
+      </div>
+      <div class="form-group">
+        <label for="apr">Loan APR</label>
+        <div class="input-wrap has-suffix"><input type="number" id="apr" value="7.2" min="0" max="30" step="0.1"><span class="input-suffix">%</span></div>
+        <span class="hint">Q2 2026 averages: 6.35% new, 11.19% used.</span>
+      </div>
+      <div class="form-group">
+        <label for="term">Loan Term</label>
+        <select id="term">
+          <option value="36">36 months</option>
+          <option value="48">48 months</option>
+          <option value="60">60 months</option>
+          <option value="72" selected>72 months</option>
+          <option value="84">84 months</option>
+        </select>
+        <span class="hint">Used to turn each payment into the loan amount it supports.</span>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="verdict-box">
+        <h3 id="vTitle"></h3>
+        <span class="big" id="vBig"></span>
+        <p id="vSub"></p>
+      </div>
+
+      <div class="two-col">
+        <div class="calc-card" style="margin:0">
+          <h2>Your Budget View</h2>
+          <div class="row"><span>Payment as % of gross</span><span id="oPctG"></span></div>
+          <div class="row"><span>Payment as % of take-home</span><span id="oPctT"></span></div>
+          <div class="row"><span>All-in car cost per month</span><span id="oAllin"></span></div>
+          <div class="row"><span>All-in as % of take-home</span><span id="oAllinT"></span></div>
+        </div>
+        <div class="calc-card" style="margin:0">
+          <h2>The Lender's View</h2>
+          <div class="row"><span>Payment-to-income (with insurance)</span><span id="oPti"></span></div>
+          <div class="row"><span>Typical PTI limit</span><span>15%–20%</span></div>
+          <div class="row"><span>Debt-to-income after this loan</span><span id="oDti"></span></div>
+          <div class="row"><span>Typical DTI limit</span><span>45%–50%</span></div>
+        </div>
+      </div>
+
+      <div class="calc-card">
+        <h2>What Each Answer Lets You Borrow</h2>
+        <div class="row"><span>This payment finances</span><span id="oLoan"></span></div>
+        <div class="row"><span>10%-of-gross rule: payment → loan</span><span id="oPers"></span></div>
+        <div class="row"><span>Typical lender (15% PTI): payment → loan</span><span id="oTyp"></span></div>
+        <div class="row"><span>Lender ceiling (20% PTI): payment → loan</span><span id="oMax"></span></div>
+        <div class="row"><span>Approval gap — loan beyond the 10% rule</span><span id="oGap"></span></div>
+      </div>
+
+      <div class="note" id="mainNote"></div>
+      <div class="disclaimer">⚠️ <strong>Lender limits vary and this is not an approval.</strong> The 15%–20% payment-to-income and 45%–50% debt-to-income ranges are commonly cited for auto lenders, especially subprime ones; prime lenders often weigh credit score more heavily than ratios, and some count only the payment rather than payment plus insurance. Your credit, the vehicle, the term and the lender all change the real answer — a pre-approval is the only way to know yours.</div>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Two Different Questions</h2>
+    <p>"Can I afford this payment?" sounds like one question. It is really two, asked by two different parties with different interests.</p>
+    <p><strong>Budgeting rules ask whether the payment leaves your life intact.</strong> The common version caps the car payment at 10% of gross monthly income and keeps every car cost — payment, insurance, fuel, maintenance — under about 20% of take-home pay. These rules exist to protect your savings rate and your ability to absorb a bad month.</p>
+    <p><strong>Lenders ask whether you are likely to keep paying.</strong> Auto lenders typically cap payment-to-income (PTI) at 15% to 20% of gross monthly income and total debt-to-income (DTI) at 45% to 50%, and subprime lenders often require at least $1,500 to $2,500 a month of gross income from a single source. Nothing in that test asks whether you are saving for retirement or have an emergency fund.</p>
+    <p>Because the lender's ceiling is roughly 1.5 to 2 times the budgeting rule, an approval tells you almost nothing about whether the payment is wise. It tells you the lender expects to get paid.</p>
+
+    <h2>How Far Apart the Two Answers Are</h2>
+    <p>At a 6.35% APR over 60 months, with $200 a month of insurance and no other debt:</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Salary</th><th>10% rule payment → loan</th><th>Lender 20% PTI → loan</th><th>Approval gap</th></tr></thead>
+        <tbody>
+          <tr><td>$40,000</td><td>$333 → $17,098</td><td>$467 → $23,937</td><td>$6,839</td></tr>
+          <tr><td>$60,000</td><td>$500 → $25,646</td><td>$800 → $41,034</td><td>$15,388</td></tr>
+          <tr><td>$80,000</td><td>$667 → $34,195</td><td>$1,133 → $58,132</td><td>$23,937</td></tr>
+          <tr><td>$100,000</td><td>$833 → $42,744</td><td>$1,467 → $75,229</td><td>$32,485</td></tr>
+          <tr><td>$150,000</td><td>$1,250 → $64,116</td><td>$2,300 → $117,973</td><td>$53,857</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>The gap grows with income because both limits are percentages but insurance is roughly fixed, so it eats a smaller share of a large paycheck. At $150,000 a lender's ceiling supports a loan almost twice the size the 10% rule does.</p>
+    <p>The average new-car payment in Q2 2026 was $765. The 10% rule needs a $91,800 salary to carry that. A lender counting $200 of insurance against a 20% PTI cap would approve it on about $57,900.</p>
+
+    <h2>When the Lender Is the Stricter One</h2>
+    <p>The gap runs the other way when you already carry debt. Take a $30,000 salary, $900 a month of rent and other obligations, and a $450 used-car payment with $150 insurance. The 10% rule allows a $250 payment. But debt-to-income after the loan would be 60%, and a lender working to a 45% to 50% DTI cap leaves room for only about $75 to $200 a month. Here the rule is the generous one and the approval is the obstacle.</p>
+    <p>That is why the calculator takes your other debts. If the lender column comes out below the rule column, the fix isn't a cheaper car alone — it's lowering existing debt or adding income before you apply.</p>
+
+    <h2>Gross vs Take-Home: Why the Same Payment Reads Differently</h2>
+    <p>A payment that is 10% of gross is roughly 13% of take-home once taxes, retirement contributions and health premiums come out. People who budget from their bank deposits — which is most people — feel the take-home number, while every rule of thumb and every lender quotes the gross one. A $750 payment on a $3,600 monthly take-home is 21% of what you actually receive, even if it reads as a more modest 16% of gross.</p>
+    <p>If you only know your take-home pay, the honest test is the all-in one: payment, insurance, fuel and maintenance together under about 20% of take-home. Past that, the car is starting to compete with rent.</p>
+
+    <h2>Reading Your Result</h2>
+    <ul>
+      <li><strong>Under 10% of gross:</strong> comfortable by any standard. Lenders will not blink.</li>
+      <li><strong>10% to 15%:</strong> a stretch. Approvable almost everywhere, and survivable if the rest of your budget is lean — but this is where savings rates quietly fall.</li>
+      <li><strong>15% to 20%:</strong> heavy. You are at or near what many lenders allow, which is a signal in itself. Shorten the term only if the payment still fits; otherwise lower the price.</li>
+      <li><strong>Over 20%, or DTI over 50%:</strong> past most lenders' limits. Expect a decline, a counteroffer with a larger down payment, or a much higher rate.</li>
+    </ul>
+
+    <h2>If the Payment Is Already Yours and It's Too High</h2>
+    <p>If you signed for the payment already, the levers are narrower but real. Refinancing at a lower rate reduces the payment without extending the term — worthwhile if your credit has improved or your original rate was marked up at the dealer. Paying down principal lowers the interest portion going forward. And selling and stepping down a price bracket is the direct fix when the car itself was the mistake.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/how-much-car-loan-will-i-be-approved-for.html" style="color:var(--orange);text-decoration:none;">How Much Car Loan Will a Lender Approve — and Should You Take It?</a></li>
+        <li><a href="../blog/how-much-should-i-spend-on-a-car-based-on-salary.html" style="color:var(--orange);text-decoration:none;">How Much Should I Spend on a Car Based on My Salary?</a></li>
+        <li><a href="../blog/what-is-a-good-car-payment-per-month.html" style="color:var(--orange);text-decoration:none;">What Is a Good Car Payment Per Month?</a></li>
+        <li><a href="../blog/how-to-get-pre-approved-car-loan.html" style="color:var(--orange);text-decoration:none;">How to Get Pre-Approved for a Car Loan</a></li>
+        <li><a href="car-affordability-rules-comparison.html" style="color:var(--orange);text-decoration:none;">Car Affordability Rules Compared</a></li>
+        <li><a href="car-refinance-calculator.html" style="color:var(--orange);text-decoration:none;">Car Refinance Calculator</a></li>
+        <li><a href="car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+function pct(x){ return (x * 100).toFixed(1) + '%'; }
+function pv(pmt, apr, n){
+  if (pmt <= 0) return 0;
+  var r = apr / 1200;
+  return r === 0 ? pmt * n : pmt * (1 - Math.pow(1 + r, -n)) / r;
+}
+
+var takeEdited = false;
+document.getElementById('take').addEventListener('input', function(){ takeEdited = true; calculate(); });
+document.getElementById('salary').addEventListener('input', function(){
+  if (!takeEdited) {
+    var s = parseFloat(this.value) || 0;
+    document.getElementById('take').value = Math.round(s / 12 * 0.76 / 10) * 10;
+  }
+  calculate();
+});
+['pay','ins','run','other','apr'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', calculate);
+});
+document.getElementById('term').addEventListener('change', calculate);
+
+function calculate(){
+  var salary = parseFloat(document.getElementById('salary').value) || 0;
+  var take   = parseFloat(document.getElementById('take').value) || 0;
+  var pay    = parseFloat(document.getElementById('pay').value) || 0;
+  var ins    = parseFloat(document.getElementById('ins').value) || 0;
+  var run    = parseFloat(document.getElementById('run').value) || 0;
+  var other  = parseFloat(document.getElementById('other').value) || 0;
+  var apr    = parseFloat(document.getElementById('apr').value) || 0;
+  var term   = parseInt(document.getElementById('term').value, 10) || 60;
+  if (salary <= 0 || take <= 0) { return; }
+
+  var gm      = salary / 12;
+  var pctG    = pay / gm;
+  var pctT    = pay / take;
+  var allin   = pay + ins + run;
+  var allinT  = allin / take;
+  var pti     = (pay + ins) / gm;
+  var dti     = (pay + ins + other) / gm;
+  var loan    = pv(pay, apr, term);
+  var pers    = 0.10 * gm;
+  var lTyp    = Math.max(0, Math.min(0.15 * gm - ins, 0.45 * gm - other - ins));
+  var lMax    = Math.max(0, Math.min(0.20 * gm - ins, 0.50 * gm - other - ins));
+  var loanP   = pv(pers, apr, term);
+  var loanT   = pv(lTyp, apr, term);
+  var loanM   = pv(lMax, apr, term);
+  var gap     = loanM - loanP;
+  var need10  = pay / 0.10 * 12;
+
+  document.getElementById('oPctG').textContent   = pct(pctG);
+  document.getElementById('oPctT').textContent   = pct(pctT);
+  document.getElementById('oAllin').textContent  = money(allin);
+  document.getElementById('oAllinT').textContent = pct(allinT);
+  document.getElementById('oPti').textContent    = pct(pti);
+  document.getElementById('oDti').textContent    = pct(dti);
+  document.getElementById('oLoan').textContent   = money(loan);
+  document.getElementById('oPers').textContent   = money(pers) + ' → ' + money(loanP);
+  document.getElementById('oTyp').textContent    = money(lTyp) + ' → ' + money(loanT);
+  document.getElementById('oMax').textContent    = money(lMax) + ' → ' + money(loanM);
+  document.getElementById('oGap').textContent    = gap >= 0 ? money(gap) : 'None — lender is stricter';
+
+  var overLender = pti > 0.20 || dti > 0.50;
+  var vT = document.getElementById('vTitle');
+  var vB = document.getElementById('vBig');
+  var vS = document.getElementById('vSub');
+  vB.textContent = pct(pctG) + ' of gross';
+  if (overLender) {
+    vT.textContent = 'Past Most Lenders\' Limits';
+    vS.textContent = (dti > 0.50 ? 'Debt-to-income would reach ' + pct(dti) + ', above the 45%–50% most lenders allow. '
+                                 : 'Payment plus insurance is ' + pct(pti) + ' of gross, above the 15%–20% most lenders allow. ') +
+      'Expect a decline, a bigger down payment requirement, or a higher rate.';
+  } else if (pctG > 0.15) {
+    vT.textContent = 'Approvable, but Heavy';
+    vS.textContent = 'A lender would likely sign off, but at ' + pct(pctT) + ' of take-home this payment is crowding out saving. The 10% rule would need a ' + money(need10) + ' salary.';
+  } else if (pctG > 0.10) {
+    vT.textContent = 'A Stretch';
+    vS.textContent = 'Easily approvable, and above the 10% rule. Carrying it comfortably would take a ' + money(need10) + ' salary.';
+  } else {
+    vT.textContent = 'Comfortable';
+    vS.textContent = 'Under 10% of gross — inside the budgeting rule and well inside lender limits.';
+  }
+
+  var note = '<strong>How this was calculated:</strong> ' + money(pay) + ' a month against ' + money(gm) +
+    ' gross monthly income is ' + pct(pctG) + ', and ' + pct(pctT) + ' of your ' + money(take) + ' take-home. At ' +
+    apr.toFixed(2) + '% over ' + term + ' months that payment finances about ' + money(loan) + '.';
+
+  if (gap > 0) {
+    note += '<br><br><strong>The approval gap:</strong> a lender working to a 20% payment-to-income ceiling could approve a payment of up to ' +
+      money(lMax) + ' — a loan of about ' + money(loanM) + ', or ' + money(gap) + ' more than the 10% rule supports. ' +
+      'Being approved for it is not evidence you can afford it; lenders test whether you will keep paying, not whether you can still save.';
+  } else {
+    note += '<br><br><strong>Here the lender is the stricter one.</strong> Your other debts of ' + money(other) +
+      ' a month push debt-to-income to ' + pct(dti) + ' with this loan, so the lender\'s room for a car payment (' + money(lMax) +
+      ' at most) is below what the 10% rule would allow (' + money(pers) + '). Reducing existing debt will do more for approval than choosing a cheaper car.';
+  }
+
+  if (allinT > 0.20) {
+    note += '<br><br><strong>All-in, the car takes ' + pct(allinT) + ' of take-home pay.</strong> Payment, insurance, fuel and maintenance together come to ' +
+      money(allin) + ' a month. Above about 20% of take-home, the car starts competing with housing and savings.';
+  }
+  if (gm < 1500) {
+    note += '<br><br><strong>Income note:</strong> many subprime lenders require at least $1,500 to $2,500 a month of gross income from a single source before they will consider an application.';
+  }
+  if (term >= 72) {
+    note += '<br><br><strong>On the term:</strong> at ' + term + ' months the same payment buys a bigger loan, which is exactly how a payment that "fits" ends up attached to a car worth less than you owe for most of the loan.';
+  }
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

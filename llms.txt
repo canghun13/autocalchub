@@ -12,6 +12,7 @@
 
 - [Car Loan Calculator](https://autocalchub.com/tools/car-loan-calculator.html): Calculate your monthly car payment, total interest, and full loan cost based on price, APR, and term.
 - [Car Affordability Calculator](https://autocalchub.com/tools/car-affordability-calculator.html): Find out how much car you can afford based on your income, expenses, and the 20/4/10 rule.
+- [Car Payment to Income Calculator](https://autocalchub.com/tools/car-payment-to-income-calculator.html): Reads one car payment three ways — share of gross and take-home pay, the lender's payment-to-income (15-20%) and debt-to-income (45-50%) tests — and shows the gap between the loan a lender approves and the loan the 10% rule supports.
 - [Car Affordability Rules Comparison](https://autocalchub.com/tools/car-affordability-rules-comparison.html): Applies six competing affordability rules of thumb — 20/4/10, 35% of income, 10% of gross, 15% of take-home, half your salary and one year's salary — to the same income side by side, showing they disagree by up to 8x and recommending which to follow for financed versus cash purchases. Runs in both directions: salary to price ceiling, or car price to the salary each rule demands.
 - [Car Down Payment Calculator](https://autocalchub.com/tools/car-down-payment-calculator.html): See how different down payment amounts affect your monthly payment, total interest, and equity position at purchase.
 - [Car Maintenance Cost Calculator](https://autocalchub.com/tools/car-maintenance-cost-calculator.html): Estimate your annual car maintenance budget based on your vehicle's make type, age, and mileage.
@@ -78,6 +79,7 @@
 - [When Should You Trade In Your Car?](https://autocalchub.com/blog/when-to-trade-in-your-car.html): The right timing to trade in, how to avoid negative equity, and how to get a fair offer.
 
 ## Guides: Car Financing
+- [How Much Car Loan Will a Lender Approve on Your Salary?](https://autocalchub.com/blog/how-much-car-loan-will-i-be-approved-for.html): Lender PTI and DTI limits, approval amounts by salary versus the 10% rule, the $765 average payment, and when other debt makes the lender stricter than the rule.
 - [Dealer Financing vs Your Own Pre-Approval](https://autocalchub.com/blog/dealer-financing-vs-pre-approval.html): How dealer reserve works, what a markup costs by size and term, why the pre-approval's job is to be a benchmark rather than to be used, and when a subsidised promotional rate genuinely wins.
 - [Should You Sell Your Car Instead of Voluntary Surrender?](https://autocalchub.com/blog/should-you-sell-your-car-instead-of-voluntary-surrender.html): Why surrender leaves a larger deficiency balance than a private sale, how to bridge the payoff shortfall, and what to try before either route.
 - [How Much Is the Car Loan Interest Deduction Actually Worth?](https://autocalchub.com/blog/how-much-is-car-loan-interest-deduction-worth.html): Why the $10,000 headline is not what you receive — the marginal-rate reality, the 2028 expiry, and why the phase-out zeroes most borrowers out well below $150,000 MAGI.
