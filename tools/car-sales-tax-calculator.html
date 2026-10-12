@@ -170,7 +170,7 @@
       "name": "AutoCalcHub",
       "url": "https://autocalchub.com"
     },
-    "dateModified": "2026-08-31"
+    "dateModified": "2026-10-12"
   }
   </script>
   <script type="application/ld+json">
@@ -232,7 +232,7 @@
           <option value="AR">Arkansas (6.5%)</option>
           <option value="CA">California (7.25%)</option>
           <option value="CO">Colorado (2.9%)</option>
-          <option value="CT">Connecticut (6.35%)</option>
+          <option value="CT">Connecticut (6.35%; 7.75% over $50k)</option>
           <option value="DE">Delaware (0% — no sales tax)</option>
           <option value="FL">Florida (6.0%)</option>
           <option value="GA">Georgia (7.0%)</option>
@@ -243,9 +243,9 @@
           <option value="IA">Iowa (5.0%)</option>
           <option value="KS">Kansas (6.5%)</option>
           <option value="KY">Kentucky (6.0%)</option>
-          <option value="LA">Louisiana (4.45%)</option>
+          <option value="LA">Louisiana (5.0%)</option>
           <option value="ME">Maine (5.5%)</option>
-          <option value="MD">Maryland (6.0%)</option>
+          <option value="MD">Maryland (6.5%)</option>
           <option value="MA">Massachusetts (6.25%)</option>
           <option value="MI">Michigan (6.0%)</option>
           <option value="MN">Minnesota (6.5%)</option>
@@ -261,22 +261,22 @@
           <option value="NC">North Carolina (3.0%)</option>
           <option value="ND">North Dakota (5.0%)</option>
           <option value="OH">Ohio (5.75%)</option>
-          <option value="OK">Oklahoma (3.25%)</option>
+          <option value="OK">Oklahoma (4.5%)</option>
           <option value="OR">Oregon (0% — no sales tax)</option>
           <option value="PA">Pennsylvania (6.0%)</option>
           <option value="RI">Rhode Island (7.0%)</option>
-          <option value="SC">South Carolina (5.0%)</option>
+          <option value="SC">South Carolina (5%, max $500)</option>
           <option value="SD">South Dakota (4.0%)</option>
           <option value="TN">Tennessee (7.0%)</option>
           <option value="TX">Texas (6.25%)</option>
-          <option value="UT">Utah (6.85%)</option>
+          <option value="UT">Utah (4.85%)</option>
           <option value="VT">Vermont (6.0%)</option>
           <option value="VA">Virginia (4.15%)</option>
           <option value="WA">Washington (6.8%)</option>
           <option value="WV">West Virginia (6.0%)</option>
           <option value="WI">Wisconsin (5.0%)</option>
           <option value="WY">Wyoming (4.0%)</option>
-          <option value="DC">Washington D.C. (6.0%)</option>
+          <option value="DC">Washington D.C. (6%–8% by weight)</option>
         </select>
       </div>
       <div class="form-group">
@@ -293,6 +293,20 @@
           <input type="number" id="rebate" value="0" min="0">
         </div>
       </div>
+      <div class="form-group">
+        <label for="rebateTax">Is the Rebate Taxed in Your State?</label>
+        <select id="rebateTax">
+          <option value="taxed" selected>Yes — tax is on the price before the rebate (most states)</option>
+          <option value="exempt">No — the rebate lowers the taxable price</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="localRate">County / City Rate (optional)</label>
+        <div class="input-wrap has-suffix">
+          <input type="number" id="localRate" value="0" min="0" max="6" step="0.05">
+          <span class="input-suffix">%</span>
+        </div>
+      </div>
     </div>
     <button class="calc-btn" onclick="calculate()">Calculate Sales Tax</button>
   </div>
@@ -306,11 +320,11 @@
       </div>
       <div class="result-box">
         <div class="result-num" id="taxRate">0%</div>
-        <div class="result-label">State Tax Rate</div>
+        <div class="result-label">Effective Rate on Taxable Amount</div>
       </div>
       <div class="result-box">
         <div class="result-num" id="totalOOP">$0</div>
-        <div class="result-label">Vehicle + Tax</div>
+        <div class="result-label">Price − Rebate + Tax</div>
       </div>
     </div>
 
@@ -324,7 +338,7 @@
         <td id="bd-tradein">−$0</td>
       </tr>
       <tr>
-        <td>Rebate Deduction</td>
+        <td>Rebate Removed From Taxable Price</td>
         <td id="bd-rebate">−$0</td>
       </tr>
       <tr>
@@ -336,7 +350,7 @@
         <td id="bd-tax">$0</td>
       </tr>
       <tr class="total-row">
-        <td>Vehicle Price + Tax</td>
+        <td>Price − Rebate + Tax</td>
         <td id="bd-total">$0</td>
       </tr>
     </table>
@@ -357,10 +371,10 @@
 
     <h3>How Trade-Ins Affect Your Tax</h3>
     <p>In most states, your trade-in value is deducted from the taxable amount before sales tax is calculated. This is one of the most overlooked tax advantages of trading in at a dealership rather than selling privately. For example, if you buy a $35,000 car and trade in a vehicle worth $10,000, you pay tax on $25,000 instead of $35,000 — a meaningful savings at a 6% tax rate.</p>
-    <p>However, not all states offer this trade-in deduction. California, Hawaii, Kentucky, Maryland, Michigan, Montana, and Virginia do not deduct trade-in value from the taxable base. In these states, you pay tax on the full purchase price regardless of any trade-in.</p>
+    <p>However, not every state offers the full deduction. <strong>California, Hawaii, Virginia and Washington D.C.</strong> give no trade-in credit at all — you pay tax on the full price. <strong>Michigan</strong> caps the credit at $12,000 for 2026. <strong>Oklahoma</strong> applies the credit only to its 1.25% sales tax, not to the 3.25% excise tax. Illinois's old $10,000 cap was removed in 2022, so Illinois now credits the full trade-in. Selling privately gives up this saving entirely, which is worth pricing before you choose between a private sale and a trade.</p>
 
     <h3>How Manufacturer Rebates Affect Tax</h3>
-    <p>Manufacturer rebates (cash back offers from the automaker) are treated differently by state. In most states, rebates do not reduce your taxable amount — you pay tax on the pre-rebate price. A handful of states do allow rebate deductions. This calculator applies deductions where available as a general estimate; check your state's DMV for exact rules.</p>
+    <p>Manufacturer rebates (cash back from the automaker) usually do <strong>not</strong> reduce the taxable amount: in most states you pay tax on the price before the rebate, because the rebate is treated as the manufacturer paying part of the price on your behalf. Maryland, for example, lists manufacturer rebates explicitly as part of the taxable price. A minority of states — Virginia among them — let the rebate come off first. The calculator defaults to the common rule and switches automatically for Virginia; change the "Is the rebate taxed" setting if your state treats it differently. Dealer discounts are different from rebates: a lower negotiated price is a lower taxable price everywhere.</p>
 
     <h3>Local Taxes on Top of State Rates</h3>
     <p>Many states allow counties and cities to charge additional local sales tax. The rates shown in this calculator are state-level base rates. Your actual rate could be 0.5% to 3% higher depending on your county and city. For example, California's state rate is 7.25%, but Los Angeles County adds 2.25%, bringing the total to 9.5% for LA residents. Always check your local rate before finalizing your budget.</p>
@@ -382,7 +396,7 @@
       <div class="state-tax-item"><span class="state-name">Arkansas</span><span class="state-rate">6.5%</span></div>
       <div class="state-tax-item"><span class="state-name">California</span><span class="state-rate">7.25%</span></div>
       <div class="state-tax-item"><span class="state-name">Colorado</span><span class="state-rate">2.9%</span></div>
-      <div class="state-tax-item"><span class="state-name">Connecticut</span><span class="state-rate">6.35%</span></div>
+      <div class="state-tax-item"><span class="state-name">Connecticut</span><span class="state-rate">6.35% (7.75% over $50k)</span></div>
       <div class="state-tax-item"><span class="state-name">Delaware</span><span class="state-rate">0%</span></div>
       <div class="state-tax-item"><span class="state-name">Florida</span><span class="state-rate">6.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Georgia</span><span class="state-rate">7.0%</span></div>
@@ -393,9 +407,9 @@
       <div class="state-tax-item"><span class="state-name">Iowa</span><span class="state-rate">5.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Kansas</span><span class="state-rate">6.5%</span></div>
       <div class="state-tax-item"><span class="state-name">Kentucky</span><span class="state-rate">6.0%</span></div>
-      <div class="state-tax-item"><span class="state-name">Louisiana</span><span class="state-rate">4.45%</span></div>
+      <div class="state-tax-item"><span class="state-name">Louisiana</span><span class="state-rate">5.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Maine</span><span class="state-rate">5.5%</span></div>
-      <div class="state-tax-item"><span class="state-name">Maryland</span><span class="state-rate">6.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Maryland</span><span class="state-rate">6.5%</span></div>
       <div class="state-tax-item"><span class="state-name">Massachusetts</span><span class="state-rate">6.25%</span></div>
       <div class="state-tax-item"><span class="state-name">Michigan</span><span class="state-rate">6.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Minnesota</span><span class="state-rate">6.5%</span></div>
@@ -411,28 +425,29 @@
       <div class="state-tax-item"><span class="state-name">North Carolina</span><span class="state-rate">3.0%</span></div>
       <div class="state-tax-item"><span class="state-name">North Dakota</span><span class="state-rate">5.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Ohio</span><span class="state-rate">5.75%</span></div>
-      <div class="state-tax-item"><span class="state-name">Oklahoma</span><span class="state-rate">3.25%</span></div>
+      <div class="state-tax-item"><span class="state-name">Oklahoma</span><span class="state-rate">4.5% (3.25% excise + 1.25%)</span></div>
       <div class="state-tax-item"><span class="state-name">Oregon</span><span class="state-rate">0%</span></div>
       <div class="state-tax-item"><span class="state-name">Pennsylvania</span><span class="state-rate">6.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Rhode Island</span><span class="state-rate">7.0%</span></div>
-      <div class="state-tax-item"><span class="state-name">South Carolina</span><span class="state-rate">5.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">South Carolina</span><span class="state-rate">5%, max $500</span></div>
       <div class="state-tax-item"><span class="state-name">South Dakota</span><span class="state-rate">4.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Tennessee</span><span class="state-rate">7.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Texas</span><span class="state-rate">6.25%</span></div>
-      <div class="state-tax-item"><span class="state-name">Utah</span><span class="state-rate">6.85%</span></div>
+      <div class="state-tax-item"><span class="state-name">Utah</span><span class="state-rate">4.85% + local</span></div>
       <div class="state-tax-item"><span class="state-name">Vermont</span><span class="state-rate">6.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Virginia</span><span class="state-rate">4.15%</span></div>
       <div class="state-tax-item"><span class="state-name">Washington</span><span class="state-rate">6.8%</span></div>
       <div class="state-tax-item"><span class="state-name">West Virginia</span><span class="state-rate">6.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Wisconsin</span><span class="state-rate">5.0%</span></div>
       <div class="state-tax-item"><span class="state-name">Wyoming</span><span class="state-rate">4.0%</span></div>
-      <div class="state-tax-item"><span class="state-name">Washington D.C.</span><span class="state-rate">6.0%</span></div>
+      <div class="state-tax-item"><span class="state-name">Washington D.C.</span><span class="state-rate">6%–8% by weight</span></div>
     </div>
   </div>
 
   <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin:2.5rem 0;">
     <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides & Tools</h3>
     <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+      <li><a href="trade-in-vs-private-sale-calculator.html" style="color:var(--orange);text-decoration:none;">Trade-In vs Private Sale Calculator</a></li>
       <li><a href="../blog/moving-to-another-state-what-to-do-with-your-car.html" style="color:var(--orange);text-decoration:none;">Moving to Another State: What to Do With Your Car</a></li>
       <li><a href="../blog/does-buying-a-car-out-of-state-save-on-taxes.html" style="color:var(--orange);text-decoration:none;">Does Buying a Car Out of State Save on Taxes?</a></li>
       <li><a href="../tools/car-loan-calculator.html" style="color:var(--orange);text-decoration:none;">Car Loan Calculator</a></li>
@@ -459,7 +474,7 @@ const STATE_DATA = {
   AR: { rate: 6.5,    tradeIn: true  },
   CA: { rate: 7.25,   tradeIn: false }, // CA does not deduct trade-in
   CO: { rate: 2.9,    tradeIn: true  },
-  CT: { rate: 6.35,   tradeIn: true  },
+  CT: { rate: 6.35,   tradeIn: true, luxRate: 7.75, luxOver: 50000 },
   DE: { rate: 0,      tradeIn: true  },
   FL: { rate: 6.0,    tradeIn: true  },
   GA: { rate: 7.0,    tradeIn: true  },
@@ -469,12 +484,12 @@ const STATE_DATA = {
   IN: { rate: 7.0,    tradeIn: true  },
   IA: { rate: 5.0,    tradeIn: true  },
   KS: { rate: 6.5,    tradeIn: true  },
-  KY: { rate: 6.0,    tradeIn: false },
-  LA: { rate: 4.45,   tradeIn: true  },
+  KY: { rate: 6.0,    tradeIn: true  },
+  LA: { rate: 5.0,    tradeIn: true  }, // 5% Jan 2025 – Dec 2029
   ME: { rate: 5.5,    tradeIn: true  },
-  MD: { rate: 6.0,    tradeIn: false },
+  MD: { rate: 6.5,    tradeIn: true  }, // 6.5% from July 1, 2025
   MA: { rate: 6.25,   tradeIn: true  },
-  MI: { rate: 6.0,    tradeIn: false },
+  MI: { rate: 6.0,    tradeIn: true, tradeCap: 12000 }, // 2026 cap
   MN: { rate: 6.5,    tradeIn: true  },
   MS: { rate: 5.0,    tradeIn: true  },
   MO: { rate: 4.225,  tradeIn: true  },
@@ -488,26 +503,26 @@ const STATE_DATA = {
   NC: { rate: 3.0,    tradeIn: true  },
   ND: { rate: 5.0,    tradeIn: true  },
   OH: { rate: 5.75,   tradeIn: true  },
-  OK: { rate: 3.25,   tradeIn: true  },
+  OK: { rate: 4.5,    tradeIn: true, okSplit: true }, // 3.25% excise (no trade credit) + 1.25% sales
   OR: { rate: 0,      tradeIn: true  },
   PA: { rate: 6.0,    tradeIn: true  },
   RI: { rate: 7.0,    tradeIn: true  },
-  SC: { rate: 5.0,    tradeIn: true  },
+  SC: { rate: 5.0,    tradeIn: true, cap: 500, noLocal: true }, // IMF
   SD: { rate: 4.0,    tradeIn: true  },
   TN: { rate: 7.0,    tradeIn: true  },
   TX: { rate: 6.25,   tradeIn: true  },
-  UT: { rate: 6.85,   tradeIn: true  },
+  UT: { rate: 4.85,   tradeIn: true  },
   VT: { rate: 6.0,    tradeIn: true  },
-  VA: { rate: 4.15,   tradeIn: false },
+  VA: { rate: 4.15,   tradeIn: false, rebateExempt: true },
   WA: { rate: 6.8,    tradeIn: true  },
   WV: { rate: 6.0,    tradeIn: true  },
   WI: { rate: 5.0,    tradeIn: true  },
   WY: { rate: 4.0,    tradeIn: true  },
-  DC: { rate: 6.0,    tradeIn: true  }
+  DC: { rate: 6.0,    tradeIn: false } // 6%–8% by weight, on fair market value
 };
 
 const NO_TAX_STATES = ['AK', 'DE', 'MT', 'NH', 'OR'];
-const NO_TRADEIN_STATES = ['CA', 'HI', 'KY', 'MD', 'MI', 'VA'];
+const NO_TRADEIN_STATES = ['CA', 'HI', 'VA', 'DC'];
 
 function fmt(n) {
   return '$' + Math.round(n).toLocaleString();
@@ -526,40 +541,74 @@ function calculate() {
 
   const price    = parseFloat(document.getElementById('vehiclePrice').value) || 0;
   const tradeIn  = parseFloat(document.getElementById('tradeIn').value) || 0;
-  const rebate   = parseFloat(document.getElementById('rebate').value) || 0;
+  const rebate   = Math.min(parseFloat(document.getElementById('rebate').value) || 0, price);
+  const localIn  = parseFloat(document.getElementById('localRate').value) || 0;
   const data     = STATE_DATA[stateCode];
-  const rate     = data.rate;
-  const deductTrade = data.tradeIn;
+  const rebateExempt = document.getElementById('rebateTax').value === 'exempt';
 
-  const tradeDeduct  = deductTrade ? Math.min(tradeIn, price) : 0;
-  const taxableAmt   = Math.max(0, price - tradeDeduct - rebate);
-  const taxAmt       = taxableAmt * (rate / 100);
-  const total        = price + taxAmt;
+  let rate = data.rate;
+  if (data.luxRate && price > data.luxOver) rate = data.luxRate;
+  const local = (rate === 0 || data.noLocal || data.okSplit) ? 0 : localIn;
+
+  const cap         = data.tradeCap || Infinity;
+  const tradeDeduct = data.tradeIn ? Math.min(tradeIn, cap, price) : 0;
+  const rebateOff   = rebateExempt ? rebate : 0;
+  const preTrade    = Math.max(0, price - rebateOff);
+  const taxableAmt  = Math.max(0, preTrade - tradeDeduct);
+
+  let taxAmt;
+  if (data.okSplit) {
+    taxAmt = preTrade * 0.0325 + taxableAmt * 0.0125;
+  } else {
+    taxAmt = taxableAmt * ((rate + local) / 100);
+    if (data.cap) taxAmt = Math.min(taxAmt, data.cap);
+  }
+  const effBase = data.okSplit ? preTrade : taxableAmt;
+  const effRate = effBase > 0 ? taxAmt / effBase * 100 : 0;
+  const total   = price - rebate + taxAmt;
 
   document.getElementById('taxAmount').textContent = fmt(taxAmt);
-  document.getElementById('taxRate').textContent   = fmtRate(rate);
+  document.getElementById('taxRate').textContent   = effRate.toFixed(2).replace(/\.?0+$/, '') + '%';
   document.getElementById('totalOOP').textContent  = fmt(total);
 
   document.getElementById('bd-price').textContent   = fmt(price);
-  document.getElementById('bd-tradein').textContent = deductTrade ? '−' + fmt(tradeIn) : '−$0 (not deductible in ' + stateCode + ')';
-  document.getElementById('bd-rebate').textContent  = '−' + fmt(rebate);
+  let tradeTxt;
+  if (!data.tradeIn) tradeTxt = '−$0 (no trade-in credit in ' + stateCode + ')';
+  else if (tradeIn > cap) tradeTxt = '−' + fmt(tradeDeduct) + ' (capped at ' + fmt(cap) + ')';
+  else tradeTxt = '−' + fmt(tradeDeduct);
+  document.getElementById('bd-tradein').textContent = tradeTxt;
+  document.getElementById('bd-rebate').textContent  = rebate > 0 ? (rebateExempt ? '−' + fmt(rebate) : '$0 (rebate is taxed)') : '−$0';
   document.getElementById('bd-taxable').textContent = fmt(taxableAmt);
-  document.getElementById('bd-rate').textContent    = fmtRate(rate);
+  document.getElementById('bd-rate').textContent    = data.okSplit ? '3.25% excise + 1.25%' : (data.cap ? '5%, max $500' : fmtRate(rate) + (local ? ' + ' + fmtRate(local) + ' local' : ''));
   document.getElementById('bd-tax').textContent     = fmt(taxAmt);
   document.getElementById('bd-total').textContent   = fmt(total);
 
   let note = '';
   if (rate === 0) {
     note = stateCode + ' has no state sales tax on vehicle purchases.';
+    if (stateCode === 'OR') note += ' Oregon does charge a 0.5% vehicle privilege tax on new vehicles bought from Oregon dealers.';
   } else {
-    note = 'Base state rate: ' + fmtRate(rate) + '. Local county/city taxes may apply on top of this rate — your final tax could be higher depending on your location.';
-    if (!deductTrade && tradeIn > 0) {
-      note += ' Note: ' + stateCode + ' does not allow trade-in deductions from the taxable base.';
+    if (data.okSplit) {
+      note = 'Oklahoma charges a 3.25% motor vehicle excise tax plus a 1.25% sales tax. A trade-in reduces only the 1.25% part; local sales taxes do not apply.';
+    } else if (data.cap) {
+      note = 'South Carolina charges a one-time Infrastructure Maintenance Fee of 5% instead of sales tax, capped at $500. Above a $10,000 taxable price (after trade-in) every buyer pays the same $500.';
+    } else {
+      note = 'State rate ' + fmtRate(rate) + (local ? ' plus ' + fmtRate(local) + ' local.' : '. Add your county and city rate above for the full figure — local rates commonly add 0.5% to 3%.');
     }
+    if (data.luxRate && price > data.luxOver) note += ' Connecticut taxes vehicles priced over $50,000 at 7.75% instead of 6.35%.';
+    if (!data.tradeIn && tradeIn > 0) note += ' ' + stateCode + ' gives no trade-in credit, so the trade does not lower your tax.';
+    if (data.tradeCap && tradeIn > data.tradeCap) note += ' Michigan caps the trade-in credit at ' + fmt(data.tradeCap) + ' for 2026.';
+    if (rebate > 0 && !rebateExempt) note += ' Your ' + fmt(rebate) + ' rebate is taxed here — it lowers what you pay, but not the tax.';
+    if (stateCode === 'DC') note += ' D.C. actually applies 6% to 8% by vehicle weight to the fair market value; this estimate uses 6%.';
+    if (stateCode === 'UT') note += ' Utah\'s 4.85% is the state base; combined rates typically run 6.1% to 8.7% with local taxes.';
   }
   document.getElementById('state-note').textContent = note;
   document.getElementById('results').classList.add('show');
 }
+document.getElementById('state').addEventListener('change', function () {
+  const d = STATE_DATA[this.value];
+  if (d) document.getElementById('rebateTax').value = d.rebateExempt ? 'exempt' : 'taxed';
+});
 </script>
 </body>
 </html>

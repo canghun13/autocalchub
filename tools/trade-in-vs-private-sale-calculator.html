@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trade-In vs Private Sale Calculator — What the Dealer's Offer Is Really Worth After the Tax Credit | AutoCalcHub</title>
+  <meta name="description" content="Compare a dealer trade-in offer, an instant cash offer and a private sale on equal terms: the sales tax credit your state gives on a trade-in, private-sale costs and time, and the private price you need just to break even.">
+  <link rel="canonical" href="https://autocalchub.com/tools/trade-in-vs-private-sale-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Trade-In vs Private Sale Calculator",
+    "url": "https://autocalchub.com/tools/trade-in-vs-private-sale-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "description": "Compares the net value of a dealer trade-in (including the state sales tax credit), an instant cash offer and a private sale after costs and time, and computes the private-sale break-even price.",
+    "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
+    "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
+    "dateModified": "2026-10-12"
+  }
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://autocalchub.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://autocalchub.com/tools/"},
+    {"@type": "ListItem", "position": 3, "name": "Trade-In vs Private Sale Calculator", "item": "https://autocalchub.com/tools/trade-in-vs-private-sale-calculator.html"}
+  ]
+}
+  </script>
+</head>
+<body>
+<div id="header-placeholder"></div>
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Is the Dealer's Trade-In Offer Worth Taking?</h1>
+    <p>A trade-in offer is always lower than what a private buyer would pay. But in most states the trade also cuts the sales tax on the car you're buying, and a private sale costs money and hours. Put the offers side by side on equal terms and see the private price you'd actually need to come out ahead.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>🔄 The Car You're Buying</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="price">Price of the Car You're Buying</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="price" value="35000" min="0" step="500"></div>
+        <span class="hint">The negotiated price, before any trade-in.</span>
+      </div>
+      <div class="form-group">
+        <label for="state">State You'll Register In</label>
+        <select id="state">
+          <option value="AL">Alabama (2.0%)</option>
+          <option value="AK">Alaska (0% — no state tax)</option>
+          <option value="AZ">Arizona (5.6%)</option>
+          <option value="AR">Arkansas (6.5%)</option>
+          <option value="CA">California (7.25%)</option>
+          <option value="CO">Colorado (2.9%)</option>
+          <option value="CT">Connecticut (6.35%; 7.75% over $50k)</option>
+          <option value="DE">Delaware (0% — no sales tax)</option>
+          <option value="FL">Florida (6.0%)</option>
+          <option value="GA">Georgia (7.0%)</option>
+          <option value="HI">Hawaii (4.0%)</option>
+          <option value="ID">Idaho (6.0%)</option>
+          <option value="IL">Illinois (6.25%)</option>
+          <option value="IN">Indiana (7.0%)</option>
+          <option value="IA">Iowa (5.0%)</option>
+          <option value="KS">Kansas (6.5%)</option>
+          <option value="KY">Kentucky (6.0%)</option>
+          <option value="LA">Louisiana (5.0%)</option>
+          <option value="ME">Maine (5.5%)</option>
+          <option value="MD">Maryland (6.5%)</option>
+          <option value="MA">Massachusetts (6.25%)</option>
+          <option value="MI">Michigan (6.0%)</option>
+          <option value="MN">Minnesota (6.5%)</option>
+          <option value="MS">Mississippi (5.0%)</option>
+          <option value="MO">Missouri (4.225%)</option>
+          <option value="MT">Montana (0% — no sales tax)</option>
+          <option value="NE">Nebraska (5.5%)</option>
+          <option value="NV">Nevada (6.85%)</option>
+          <option value="NH">New Hampshire (0% — no sales tax)</option>
+          <option value="NJ">New Jersey (6.625%)</option>
+          <option value="NM">New Mexico (4.0%)</option>
+          <option value="NY">New York (4.0%)</option>
+          <option value="NC">North Carolina (3.0%)</option>
+          <option value="ND">North Dakota (5.0%)</option>
+          <option value="OH">Ohio (5.75%)</option>
+          <option value="OK">Oklahoma (4.5%)</option>
+          <option value="OR">Oregon (0% — no sales tax)</option>
+          <option value="PA">Pennsylvania (6.0%)</option>
+          <option value="RI">Rhode Island (7.0%)</option>
+          <option value="SC">South Carolina (5%, max $500)</option>
+          <option value="SD">South Dakota (4.0%)</option>
+          <option value="TN">Tennessee (7.0%)</option>
+          <option value="TX" selected>Texas (6.25%)</option>
+          <option value="UT">Utah (4.85%)</option>
+          <option value="VT">Vermont (6.0%)</option>
+          <option value="VA">Virginia (4.15%)</option>
+          <option value="WA">Washington (6.8%)</option>
+          <option value="WV">West Virginia (6.0%)</option>
+          <option value="WI">Wisconsin (5.0%)</option>
+          <option value="WY">Wyoming (4.0%)</option>
+          <option value="DC">Washington D.C. (6%–8% by weight)</option>
+        
+        </select>
+        <span class="hint">Your registration state's trade-in rule applies, not the dealer's.</span>
+      </div>
+      <div class="form-group">
+        <label for="localRate">County / City Rate</label>
+        <div class="input-wrap has-suffix"><input type="number" id="localRate" value="2" min="0" max="6" step="0.05"><span class="input-suffix">%</span></div>
+        <span class="hint">Local sales tax on top of the state rate, if any.</span>
+      </div>
+    </div>
+
+    <h2 style="margin-top:2rem">💰 Your Three Ways to Sell</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="offer">Dealer Trade-In Offer</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="offer" value="12000" min="0" step="250"></div>
+        <span class="hint">From the dealer you're buying from — only that trade earns the tax credit.</span>
+      </div>
+      <div class="form-group">
+        <label for="instant">Instant Cash Offer (optional)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="instant" value="12500" min="0" step="250"></div>
+        <span class="hint">CarMax, Carvana, Peddle and similar. Usually no tax credit, because you're not trading it toward the purchase.</span>
+      </div>
+      <div class="form-group">
+        <label for="priv">Realistic Private-Sale Price</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="priv" value="14500" min="0" step="250"></div>
+        <span class="hint">What similar cars actually sell for locally, not the asking prices.</span>
+      </div>
+      <div class="form-group">
+        <label for="costs">Private-Sale Costs</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="costs" value="250" min="0" step="25"></div>
+        <span class="hint">Detailing, listing fees, inspection, title paperwork.</span>
+      </div>
+      <div class="form-group">
+        <label for="hours">Hours a Private Sale Will Take</label>
+        <div class="input-wrap has-suffix"><input type="number" id="hours" value="8" min="0" max="200" step="1"><span class="input-suffix">hrs</span></div>
+        <span class="hint">Photos, messages, test drives, no-shows, the bank visit.</span>
+      </div>
+      <div class="form-group">
+        <label for="rateH">What Your Hour Is Worth</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="rateH" value="25" min="0" step="5"></div>
+        <span class="hint">Set to $0 if you don't mind the hassle.</span>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="verdict-box">
+        <h3 id="vTitle"></h3>
+        <span class="big" id="vBig"></span>
+        <p id="vSub"></p>
+      </div>
+
+      <div class="two-col">
+        <div class="calc-card" style="margin:0">
+          <h2>The Trade-In, Fully Counted</h2>
+          <div class="row"><span>Dealer's offer</span><span id="oOffer"></span></div>
+          <div class="row"><span>Sales tax without a trade</span><span id="oTax0"></span></div>
+          <div class="row"><span>Sales tax with the trade</span><span id="oTax1"></span></div>
+          <div class="row"><span>Real value of the trade-in</span><span id="oEff"></span></div>
+        </div>
+        <div class="calc-card" style="margin:0">
+          <h2>The Alternatives, Net</h2>
+          <div class="row"><span>Instant cash offer</span><span id="oInst"></span></div>
+          <div class="row"><span>Private sale price</span><span id="oPriv"></span></div>
+          <div class="row"><span>Less costs and your time</span><span id="oPrivCost"></span></div>
+          <div class="row"><span>Private sale, net</span><span id="oPrivNet"></span></div>
+        </div>
+      </div>
+
+      <div class="calc-card">
+        <h2>Where the Lines Cross</h2>
+        <div class="row"><span>Private price needed to beat the trade-in</span><span id="oBE"></span></div>
+        <div class="row"><span>Dealer offer below your private price</span><span id="oGap"></span></div>
+        <div class="row"><span>Tax credit as a share of the gap</span><span id="oShare"></span></div>
+      </div>
+
+      <div class="note" id="mainNote"></div>
+      <div class="disclaimer">⚠️ <strong>Estimates, not tax advice.</strong> Trade-in credit rules and rates change; the calculator uses state rules as of 2026 (for example Michigan's $12,000 credit cap, South Carolina's $500 fee cap and Oklahoma's split excise tax) and the local rate you enter. If you still owe money on the car you're trading, the payoff doesn't change the tax credit in most states, but it does change how much cash each option leaves you with. A private sale also carries risks this can't price — payment fraud, buyers backing out, and the time the car sits unsold.</div>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why the Dealer's Offer Is Worth More Than It Looks</h2>
+    <p>Dealers typically offer 10% to 20% less than a car would fetch from a private buyer. That gap is the number people compare. It leaves out the fact that in most states, a trade-in toward your next car comes off the taxable price.</p>
+    <p>Buy a $35,000 car in Texas with a $12,000 trade and you pay tax on $23,000 instead of $35,000. At 6.25% state plus 2% local, that saves <strong>$990</strong>. The dealer's $12,000 offer is really worth $12,990 to you — a figure no private buyer can match unless they pay more than that, after your costs and time.</p>
+
+    <h2>Where the Credit Is Worth Nothing</h2>
+    <p>The tax credit is the whole case for trading in, and in some places it doesn't exist or barely does:</p>
+    <ul>
+      <li><strong>California, Hawaii, Virginia and Washington D.C.:</strong> no trade-in credit. The trade-in is worth exactly the offer, so a private sale or an instant offer usually wins.</li>
+      <li><strong>South Carolina:</strong> the 5% fee is capped at $500, which you hit at a $10,000 taxable price. On most purchases a trade-in saves you nothing on tax.</li>
+      <li><strong>Michigan:</strong> the credit is capped at $12,000 of trade-in value for 2026. Anything you're offered above that earns no tax saving.</li>
+      <li><strong>Oklahoma:</strong> the credit applies only to the 1.25% sales tax, not the 3.25% excise, so it's worth about a quarter of what the headline 4.5% suggests.</li>
+      <li><strong>Alaska, Delaware, Montana, New Hampshire and Oregon:</strong> no sales tax to reduce.</li>
+    </ul>
+
+    <h2>Instant Cash Offers: The Middle Option</h2>
+    <p>Online buyers and big used-car retailers will often beat a dealer's trade-in offer by a few hundred dollars, with none of the private-sale work. But unless you're buying your next car from the same company, the sale isn't a trade toward a purchase and earns no tax credit. A $12,500 instant offer can lose to a $12,000 trade-in once the trade's tax saving is counted.</p>
+    <p>The practical use for an instant offer is as leverage. Bring it to the dealer and ask them to match it on the trade — if they do, you get the higher number <em>and</em> the tax credit.</p>
+
+    <h2>Pricing Your Time Honestly</h2>
+    <p>A private sale means photos, a listing, messages from people who aren't serious, test drives, a few no-shows and a trip to the bank or DMV. Eight to fifteen hours is typical. Whether that's worth $200 or $1,000 is your call, but it isn't zero, and it's the input that most often flips the answer on cheaper cars where the dollar gap is small.</p>
+
+    <h2>How to Use the Result</h2>
+    <ol>
+      <li><strong>Get the trade-in number separately from the price.</strong> Negotiate the car you're buying first, then the trade — otherwise a generous trade can be paid for with a worse price.</li>
+      <li><strong>Get an instant offer before you go.</strong> It sets a floor for the trade-in conversation.</li>
+      <li><strong>Check the break-even price against real sold listings,</strong> not asking prices.</li>
+      <li><strong>If private wins by less than a few hundred dollars,</strong> the risk and hassle usually aren't worth it.</li>
+    </ol>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/how-to-sell-car-privately-vs-trade-in.html" style="color:var(--orange);text-decoration:none;">Selling Privately vs Trading In</a></li>
+        <li><a href="car-sales-tax-calculator.html" style="color:var(--orange);text-decoration:none;">Car Sales Tax Calculator by State</a></li>
+        <li><a href="car-trade-in-value-estimator.html" style="color:var(--orange);text-decoration:none;">Car Trade-In Value Estimator</a></li>
+        <li><a href="../blog/carmax-vs-carvana-which-pays-more.html" style="color:var(--orange);text-decoration:none;">CarMax vs Carvana: Which Pays More?</a></li>
+        <li><a href="../blog/how-to-price-car-for-private-sale.html" style="color:var(--orange);text-decoration:none;">How to Price Your Car for a Private Sale</a></li>
+        <li><a href="../blog/how-to-sell-car-with-loan-still-on-it.html" style="color:var(--orange);text-decoration:none;">How to Sell a Car With a Loan Still On It</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div id="footer-placeholder"></div>
+<script src="../assets/js/components.js"></script>
+<script>
+const STATE_DATA = {
+  AL: { rate: 2.0,    tradeIn: true  },
+  AK: { rate: 0,      tradeIn: true  },
+  AZ: { rate: 5.6,    tradeIn: true  },
+  AR: { rate: 6.5,    tradeIn: true  },
+  CA: { rate: 7.25,   tradeIn: false }, // CA does not deduct trade-in
+  CO: { rate: 2.9,    tradeIn: true  },
+  CT: { rate: 6.35,   tradeIn: true, luxRate: 7.75, luxOver: 50000 },
+  DE: { rate: 0,      tradeIn: true  },
+  FL: { rate: 6.0,    tradeIn: true  },
+  GA: { rate: 7.0,    tradeIn: true  },
+  HI: { rate: 4.0,    tradeIn: false },
+  ID: { rate: 6.0,    tradeIn: true  },
+  IL: { rate: 6.25,   tradeIn: true  },
+  IN: { rate: 7.0,    tradeIn: true  },
+  IA: { rate: 5.0,    tradeIn: true  },
+  KS: { rate: 6.5,    tradeIn: true  },
+  KY: { rate: 6.0,    tradeIn: true  },
+  LA: { rate: 5.0,    tradeIn: true  }, // 5% Jan 2025 – Dec 2029
+  ME: { rate: 5.5,    tradeIn: true  },
+  MD: { rate: 6.5,    tradeIn: true  }, // 6.5% from July 1, 2025
+  MA: { rate: 6.25,   tradeIn: true  },
+  MI: { rate: 6.0,    tradeIn: true, tradeCap: 12000 }, // 2026 cap
+  MN: { rate: 6.5,    tradeIn: true  },
+  MS: { rate: 5.0,    tradeIn: true  },
+  MO: { rate: 4.225,  tradeIn: true  },
+  MT: { rate: 0,      tradeIn: true  },
+  NE: { rate: 5.5,    tradeIn: true  },
+  NV: { rate: 6.85,   tradeIn: true  },
+  NH: { rate: 0,      tradeIn: true  },
+  NJ: { rate: 6.625,  tradeIn: true  },
+  NM: { rate: 4.0,    tradeIn: true  },
+  NY: { rate: 4.0,    tradeIn: true  },
+  NC: { rate: 3.0,    tradeIn: true  },
+  ND: { rate: 5.0,    tradeIn: true  },
+  OH: { rate: 5.75,   tradeIn: true  },
+  OK: { rate: 4.5,    tradeIn: true, okSplit: true }, // 3.25% excise (no trade credit) + 1.25% sales
+  OR: { rate: 0,      tradeIn: true  },
+  PA: { rate: 6.0,    tradeIn: true  },
+  RI: { rate: 7.0,    tradeIn: true  },
+  SC: { rate: 5.0,    tradeIn: true, cap: 500, noLocal: true }, // IMF
+  SD: { rate: 4.0,    tradeIn: true  },
+  TN: { rate: 7.0,    tradeIn: true  },
+  TX: { rate: 6.25,   tradeIn: true  },
+  UT: { rate: 4.85,   tradeIn: true  },
+  VT: { rate: 6.0,    tradeIn: true  },
+  VA: { rate: 4.15,   tradeIn: false, rebateExempt: true },
+  WA: { rate: 6.8,    tradeIn: true  },
+  WV: { rate: 6.0,    tradeIn: true  },
+  WI: { rate: 5.0,    tradeIn: true  },
+  WY: { rate: 4.0,    tradeIn: true  },
+  DC: { rate: 6.0,    tradeIn: false } // 6%–8% by weight, on fair market value
+};
+function money(n){ return '$' + Math.round(n).toLocaleString(); }
+
+function taxFor(code, price, trade, localIn){
+  var d = STATE_DATA[code];
+  var rate = (d.luxRate && price > d.luxOver) ? d.luxRate : d.rate;
+  var local = (rate === 0 || d.noLocal || d.okSplit) ? 0 : localIn;
+  var cap = d.tradeCap || Infinity;
+  var td = d.tradeIn ? Math.min(trade, cap, price) : 0;
+  var taxable = Math.max(0, price - td);
+  if (d.okSplit) return price * 0.0325 + taxable * 0.0125;
+  var t = taxable * (rate + local) / 100;
+  return d.cap ? Math.min(t, d.cap) : t;
+}
+
+['price','localRate','offer','instant','priv','costs','hours','rateH'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', calculate);
+});
+document.getElementById('state').addEventListener('change', calculate);
+
+function calculate(){
+  var code    = document.getElementById('state').value;
+  if (!code || !STATE_DATA[code]) return;
+  var price   = parseFloat(document.getElementById('price').value) || 0;
+  var localIn = parseFloat(document.getElementById('localRate').value) || 0;
+  var offer   = parseFloat(document.getElementById('offer').value) || 0;
+  var instant = parseFloat(document.getElementById('instant').value) || 0;
+  var priv    = parseFloat(document.getElementById('priv').value) || 0;
+  var costs   = parseFloat(document.getElementById('costs').value) || 0;
+  var hours   = parseFloat(document.getElementById('hours').value) || 0;
+  var rateH   = parseFloat(document.getElementById('rateH').value) || 0;
+  var d = STATE_DATA[code];
+
+  var tax0 = taxFor(code, price, 0, localIn);
+  var tax1 = taxFor(code, price, offer, localIn);
+  var saved = tax0 - tax1;
+  var eff = offer + saved;
+  var timeCost = hours * rateH;
+  var privNet = priv - costs - timeCost;
+  var breakeven = eff + costs + timeCost;
+  var gap = priv - offer;
+
+  document.getElementById('oOffer').textContent = money(offer);
+  document.getElementById('oTax0').textContent = money(tax0);
+  document.getElementById('oTax1').textContent = money(tax1);
+  document.getElementById('oEff').textContent = money(eff) + (saved > 0 ? ' (+' + money(saved) + ')' : '');
+  document.getElementById('oInst').textContent = instant > 0 ? money(instant) : '—';
+  document.getElementById('oPriv').textContent = money(priv);
+  document.getElementById('oPrivCost').textContent = '−' + money(costs + timeCost);
+  document.getElementById('oPrivNet').textContent = money(privNet);
+  document.getElementById('oBE').textContent = money(breakeven);
+  document.getElementById('oGap').textContent = priv > 0 ? money(gap) + ' (' + (gap / priv * 100).toFixed(1) + '%)' : '—';
+  document.getElementById('oShare').textContent = gap > 0 ? Math.min(100, saved / gap * 100).toFixed(0) + '%' : '—';
+
+  var opts = [['Take the Trade-In', eff], ['Sell Privately', privNet]];
+  if (instant > 0) opts.push(['Take the Instant Offer', instant]);
+  opts.sort(function(a, b){ return b[1] - a[1]; });
+  var best = opts[0], second = opts[1];
+  var margin = best[1] - second[1];
+
+  document.getElementById('vTitle').textContent = best[0];
+  document.getElementById('vBig').textContent = money(best[1]);
+  var sub;
+  if (margin < 300) {
+    sub = 'Effectively a tie — ' + best[0].replace('Take the ', '').replace('Sell ', 'selling ').toLowerCase() + ' leads by only ' + money(margin) + '. Pick whichever is less hassle.';
+  } else {
+    sub = 'Ahead of the next-best option by ' + money(margin) + ' after counting the tax credit, private-sale costs and your time.';
+  }
+  document.getElementById('vSub').textContent = sub;
+
+  var note = '<strong>How this was calculated:</strong> without a trade-in, the tax on ' + money(price) + ' in ' + code + ' is ' + money(tax0) +
+    '; with your ' + money(offer) + ' trade it is ' + money(tax1) + (saved > 0 ? '. The ' + money(saved) + ' difference is part of what the dealer\'s offer is worth, so the trade-in is really worth ' + money(eff) :
+    '. The trade saves no tax here, so it is worth only the ' + money(offer) + ' offer') + '. A private sale at ' + money(priv) + ' nets ' + money(privNet) + ' after ' + money(costs) + ' of costs and ' + hours + ' hours at ' + money(rateH) + ' an hour.';
+
+  if (!d.tradeIn && d.rate > 0) {
+    note += '<br><br><strong>' + code + ' gives no trade-in tax credit,</strong> so the dealer\'s offer has to stand on its own. This is where instant offers and private sales win most often.';
+  } else if (d.cap && saved === 0) {
+    note += '<br><br><strong>South Carolina\'s $500 fee cap wipes out the credit here.</strong> The fee hits its $500 maximum at a $10,000 taxable price, so trading in doesn\'t lower it on this purchase.';
+  } else if (d.tradeCap && offer > d.tradeCap) {
+    note += '<br><br><strong>Michigan caps the credit at ' + money(d.tradeCap) + ' of trade-in value for 2026,</strong> so the part of the offer above that earns no tax saving.';
+  } else if (d.okSplit) {
+    note += '<br><br><strong>Oklahoma\'s credit only touches the 1.25% sales tax,</strong> not the 3.25% excise, which is why the saving is small.';
+  } else if (d.rate === 0) {
+    note += '<br><br><strong>' + code + ' has no sales tax on vehicles,</strong> so there is no credit to gain by trading in.';
+  }
+
+  if (instant > 0 && instant > offer && instant < eff) {
+    note += '<br><br><strong>The instant offer is higher than the trade-in on paper, but lower once the tax credit counts.</strong> Use it as leverage: ask the dealer to match ' +
+      money(instant) + ' on the trade. If they do, you get the higher number and the ' + money(taxFor(code, price, 0, localIn) - taxFor(code, price, instant, localIn)) + ' credit.';
+  }
+  if (privNet > eff && (privNet - eff) < 500) {
+    note += '<br><br><strong>Private wins, but narrowly.</strong> A gain under $500 rarely covers the risk of payment fraud, a buyer backing out, or weeks of the car sitting unsold.';
+  }
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>
