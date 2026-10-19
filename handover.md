@@ -142,6 +142,12 @@
 - 판을 바꿀 수 있는 건 **외부 링크**뿐(사용자가 사이트 밖에서 해야 함). 확장 전략은 Bing 효과 때문에 유지.
 - 10/7 조치: lastmod 정상화 + 홈에 `tools/` 정적 링크("View all tools") 추가(내비가 JS 주입이라 홈 정적 HTML에 툴 목록 링크가 없었음).
 
+
+### 🚫 툴 결과 영역 간격 규칙 (10/19 확립 — 사용자 2회 지적)
+- 계산 버튼 없이 입력 즉시 계산하는 툴은 `.results`가 `form-grid` 바로 아래에 붙어 **간격 0**이 됨(트레이드인 10/12, gas-tank·payment-to-income 10/19 지적).
+- **새 툴은 반드시** `.results.show{display:block;margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--border)}` 사용.
+- 검증 스크립트에 "RESULTS SPACING MISSING" 검사 추가(form-grid 다음에 버튼 없이 results가 오는데 margin 없는 경우 실패). 전 툴 40개 Playwright 실측: 나머지는 24px 이상으로 정상.
+
 ## 5-1. 수익화 정책 (2026-08-07 사용자 지시로 확정 — 이후 세션 전부 이 기준 적용)
 
 ### 기본 방침
