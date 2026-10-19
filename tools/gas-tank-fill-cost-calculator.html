@@ -75,7 +75,7 @@
     "description": "Calculates the cost of filling a vehicle's fuel tank from any current gauge level, using tank capacity by vehicle class, fuel grade pricing, the driving range the fill buys and the resulting annual fuel cost.",
     "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
     "publisher": {"@type": "Organization", "name": "AutoCalcHub", "url": "https://autocalchub.com"},
-    "dateModified": "2026-09-28"
+    "dateModified": "2026-10-19"
   }
   </script>
   <script type="application/ld+json">
@@ -140,6 +140,20 @@
         <span class="hint">Also used as your refill habit, to work out how often you stop.</span>
       </div>
       <div class="form-group">
+        <label for="target">Fill It Up To</label>
+        <select id="target">
+          <option value="1" selected>Full</option>
+          <option value="0.75">3/4 tank</option>
+          <option value="0.5">1/2 tank</option>
+        </select>
+        <span class="hint">For a partial fill — say, from a quarter to three quarters.</span>
+      </div>
+      <div class="form-group">
+        <label for="budget">Or Spend a Set Amount (optional)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="budget" value="" min="0" step="5" placeholder="e.g. 40"></div>
+        <span class="hint">See how far up the gauge $40 or $50 actually gets you. Overrides "Fill it up to".</span>
+      </div>
+      <div class="form-group">
         <label for="grade">Fuel Grade</label>
         <select id="grade">
           <option value="regular" selected>Regular (87 octane)</option>
@@ -147,11 +161,11 @@
           <option value="premium">Premium (91–93)</option>
           <option value="diesel">Diesel</option>
         </select>
-        <span class="hint">Sets the default price. National averages, week of Sept 21, 2026.</span>
+        <span class="hint">Sets the default price. National averages, week of Oct 12, 2026.</span>
       </div>
       <div class="form-group">
         <label for="price">Price per Gallon</label>
-        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="price" value="4.48" min="0.5" max="15" step="0.01"></div>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="price" value="4.33" min="0.5" max="15" step="0.01"></div>
         <span class="hint">Put in your local pump price — it swings from about $3.90 in Indiana to $6.35 in California.</span>
       </div>
       <div class="form-group">
@@ -176,8 +190,9 @@
       <div class="two-col">
         <div class="calc-card" style="margin:0">
           <h2>This Fill</h2>
-          <div class="row"><span>Gallons needed</span><span id="oGal"></span></div>
+          <div class="row"><span>Gallons this fill</span><span id="oGal"></span></div>
           <div class="row"><span>Cost at the pump</span><span id="oCost"></span></div>
+          <div class="row"><span>Needle after the fill</span><span id="oAfter"></span></div>
           <div class="row"><span>A full tank from empty</span><span id="oFull"></span></div>
           <div class="row"><span>Range this fill buys</span><span id="oRange"></span></div>
         </div>
@@ -238,6 +253,10 @@
     <p>This is the part most fill-up calculators skip. If your tank is 14.5 gallons and the needle sits at a quarter, you are buying about 10.9 gallons, not 14.5 — roughly $49 rather than $65. Getting that wrong by a quarter tank is a 25% error on the number you actually care about.</p>
     <p>There is a second wrinkle. A quarter on the gauge is not a quarter of the fuel. Gauges are tuned to read conservatively as they approach empty, and the low-fuel light typically comes on with 2 to 3 gallons left — about 10% to 15% of capacity — not at zero. So a fill from "light on" is usually a gallon or two smaller than a fill from a genuinely empty tank, which is why the pump total comes in under the rated capacity almost every time.</p>
 
+    <h2>How Much Is Half a Tank — or $40 of Gas?</h2>
+    <p>Half a tank is simply half the capacity: on a 14.5-gallon midsize sedan that is about 7.3 gallons, or roughly <strong>$32</strong> at $4.48 a gallon. Going from a half to three quarters is a quarter of the tank — about 3.6 gallons and <strong>$16</strong>. A quarter tank on a 23-gallon pickup is closer to 5.8 gallons, about $26.</p>
+    <p>Working the other way, $40 buys about 8.9 gallons at $4.48 and $50 buys about 11.2. On a 14.5-gallon tank that starting from a quarter, $40 takes the needle to roughly seven eighths; on a 12.4-gallon compact sitting at three quarters, it won't all fit — the tank fills at about $14. Use the "Fill it up to" and "Spend a set amount" options above to run your own numbers.</p>
+
     <h2>What a Fill Buys You, in Miles</h2>
     <p>Cost per stop is the number you see, but cost per mile is the number that decides your budget. Divide the pump price by your real MPG: $4.48 at 28 mpg is 16.0 cents a mile; the same gas at 18 mpg is 24.9 cents. Over 12,000 miles a year that is $1,920 against $2,988 — a $1,068 difference driven entirely by the vehicle, not by where you fill up or how you drive.</p>
     <p>This is also why filling more often does not cost more. Your monthly fuel bill is set by miles driven, MPG and price per gallon. Topping off at a half tank instead of running to a quarter doubles your number of stops and halves the size of each one, and the monthly total does not move. The calculator shows both so you can see they are unrelated — if you want to change the annual figure, the levers are the car, the mileage and the grade.</p>
@@ -274,8 +293,8 @@
 <div id="footer-placeholder"></div>
 <script src="../assets/js/components.js"></script>
 <script>
-var PRICE = {regular:4.48, mid:5.06, premium:5.46, diesel:6.53};
-var DIFF  = {regular:0, mid:0.58, premium:0.98};
+var PRICE = {regular:4.33, mid:4.96, premium:5.37, diesel:6.18};
+var DIFF  = {regular:0, mid:0.63, premium:1.04};
 var GRADE_NAME = {regular:'regular', mid:'midgrade', premium:'premium', diesel:'diesel'};
 
 function money(n){ return '$' + Math.round(n).toLocaleString(); }
@@ -312,6 +331,15 @@ gradeSel.addEventListener('change', function(){
   document.getElementById(id).addEventListener('input', calculate);
 });
 document.getElementById('level').addEventListener('change', calculate);
+document.getElementById('target').addEventListener('change', calculate);
+document.getElementById('budget').addEventListener('input', calculate);
+function gauge(x){
+  if (x >= 0.995) return 'full';
+  if (x <= 0.005) return 'empty';
+  var e = Math.round(x * 8);
+  var m = {1:'1/8',2:'1/4',3:'3/8',4:'1/2',5:'5/8',6:'3/4',7:'7/8',8:'full'};
+  return (Math.abs(x * 8 - e) > 0.15 ? 'about ' : '') + (m[e] || 'empty') + (e === 8 ? '' : ' tank');
+}
 
 function calculate(){
   var tank  = parseFloat(tankIn.value) || 0;
@@ -323,7 +351,15 @@ function calculate(){
 
   if (tank <= 0 || price <= 0 || mpg <= 0) { return; }
 
-  var need     = tank * (1 - level);
+  var target   = parseFloat(document.getElementById('target').value) || 1;
+  var budget   = parseFloat(document.getElementById('budget').value) || 0;
+  var room     = tank * (1 - level);
+  var mode     = budget > 0 ? 'budget' : (target >= 1 ? 'full' : 'partial');
+  var need;
+  if (mode === 'budget') need = Math.min(budget / price, room);
+  else need = Math.max(0, tank * (Math.min(target, 1) - level));
+  var after    = level + (tank > 0 ? need / tank : 0);
+  var capped   = mode === 'budget' && budget / price > room;
   var costNow  = need * price;
   var costFull = tank * price;
   var rangeAdd = need * mpg;
@@ -342,6 +378,7 @@ function calculate(){
 
   document.getElementById('oGal').textContent   = need.toFixed(1) + ' gal';
   document.getElementById('oCost').textContent  = money2(costNow);
+  document.getElementById('oAfter').textContent = gauge(after);
   document.getElementById('oFull').textContent  = money2(costFull);
   document.getElementById('oRange').textContent = Math.round(rangeAdd).toLocaleString() + ' mi';
   document.getElementById('oCpm').textContent   = '$' + cpm.toFixed(3) + ' / mi';
@@ -362,18 +399,27 @@ function calculate(){
   var vB = document.getElementById('vBig');
   var vS = document.getElementById('vSub');
 
-  if (level === 0) {
-    vT.textContent = 'A Full Tank From Empty';
+  if (mode === 'budget') {
+    vT.textContent = 'What ' + money2(capped ? costNow : budget) + ' Gets You';
+    vB.textContent = need.toFixed(1) + ' gal';
+    vS.textContent = (capped ? 'Your tank only has room for ' + need.toFixed(1) + ' gallons, so it fills up at ' + money2(costNow) + '. ' : '') +
+      'The needle moves from ' + frac(level) + ' to ' + gauge(after) + ', adding about ' + Math.round(rangeAdd).toLocaleString() + ' miles of range.';
+  } else if (mode === 'partial' && need <= 0) {
+    vT.textContent = 'Already Past That Level';
+    vB.textContent = money2(0);
+    vS.textContent = 'You are at ' + frac(level) + ', which is already at or above ' + gauge(target) + '. Pick a higher fill level.';
   } else {
-    vT.textContent = 'Filling From ' + fracTitle(level);
+    if (mode === 'partial') vT.textContent = 'From ' + (level === 0 ? 'Empty' : gauge(level).replace(' tank', '')) + ' to ' + gauge(target).replace(' tank', ' Tank');
+    else if (level === 0) vT.textContent = 'A Full Tank From Empty';
+    else vT.textContent = 'Filling From ' + fracTitle(level);
+    vB.textContent = money2(costNow);
+    vS.textContent = need.toFixed(1) + ' gallons of ' + GRADE_NAME[grade] + ' at ' + money2(price) +
+      ' a gallon, which buys about ' + Math.round(rangeAdd).toLocaleString() + ' miles at ' + mpg + ' mpg' +
+      (level > 0 || mode === 'partial' ? '. A full tank from empty would be ' + money2(costFull) + '.' : '.');
   }
-  vB.textContent = money2(costNow);
-  vS.textContent = need.toFixed(1) + ' gallons of ' + GRADE_NAME[grade] + ' at ' + money2(price) +
-    ' a gallon, which buys about ' + Math.round(rangeAdd).toLocaleString() + ' miles at ' + mpg + ' mpg' +
-    (level > 0 ? '. A full tank from empty would be ' + money2(costFull) + '.' : '.');
 
-  var note = '<strong>How this was calculated:</strong> a ' + tank.toFixed(1) + '-gallon tank at ' +
-    frac(level) + ' needs ' + need.toFixed(1) + ' gallons, so ' + need.toFixed(1) + ' × ' + money2(price) +
+  var note = '<strong>How this was calculated:</strong> a ' + tank.toFixed(1) + '-gallon tank going from ' +
+    frac(level) + ' to ' + gauge(after) + ' takes ' + need.toFixed(1) + ' gallons, so ' + need.toFixed(1) + ' × ' + money2(price) +
     ' = ' + money2(costNow) + '. At ' + mpg + ' mpg that is ' + Math.round(rangeAdd).toLocaleString() +
     ' miles of range, or ' + '$' + cpm.toFixed(3) + ' a mile in fuel.';
 

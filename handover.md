@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-10-12 세션 기준 · 구글 10/12자, Bing 10/12자)
+# AutoCalcHub 인수인계 문서 (2026-10-19 세션 기준 · 구글 10/19자, Bing 10/19자)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,9 +12,9 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (10/12 세션 기준)
-- 블로그 85개, 툴 40개 (index.html 제외). 10/12 세션에서 툴 1 추가 + 판매세 계산기 정확도 전면 수정.
-- sitemap.xml 총 URL 138개. 홈 stat `40+`.
+## 2. 콘텐츠 현황 (10/19 세션 기준)
+- 블로그 86개, 툴 40개 (index.html 제외). 10/19 세션에서 블로그 1 추가 + gas-tank 툴 부분주유 기능 + 판매세 meta.
+- sitemap.xml 총 URL 139개. 홈 stat `40+`.
 - **GitHub push는 Claude GitHub App 연결로 동작**(9/28부터). 세션 프록시가 토큰 직접 push를 막으므로 토큰이 아니라 앱 연결이 필요함. 커밋 작성자는 `Claude <noreply@anthropic.com>`.
 - **블로그 태그 카테고리 12종**: `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`, `💼 Business &amp; Tax`.
 - **Related 링크 블록 헤딩 5가지 변형** — 통합 정규식 `<h[23][^>]*>Related (?:Guides|Tools)(?: &amp;| &)? ?(?:Tools|Guides)?</h[23]>` + h2는 들여쓰기 4칸 분기.
@@ -59,6 +59,14 @@
 ### 🚨 보강 전 필수 확인 절차 (10/19 확립, 계속 유효)
 - **구글 대상 보강은 ① GSC `페이지.csv`(노출 발생 목록)에 있고 ② Coverage `테이블.csv`(미크롤링 목록)에 없는 페이지에만 의미가 있다.** 10/5에 이 확인 없이 미크롤링 상태인 TCO 계산기를 보강해 효과가 0이었던 사례가 있음.
 - 미크롤링 페이지는 보강 대신 **색인된 페이지에서 내부링크를 걸어 크롤링을 유도**하는 것이 유일한 조치.
+
+### 📥 10/19자 자료 요약 (10/19 세션)
+- **구글 — 악화 신호**: "크롤링됨-색인 안 됨"에 **기존 색인 페이지 2개가 새로 들어감**(`how-to-get-pre-approved-car-loan`, `how-to-check-car-history-before-buying`, 최종 크롤 7/2~7/3). 즉 구글이 7월에 색인했던 페이지를 색인에서 뺐다. 미크롤링 109→111(10/5 신규 2개 추가), 탈출 0. 노출 페이지는 여전히 홈 위주, 클릭 1.
+  - 해석: 10/7 원인 분석(사이트 단위 품질·크롤 수요 판단)과 일치. 페이지 단위 조치로는 못 돌림. **외부 링크 외엔 레버 없음**(사용자 몫). 사전승인 페이지는 Bing에선 169노출/4클릭으로 살아있음.
+- **Bing(1주)**: 노출 6,220 → **7,840**, 클릭 125 → **160**, 페이지 54개.
+  - salary 1,535/**61클릭**, fill-up 1,028/16, put-down 780/15, **gas-tank 툴 477/14(CTR 2.94%, 6→14클릭)**, EV vs gas 418/5, 판매세 389/3(CTR 0.77%, 6.57위), 정비 블로그 260/4, best-time 244/3, 월 보유비용 229/5, 사전승인 169/4, **trade-in 추정기 119/6(5.04%)**, 코사이너 계산기 7/3.
+- **GA4(9/21~10/18)**: 활성 **308**(227), 참여 37.9초(50.5초에서 하락 — 툴 유입 증가 영향 추정), bing 127세션·구글 1. salary 85뷰/이탈 43%, trade-in 추정기 15뷰/이탈 31%.
+- **신규 쿼리 모양**: ① **첫 차 예산**("is 32k for a first car ok" 1위/클릭, "what is a good amount to spend on a first car at 22", "how much money should i use to buy my first car", "how much should i spend on a car earning 36k") ② **부분 주유**("how many dollars to get from half a tank to 3/4"(1위/클릭), "fill a 2/4 tank to 3/4 in winter haven"(클릭), "quarter of tank for camry 2025"(클릭), "how much is half a tank" 4노출/2클릭, "should a hyundai accent be filled with $50 gas") → 둘 다 10/19 대응.
 
 ### 📥 10/12자 자료 요약 (10/12 세션, GA 자료 없음)
 - **구글**: Coverage 차트가 10/4까지 갱신 — 미크롤링 109(9/28 신규 2개 추가), 탈출 0. 10/7 lastmod 정상화 효과는 10/4 이후 자료부터 확인 가능. 노출 페이지 24개, 클릭 1(홈).
@@ -1386,6 +1394,44 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 5. 대출 상환기간 클러스터(20노출/3위) 관찰, 연봉 클러스터 잔여 각도(가구 합산·첫 차).
 6. MPG 메타 수정 금지 유지(1,420노출/5클릭).
 7. blog/index.html Latest 트리밍 19세션째 미결.
+
+
+## 6-28. 10/19 세션: 첫 차 예산 블로그 + gas-tank 툴 부분주유/금액 모드 + 판매세 meta
+
+- **자료**: 구글 GSC 10/19자(Coverage 2종 + 실적), GA4 9/21~10/18, Bing 10/19자. 요약은 5번 섹션.
+
+### 작업 1 (신규) — `blog/how-much-should-i-spend-on-my-first-car.html` (Buying, 1,198단어)
+- **근거**: handover 이월 "첫 차 예산" 각도에 이번 주 클릭 증거 발생("is 32k for a first car ok" 1위/클릭 외 3건). salary 클러스터(Bing 클릭 38%)의 하위 롱테일. **수익화**: 첫 차 구매자 = 신용 이력 짧음 → 코사이너·사전승인·신용점수 페이지(대출 제휴 경로)로 연결.
+- **중복 확인**: first car 전용 페이지 0. salary 블로그는 일반 구매자 기준(보험·금리 평균 가정). 코사이너 2편·신용점수 1편은 대출 조건만 다룸 → 나이·신용 이력이 예산을 얼마나 줄이는지 정량화한 페이지 없음.
+- **경쟁**: getrichslowly·carroar·soundcu·JD Power·joywallet 등 — 전부 "소득의 10~15%" 일반론. **나이별 보험료 + 신용 등급별 금리를 넣어 연봉별 차값을 계산한 곳 없음** → 진입.
+- 수치(출처): 나이별 평균 보험료 18세 $330/20세 $207/22세 $151/25세 $119/40세 $102(MoneyGeek), Experian Q2 2026 중고 APR prime 8.81%/near-prime 13.93%/subprime 19.10%.
+- 핵심 표: 22세·near-prime·10% 다운·48개월 — 연봉 $30k/$36k/$40k/$50k/$60k → 10% 규칙 $4.0k/$6.1k/$7.4k/$10.8k/$14.2k, 15% 상한 $9.1k~$24.4k. 40세 prime 대비 $2.6k~$3.6k 적음("첫 차 페널티"). 18세는 $40k 연봉에서도 10% 예산이 보험료로 소진. $32k 첫 차는 10% 기준 연봉 약 $112k, 15% 기준 약 $75k 필요.
+
+### 작업 2 — `tools/gas-tank-fill-cost-calculator.html` 부분주유·금액 모드 추가
+- **근거**: 툴이 1주 만에 6→14클릭(CTR 2.94%)으로 성장 + 클릭 쿼리가 "1/2→3/4", "1/4만", "$50어치" 형태. 기존 툴은 '가득'만 계산.
+- 추가: "Fill It Up To"(가득/3/4/1/2) + "Spend a Set Amount"($ 입력 시 우선) + 결과에 "주유 후 바늘 위치". 탱크 여유보다 금액이 크면 가득 금액으로 캡. 이미 목표 이상이면 안내.
+- 본문에 "How Much Is Half a Tank — or $40 of Gas?" 섹션 추가.
+- **기본 가격 갱신**: 10/12 주간 EIA(FuelWide) 레귤러 $4.33/미드 $4.96/프리미엄 $5.37/디젤 $6.18, 등급 차액 +0.63/+1.04. 본문의 $4.48 예시는 "9/21 주간" 날짜 명시돼 있어 유지.
+- 검증: node 목업 7시나리오(가득/1/2→3/4/$40 예산/금액 캡/이미 초과/빈탱크/1/4→3/4) 손계산과 일치. Playwright 390/1280 오버플로 0, JS 오류 0.
+- 이 툴은 구글 미크롤링 → Bing 대상 보강(규칙상 문제없음).
+
+### 작업 3 — 판매세 계산기 meta description만 갱신
+- 389노출/0.77%/6.57위. 10/12 기능 추가(지방세율·리베이트 과세·트레이드인 상한)를 description에 반영. title은 유지. 본문 변경 아니므로 lastmod 미갱신.
+
+### 사이트 반영
+- blog/index Latest + Buying, index.html 미리보기 교체(툴 신규 없어 stat 40+ 유지). sitemap 138→139(lastmod: 홈·blog/·gas-tank 툴만). llms.txt 1건 추가 + gas-tank 설명 갱신. 내부링크 13개 페이지(salary·코사이너·신용·사전승인·affordability·payment-to-income) — 날짜 미변경.
+
+### 검증
+- 변경 18개 파일 태그·JSON-LD·CSS 오염 통과, sitemap 139 유효, 전체 툴 40개 모바일 `.row` 통과, 내부링크 1,555개 깨짐 0.
+
+### ⚠️ 다음 세션 필독
+1. **구글 디인덱스 추이**: "크롤링됨-색인 안 됨" 2개(사전승인·차량이력)가 늘어나는지. 늘어나면 사이트 단위 품질 하향이 진행 중이라는 뜻 — 외부 링크 확보가 더 급해짐(사용자에게 다시 보고).
+2. 첫 차 블로그 + gas-tank 부분주유 모드 반응(Bing).
+3. 판매세 CTR이 meta 변경 후 1% 넘는지.
+4. **휘발유 가격이 내려가는 중**($4.48 → $4.33). 9개 페이지 낡은 가격 정리는 다음에 할 때 최신가 재확인.
+5. 대출 상환기간 클러스터(23노출/3.39위), negative equity 블로그(62노출/0클릭/3.19위 — 쿼리가 "top rated/best/price ... risks" 같은 봇성 변형이라 보류).
+6. MPG 메타 수정 금지 유지(1,624노출/7클릭).
+7. blog/index.html Latest 트리밍 20세션째 미결.
 
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
