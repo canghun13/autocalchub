@@ -76,7 +76,13 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    loadPartial('header-placeholder', 'header.html', initNav);
+    // Header/footer are now inlined as static HTML (scripts/inline_partials.py).
+    // Fall back to fetching them only on a page that still has placeholders.
+    if (document.getElementById('header-placeholder')) {
+      loadPartial('header-placeholder', 'header.html', initNav);
+    } else {
+      initNav();
+    }
     loadPartial('footer-placeholder', 'footer.html');
   });
 })();

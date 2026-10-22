@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-10-19 세션 기준 · 구글 10/19자, Bing 10/19자)
+# AutoCalcHub 인수인계 문서 (2026-10-22 기준 · 구글 10/19자, Bing 10/19자)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -147,6 +147,20 @@
 - 계산 버튼 없이 입력 즉시 계산하는 툴은 `.results`가 `form-grid` 바로 아래에 붙어 **간격 0**이 됨(트레이드인 10/12, gas-tank·payment-to-income 10/19 지적).
 - **새 툴은 반드시** `.results.show{display:block;margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--border)}` 사용.
 - 검증 스크립트에 "RESULTS SPACING MISSING" 검사 추가(form-grid 다음에 버튼 없이 results가 오는데 margin 없는 경우 실패). 전 툴 40개 Playwright 실측: 나머지는 24px 이상으로 정상.
+
+
+### 🔧 10/22 색인 대비 구조 정비 (사용자 지시: "문제 될 만한 건 다 고쳐")
+- **헤더·푸터를 정적 HTML로 전 페이지 인라인**(139페이지 + 404). 이전엔 `components.js`가 JS로 fetch해 넣어서 **원본 HTML에 내비·푸터 링크가 0** → 정적 HTML 기준 홈·개인정보·글로서리 허브 인바운드 0, about·tools/·blog/·methodology 1~2개였음. 지금은 전부 138~141.
+  - ⚠️ **헤더/푸터 수정 시**: `assets/partials/header.html`·`footer.html` 고친 뒤 **`python3 scripts/inline_partials.py` 실행 필수**(마커 `<!-- HEADER:START/END -->`, `<!-- FOOTER:START/END -->` 사이를 교체, 재실행 안전). 링크는 루트 절대경로(`/tools/` 등).
+  - `components.js`는 placeholder가 없으면 fetch 없이 `initNav()`만 실행(햄버거·"← All tools" 유지). 신규 페이지 템플릿도 placeholder 대신 인라인 블록 사용할 것(placeholder로 만들면 JS 폴백은 되지만 원본 HTML에 링크 없음).
+- **Related 목록 상한 10개 + 중복 제거**: 세션마다 누적돼 최대 24개(중고차 가치·사전승인·afford·대출계산기 등), 사전승인은 같은 링크 중복까지 있었음. 10페이지 트리밍, 무관 링크 5건 교체(예: 중고차 가치 툴의 '이자 공제' 링크). **앞으로 내부링크 추가 시 목록이 10개면 넣지 말 것.**
+- **JSON-LD `datePublished` 추가**(Article·WebApplication 117페이지, git 최초 커밋일) + Article에 `mainEntityOfPage`.
+- **커스텀 `404.html`** 신설(noindex, 주요 툴·가이드 링크).
+- **blog/index Latest 48개 → 8개**(20세션 미결 처리), 30일 지난 글의 "New" 배지 제거(블로그 허브 99→7, 홈 툴카드 23→3).
+- 인바운드 2개뿐이던 글 4개 보강: best-time-to-buy(Bing 244노출) +5, 0% vs 리베이트 +3, 대출 완납 후 +4, 구독 +3.
+- sitemap lastmod는 **변경하지 않음**(본문 변경 아님 — 10/7 규칙).
+- 검증: 태그·JSON-LD 전수 통과, 내부링크 3,281개 깨짐 0(검증 스크립트를 루트 절대경로 해석하도록 수정), Playwright로 홈·블로그·툴·글로서리·404 렌더 — nav/footer 각 1개, 모바일 메뉴 동작, JS 오류 0.
+- **한계(솔직히)**: 이건 구글이 사이트를 다시 볼 때 걸림돌을 없애는 작업이지, 크롤 수요 자체를 만들지는 못함. 가장 큰 레버는 여전히 외부 링크.
 
 ## 5-1. 수익화 정책 (2026-08-07 사용자 지시로 확정 — 이후 세션 전부 이 기준 적용)
 
@@ -1437,7 +1451,7 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 4. **휘발유 가격이 내려가는 중**($4.48 → $4.33). 9개 페이지 낡은 가격 정리는 다음에 할 때 최신가 재확인.
 5. 대출 상환기간 클러스터(23노출/3.39위), negative equity 블로그(62노출/0클릭/3.19위 — 쿼리가 "top rated/best/price ... risks" 같은 봇성 변형이라 보류).
 6. MPG 메타 수정 금지 유지(1,624노출/7클릭).
-7. blog/index.html Latest 트리밍 20세션째 미결.
+7. ~~blog/index.html Latest 트리밍~~ → 10/22 완료(8개).
 
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)

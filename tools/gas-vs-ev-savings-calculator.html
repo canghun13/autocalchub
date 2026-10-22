@@ -74,6 +74,7 @@
       "name": "AutoCalcHub",
       "url": "https://autocalchub.com"
     },
+    "datePublished": "2026-05-11",
     "dateModified": "2026-09-28"
   }
   </script>
@@ -105,7 +106,22 @@
   </script>
 </head>
 <body>
-<div id="header-placeholder"></div>
+<!-- HEADER:START -->
+<nav>
+  <a href="/" class="logo">Auto<span>Calc</span>Hub</a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- HEADER:END -->
 <div class="tool-page">
   <div class="tool-header">
     <h1>⚡ Gas vs EV Savings Calculator</h1>
@@ -206,7 +222,23 @@
       <p style="font-size:0.85rem;color:var(--mid);line-height:1.6;margin:0">This calculator estimates potential savings from driving an electric vehicle versus a gas-powered vehicle. Results are estimates only. Actual savings depend on real-world energy rates, driving habits, vehicle efficiency, insurance, and depreciation. EV and gas prices fluctuate over time. This tool is for informational purposes only and does not constitute financial or purchasing advice.</p>
     </div>
   </div>
-<div id="footer-placeholder"></div>
+<!-- FOOTER:START -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">Auto<span>Calc</span>Hub</a>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/methodology.html">How We Calculate</a>
+      <a href="/editorial-policy.html">Editorial Policy</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy-policy.html">Privacy</a>
+      <a href="/blog/">Blog</a>
+      <a href="/glossary/">Glossary</a>
+    </div>
+    <p class="footer-copy">© 2026 autocalchub.com · For informational use only</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
 <script src="../assets/js/components.js"></script>
 <script>
 function fmt(n){return '$'+Math.round(n).toLocaleString();}
