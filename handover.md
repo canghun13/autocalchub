@@ -160,6 +160,9 @@
 - 인바운드 2개뿐이던 글 4개 보강: best-time-to-buy(Bing 244노출) +5, 0% vs 리베이트 +3, 대출 완납 후 +4, 구독 +3.
 - sitemap lastmod는 **변경하지 않음**(본문 변경 아님 — 10/7 규칙).
 - 검증: 태그·JSON-LD 전수 통과, 내부링크 3,281개 깨짐 0(검증 스크립트를 루트 절대경로 해석하도록 수정), Playwright로 홈·블로그·툴·글로서리·404 렌더 — nav/footer 각 1개, 모바일 메뉴 동작, JS 오류 0.
+- **(10/22 추가) 툴 40개 JSON-LD `WebApplication` → `WebPage` 전환**: WebApplication(SoftwareApplication 계열)은 구글 리치결과 기준상 `aggregateRating` 또는 `review`가 필수라 GSC "소프트웨어 앱" 보고서에서 40개 전부 '잘못된 항목'으로 잡히는 구조였음. 가짜 평점은 정책 위반이라 넣지 않고 타입을 WebPage로 변경(applicationCategory·operatingSystem·offers 제거, provider→publisher). **신규 툴도 WebPage로 만들 것.**
+- 구조화 데이터 전수 검증(브레드크럼 position·item·마지막 항목=canonical, Article headline·datePublished·author, url=canonical, 추가 필드 필요한 리치 타입 사용 여부) → 문제 0. http·www 내부링크 0, sitemap 139개 전부 실존·noindex 없음.
+- **GSC 색인 "이유 4개" 중 2개는 아직 자료 미확인**(받은 건 '발견됨-미색인' 111, '크롤링됨-미색인' 2뿐). 나머지 2개 사유명을 받아서 확인할 것.
 - **한계(솔직히)**: 이건 구글이 사이트를 다시 볼 때 걸림돌을 없애는 작업이지, 크롤 수요 자체를 만들지는 못함. 가장 큰 레버는 여전히 외부 링크.
 
 ## 5-1. 수익화 정책 (2026-08-07 사용자 지시로 확정 — 이후 세션 전부 이 기준 적용)
