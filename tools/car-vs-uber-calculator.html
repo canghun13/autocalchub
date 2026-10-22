@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car vs Uber Calculator — Is It Cheaper to Rideshare Than Own a Car? | AutoCalcHub</title>
+  <meta name="description" content="Find the number of trips a month where owning a car beats Uber. Compare a financed or paid-off car's real monthly cost with rideshare, transit and rentals for the way you actually travel.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-vs-uber-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block;margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--border)}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Car vs Uber Calculator",
+    "url": "https://autocalchub.com/tools/car-vs-uber-calculator.html",
+    "description": "Compares the monthly cost of owning a car (fixed costs, running cost per mile, parking) with going car-free using rideshare at area-adjusted UberX pricing, transit and occasional rentals, and finds the break-even number of trips per month.",
+    "datePublished": "2026-10-22",
+    "dateModified": "2026-10-22",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://autocalchub.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://autocalchub.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Car vs Uber Calculator",
+        "item": "https://autocalchub.com/tools/car-vs-uber-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<!-- HEADER:START -->
+<nav>
+  <a href="/" class="logo">Auto<span>Calc</span>Hub</a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- HEADER:END -->
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Is It Cheaper to Uber Everywhere Than Own a Car?</h1>
+    <p>A car costs money whether it moves or not; a ride costs money only when you take one. So the answer depends almost entirely on how many trips you make. Set your trips, your trip length and the kind of car you'd own, and see where the lines cross.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>🗺️ How You Get Around</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="trips">One-Way Trips per Month</label>
+        <div class="input-wrap has-suffix"><input type="number" id="trips" value="40" min="0" step="1"><span class="input-suffix">trips</span></div>
+        <span class="hint">A round trip to the store is two. A weekday commute is about 44.</span>
+      </div>
+      <div class="form-group">
+        <label for="tripMi">Average Trip Length</label>
+        <div class="input-wrap has-suffix"><input type="number" id="tripMi" value="5" min="0.5" step="0.5"><span class="input-suffix">mi</span></div>
+      </div>
+      <div class="form-group">
+        <label for="city">Rideshare Prices Where You Live</label>
+        <select id="city">
+          <option value="0.65">Cheaper metro (Phoenix, Houston-type)</option>
+          <option value="1" selected>Average US city</option>
+          <option value="1.6">Expensive (NYC, SF-type)</option>
+        </select>
+        <span class="hint">UberX averaged about $1.50 a mile plus base and booking fees in 2026.</span>
+      </div>
+      <div class="form-group">
+        <label for="transit">Transit Pass or Bike Costs per Month</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="transit" value="0" min="0" step="5"></div>
+        <span class="hint">Only if you'd add it without a car.</span>
+      </div>
+      <div class="form-group">
+        <label for="rentDays">Rental Days per Month</label>
+        <div class="input-wrap has-suffix"><input type="number" id="rentDays" value="2" min="0" step="1"><span class="input-suffix">days</span></div>
+        <span class="hint">For road trips and big shopping runs.</span>
+      </div>
+      <div class="form-group">
+        <label for="rentRate">Rental Cost per Day</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="rentRate" value="70" min="0" step="5"></div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:2rem">🚙 The Car You'd Otherwise Own</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="carType">Type of Car</label>
+        <select id="carType">
+          <option value="new" selected>Newer car with a loan (AAA 2025 average)</option>
+          <option value="used">Paid-off used car</option>
+          <option value="custom">Custom — I'll enter my own costs</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="fixed">Fixed Cost per Month</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="fixed" value="664" min="0" step="10"></div>
+        <span class="hint">Payment or depreciation, insurance, registration — costs that don't depend on miles.</span>
+      </div>
+      <div class="form-group">
+        <label for="perMile">Running Cost per Mile</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="perMile" value="0.24" min="0" step="0.01"></div>
+        <span class="hint">Fuel plus maintenance and tires. AAA: about 24¢.</span>
+      </div>
+      <div class="form-group">
+        <label for="park">Parking per Month</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="park" value="0" min="0" step="10"></div>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="verdict-box">
+        <h3 id="vTitle"></h3>
+        <span class="big" id="vBig"></span>
+        <p id="vSub"></p>
+      </div>
+
+      <div class="two-col">
+        <div class="calc-card" style="margin:0">
+          <h2>Owning the Car</h2>
+          <div class="row"><span>Fixed costs + parking</span><span id="oFixed"></span></div>
+          <div class="row"><span>Miles driven per month</span><span id="oMiles"></span></div>
+          <div class="row"><span>Running costs</span><span id="oRun"></span></div>
+          <div class="row"><span>Total per month</span><span id="oCar"></span></div>
+        </div>
+        <div class="calc-card" style="margin:0">
+          <h2>Going Without</h2>
+          <div class="row"><span>Cost per rideshare trip</span><span id="oTrip"></span></div>
+          <div class="row"><span>Rideshare per month</span><span id="oRide"></span></div>
+          <div class="row"><span>Transit &amp; rentals</span><span id="oTR"></span></div>
+          <div class="row"><span>Total per month</span><span id="oTotal"></span></div>
+        </div>
+      </div>
+
+      <div class="calc-card">
+        <h2>Where the Lines Cross</h2>
+        <div class="row"><span>Break-even trips per month</span><span id="oBE"></span></div>
+        <div class="row"><span>Difference per year</span><span id="oYr"></span></div>
+      </div>
+
+      <div class="note" id="mainNote"></div>
+      <div class="disclaimer">⚠️ <strong>Rideshare prices move.</strong> Fares here use a national-average UberX structure (about $4.35 of base and booking fees, $1.50 a mile and time charges, $7 minimum) scaled for your area, with no surge pricing. Surge, airport fees and tips can add 20% or more to real trips. Car costs use AAA's 2025 averages unless you enter your own.</div>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why Trip Count Decides It</h2>
+    <p>A car's biggest costs — depreciation or a loan payment, insurance, registration — arrive every month whether you drive 50 miles or 1,500. AAA's 2025 numbers put those fixed costs at roughly $664 a month for a new car, with only about 24¢ a mile on top for fuel, maintenance and tires.</p>
+    <p>A rideshare trip has no fixed cost at all, but every trip is expensive: around $15 for five miles and $25 for ten at average prices. So the comparison tips at a trip count. Below it, you're paying for a car that mostly sits. Above it, every ride is overpaying for transportation you'd get cheaper by owning.</p>
+
+    <h2>The Break-Even Depends on Which Car</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Car you'd own</th><th>Fixed per month</th><th>Break-even (5-mile trips, average city)</th></tr></thead>
+        <tbody>
+          <tr><td>Newer car with a loan</td><td>~$664</td><td>~44 trips a month</td></tr>
+          <tr><td>Paid-off used car</td><td>~$260</td><td>~15 trips a month</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Both assume two rental days a month for longer trips. The paid-off car is the hard one to beat: once the depreciation has mostly happened and the loan is gone, a car that costs $260 a month to keep is cheaper than rideshare at anything beyond a few trips a week. The new financed car is where going car-free can genuinely pay — but only if you really do make fewer than about ten round trips a week.</p>
+
+    <h2>Who Usually Comes Out Ahead Without a Car</h2>
+    <ul>
+      <li><strong>City dwellers with transit for the commute,</strong> using rideshare only for the trips transit can't do.</li>
+      <li><strong>Remote workers</strong> whose weekday trip count has collapsed.</li>
+      <li><strong>People paying for parking,</strong> where $200 to $300 a month of parking alone can cover a dozen rides.</li>
+      <li><strong>Anyone facing a new car payment</strong> to replace a car they barely drive.</li>
+    </ul>
+    <p>And who usually doesn't: anyone with a daily car commute, kids to ferry, or a home far from the places they go. Forty-four commute trips a month at $15 each is $660 before anything else.</p>
+
+    <h2>What the Calculator Leaves Out</h2>
+    <p>Waiting times, surge pricing at the exact hours you need a ride, and the trips you'd quietly stop taking without a car all matter, and none of them are easy to price. If the numbers are close, try a month of living as if you didn't have the car before you sell it.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/is-it-cheaper-to-uber-than-own-a-car.html" style="color:var(--orange);text-decoration:none;">Is It Cheaper to Uber Than Own a Car?</a></li>
+        <li><a href="second-car-cost-calculator.html" style="color:var(--orange);text-decoration:none;">Second Car Cost Calculator</a></li>
+        <li><a href="../blog/should-we-become-a-one-car-family.html" style="color:var(--orange);text-decoration:none;">Should We Become a One-Car Family?</a></li>
+        <li><a href="car-total-cost-of-ownership-calculator.html" style="color:var(--orange);text-decoration:none;">Total Cost of Ownership Calculator</a></li>
+        <li><a href="../blog/how-much-does-it-cost-to-own-car-per-month.html" style="color:var(--orange);text-decoration:none;">How Much Does It Cost to Own a Car Per Month?</a></li>
+        <li><a href="car-subscription-vs-lease-vs-buy-calculator.html" style="color:var(--orange);text-decoration:none;">Car Subscription vs Lease vs Buy Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- FOOTER:START -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">Auto<span>Calc</span>Hub</a>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/methodology.html">How We Calculate</a>
+      <a href="/editorial-policy.html">Editorial Policy</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy-policy.html">Privacy</a>
+      <a href="/blog/">Blog</a>
+      <a href="/glossary/">Glossary</a>
+    </div>
+    <p class="footer-copy">© 2026 autocalchub.com · For informational use only</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+<script src="../assets/js/components.js"></script>
+<script>
+var PRESET = {new: [664, 0.24], used: [260, 0.27]};
+function money(n){ return (n < 0 ? '−$' : '$') + Math.abs(Math.round(n)).toLocaleString(); }
+function v(id){ return parseFloat(document.getElementById(id).value) || 0; }
+function tripCost(mi, mult){ return Math.max(7, 4.35 + 2.10 * mi) * mult; }
+
+document.getElementById('carType').addEventListener('change', function(){
+  var p = PRESET[this.value];
+  if (p) { document.getElementById('fixed').value = p[0]; document.getElementById('perMile').value = p[1].toFixed(2); }
+  calculate();
+});
+['fixed','perMile'].forEach(function(id){
+  document.getElementById(id).addEventListener('input', function(){ document.getElementById('carType').value = 'custom'; calculate(); });
+});
+['trips','tripMi','transit','rentDays','rentRate','park'].forEach(function(id){ document.getElementById(id).addEventListener('input', calculate); });
+document.getElementById('city').addEventListener('change', calculate);
+
+function calculate(){
+  var trips = v('trips'), mi = v('tripMi'), mult = parseFloat(document.getElementById('city').value) || 1;
+  var transit = v('transit'), rentDays = v('rentDays'), rentRate = v('rentRate');
+  var fixed = v('fixed'), perMile = v('perMile'), park = v('park');
+
+  var tc = tripCost(mi, mult);
+  var carMiles = trips * mi + rentDays * 150;
+  var run = perMile * carMiles;
+  var car = fixed + park + run;
+  var ride = trips * tc;
+  var tr = transit + rentDays * rentRate;
+  var total = ride + tr;
+  var diff = car - total;
+  var slope = tc - perMile * mi;
+  var be = slope > 0 ? (fixed + park + perMile * rentDays * 150 - tr) / slope : Infinity;
+
+  document.getElementById('oFixed').textContent = money(fixed + park);
+  document.getElementById('oMiles').textContent = Math.round(carMiles).toLocaleString() + ' mi';
+  document.getElementById('oRun').textContent = money(run);
+  document.getElementById('oCar').textContent = money(car);
+  document.getElementById('oTrip').textContent = '$' + tc.toFixed(2);
+  document.getElementById('oRide').textContent = money(ride);
+  document.getElementById('oTR').textContent = money(tr);
+  document.getElementById('oTotal').textContent = money(total);
+  document.getElementById('oBE').textContent = isFinite(be) && be > 0 ? Math.round(be) + ' trips' : '—';
+  document.getElementById('oYr').textContent = money(Math.abs(diff) * 12) + (diff >= 0 ? ' saved without a car' : ' saved by owning');
+
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  if (Math.abs(diff) < 40) {
+    vT.textContent = 'Practically a Tie';
+    vB.textContent = money(Math.abs(diff)) + ' a month';
+    vS.textContent = 'At ' + trips + ' trips a month you are right at the break-even. Convenience should decide.';
+  } else if (diff > 0) {
+    vT.textContent = 'Going Without Is Cheaper';
+    vB.textContent = money(diff * 12) + ' a year';
+    vS.textContent = 'Rideshare, transit and rentals cost ' + money(total) + ' a month against ' + money(car) + ' to own the car. That holds up to about ' + Math.round(be) + ' trips a month.';
+  } else {
+    vT.textContent = 'Owning Is Cheaper';
+    vB.textContent = money(-diff * 12) + ' a year';
+    vS.textContent = 'At ' + trips + ' trips a month you are past the ' + Math.round(be) + '-trip break-even; rideshare would cost ' + money(total) + ' against ' + money(car) + ' for the car.';
+  }
+
+  var note = '<strong>How this was calculated:</strong> each ' + mi + '-mile rideshare trip costs about $' + tc.toFixed(2) +
+    ' (base and booking fees, distance and time, $7 minimum, scaled for your area). The car costs ' + money(fixed + park) +
+    ' a month in fixed costs plus ' + money(run) + ' to drive ' + Math.round(carMiles).toLocaleString() + ' miles — your trips plus ' +
+    (rentDays * 150) + ' miles for the outings you\'d otherwise rent a car for.';
+  if (park >= 150) note += '<br><br><strong>Parking is a big share of the car\'s cost here.</strong> ' + money(park) + ' a month is about ' + Math.round(park / tc) + ' rideshare trips on its own.';
+  if (document.getElementById('carType').value === 'used' && diff < 0) note += '<br><br><strong>A paid-off car is hard to beat.</strong> With depreciation mostly behind it and no payment, its fixed cost is low enough that rideshare only wins at a handful of trips a week.';
+  if (trips >= 40 && diff > 0) note += '<br><br><strong>That is a lot of trips to replace with rideshare.</strong> It works on paper here, but surge pricing and tips can add 20% or more — check the margin before you sell.';
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

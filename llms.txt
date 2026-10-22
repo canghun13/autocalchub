@@ -50,6 +50,9 @@
 - [Car Tariff Impact Calculator](https://autocalchub.com/tools/car-tariff-impact-calculator.html): Check your vehicle's country of assembly from its VIN and estimate how much 2026 auto tariffs may be adding to its price and monthly payment.
 - [Car Subscription vs Lease vs Buy Calculator](https://autocalchub.com/tools/car-subscription-vs-lease-vs-buy-calculator.html): Compare the true monthly and total cost of a car subscription, a lease, and buying, including insurance and maintenance.
 - [Lease Takeover Cost Calculator](https://autocalchub.com/tools/lease-takeover-cost-calculator.html): Compare the total remaining cost of taking over someone else's car lease against starting a new lease for the same term.
+- [Second Car Cost Calculator](https://autocalchub.com/tools/second-car-cost-calculator.html): Monthly cost of keeping a household's second car (insurance, registration, upkeep, depreciation, fuel, payment) against rideshare, transit, rentals and extra miles on the remaining car, with interest on sale proceeds and the break-even trip count.
+- [Car vs Uber Calculator](https://autocalchub.com/tools/car-vs-uber-calculator.html): Owning a financed or paid-off car versus going car-free with area-adjusted UberX pricing, transit and rentals; finds the break-even number of trips per month.
+- [Car Payment Deferment Calculator](https://autocalchub.com/tools/car-payment-deferment-calculator.html): True extra cost of skipping one to three auto loan payments under simple interest, with term extension or end-of-loan balloon, compared with refinancing.
 
 ## Guides: Buying a Car
 - [How Much Should You Spend on Your First Car?](https://autocalchub.com/blog/how-much-should-i-spend-on-my-first-car.html): How young-driver insurance ($151/month at 22, $330 at 18) and thin-credit loan rates (13.93% near-prime used vs 8.81% prime) shrink a first-car budget; what each salary buys at 22 under the 10% rule and a 15% ceiling, and whether a $32,000 first car works.
@@ -82,6 +85,7 @@
 
 ## Guides: Car Financing
 - [How Much Car Loan Will a Lender Approve on Your Salary?](https://autocalchub.com/blog/how-much-car-loan-will-i-be-approved-for.html): Lender PTI and DTI limits, approval amounts by salary versus the 10% rule, the $765 average payment, and when other debt makes the lender stricter than the rule.
+- [Should You Defer a Car Payment?](https://autocalchub.com/blog/should-you-defer-a-car-payment.html): How interest accrues during a deferment, what one to three skipped payments cost at different rates, balloon risk, and when to refinance or sell instead.
 - [Dealer Financing vs Your Own Pre-Approval](https://autocalchub.com/blog/dealer-financing-vs-pre-approval.html): How dealer reserve works, what a markup costs by size and term, why the pre-approval's job is to be a benchmark rather than to be used, and when a subsidised promotional rate genuinely wins.
 - [Should You Sell Your Car Instead of Voluntary Surrender?](https://autocalchub.com/blog/should-you-sell-your-car-instead-of-voluntary-surrender.html): Why surrender leaves a larger deficiency balance than a private sale, how to bridge the payoff shortfall, and what to try before either route.
 - [How Much Is the Car Loan Interest Deduction Actually Worth?](https://autocalchub.com/blog/how-much-is-car-loan-interest-deduction-worth.html): Why the $10,000 headline is not what you receive — the marginal-rate reality, the 2028 expiry, and why the phase-out zeroes most borrowers out well below $150,000 MAGI.
@@ -183,3 +187,7 @@
 - [Car Buying Terms](https://autocalchub.com/glossary/buying-terms.html): MSRP, trim levels, CPO, doc fees, VIN, salvage titles, and more, explained in plain English.
 - [Car Ownership & Value Terms](https://autocalchub.com/glossary/ownership-value-terms.html): Depreciation, actual cash value, total loss, residual value, total cost of ownership, and more, explained in plain English.
 - [Car Selling & Trade-In Terms](https://autocalchub.com/glossary/selling-terms.html): Payoff quotes, lien release, bill of sale, instant offers, consignment sales, and more, explained in plain English.
+
+## Guides: Car-Light Living
+- [Should We Become a One-Car Family?](https://autocalchub.com/blog/should-we-become-a-one-car-family.html): A paid-off second car costs about $4,500 a year; what replaces it, the break-even trip count, and when going to one car works.
+- [Is It Cheaper to Uber Than Own a Car?](https://autocalchub.com/blog/is-it-cheaper-to-uber-than-own-a-car.html): Rideshare fares by trip length and city, and the break-even of about 44 trips a month against a financed car or 15 against a paid-off one.

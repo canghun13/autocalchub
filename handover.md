@@ -12,11 +12,11 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (10/19 세션 기준)
-- 블로그 86개, 툴 40개 (index.html 제외). 10/19 세션에서 블로그 1 추가 + gas-tank 툴 부분주유 기능 + 판매세 meta.
-- sitemap.xml 총 URL 139개. 홈 stat `40+`.
+## 2. 콘텐츠 현황 (10/22 신규 세션 기준)
+- 블로그 89개, 툴 43개 (index.html 제외). 10/22 신규 세션에서 블로그 3 + 툴 3 추가, **신규 카테고리 `🚲 Car-Light Living`**.
+- sitemap.xml 총 URL 145개. 홈 stat `43+`.
 - **GitHub push는 Claude GitHub App 연결로 동작**(9/28부터). 세션 프록시가 토큰 직접 push를 막으므로 토큰이 아니라 앱 연결이 필요함. 커밋 작성자는 `Claude <noreply@anthropic.com>`.
-- **블로그 태그 카테고리 12종**: `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`, `💼 Business &amp; Tax`.
+- **블로그 태그 카테고리 13종** (10/22 `🚲 Car-Light Living` 추가, blog-tag 텍스트 "Car-Light Living", blog/index 섹션 id `section-carlight`, tools/index는 EV 앞 하위 헤더): `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`, `💼 Business &amp; Tax`.
 - **Related 링크 블록 헤딩 5가지 변형** — 통합 정규식 `<h[23][^>]*>Related (?:Guides|Tools)(?: &amp;| &)? ?(?:Tools|Guides)?</h[23]>` + h2는 들여쓰기 4칸 분기.
 - **블로그 전체**에 바이라인, **블로그+툴 전체**에 BreadcrumbList JSON-LD. FAQPage/HowTo 추가 금지.
 
@@ -1455,6 +1455,48 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 5. 대출 상환기간 클러스터(23노출/3.39위), negative equity 블로그(62노출/0클릭/3.19위 — 쿼리가 "top rated/best/price ... risks" 같은 봇성 변형이라 보류).
 6. MPG 메타 수정 금지 유지(1,624노출/7클릭).
 7. ~~blog/index.html Latest 트리밍~~ → 10/22 완료(8개).
+
+
+## 6-29. 10/22 신규 세션: 신규 클러스터 "Car-Light Living" + Financing 확장(디퍼먼트)
+
+- **지시**: 데이터 밖(구글·레딧 등)에서 문서 적고 관심 있는 키워드 폭넓게 → 경쟁 확인 → 롱테일 → 클러스터 추가.
+
+### 키워드 후보 & 경쟁 판정 (웹서치)
+| 후보 | 판정 |
+|---|---|
+| OTD 가격 / 딜러 doc fee by state | ❌ otdcheck·quotedefender·gettruelane·totalotd·CarEdge(8.5만 견적 데이터) 등 전용 사이트 포화 |
+| 개인간 거래 자동차 대출 | ❌ Upgrade·SoFi·Credit Karma·Credible·myAutoloan 등 대출사 독점 |
+| 차량 증여 vs $1 판매 | ❌ SuperMoney·Bankrate·KBB |
+| EV 홈충전기 설치비 | ❌ 전용 사이트 다수 |
+| 리스 반납 손상비 | △ leaseend·KBB·연준 — 기존 리스 클러스터로 나중 |
+| **원카 가구 / 2번째 차** | ✅ AOL·AAA·Benzinga(수지 오먼 '차 한 대 줄여라' 기사 바이럴) 기사뿐, **전용 계산기 없음**(calcboxer 소형 1개) |
+| **차 소유 vs 우버** | ✅ 소형 계산기(useacalculator·everydaybudd)·TechCrunch 2018 구문서. Bing 쿼리 "is buying a car cheaper than taking lyfts or ubers" 이력 |
+| **할부 디퍼먼트 비용** | ✅ Experian·Caribou(리파이 제휴사)·ProPublica가 설명만, **비용 계산 툴 없음**. 리파이 제휴(최고 단가) 직결 |
+
+### 신규 카테고리 `🚲 Car-Light Living`
+- `tools/second-car-cost-calculator.html` — 2번째 차 유지비(보험·등록·정비·감가·연료·할부·주차) vs 대체(라이드셰어·대중교통·렌트·남은 차 추가주행 26¢/mi) + 매각대금 이자, 손익분기 라이드 횟수, 언더워터 처리. 기본값: 보험 $110·등록 $250/yr·정비 $900/yr·$9k×12% → $373/월, 대체 $205 → 연 $2,374 절감, 분기 19회.
+- `tools/car-vs-uber-calculator.html` — 차 프리셋(AAA 2025 신차 고정 $664/월+24¢/mi, 무할부 중고 $260+27¢) vs UberX 구조(기본+예약 $4.35 + $2.10/mi, 최저 $7) × 지역계수(0.65/1.0/1.6) + 대중교통 + 렌트(150mi/일 가정). 분기: 신차 ~44회/월, 중고 ~15회/월(5마일·평균도시·렌트 2일).
+- `blog/should-we-become-a-one-car-family.html`, `blog/is-it-cheaper-to-uber-than-own-a-car.html`.
+- 수익화: 2번째 차 매각 → 인스턴트 오퍼·트레이드인 툴 연결(셀링 퍼널).
+
+### Financing 확장
+- `tools/car-payment-deferment-calculator.html` — 단리 기준 1~3개월 디퍼먼트, 기간연장/만기 벌룬 2모드, 수수료, 리파이 비교(새 금리·기간). **ProPublica 예시($15k·25%·72개월·2회) 벌룬 $2,589 vs 우리 계산 $2,546(2% 차, 디퍼 시점 미공개)로 외부 검증.**
+- `blog/should-you-defer-a-car-payment.html`.
+
+### 데이터 출처
+- AAA Your Driving Costs 2025: $11,577/yr, 77¢/mi(감가 $4,334·금융 $1,131·보험 $1,694·연료 $1,950·정비 $1,656·등록세 $813).
+- RideWise 2026: UberX ~$1.50/mi, 10마일 $23~26, 최저 $5~8.
+- Experian(디퍼먼트 이자 계속 발생·끝에 추가), ProPublica(연장 누적 벌룬 사례).
+
+### 검증
+- 3개 툴 파이썬 독립 구현 ↔ node 목업 DOM 일치(A 4·B 4·C 6 시나리오). 손익분기 표시는 반올림(본문 수치와 일치).
+- 신규 6페이지 + 허브 2개 Playwright 390/1280: 오버플로 0, nav 1, 결과 간격 69px, JS 오류 0. 전체 태그·JSON-LD 통과, sitemap 145, 내부링크 3,433개 깨짐 0. 새 툴은 WebPage 스키마·인라인 헤더/푸터·결과 간격 규칙 준수.
+- 내부링크 20개(관련 목록 10개 상한·날짜 미변경).
+
+### ⚠️ 다음 세션 필독
+1. 신규 6페이지 Bing 반응(특히 디퍼먼트 — 리파이 제휴 퍼널).
+2. Car-Light 확장 후보: "차 없이 사는 비용 by city", "2번째 차 보험 빼면 얼마 절약", "카셰어링(Zipcar/Turo) vs 소유".
+3. 디퍼먼트 클러스터 확장 후보: "할부 연체 시 비용/신용영향", "리파이로 할부 낮추기 vs 기간연장".
 
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Payment Deferment Calculator — What Skipping a Car Payment Really Costs | AutoCalcHub</title>
+  <meta name="description" content="Skipping a car payment isn't free: interest keeps building and gets paid first afterwards. See the true extra cost of a 1–3 month deferment, any lump sum due at the end, and whether refinancing is better.">
+  <link rel="canonical" href="https://autocalchub.com/tools/car-payment-deferment-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block;margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--border)}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Car Payment Deferment Calculator",
+    "url": "https://autocalchub.com/tools/car-payment-deferment-calculator.html",
+    "description": "Calculates the extra cost of deferring auto loan payments under simple interest, with either a term extension or an end-of-loan balloon, and compares the result with refinancing at a new rate and term.",
+    "datePublished": "2026-10-22",
+    "dateModified": "2026-10-22",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://autocalchub.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://autocalchub.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Car Payment Deferment Calculator",
+        "item": "https://autocalchub.com/tools/car-payment-deferment-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<!-- HEADER:START -->
+<nav>
+  <a href="/" class="logo">Auto<span>Calc</span>Hub</a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- HEADER:END -->
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>What Does Skipping a Car Payment Really Cost?</h1>
+    <p>A deferment feels like a free month. It isn't: on almost every auto loan, interest keeps building while you pay nothing, and the next payments go to that interest before they touch the balance. Enter your loan and the months you'd skip to see the real price — and whether a refinance would do the job better.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>📅 Your Loan</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="bal">Current Loan Balance</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="bal" value="20000" min="0" step="500"></div>
+      </div>
+      <div class="form-group">
+        <label for="apr">Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix"><input type="number" id="apr" value="9" min="0" max="36" step="0.1"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label for="left">Payments Left</label>
+        <div class="input-wrap has-suffix"><input type="number" id="left" value="48" min="1" max="96" step="1"><span class="input-suffix">mo</span></div>
+        <span class="hint">Your payment is worked out from the balance, rate and months left.</span>
+      </div>
+      <div class="form-group">
+        <label for="skip">Payments You Want to Skip</label>
+        <select id="skip">
+          <option value="1">1 month</option>
+          <option value="2" selected>2 months</option>
+          <option value="3">3 months</option>
+        </select>
+        <span class="hint">Most lenders allow one to three months at a time.</span>
+      </div>
+      <div class="form-group">
+        <label for="mode">What Your Lender Does Afterwards</label>
+        <select id="mode">
+          <option value="extend" selected>Adds the months to the end of the loan</option>
+          <option value="balloon">Keeps the end date — a lump sum is due at the end</option>
+        </select>
+        <span class="hint">Ask your lender; the deferment agreement will say.</span>
+      </div>
+      <div class="form-group">
+        <label for="fee">Deferment Fee</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="fee" value="0" min="0" step="5"></div>
+        <span class="hint">Some lenders charge $25–$75 per deferment.</span>
+      </div>
+      <div class="form-group">
+        <label for="refiApr">Refinance Rate You Could Get (optional)</label>
+        <div class="input-wrap has-suffix"><input type="number" id="refiApr" value="" min="0" max="36" step="0.1" placeholder="e.g. 7"><span class="input-suffix">%</span></div>
+        <span class="hint">To compare a lower payment through refinancing instead.</span>
+      </div>
+      <div class="form-group">
+        <label for="refiTerm">Refinance Term</label>
+        <select id="refiTerm">
+          <option value="36">36 months</option>
+          <option value="48">48 months</option>
+          <option value="60" selected>60 months</option>
+          <option value="72">72 months</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="verdict-box">
+        <h3 id="vTitle"></h3>
+        <span class="big" id="vBig"></span>
+        <p id="vSub"></p>
+      </div>
+
+      <div class="two-col">
+        <div class="calc-card" style="margin:0">
+          <h2>The Deferment</h2>
+          <div class="row"><span>Your monthly payment</span><span id="oPay"></span></div>
+          <div class="row"><span>Interest that builds while you skip</span><span id="oAcc"></span></div>
+          <div class="row"><span>Total extra cost over the loan</span><span id="oExtra"></span></div>
+          <div class="row"><span id="oLastLbl">Loan runs longer by</span><span id="oLast"></span></div>
+        </div>
+        <div class="calc-card" style="margin:0">
+          <h2>Refinancing Instead</h2>
+          <div class="row"><span>New monthly payment</span><span id="oRPay"></span></div>
+          <div class="row"><span>Monthly relief</span><span id="oRRelief"></span></div>
+          <div class="row"><span>Total interest, new loan</span><span id="oRInt"></span></div>
+          <div class="row"><span>vs. total interest, current loan</span><span id="oCInt"></span></div>
+        </div>
+      </div>
+
+      <div class="note" id="mainNote"></div>
+      <div class="disclaimer">⚠️ <strong>Every lender's deferment terms differ.</strong> This assumes simple daily interest that keeps accruing during the skipped months and is paid off first when payments restart, which is how most US auto loans work. Some lenders capitalize the interest, charge fees, or require interest-only payments instead of skipping entirely. Get the terms in writing before you agree, and don't stop paying until the lender confirms the deferment — a missed payment without approval is reported as late.</div>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why a Skipped Payment Costs More Than One Month of Interest</h2>
+    <p>Auto loans almost all use simple interest calculated on the daily balance. During a deferment you pay nothing, but the balance doesn't stop earning interest. On a $20,000 loan at 9%, that's about $150 a month — $300 across a two-month deferment.</p>
+    <p>That's only the start. When payments resume, they cover the built-up interest first, so the principal falls more slowly than it would have. The loan carries a higher balance for longer, and the total extra cost ends up higher than the interest from the skipped months alone: about <strong>$429</strong> on that $20,000 loan, with the payoff pushed back three months.</p>
+
+    <h2>The Rate Changes Everything</h2>
+    <p>On a high-rate loan the effect is dramatic. ProPublica examined subprime auto loans where repeated extensions left borrowers facing thousands of dollars at the end of the loan. Take $15,000 at 25% over 72 months, with a $404 payment. Skipping two months and keeping the original end date leaves a final lump sum of about <strong>$2,546</strong> — close to ProPublica's own illustration of the same loan. If the lender extends the term instead, the extra cost is about $2,758 and the loan runs nine months longer.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Loan</th><th>Skip</th><th>Interest during skip</th><th>Total extra cost</th></tr></thead>
+        <tbody>
+          <tr><td>$12,000 at 18%, 36 months left</td><td>1 month</td><td>$180</td><td>~$308 + fee</td></tr>
+          <tr><td>$20,000 at 9%, 48 months left</td><td>2 months</td><td>$300</td><td>~$429</td></tr>
+          <tr><td>$32,000 at 7.2%, 60 months left</td><td>3 months</td><td>$576</td><td>~$825 + fee</td></tr>
+          <tr><td>$15,000 at 25%, 72 months left</td><td>2 months</td><td>$625</td><td>~$2,758</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Extension or Balloon: Ask Before You Sign</h2>
+    <p>Lenders handle the aftermath one of two ways. Most simply add the skipped months to the end, so you keep paying the same amount for longer. Some keep the original end date and let the unpaid interest and principal pile up into a final balloon payment — which can arrive as an unwelcome surprise years later if nobody explained it. The calculator handles both; your deferment agreement will say which applies.</p>
+
+    <h2>When a Deferment Makes Sense</h2>
+    <ul>
+      <li><strong>A short, known gap:</strong> a job starting next month, a one-off medical bill, a delayed tax refund.</li>
+      <li><strong>The alternative is a missed payment.</strong> A deferment approved in advance is not reported as late; a skipped payment without one is, and a single 30-day late can cost far more in future interest than the deferment does.</li>
+      <li><strong>Your rate is low.</strong> On a 4% to 7% loan, a one- or two-month skip costs relatively little.</li>
+    </ul>
+
+    <h2>When to Look at Refinancing Instead</h2>
+    <p>If the problem is that the payment is too high month after month rather than for one or two months, a deferment just postpones it. Refinancing at a lower rate or longer term changes the payment itself. It's worth checking if your credit has improved since you took the loan, if your rate was marked up at the dealership, or if rates have fallen. Stretching the term lowers the payment but usually raises total interest, so compare both lines in the calculator before deciding.</p>
+    <p>And if neither works — if the car itself is unaffordable — selling it before the situation reaches repossession almost always leaves you better off than a voluntary surrender.</p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/should-you-defer-a-car-payment.html" style="color:var(--orange);text-decoration:none;">Should You Defer a Car Payment?</a></li>
+        <li><a href="car-refinance-calculator.html" style="color:var(--orange);text-decoration:none;">Car Refinance Calculator</a></li>
+        <li><a href="../blog/how-to-refinance-a-car-loan.html" style="color:var(--orange);text-decoration:none;">How to Refinance a Car Loan</a></li>
+        <li><a href="../blog/should-you-sell-your-car-instead-of-voluntary-surrender.html" style="color:var(--orange);text-decoration:none;">Should You Sell Your Car Instead of Voluntary Surrender?</a></li>
+        <li><a href="car-payment-to-income-calculator.html" style="color:var(--orange);text-decoration:none;">Car Payment to Income Calculator</a></li>
+        <li><a href="../blog/how-does-car-loan-interest-work.html" style="color:var(--orange);text-decoration:none;">How Does Car Loan Interest Work?</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- FOOTER:START -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">Auto<span>Calc</span>Hub</a>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/methodology.html">How We Calculate</a>
+      <a href="/editorial-policy.html">Editorial Policy</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy-policy.html">Privacy</a>
+      <a href="/blog/">Blog</a>
+      <a href="/glossary/">Glossary</a>
+    </div>
+    <p class="footer-copy">© 2026 autocalchub.com · For informational use only</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return (n < 0 ? '−$' : '$') + Math.abs(Math.round(n)).toLocaleString(); }
+function money2(n){ return '$' + n.toFixed(2); }
+function v(id){ return parseFloat(document.getElementById(id).value) || 0; }
+function pmt(B, apr, n){ var r = apr / 1200; return r === 0 ? B / n : B * r / (1 - Math.pow(1 + r, -n)); }
+
+function run(B, apr, P, defer, mode, nLeft){
+  var r = apr / 1200, bal = B, accrued = 0, paid = 0, m = 0, k = 0;
+  for (var i = 0; i < defer; i++) { accrued += bal * r; m++; }
+  while (bal > 0.005 && m < 600) {
+    if (mode === 'balloon' && k === nLeft) break;
+    var due = accrued + bal * r;
+    var p = Math.min(P, due + bal);
+    if (p >= due) { bal -= p - due; accrued = 0; } else { accrued = due - p; }
+    paid += p; m++; k++;
+  }
+  var balloon = 0;
+  if (mode === 'balloon' && (bal > 0.005 || accrued > 0.005)) { balloon = bal + accrued; paid += balloon; }
+  return {paid: paid, months: m, balloon: balloon};
+}
+
+['bal','apr','left','fee','refiApr'].forEach(function(id){ document.getElementById(id).addEventListener('input', calculate); });
+['skip','mode','refiTerm'].forEach(function(id){ document.getElementById(id).addEventListener('change', calculate); });
+
+function calculate(){
+  var B = v('bal'), apr = v('apr'), n = Math.round(v('left')), skip = parseInt(document.getElementById('skip').value, 10);
+  var mode = document.getElementById('mode').value, fee = v('fee');
+  var refiApr = parseFloat(document.getElementById('refiApr').value), refiTerm = parseInt(document.getElementById('refiTerm').value, 10);
+  if (B <= 0 || n <= 0) return;
+
+  var P = pmt(B, apr, n);
+  var base = run(B, apr, P, 0, 'extend', n);
+  var d = run(B, apr, P, skip, mode, n);
+  var acc = B * apr / 1200 * skip;
+  var extra = d.paid + fee - base.paid;
+  var pushed = d.months - base.months;
+
+  document.getElementById('oPay').textContent = money2(P);
+  document.getElementById('oAcc').textContent = money(acc);
+  document.getElementById('oExtra').textContent = money(extra);
+  if (mode === 'balloon') {
+    document.getElementById('oLastLbl').textContent = 'Lump sum due at the end';
+    document.getElementById('oLast').textContent = money(d.balloon);
+  } else {
+    document.getElementById('oLastLbl').textContent = 'Loan runs longer by';
+    document.getElementById('oLast').textContent = pushed + (pushed === 1 ? ' month' : ' months');
+  }
+
+  var curInt = base.paid - B;
+  if (!isNaN(refiApr) && refiApr >= 0 && document.getElementById('refiApr').value !== '') {
+    var rp = pmt(B, refiApr, refiTerm), rInt = rp * refiTerm - B;
+    document.getElementById('oRPay').textContent = money2(rp);
+    document.getElementById('oRRelief').textContent = (P - rp >= 0 ? money2(P - rp) + ' less' : money2(rp - P) + ' more');
+    document.getElementById('oRInt').textContent = money(rInt);
+    document.getElementById('oCInt').textContent = money(curInt);
+  } else {
+    ['oRPay','oRRelief','oRInt'].forEach(function(id){ document.getElementById(id).textContent = '—'; });
+    document.getElementById('oCInt').textContent = money(curInt);
+  }
+
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  vT.textContent = 'Skipping ' + skip + (skip === 1 ? ' Payment' : ' Payments') + ' Costs You';
+  vB.textContent = money(extra);
+  vS.textContent = (mode === 'balloon'
+    ? 'Your payments stay the same, but a ' + money(d.balloon) + ' lump sum comes due at the end of the loan.'
+    : 'You keep paying ' + money2(P) + ' a month for ' + pushed + ' extra ' + (pushed === 1 ? 'month' : 'months') + '.') +
+    ' ' + money(acc) + ' of that is interest building while you pay nothing; the rest is the balance shrinking more slowly afterwards.';
+
+  var note = '<strong>How this was calculated:</strong> at ' + apr.toFixed(2) + '% on ' + money(B) + ', interest runs about ' + money(B * apr / 1200) +
+    ' a month. Over ' + skip + ' skipped ' + (skip === 1 ? 'month' : 'months') + ' that builds to ' + money(acc) +
+    '. When payments restart, each one pays the built-up interest first, so the principal falls later than planned. Total paid rises from ' +
+    money(base.paid) + ' to ' + money(d.paid + fee) + (fee > 0 ? ', including the ' + money(fee) + ' fee' : '') + '.';
+  if (apr >= 15) note += '<br><br><strong>At ' + apr.toFixed(1) + '%, deferments get expensive fast.</strong> The extra cost here is ' + (extra / acc).toFixed(1) + ' times the interest from the skipped months alone. If you are considering repeated deferments, look hard at refinancing or selling instead.';
+  if (mode === 'balloon') note += '<br><br><strong>Plan for the lump sum now.</strong> A ' + money(d.balloon) + ' final payment is easy to forget for years and hard to find on short notice. If you cannot pay it, the lender may repossess even after years of on-time payments.';
+  if (!isNaN(refiApr) && document.getElementById('refiApr').value !== '') {
+    var rp2 = pmt(B, refiApr, refiTerm), rInt2 = rp2 * refiTerm - B;
+    if (rp2 < P && rInt2 < curInt) note += '<br><br><strong>Refinancing looks better here:</strong> it lowers the payment by ' + money2(P - rp2) + ' every month and cuts total interest by ' + money(curInt - rInt2) + ', rather than adding cost.';
+    else if (rp2 < P) note += '<br><br><strong>Refinancing lowers the payment by ' + money2(P - rp2) + ' a month,</strong> but total interest rises by ' + money(rInt2 - curInt) + ' because of the longer term. It solves a lasting shortfall; a deferment only covers a short one.';
+  }
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

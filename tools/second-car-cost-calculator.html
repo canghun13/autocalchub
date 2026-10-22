@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Second Car Cost Calculator — Should Your Household Go Down to One Car? | AutoCalcHub</title>
+  <meta name="description" content="Is the second car worth keeping? Compare what it really costs — insurance, upkeep, lost value, fuel — with the rideshare, rentals and extra miles that would replace it, plus the cash you'd free by selling.">
+  <link rel="canonical" href="https://autocalchub.com/tools/second-car-cost-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block;margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--border)}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Second Car Cost Calculator",
+    "url": "https://autocalchub.com/tools/second-car-cost-calculator.html",
+    "description": "Compares the monthly cost of keeping a household's second car (payment, insurance, registration, maintenance, depreciation, fuel, parking) with the cost of replacing it with rideshare, transit, rentals and extra miles on the remaining car, including interest on the cash freed by selling and the break-even number of rideshare trips.",
+    "datePublished": "2026-10-22",
+    "dateModified": "2026-10-22",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://autocalchub.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://autocalchub.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Second Car Cost Calculator",
+        "item": "https://autocalchub.com/tools/second-car-cost-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<!-- HEADER:START -->
+<nav>
+  <a href="/" class="logo">Auto<span>Calc</span>Hub</a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- HEADER:END -->
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Does Your Household Really Need the Second Car?</h1>
+    <p>A second car that's paid off still costs money every month — insurance, registration, upkeep, the value it loses each year. The question isn't whether it's expensive. It's whether it costs more than the rides, rentals and extra miles on your other car that would replace it. Put in both sides and see.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>🚗 What the Second Car Costs</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="pay">Monthly Loan Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="pay" value="0" min="0" step="10"></div>
+        <span class="hint">$0 if it's paid off.</span>
+      </div>
+      <div class="form-group">
+        <label for="ins">Insurance per Month</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="ins" value="110" min="0" step="5"></div>
+        <span class="hint">Just this car's share of the policy.</span>
+      </div>
+      <div class="form-group">
+        <label for="reg">Registration, Taxes &amp; Inspection per Year</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="reg" value="250" min="0" step="10"></div>
+      </div>
+      <div class="form-group">
+        <label for="maint">Maintenance &amp; Repairs per Year</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="maint" value="900" min="0" step="50"></div>
+        <span class="hint">Oil, tires, brakes, the repair you're putting off.</span>
+      </div>
+      <div class="form-group">
+        <label for="park">Parking per Month</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="park" value="0" min="0" step="10"></div>
+      </div>
+      <div class="form-group">
+        <label for="value">What It Would Sell For Today</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="value" value="9000" min="0" step="250"></div>
+      </div>
+      <div class="form-group">
+        <label for="dep">Value Lost per Year</label>
+        <div class="input-wrap has-suffix"><input type="number" id="dep" value="12" min="0" max="40" step="1"><span class="input-suffix">%</span></div>
+        <span class="hint">Roughly 10–15% a year for an older car.</span>
+      </div>
+      <div class="form-group">
+        <label for="balance">Loan Balance Still Owed</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="balance" value="0" min="0" step="250"></div>
+      </div>
+      <div class="form-group">
+        <label for="miles">Miles It's Driven per Month</label>
+        <div class="input-wrap has-suffix"><input type="number" id="miles" value="500" min="0" step="50"><span class="input-suffix">mi</span></div>
+      </div>
+      <div class="form-group">
+        <label for="mpg">Its MPG</label>
+        <div class="input-wrap has-suffix"><input type="number" id="mpg" value="28" min="5" step="1"><span class="input-suffix">mpg</span></div>
+      </div>
+      <div class="form-group">
+        <label for="gas">Gas Price</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="gas" value="4.33" min="0" step="0.05"></div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:2rem">🚕 What Would Replace It</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="trips">Rideshare Trips per Month</label>
+        <div class="input-wrap has-suffix"><input type="number" id="trips" value="8" min="0" step="1"><span class="input-suffix">trips</span></div>
+        <span class="hint">Only the trips you couldn't share, combine or skip.</span>
+      </div>
+      <div class="form-group">
+        <label for="tripCost">Average Cost per Trip</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="tripCost" value="18" min="0" step="1"></div>
+        <span class="hint">UberX averaged about $1.50 a mile in 2026; a 10-mile ride runs $23–$26.</span>
+      </div>
+      <div class="form-group">
+        <label for="transit">Transit or Bike Costs per Month</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="transit" value="0" min="0" step="5"></div>
+      </div>
+      <div class="form-group">
+        <label for="rentDays">Rental Days per Year</label>
+        <div class="input-wrap has-suffix"><input type="number" id="rentDays" value="4" min="0" step="1"><span class="input-suffix">days</span></div>
+        <span class="hint">For the weekends both of you need a car.</span>
+      </div>
+      <div class="form-group">
+        <label for="rentRate">Rental Cost per Day</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="rentRate" value="65" min="0" step="5"></div>
+      </div>
+      <div class="form-group">
+        <label for="shift">Miles Moving to Your Other Car per Month</label>
+        <div class="input-wrap has-suffix"><input type="number" id="shift" value="150" min="0" step="25"><span class="input-suffix">mi</span></div>
+        <span class="hint">Errands the remaining car now picks up.</span>
+      </div>
+      <div class="form-group">
+        <label for="otherMpg">Other Car's MPG</label>
+        <div class="input-wrap has-suffix"><input type="number" id="otherMpg" value="28" min="5" step="1"><span class="input-suffix">mpg</span></div>
+      </div>
+      <div class="form-group">
+        <label for="hysa">Interest on the Cash if You Sell</label>
+        <div class="input-wrap has-suffix"><input type="number" id="hysa" value="4" min="0" max="10" step="0.25"><span class="input-suffix">%</span></div>
+        <span class="hint">What the sale money earns in a savings account.</span>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="verdict-box">
+        <h3 id="vTitle"></h3>
+        <span class="big" id="vBig"></span>
+        <p id="vSub"></p>
+      </div>
+
+      <div class="two-col">
+        <div class="calc-card" style="margin:0">
+          <h2>Keeping the Second Car</h2>
+          <div class="row"><span>Payment, insurance &amp; parking</span><span id="oFixedA"></span></div>
+          <div class="row"><span>Registration, upkeep &amp; lost value</span><span id="oFixedB"></span></div>
+          <div class="row"><span>Fuel</span><span id="oFuel"></span></div>
+          <div class="row"><span>Total per month</span><span id="oCar"></span></div>
+        </div>
+        <div class="calc-card" style="margin:0">
+          <h2>Living Without It</h2>
+          <div class="row"><span>Rideshare</span><span id="oRide"></span></div>
+          <div class="row"><span>Transit &amp; rentals</span><span id="oTR"></span></div>
+          <div class="row"><span>Extra miles on the other car</span><span id="oShift"></span></div>
+          <div class="row"><span>Total per month</span><span id="oRepl"></span></div>
+        </div>
+      </div>
+
+      <div class="calc-card">
+        <h2>The Bottom Line</h2>
+        <div class="row"><span>Cash freed by selling</span><span id="oFreed"></span></div>
+        <div class="row"><span>Interest that cash earns per month</span><span id="oOpp"></span></div>
+        <div class="row"><span>Saving per year as a one-car household</span><span id="oSaveYr"></span></div>
+        <div class="row"><span>Rideshare trips a month before it stops paying</span><span id="oBE"></span></div>
+      </div>
+
+      <div class="note" id="mainNote"></div>
+      <div class="disclaimer">⚠️ <strong>The money is only half of it.</strong> This compares costs you can price. It can't price the evenings two schedules collide, a sick kid with one car at the office, or how far the nearest pharmacy is. Run the numbers, then try a month with the second car parked and the keys in a drawer before you sell it.</div>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>A Paid-Off Car Is Not a Free Car</h2>
+    <p>The second car usually escapes scrutiny because it has no payment. But AAA's 2025 estimate puts the cost of owning a new car at $11,577 a year, and only $1,131 of that is finance charges. The rest — depreciation, insurance, registration, fuel, maintenance and tires — keeps going after the loan is gone.</p>
+    <p>An older paid-off sedan is far cheaper than that average, but rarely cheap. $110 a month of insurance, $250 of registration, $900 of upkeep and 12% a year off a $9,000 value comes to about $296 a month before you put a drop of fuel in it. Add 500 miles of driving and it's roughly $373 a month — close to $4,500 a year.</p>
+
+    <h2>What Replaces It Is Usually Cheaper Than People Expect</h2>
+    <p>Most second-car trips aren't lost when the car goes. They get combined into the other car's errands, shifted to a schedule that works, walked, biked, or dropped altogether. What's left is a handful of trips a month that genuinely need a ride, plus a few weekends a year when both of you need wheels.</p>
+    <p>At the default inputs — eight $18 rideshare trips a month, four rental days a year and 150 miles moved onto the other car — the replacement costs about $205 a month. Against $373 for the car, plus the interest on $9,000 of freed cash, the one-car household comes out about $2,400 a year ahead.</p>
+
+    <h2>Where the Line Is</h2>
+    <p>The figure that decides it is the number of rideshare trips you can absorb before the savings vanish — the break-even row above. With the defaults that's about 19 trips a month. Well under it, selling makes money. Well over it, the second car is earning its keep.</p>
+    <p>Two situations change the answer more than any other input:</p>
+    <ul>
+      <li><strong>A loan on the second car.</strong> A $420 payment pushes the monthly cost past $1,000 and the break-even past 50 trips. This is where going down to one car saves the most — if the car isn't underwater.</li>
+      <li><strong>Commuting in it.</strong> If the second car does a daily commute with no transit alternative, rideshare can't replace it at any sensible price; twenty round trips a month blows through the budget immediately.</li>
+    </ul>
+
+    <h2>If You Still Owe More Than It's Worth</h2>
+    <p>Selling an underwater car means paying the difference between the sale price and the loan balance in cash. The calculator shows that as negative cash freed. It doesn't change the monthly saving — the payment, insurance and upkeep still disappear — but it does mean you need the gap in hand to sell, or you'll have to roll it into a personal loan, which rarely makes sense.</p>
+
+    <h2>How to Test It Before You Sell</h2>
+    <ol>
+      <li><strong>Park it for a month.</strong> Keep the insurance, but don't drive it. Count the trips you actually needed it for.</li>
+      <li><strong>Price your real trips.</strong> Open the rideshare app for the trips you'd have taken and note the quotes — at the times you'd really travel.</li>
+      <li><strong>Get an instant offer and a private-sale estimate.</strong> The cash you'd free up is part of the saving.</li>
+      <li><strong>Ask your insurer what the one-car policy costs.</strong> Removing a vehicle doesn't always cut the premium by the full per-car amount.</li>
+    </ol>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/should-we-become-a-one-car-family.html" style="color:var(--orange);text-decoration:none;">Should We Become a One-Car Family?</a></li>
+        <li><a href="car-vs-uber-calculator.html" style="color:var(--orange);text-decoration:none;">Car vs Uber Calculator</a></li>
+        <li><a href="../blog/is-it-cheaper-to-uber-than-own-a-car.html" style="color:var(--orange);text-decoration:none;">Is It Cheaper to Uber Than Own a Car?</a></li>
+        <li><a href="trade-in-vs-private-sale-calculator.html" style="color:var(--orange);text-decoration:none;">Trade-In vs Private Sale Calculator</a></li>
+        <li><a href="car-total-cost-of-ownership-calculator.html" style="color:var(--orange);text-decoration:none;">Total Cost of Ownership Calculator</a></li>
+        <li><a href="../blog/how-much-does-it-cost-to-own-car-per-month.html" style="color:var(--orange);text-decoration:none;">How Much Does It Cost to Own a Car Per Month?</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- FOOTER:START -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">Auto<span>Calc</span>Hub</a>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/methodology.html">How We Calculate</a>
+      <a href="/editorial-policy.html">Editorial Policy</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy-policy.html">Privacy</a>
+      <a href="/blog/">Blog</a>
+      <a href="/glossary/">Glossary</a>
+    </div>
+    <p class="footer-copy">© 2026 autocalchub.com · For informational use only</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return (n < 0 ? '−$' : '$') + Math.abs(Math.round(n)).toLocaleString(); }
+function v(id){ return parseFloat(document.getElementById(id).value) || 0; }
+['pay','ins','reg','maint','park','value','dep','balance','miles','mpg','gas','trips','tripCost','transit','rentDays','rentRate','shift','otherMpg','hysa']
+  .forEach(function(id){ document.getElementById(id).addEventListener('input', calculate); });
+
+function calculate(){
+  var pay = v('pay'), ins = v('ins'), reg = v('reg'), maint = v('maint'), park = v('park');
+  var value = v('value'), dep = v('dep'), balance = v('balance'), miles = v('miles'), mpg = v('mpg'), gas = v('gas');
+  var trips = v('trips'), tripCost = v('tripCost'), transit = v('transit'), rentDays = v('rentDays'), rentRate = v('rentRate');
+  var shiftMi = v('shift'), otherMpg = v('otherMpg'), hysa = v('hysa');
+
+  var depYr = value * dep / 100;
+  var fixedA = pay + ins + park;
+  var fixedB = (reg + maint + depYr) / 12;
+  var fuel = mpg > 0 ? miles * gas / mpg : 0;
+  var car = fixedA + fixedB + fuel;
+  var freed = value - balance;
+  var opp = Math.max(0, freed) * hysa / 100 / 12;
+  var marginal = otherMpg > 0 ? gas / otherMpg + 0.11 : 0;
+  var shift = shiftMi * marginal;
+  var ride = trips * tripCost;
+  var tr = transit + rentDays * rentRate / 12;
+  var repl = ride + tr + shift;
+  var save = car + opp - repl;
+  var be = tripCost > 0 ? (car + opp - tr - shift) / tripCost : 0;
+
+  document.getElementById('oFixedA').textContent = money(fixedA);
+  document.getElementById('oFixedB').textContent = money(fixedB);
+  document.getElementById('oFuel').textContent = money(fuel);
+  document.getElementById('oCar').textContent = money(car);
+  document.getElementById('oRide').textContent = money(ride);
+  document.getElementById('oTR').textContent = money(tr);
+  document.getElementById('oShift').textContent = money(shift);
+  document.getElementById('oRepl').textContent = money(repl);
+  document.getElementById('oFreed').textContent = money(freed);
+  document.getElementById('oOpp').textContent = money(opp);
+  document.getElementById('oSaveYr').textContent = money(save * 12);
+  document.getElementById('oBE').textContent = be > 0 ? Math.round(be) + ' trips' : '—';
+
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  if (save > 50) {
+    vT.textContent = 'One Car Saves You Money';
+    vB.textContent = money(save * 12) + ' a year';
+    vS.textContent = 'The second car costs ' + money(car) + ' a month; replacing it costs ' + money(repl) + '. You could take up to ' + Math.round(be) + ' rideshare trips a month before it stopped paying off.';
+  } else if (save < -50) {
+    vT.textContent = 'The Second Car Earns Its Keep';
+    vB.textContent = money(-save * 12) + ' a year';
+    vS.textContent = 'Replacing it would cost ' + money(repl) + ' a month against ' + money(car) + ' to keep it. At ' + trips + ' trips a month you are past the ' + Math.round(be) + '-trip break-even.';
+  } else {
+    vT.textContent = 'Roughly a Wash';
+    vB.textContent = money(Math.abs(save) * 12) + ' a year';
+    vS.textContent = 'Keeping and replacing it cost about the same. Decide on convenience — or on what the sale cash would do for you.';
+  }
+
+  var note = '<strong>How this was calculated:</strong> keeping the car costs ' + money(fixedA) + ' a month in payment, insurance and parking, ' +
+    money(fixedB) + ' in registration, upkeep and ' + dep + '% a year of lost value on ' + money(value) + ', and ' + money(fuel) + ' of fuel for ' +
+    miles.toLocaleString() + ' miles. Living without it costs ' + money(ride) + ' in rideshare, ' + money(tr) + ' in transit and rentals, and ' + money(shift) +
+    ' for ' + shiftMi + ' extra miles on the other car (fuel plus about 11¢ a mile of wear).';
+  if (freed < 0) {
+    note += '<br><br><strong>The car is underwater by ' + money(-freed) + '.</strong> Selling means paying that gap in cash. The monthly saving still applies once it\'s gone, but you need the shortfall in hand first.';
+  } else if (opp > 0) {
+    note += '<br><br><strong>Selling also frees ' + money(freed) + ',</strong> which earns about ' + money(opp) + ' a month at ' + hysa + '% — or pays down debt costing more than that.';
+  }
+  if (pay > 0 && save > 0) {
+    note += '<br><br><strong>The loan payment is doing most of the work here.</strong> ' + money(pay) + ' of the monthly cost disappears when the car is sold, which is why going to one car pays off fastest while there is still a loan on the second.';
+  }
+  if (trips > 30) {
+    note += '<br><br><strong>That is a lot of rideshare.</strong> If you need more than about 30 trips a month, the second car is probably doing a daily commute — and rideshare is rarely a sensible substitute for that.';
+  }
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>
