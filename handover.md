@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-10-22 기준 · 구글 10/19자, Bing 10/19자)
+# AutoCalcHub 인수인계 문서 (2026-10-26 기준 · 구글 10/19자, Bing 10/26자)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,9 +12,9 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (10/22 신규 세션 기준)
-- 블로그 89개, 툴 43개 (index.html 제외). 10/22 신규 세션에서 블로그 3 + 툴 3 추가, **신규 카테고리 `🚲 Car-Light Living`**.
-- sitemap.xml 총 URL 145개. 홈 stat `43+`.
+## 2. 콘텐츠 현황 (10/26 주간 세션 기준)
+- 블로그 90개, 툴 44개 (index.html 제외). 10/26 블로그 1 + 툴 1 신규(연체 비용), 보강 2(월 보유비용·구매 시기). 10/22 신규 카테고리 `🚲 Car-Light Living`.
+- sitemap.xml 총 URL 147개. 홈 stat `44+`.
 - **GitHub push는 Claude GitHub App 연결로 동작**(9/28부터). 세션 프록시가 토큰 직접 push를 막으므로 토큰이 아니라 앱 연결이 필요함. 커밋 작성자는 `Claude <noreply@anthropic.com>`.
 - **블로그 태그 카테고리 13종** (10/22 `🚲 Car-Light Living` 추가, blog-tag 텍스트 "Car-Light Living", blog/index 섹션 id `section-carlight`, tools/index는 EV 앞 하위 헤더): `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`, `💼 Business &amp; Tax`.
 - **Related 링크 블록 헤딩 5가지 변형** — 통합 정규식 `<h[23][^>]*>Related (?:Guides|Tools)(?: &amp;| &)? ?(?:Tools|Guides)?</h[23]>` + h2는 들여쓰기 4칸 분기.
@@ -54,11 +54,19 @@
 - 작업 시작 전 GA4 + Search Console 리포트 캡처 받아서 방향 잡기
 - **정기 루틴과 별개로**, 세션 여유가 있을 때 GSC 데이터 기반 추가 보강/신규 작업을 하기도 함 (7/8, 7/10 세션이 이 케이스) — 이건 "주간 루틴 소진"과 무관하게 별도로 카운트됨
 
-## 5. SEO / Search Console 현황 (2026-10-26 확인 · 구글 9/21자, Bing 9/21자)
+## 5. SEO / Search Console 현황 (2026-10-26 확인 · 구글 10/19자, Bing 10/26자)
 
 ### 🚨 보강 전 필수 확인 절차 (10/19 확립, 계속 유효)
 - **구글 대상 보강은 ① GSC `페이지.csv`(노출 발생 목록)에 있고 ② Coverage `테이블.csv`(미크롤링 목록)에 없는 페이지에만 의미가 있다.** 10/5에 이 확인 없이 미크롤링 상태인 TCO 계산기를 보강해 효과가 0이었던 사례가 있음.
 - 미크롤링 페이지는 보강 대신 **색인된 페이지에서 내부링크를 걸어 크롤링을 유도**하는 것이 유일한 조치.
+
+### 📥 10/26자 자료 요약 (10/26 세션)
+- **구글**: Coverage 자료는 10/19자 그대로. 미크롤링 111 + 크롤링됨-색인안됨 2(사전승인·차량이력), 신규 추가 1(trade-in-vs-private-sale), 탈출 0. 노출 페이지 24, 클릭 1. **변화 없음 — 외부 링크 외 레버 없음(10/7 분석 유지).**
+- **Bing(1주)**: 노출 7,840 → **9,299**, 클릭 160 → **192**, 페이지 58개.
+  - salary 1,848/**75**(4.06%), MPG 1,816/7, fill-up 1,135/16, put-down 818/15, **gas-tank 툴 681/21(3.08%)**, EV vs gas 482/8(18위), 판매세 451/4(0.89%, 6.7위), best-time 362/5(6.1위), 정비 블로그 345/5, 월 보유비용 312/6(6.7위), 사전승인 208/4, trade-in 추정기 158/7(4.43%), **good-car-payment 54/2(3.4위, 11→54 상승)**, 코사이너 계산기 7/3.
+  - 10/22 신규 6페이지는 아직 Bing 리포트에 없음(4일차).
+- **GA4(9/28~10/25)**: 활성 319, 참여 41.6초, bing 148세션.
+- **쿼리 모양**: ① 차량 총비용 vs 소득("is $680 too much ... car payment, gas, and car insurance if my annual salary is $40,000" 3위) — salary·affordability 페이지가 이미 커버, 신규는 카니발 위험이라 보류 ② 월 보유비용("cost of car per month" 9.5위, "average monthly car expenses" 10위, "average car cost per month" 13.5위) → 10/26 보강 ③ 구매 시기("best month to buy a car" 8.4위, "is it better to buy a car in nov"·"do car manufacturers offer better deals in november or december" 클릭) → 10/26 보강.
 
 ### 📥 10/19자 자료 요약 (10/19 세션)
 - **구글 — 악화 신호**: "크롤링됨-색인 안 됨"에 **기존 색인 페이지 2개가 새로 들어감**(`how-to-get-pre-approved-car-loan`, `how-to-check-car-history-before-buying`, 최종 크롤 7/2~7/3). 즉 구글이 7월에 색인했던 페이지를 색인에서 뺐다. 미크롤링 109→111(10/5 신규 2개 추가), 탈출 0. 노출 페이지는 여전히 홈 위주, 클릭 1.
@@ -1498,6 +1506,38 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 2. Car-Light 확장 후보: "차 없이 사는 비용 by city", "2번째 차 보험 빼면 얼마 절약", "카셰어링(Zipcar/Turo) vs 소유".
 3. 디퍼먼트 클러스터 확장 후보: "할부 연체 시 비용/신용영향", "리파이로 할부 낮추기 vs 기간연장".
 
+
+## 6-30. 10/26 주간 세션: 월 보유비용·구매시기 보강 + 연체 비용 클러스터(툴+블로그)
+
+### 판단 (수익화 우선순위)
+1. **월 보유비용 보강** — Bing 312노출·6.7위, 본문이 "Updated July 2026"·가스 $3.40·AAA 수치 없음으로 낡음. "average car cost per month" 류 쿼리가 9~13위권. AAA 2026(9/15 발표) 수치로 전면 갱신.
+2. **구매 시기 보강** — Bing 362노출·6.1위, 11월/12월 비교 쿼리 클릭 발생. 연말 시즌 직전이라 시의성 최고.
+3. **신규: 연체 비용** — 10/22 handover 이월 후보("할부 연체 시 비용/신용영향"). 웹서치 결과 credit.com·SoFi·legalclarity·Gerald 등 설명글만, **연체 비용 계산기는 검색 결과에 없음**. 디퍼먼트·리파이 퍼널 직결(리파이 제휴 최고 단가).
+- 보류: 총 차량비용 vs 소득 신규글 — salary(최고 전환 페이지)·affordability rules와 카니발 위험.
+
+### 작업
+- `tools/late-car-payment-cost-calculator.html` (신규, Financing) — 연체일수·유예기간·수수료 방식(정액/정률/큰쪽/작은쪽)+상한, 단리 추가이자(원금분×일할), 신용보고 상태(30/60/90일), 30일 도달 시 점수 하락 추정(FICO 공개 예시 793→63~83p, 607→17~37p 선형보간), 다음 대출 금리 상승분(Experian Q2 2026 티어 평균을 티어 중간점수에 놓고 보간: 신차 4.41/6.15/9.71/13.52/16.11, 중고 6.29/8.81/13.93/19.10/21.62). 30일 전이면 "30일 넘기면 +$X" 가정치를 판정문에 표시.
+  - 기본값 $520·$22k·8.5%·12일·740점·$25k 중고 60개월 → 지금 $31.02, 30일 넘기면 +$2,057.
+- `blog/how-much-does-a-late-car-payment-cost.html` (신규) — 일자별 표, 이자 ~$1, 수수료 $25~50/3~5%, FICO 예시, 다음 대출 비용 예시 3개($1,110/$2,060/$1,950), 60/90일·압류, 30일 넘기지 않는 방법.
+- `blog/how-much-does-it-cost-to-own-car-per-month.html` (보강) — title "($1,072 Average in 2026)", meta 교체, Quick answer, AAA 2026 섹션(감가 $4,422·보험 $2,098·금융 $1,184·나머지 $5,159=총 $12,863/$1,072월, 차종×연료별 월비용 표 $850~$1,451), 연료 $4.27(AAA 10/22) 재계산, 신차vs중고 재계산($1,130 vs $950), **완납 차 월비용 섹션($400~550)** 신설, 세그먼트 표 재계산(소계 명시).
+- `blog/best-time-of-year-to-buy-a-car.html` (보강) — title "November vs December 2026", meta 교체, "November or December? Buying at the End of 2026" 섹션(KBB 9월: ATP $50,562, 인센티브 6.5%≈$3,300, 재고 60일 초과, 중고 $27,235 2022년 이후 최고, 금리 상승 경고).
+- 허브/홈/sitemap/llms 반영, 내부링크 7개(상한 10, 날짜 미변경). 보강 2페이지만 lastmod 갱신.
+
+### 데이터 출처
+- AAA Your Driving Costs 2026(2026-09-15): $12,863/yr, 가스 $4.152 가정, 15,000mi/yr. 차종별 ¢/mi(qz 정리): 중형세단 하이브리드 68.0·가솔린 70.5·EV 91.1, 소형SUV 74.7/77.7/79.3, 중형SUV 91.3/96.2/95.5, 픽업 107.4/110.8/116.1.
+- AAA 가스 전국평균: 10/1 $4.41, 10/8 $4.36, 10/15 $4.33, **10/22 $4.27**. ※ gas-tank 툴 기본값($4.33)은 아직 10/15 기준 — 다음 세션 시세 확인 후 판단.
+- KBB(10/20 게시, 9월 데이터), Experian Q2 2026 금리(VantageScore 4.0), FICO Score 9 시뮬레이션(advantageccs 인용), legalclarity(수수료·유예·압류 관행).
+
+### 검증
+- 연체 툴: 파이썬 독립 구현 ↔ node 목업 DOM 10개 시나리오 일치(0일·유예 내·12/31/45/65(상한)/95일·이자 0%).
+- Playwright 390/1280(신규 2 + 보강 2 + 홈·허브 3): 오버플로 0, nav 1, 결과 간격 69px, JS 오류 0. verify.py 전체 통과(sitemap 147, 내부링크 3,491개 깨짐 0).
+- 월 보유비용 AAA 표는 모바일에서 "Per month" 열이 먼저 보이도록 열 순서 조정.
+
+### ⚠️ 다음 세션 필독
+1. 월 보유비용·best-time 보강 후 Bing 순위/CTR 변화(특히 best-time은 11~12월 시즌).
+2. 연체 툴·블로그 + 10/22 신규 6페이지 Bing 반응.
+3. 가스 가격 낡은 페이지 잔여분 + gas-tank 툴 기본값 시세 점검.
+4. 연체/디퍼먼트 클러스터 확장 후보: "리파이로 할부 낮추기 vs 기간연장", "압류 후 남는 빚(deficiency balance)".
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 

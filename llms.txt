@@ -53,6 +53,7 @@
 - [Second Car Cost Calculator](https://autocalchub.com/tools/second-car-cost-calculator.html): Monthly cost of keeping a household's second car (insurance, registration, upkeep, depreciation, fuel, payment) against rideshare, transit, rentals and extra miles on the remaining car, with interest on sale proceeds and the break-even trip count.
 - [Car vs Uber Calculator](https://autocalchub.com/tools/car-vs-uber-calculator.html): Owning a financed or paid-off car versus going car-free with area-adjusted UberX pricing, transit and rentals; finds the break-even number of trips per month.
 - [Car Payment Deferment Calculator](https://autocalchub.com/tools/car-payment-deferment-calculator.html): True extra cost of skipping one to three auto loan payments under simple interest, with term extension or end-of-loan balloon, compared with refinancing.
+- [Late Car Payment Cost Calculator](https://autocalchub.com/tools/late-car-payment-cost-calculator.html): Late fee under flat, percentage or combined contract terms with an optional cap, extra simple interest, credit reporting status by days late, estimated score drop after 30 days and the extra interest on a future car loan using Experian Q2 2026 rates by tier.
 
 ## Guides: Buying a Car
 - [How Much Should You Spend on Your First Car?](https://autocalchub.com/blog/how-much-should-i-spend-on-my-first-car.html): How young-driver insurance ($151/month at 22, $330 at 18) and thin-credit loan rates (13.93% near-prime used vs 8.81% prime) shrink a first-car budget; what each salary buys at 22 under the 10% rule and a 15% ceiling, and whether a $32,000 first car works.
@@ -64,7 +65,7 @@
 - [Is Certified Pre-Owned (CPO) Worth It?](https://autocalchub.com/blog/is-certified-pre-owned-worth-it.html): The real CPO price premium, what you actually get for it, and when a regular used car with your own inspection wins instead.
 - [How Much Car Can I Afford?](https://autocalchub.com/blog/how-much-car-can-i-afford.html): How to figure out your real car budget using income, debt, and the 20/4/10 rule.
 - [How to Buy a Used Car Without Getting Ripped Off](https://autocalchub.com/blog/how-to-buy-used-car-without-getting-ripped-off.html): Step-by-step guide to buying a used car safely and avoiding common scams.
-- [Best Time of Year to Buy a Car](https://autocalchub.com/blog/best-time-of-year-to-buy-a-car.html): When dealers offer the biggest discounts and how to time your purchase.
+- [Best Time of Year to Buy a Car](https://autocalchub.com/blog/best-time-of-year-to-buy-a-car.html): When dealers offer the biggest discounts, November vs December for 2026 year-end buying, and a month-by-month guide.
 - [Should I Buy or Lease a Car?](https://autocalchub.com/blog/should-i-buy-or-lease-a-car.html): A clear breakdown of when buying wins and when leasing makes more sense financially.
 - [How to Negotiate Car Price at a Dealership](https://autocalchub.com/blog/how-to-negotiate-car-price-at-dealership.html): Tactics for getting a lower price and avoiding common dealer tricks.
 - [How to Check a Car's History Before Buying](https://autocalchub.com/blog/how-to-check-car-history-before-buying.html): What reports to pull, what red flags to look for, and what they don't tell you.
@@ -86,6 +87,7 @@
 ## Guides: Car Financing
 - [How Much Car Loan Will a Lender Approve on Your Salary?](https://autocalchub.com/blog/how-much-car-loan-will-i-be-approved-for.html): Lender PTI and DTI limits, approval amounts by salary versus the 10% rule, the $765 average payment, and when other debt makes the lender stricter than the rule.
 - [Should You Defer a Car Payment?](https://autocalchub.com/blog/should-you-defer-a-car-payment.html): How interest accrues during a deferment, what one to three skipped payments cost at different rates, balloon risk, and when to refinance or sell instead.
+- [How Much Does a Late Car Payment Cost?](https://autocalchub.com/blog/how-much-does-a-late-car-payment-cost.html): What happens 5, 15, 30, 60 and 90 days late: interest of about $1, late fees of $25 to $50, FICO examples of a 30-day late score drop, and the $1,100 to $2,100 it can add to the next car loan.
 - [Dealer Financing vs Your Own Pre-Approval](https://autocalchub.com/blog/dealer-financing-vs-pre-approval.html): How dealer reserve works, what a markup costs by size and term, why the pre-approval's job is to be a benchmark rather than to be used, and when a subsidised promotional rate genuinely wins.
 - [Should You Sell Your Car Instead of Voluntary Surrender?](https://autocalchub.com/blog/should-you-sell-your-car-instead-of-voluntary-surrender.html): Why surrender leaves a larger deficiency balance than a private sale, how to bridge the payoff shortfall, and what to try before either route.
 - [How Much Is the Car Loan Interest Deduction Actually Worth?](https://autocalchub.com/blog/how-much-is-car-loan-interest-deduction-worth.html): Why the $10,000 headline is not what you receive — the marginal-rate reality, the 2028 expiry, and why the phase-out zeroes most borrowers out well below $150,000 MAGI.
@@ -118,7 +120,7 @@
 - [Is a High-MPG Car Worth the Extra Cost?](https://autocalchub.com/blog/is-a-high-mpg-car-worth-the-extra-cost.html): Why fuel savings are non-linear — a 5 MPG gain is worth 4.7x more at 15 MPG than at 35 MPG — plus payback tables by premium and annual mileage.
 
 - [Is an Extended Car Warranty Worth It?](https://autocalchub.com/blog/is-extended-car-warranty-worth-it.html): The real math on self-insuring vs. buying coverage, and when a warranty actually pays for itself.
-- [How Much Does It Cost to Own a Car Per Month?](https://autocalchub.com/blog/how-much-does-it-cost-to-own-car-per-month.html): Full breakdown of monthly car ownership costs including payment, insurance, gas, and maintenance.
+- [How Much Does It Cost to Own a Car Per Month?](https://autocalchub.com/blog/how-much-does-it-cost-to-own-car-per-month.html): AAA 2026 average of $1,072 a month, costs by vehicle type and fuel, a line-by-line breakdown at current gas prices, and what a paid-off car costs.
 - [How to Improve Car Gas Mileage](https://autocalchub.com/blog/how-to-improve-car-gas-mileage.html): Practical tips to get better MPG and reduce your fuel costs.
 - [How to Calculate Fuel Cost for a Road Trip](https://autocalchub.com/blog/how-to-calculate-fuel-cost-road-trip.html): How to estimate gas costs for any trip before you leave.
 - [What Is the Cheapest Car to Maintain?](https://autocalchub.com/blog/what-is-cheapest-car-to-maintain.html): Which vehicles have the lowest long-term maintenance costs and why.

@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Late Car Payment Cost Calculator — Fees, Interest &amp; Credit Score Impact | AutoCalcHub</title>
+  <meta name="description" content="What a late car payment really costs: the late fee, the extra interest, and — if it reaches 30 days — the estimated score drop and higher rate on your next car loan.">
+  <link rel="canonical" href="https://autocalchub.com/tools/late-car-payment-cost-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block;margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--border)}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Late Car Payment Cost Calculator",
+    "url": "https://autocalchub.com/tools/late-car-payment-cost-calculator.html",
+    "description": "Estimates the cost of a late auto loan payment: late fee under flat, percentage or combined terms with an optional cap, extra simple interest, credit reporting status by days late, estimated FICO score drop after 30 days and the extra interest on a future car loan using Experian Q2 2026 rates by credit tier.",
+    "datePublished": "2026-10-26",
+    "dateModified": "2026-10-26",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://autocalchub.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://autocalchub.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Late Car Payment Cost Calculator",
+        "item": "https://autocalchub.com/tools/late-car-payment-cost-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<!-- HEADER:START -->
+<nav>
+  <a href="/" class="logo">Auto<span>Calc</span>Hub</a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- HEADER:END -->
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Late Car Payment Cost Calculator</h1>
+    <p>A few days late usually costs a late fee and almost nothing in interest. Thirty days late is different: it can reach your credit report and raise the rate on your next car loan or refinance for years. Enter your payment and how late you are to see what it costs now — and what crossing day 30 would add.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>⏰ Your Payment</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="pay">Monthly Car Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="pay" value="520" min="0" step="10"></div>
+      </div>
+      <div class="form-group">
+        <label for="days">Days Past the Due Date</label>
+        <div class="input-wrap has-suffix"><input type="number" id="days" value="12" min="0" max="120" step="1"><span class="input-suffix">days</span></div>
+        <span class="hint">Assumes nothing has been paid since the missed due date.</span>
+      </div>
+      <div class="form-group">
+        <label for="bal">Loan Balance</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="bal" value="22000" min="0" step="500"></div>
+      </div>
+      <div class="form-group">
+        <label for="apr">Loan Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix"><input type="number" id="apr" value="8.5" min="0" max="36" step="0.1"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label for="grace">Grace Period in Your Contract</label>
+        <div class="input-wrap has-suffix"><input type="number" id="grace" value="10" min="0" max="30" step="1"><span class="input-suffix">days</span></div>
+        <span class="hint">Usually 10 to 15 days. Check your contract or lender app.</span>
+      </div>
+      <div class="form-group">
+        <label for="ftype">How the Late Fee Is Charged</label>
+        <select id="ftype">
+          <option value="greater" selected>Flat fee or percentage, whichever is greater</option>
+          <option value="flat">Flat fee only</option>
+          <option value="pct">Percentage of the payment only</option>
+          <option value="lesser">Flat fee or percentage, whichever is less</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="fflat">Flat Late Fee</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="fflat" value="30" min="0" step="5"></div>
+        <span class="hint">Commonly $25 to $50.</span>
+      </div>
+      <div class="form-group">
+        <label for="fpct">Percentage Late Fee</label>
+        <div class="input-wrap has-suffix"><input type="number" id="fpct" value="5" min="0" max="20" step="0.5"><span class="input-suffix">%</span></div>
+        <span class="hint">Commonly 3% to 5% of the payment.</span>
+      </div>
+      <div class="form-group">
+        <label for="fcap">Maximum Late Fee (optional)</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="fcap" value="" min="0" step="5" placeholder="no cap"></div>
+        <span class="hint">Some states and contracts cap the fee. Leave blank if none.</span>
+      </div>
+    </div>
+
+    <h2 style="margin-top:2rem;">📉 Your Credit &amp; Next Loan</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="score">Credit Score Today</label>
+        <div class="input-wrap"><input type="number" id="score" value="740" min="300" max="850" step="5"></div>
+      </div>
+      <div class="form-group">
+        <label for="next">Next Car Loan or Refinance Amount</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="next" value="25000" min="0" step="1000"></div>
+        <span class="hint">A loan you might take in the next year or two. Enter 0 to skip.</span>
+      </div>
+      <div class="form-group">
+        <label for="kind">That Loan Is For</label>
+        <select id="kind">
+          <option value="used" selected>A used car</option>
+          <option value="new">A new car</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="term">Term</label>
+        <select id="term">
+          <option value="36">36 months</option>
+          <option value="48">48 months</option>
+          <option value="60" selected>60 months</option>
+          <option value="72">72 months</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="verdict-box">
+        <h3 id="vTitle"></h3>
+        <span class="big" id="vBig"></span>
+        <p id="vSub"></p>
+      </div>
+
+      <div class="two-col">
+        <div class="calc-card" style="margin:0">
+          <h2>This Late Payment</h2>
+          <div class="row"><span>Payments now past due</span><span id="oMissed"></span></div>
+          <div class="row"><span>Late fees</span><span id="oFee"></span></div>
+          <div class="row"><span>Extra interest from paying late</span><span id="oInt"></span></div>
+          <div class="row"><span>Credit report status</span><span id="oStatus"></span></div>
+        </div>
+        <div class="calc-card" style="margin:0">
+          <h2 id="cTitle">If It Reaches 30 Days</h2>
+          <div class="row"><span>Estimated score drop</span><span id="oDrop"></span></div>
+          <div class="row"><span>Estimated rate on next loan</span><span id="oRate"></span></div>
+          <div class="row"><span>Extra interest on that loan</span><span id="oFut"></span></div>
+          <div class="row"><span>Stays on your credit report</span><span>7 years</span></div>
+        </div>
+      </div>
+
+      <div class="note" id="mainNote"></div>
+      <div class="disclaimer">⚠️ <strong>An estimate, not a credit score prediction.</strong> Late fees follow the terms you enter; your contract and state law decide the real fee. Score drops are interpolated between two examples FICO has published (a 793 score losing 63–83 points and a 607 score losing 17–37 after one 30-day late payment); your result depends on the rest of your credit file. Rates are interpolated from Experian's Q2 2026 averages by credit tier. Lenders report a payment as late once it is 30 or more days past due, and the effect on your score fades over the seven years it stays on your report.</div>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why the Interest Barely Matters — and Day 30 Does</h2>
+    <p>Most auto loans charge simple interest by the day. Paying late means the part of your payment that would have reduced the balance sits on the loan for a few extra days. On a $520 payment toward a $22,000 balance at 8.5%, that's about $364 of principal — and 12 days of interest on $364 is roughly <strong>$1</strong>.</p>
+    <p>The late fee is the cost you notice: a flat $25 to $50, or 3% to 5% of the payment, once the grace period runs out. On the same $520 payment, that's $26 to $30.</p>
+    <p>The cost you don't see comes later. Lenders generally report a payment to the credit bureaus once it is a full 30 days past due. In FICO's published examples, one 30-day late payment knocked a 793 score down to the 710–730 range. Apply for your next loan while that mark is fresh, and the higher rate can cost <strong>$1,100 to $2,100</strong> on a typical $25,000 to $30,000 five-year loan.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Days late</th><th>What usually happens</th><th>Typical cost</th></tr></thead>
+        <tbody>
+          <tr><td>1–10</td><td>Inside most grace periods; no fee, not reported</td><td>About $1 of interest</td></tr>
+          <tr><td>11–29</td><td>Late fee charged; still not reported to bureaus</td><td>$25–$50 fee</td></tr>
+          <tr><td>30–59</td><td>Reported as 30 days late; a second payment is now due</td><td>Fees + a score drop that can raise your next rate</td></tr>
+          <tr><td>60–89</td><td>Reported as 60 days late; collection calls, default notices</td><td>A larger score drop; repossession risk rises</td></tr>
+          <tr><td>90+</td><td>Many lenders treat the loan as in default</td><td>Repossession, fees, and a deficiency balance</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>If You Can't Pay Before Day 30</h2>
+    <ul>
+      <li><strong>Call the lender before the due date, not after.</strong> A deferment or due-date change agreed in advance isn't reported as late. A payment you simply miss is.</li>
+      <li><strong>Pay what you can.</strong> A partial payment won't always stop the late fee, but it shows good faith and can keep the account from rolling to 60 days.</li>
+      <li><strong>Ask for the fee to be waived</strong> if it's your first late payment. Many lenders will do it once.</li>
+      <li><strong>Check the real cost of a deferment</strong> with our <a href="car-payment-deferment-calculator.html">deferment calculator</a> — skipping a month with permission costs interest, but protects your credit.</li>
+    </ul>
+    <p>Read the full breakdown, day by day, in <a href="../blog/how-much-does-a-late-car-payment-cost.html">How Much Does a Late Car Payment Cost?</a></p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/how-much-does-a-late-car-payment-cost.html" style="color:var(--orange);text-decoration:none;">How Much Does a Late Car Payment Cost?</a></li>
+        <li><a href="car-payment-deferment-calculator.html" style="color:var(--orange);text-decoration:none;">Car Payment Deferment Calculator</a></li>
+        <li><a href="../blog/should-you-defer-a-car-payment.html" style="color:var(--orange);text-decoration:none;">Should You Defer a Car Payment?</a></li>
+        <li><a href="../blog/what-credit-score-do-you-need-to-buy-a-car.html" style="color:var(--orange);text-decoration:none;">What Credit Score Do You Need to Buy a Car?</a></li>
+        <li><a href="car-refinance-calculator.html" style="color:var(--orange);text-decoration:none;">Car Refinance Calculator</a></li>
+        <li><a href="../blog/should-you-sell-your-car-instead-of-voluntary-surrender.html" style="color:var(--orange);text-decoration:none;">Should You Sell Your Car Instead of Voluntary Surrender?</a></li>
+        <li><a href="car-payment-to-income-calculator.html" style="color:var(--orange);text-decoration:none;">Car Payment to Income Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- FOOTER:START -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">Auto<span>Calc</span>Hub</a>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/methodology.html">How We Calculate</a>
+      <a href="/editorial-policy.html">Editorial Policy</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy-policy.html">Privacy</a>
+      <a href="/blog/">Blog</a>
+      <a href="/glossary/">Glossary</a>
+    </div>
+    <p class="footer-copy">© 2026 autocalchub.com · For informational use only</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return (n < 0 ? '−$' : '$') + Math.abs(Math.round(n)).toLocaleString(); }
+function money2(n){ return '$' + n.toFixed(2); }
+function v(id){ return parseFloat(document.getElementById(id).value) || 0; }
+function pmt(B, apr, n){ var r = apr / 1200; return r === 0 ? B / n : B * r / (1 - Math.pow(1 + r, -n)); }
+
+// Experian Q2 2026 average APR by tier, placed at each tier's midpoint score
+var MID = [400, 550, 630, 720, 815];
+var RATES = { 'new': [16.11, 13.52, 9.71, 6.15, 4.41], 'used': [21.62, 19.10, 13.93, 8.81, 6.29] };
+function rateFor(s, kind){
+  var R = RATES[kind];
+  if (s <= MID[0]) return R[0];
+  if (s >= MID[4]) return R[4];
+  for (var i = 0; i < 4; i++) {
+    if (s >= MID[i] && s <= MID[i + 1]) return R[i] + (R[i + 1] - R[i]) * (s - MID[i]) / (MID[i + 1] - MID[i]);
+  }
+  return R[4];
+}
+// FICO published examples: 793 -> 63-83 point drop, 607 -> 17-37 point drop (one 30-day late)
+function dropFor(s){ var c = Math.min(Math.max(s, 607), 793); var lo = 17 + (c - 607) * 46 / 186; return [lo, lo + 20]; }
+
+function feeFor(pay, type, flat, pct, cap){
+  var p = pay * pct / 100, f;
+  if (type === 'flat') f = flat; else if (type === 'pct') f = p; else if (type === 'lesser') f = Math.min(flat, p); else f = Math.max(flat, p);
+  return cap > 0 ? Math.min(f, cap) : f;
+}
+
+function lateCost(pay, bal, apr, D, grace, type, flat, pct, cap){
+  var fees = 0, interest = 0, missed = 0;
+  var prin = Math.max(pay - bal * apr / 1200, 0);
+  for (var k = 0; D - 30 * k > 0; k++) {
+    var d = D - 30 * k; missed++;
+    if (d > grace) fees += feeFor(pay, type, flat, pct, cap);
+    interest += prin * apr / 100 / 365 * d;
+  }
+  return {fees: fees, interest: interest, missed: missed};
+}
+
+function credit(score, L, n, kind){
+  var dr = dropFor(score), s2 = score - (dr[0] + dr[1]) / 2;
+  var a0 = rateFor(score, kind), a1 = rateFor(s2, kind);
+  var extra = L > 0 ? (pmt(L, a1, n) - pmt(L, a0, n)) * n : 0;
+  return {drop: dr, a0: a0, a1: a1, extra: extra};
+}
+
+['pay','days','bal','apr','grace','fflat','fpct','fcap','score','next'].forEach(function(id){ document.getElementById(id).addEventListener('input', calculate); });
+['ftype','kind','term'].forEach(function(id){ document.getElementById(id).addEventListener('change', calculate); });
+
+function statusFor(D){
+  if (D <= 0) return 'Not late';
+  if (D < 30) return 'Not reported yet';
+  if (D < 60) return 'Reported 30 days late';
+  if (D < 90) return 'Reported 60 days late';
+  return '90+ days: default risk';
+}
+
+function calculate(){
+  var pay = v('pay'), D = Math.max(0, Math.round(v('days'))), bal = v('bal'), apr = v('apr'), grace = Math.max(0, Math.round(v('grace')));
+  var type = document.getElementById('ftype').value, flat = v('fflat'), pct = v('fpct'), cap = v('fcap');
+  var score = Math.min(850, Math.max(300, v('score') || 700)), L = v('next'), kind = document.getElementById('kind').value, n = parseInt(document.getElementById('term').value, 10);
+  if (pay <= 0) return;
+
+  var now = lateCost(pay, bal, apr, D, grace, type, flat, pct, cap);
+  var cr = credit(score, L, n, kind);
+  var reported = D >= 30;
+  var oneFee = feeFor(pay, type, flat, pct, cap);
+
+  document.getElementById('oMissed').textContent = now.missed;
+  document.getElementById('oFee').textContent = now.fees > 0 ? money2(now.fees) : '$0 (inside grace period)';
+  document.getElementById('oInt').textContent = money2(now.interest);
+  document.getElementById('oStatus').textContent = statusFor(D);
+
+  document.getElementById('cTitle').textContent = reported ? 'Credit Impact' : 'If It Reaches 30 Days';
+  document.getElementById('oDrop').textContent = (D >= 60 ? 'at least ' : '') + Math.round(cr.drop[0]) + '–' + Math.round(cr.drop[1]) + ' points';
+  document.getElementById('oRate').textContent = cr.a0.toFixed(2) + '% → ' + cr.a1.toFixed(2) + '%';
+  document.getElementById('oFut').textContent = L > 0 ? money(cr.extra) : '—';
+
+  var total = now.fees + now.interest + (reported ? cr.extra : 0);
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  if (D === 0) {
+    vT.textContent = 'You\'re Not Late Yet';
+    vB.textContent = '$0';
+    vS.textContent = 'Paying by day ' + grace + ' avoids the ' + money2(oneFee) + ' late fee. A payment that reaches 30 days late can be reported to the credit bureaus.';
+  } else if (!reported) {
+    vT.textContent = D + (D === 1 ? ' Day' : ' Days') + ' Late Costs You';
+    vB.textContent = money2(now.fees + now.interest);
+    var left = 30 - D;
+    vS.textContent = (now.fees > 0 ? 'Mostly the late fee — the extra interest is ' + money2(now.interest) + '. ' : 'You\'re still inside the grace period: pay by day ' + grace + ' and there\'s no late fee. ') +
+      'Pay within the next ' + left + (left === 1 ? ' day' : ' days') + ' and it stays off your credit report' +
+      (L > 0 ? '; letting it reach 30 days could add about ' + money(cr.extra) + ' to your next loan.' : '.');
+  } else {
+    vT.textContent = D + ' Days Late Could Cost You';
+    vB.textContent = money(total);
+    vS.textContent = money2(now.fees) + ' in late fees and ' + money2(now.interest) + ' in interest now' +
+      (L > 0 ? ', plus about ' + money(cr.extra) + ' in extra interest if you take a ' + money(L) + ' loan while the late mark is recent.' : '. Enter a next loan amount to see the cost of a lower credit score.') +
+      (D >= 60 ? ' At 60+ days the real damage is likely larger than shown.' : '');
+  }
+
+  var note = '<strong>How this was calculated:</strong> about ' + money(Math.max(pay - bal * apr / 1200, 0)) + ' of each payment goes to principal; paying it ' + D + (D === 1 ? ' day' : ' days') +
+    ' late leaves that on the loan at ' + apr.toFixed(2) + '% for longer. The late fee is ' + money2(oneFee) + ' per payment once it is more than ' + grace + ' days late' +
+    (now.missed > 1 ? ', and ' + now.missed + ' payments are past due by day ' + D : '') + '. ';
+  note += 'A ' + Math.round(score) + ' score losing ' + Math.round(cr.drop[0]) + '–' + Math.round(cr.drop[1]) + ' points would move the average ' + (kind === 'new' ? 'new' : 'used') + '-car rate from about ' + cr.a0.toFixed(2) + '% to ' + cr.a1.toFixed(2) + '%' +
+    (L > 0 ? ' — ' + money2(pmt(L, cr.a0, n)) + ' vs ' + money2(pmt(L, cr.a1, n)) + ' a month on ' + money(L) + ' over ' + n + ' months.' : '.');
+  if (!reported && D > 0) note += '<br><br><strong>Day 30 is the line that matters.</strong> Before it, being late costs a fee. After it, it can cost you on every loan you apply for while the mark is recent. If you can\'t pay in full, call your lender now and ask about a due-date change or deferment before the payment reaches 30 days.';
+  if (reported) note += '<br><br><strong>Bring the account current as soon as you can.</strong> A 30-day late that stops there does far less damage than one that rolls to 60 or 90 days. Once you\'re caught up, you can ask the lender for a goodwill adjustment, though they don\'t have to agree.';
+  if (D >= 90) note += '<br><br><strong>At 90 days many lenders treat the loan as in default</strong> and can begin repossession. If you can\'t catch up, selling the car yourself usually leaves you better off than a repossession or voluntary surrender.';
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>
