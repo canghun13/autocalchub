@@ -1533,6 +1533,12 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 - Playwright 390/1280(신규 2 + 보강 2 + 홈·허브 3): 오버플로 0, nav 1, 결과 간격 69px, JS 오류 0. verify.py 전체 통과(sitemap 147, 내부링크 3,491개 깨짐 0).
 - 월 보유비용 AAA 표는 모바일에서 "Per month" 열이 먼저 보이도록 열 순서 조정.
 
+### 색인 재점검 (같은 날, 사용자 지시)
+- 저장소 148개 HTML 전수 점검 결과 **결함 없음**: canonical 전부 자기 URL과 일치, noindex 없음(404만), sitemap 누락 0·sitemap에만 있는 URL 0·미래 lastmod 0, 고아 페이지 0, title/description 중복 0, h1 1개씩, head 안에 비허용 태그 없음(구글이 head를 조기 종료할 요인 없음), nofollow 내부링크 없음, http:// 참조 없음, JSON-LD url·Breadcrumb 마지막 항목 = canonical. 크롤링됨-색인안됨 2개(사전승인 2,258단어·차량이력 1,496단어)도 분량·구성 충분.
+- **유일한 발견**: `_config.yml`이 없어 GitHub Pages(Jekyll 기본 플러그인 optional-front-matter)가 `handover.md`·`README.md`를 `/handover.html`·`/README.html` 페이지로 공개 발행 중이었음(내부 한국어 문서 + 이미지만 있는 얇은 페이지, noindex 없음). → `_config.yml`에 `exclude: [handover.md, README.md, scripts]` 추가. 저장소 파일은 그대로, 사이트 발행만 제외.
+- 라이브 사이트 응답(상태코드·리다이렉트·Cloudflare 설정)은 이 세션 네트워크에서 autocalchub.com 접근이 막혀 확인 불가.
+- 결론 변동 없음: 미크롤링 111은 기술 문제가 아니라 크롤 수요 문제. 외부 링크 외 레버 없음.
+
 ### ⚠️ 다음 세션 필독
 1. 월 보유비용·best-time 보강 후 Bing 순위/CTR 변화(특히 best-time은 11~12월 시즌).
 2. 연체 툴·블로그 + 10/22 신규 6페이지 Bing 반응.

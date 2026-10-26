@@ -1,0 +1,6 @@
+# GitHub Pages (Jekyll) build settings.
+# Internal files are kept in the repo but not published on autocalchub.com.
+exclude:
+  - handover.md
+  - README.md
+  - scripts
