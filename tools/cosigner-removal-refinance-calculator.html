@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosigner Removal Calculator — Can You Refinance the Car Loan Alone? | AutoCalcHub</title>
+  <meta name="description" content="See if you can refinance your car loan without your cosigner: loan-to-value, payment- and debt-to-income, credit, car age and mileage checks, your solo rate and payment, and what to fix if you don't qualify yet.">
+  <link rel="canonical" href="https://autocalchub.com/tools/cosigner-removal-refinance-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block;margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--border)}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Cosigner Removal Calculator",
+    "url": "https://autocalchub.com/tools/cosigner-removal-refinance-calculator.html",
+    "description": "Checks whether a primary borrower can refinance an auto loan in their own name to release a cosigner: loan-to-value, payment-to-income, debt-to-income, credit score, balance, vehicle age and mileage, and loan seasoning against typical refinance lender limits, with an estimated solo rate from Experian Q2 2026 used-car rates, the new payment, interest comparison and the paydown or income needed to qualify.",
+    "datePublished": "2026-11-02",
+    "dateModified": "2026-11-02",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://autocalchub.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://autocalchub.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Cosigner Removal Calculator",
+        "item": "https://autocalchub.com/tools/cosigner-removal-refinance-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<!-- HEADER:START -->
+<nav>
+  <a href="/" class="logo">Auto<span>Calc</span>Hub</a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- HEADER:END -->
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Cosigner Removal Calculator: Can You Refinance Alone?</h1>
+    <p>Most auto lenders won't simply take a cosigner off a loan. The usual way out is to refinance in your name only — which means qualifying on your own income and credit. Enter your loan, your car and your finances to see the checks a refinance lender runs, which ones you pass, and what to fix if you don't yet.</p>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="calc-card">
+    <h2>🚗 The Loan &amp; the Car</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="bal">Current Loan Balance</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="bal" value="18000" min="0" step="500"></div>
+      </div>
+      <div class="form-group">
+        <label for="val">Car's Current Value</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="val" value="19500" min="0" step="500"></div>
+        <span class="hint">Use a trade-in estimate, not the private-sale price.</span>
+      </div>
+      <div class="form-group">
+        <label for="apr">Current Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix"><input type="number" id="apr" value="11.5" min="0" step="0.1" max="36"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label for="left">Payments Left</label>
+        <div class="input-wrap has-suffix"><input type="number" id="left" value="48" min="0" step="1" max="96"><span class="input-suffix">mo</span></div>
+      </div>
+      <div class="form-group">
+        <label for="opened">Months Since the Loan Started</label>
+        <div class="input-wrap has-suffix"><input type="number" id="opened" value="18" min="0" step="1"><span class="input-suffix">mo</span></div>
+      </div>
+      <div class="form-group">
+        <label for="age">Car's Age</label>
+        <div class="input-wrap has-suffix"><input type="number" id="age" value="4" min="0" step="1"><span class="input-suffix">yrs</span></div>
+        <span class="hint">Current year minus model year.</span>
+      </div>
+      <div class="form-group">
+        <label for="miles">Odometer</label>
+        <div class="input-wrap has-suffix"><input type="number" id="miles" value="52000" min="0" step="1000"><span class="input-suffix">mi</span></div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:2rem;">👤 You, Without the Cosigner</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="inc">Your Gross Monthly Income</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="inc" value="4200" min="0" step="100"></div>
+        <span class="hint">Before tax. Your income only — not the cosigner's.</span>
+      </div>
+      <div class="form-group">
+        <label for="housing">Your Rent or Mortgage Payment</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="housing" value="1300" min="0" step="50"></div>
+      </div>
+      <div class="form-group">
+        <label for="other">Other Monthly Debt Payments</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="other" value="200" min="0" step="25"></div>
+        <span class="hint">Minimum payments on cards, student loans and other loans.</span>
+      </div>
+      <div class="form-group">
+        <label for="score">Your Credit Score</label>
+        <div class="input-wrap"><input type="number" id="score" value="690" min="0" step="5" max="850"></div>
+      </div>
+      <div class="form-group">
+        <label for="term">New Loan Term</label>
+        <select id="term">
+          <option value="36">36 months</option>
+          <option value="48" selected>48 months</option>
+          <option value="60">60 months</option>
+          <option value="72">72 months</option>
+        </select>
+        <span class="hint">Matching your payments left keeps the payoff date the same.</span>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="verdict-box">
+        <h3 id="vTitle"></h3>
+        <span class="big" id="vBig"></span>
+        <p id="vSub"></p>
+      </div>
+
+      <div class="two-col">
+        <div class="calc-card" style="margin:0">
+          <h2>Lender Checks</h2>
+          <div class="row"><span>Loan-to-value</span><span id="cLtv"></span></div>
+          <div class="row"><span>Payment-to-income</span><span id="cPti"></span></div>
+          <div class="row"><span>Debt-to-income</span><span id="cDti"></span></div>
+          <div class="row"><span>Credit score</span><span id="cScore"></span></div>
+          <div class="row"><span>Loan balance</span><span id="cBal"></span></div>
+          <div class="row"><span>Car age</span><span id="cAge"></span></div>
+          <div class="row"><span>Mileage</span><span id="cMiles"></span></div>
+          <div class="row"><span>Months since loan started</span><span id="cOpen"></span></div>
+        </div>
+        <div class="calc-card" style="margin:0">
+          <h2>Refinancing Alone</h2>
+          <div class="row"><span>Current payment</span><span id="oCur"></span></div>
+          <div class="row"><span>Estimated rate on your own</span><span id="oApr"></span></div>
+          <div class="row"><span>New payment</span><span id="oNew"></span></div>
+          <div class="row"><span>Interest left, current loan</span><span id="oCurInt"></span></div>
+          <div class="row"><span>Interest, new loan</span><span id="oNewInt"></span></div>
+          <div class="row"><span>Monthly change</span><span id="oDiff"></span></div>
+        </div>
+      </div>
+
+      <div class="note" id="mainNote"></div>
+      <div class="disclaimer">⚠️ <strong>Lender rules vary.</strong> The limits used here are typical ranges, not any one lender's rules: loan-to-value up to 125% (some go to 150%), payment-to-income up to 15%–20%, debt-to-income up to 45% (some refinance lenders allow 50%–60%), a balance of at least $3,000–$5,000, a car about 10 model years old or newer with no more than 100,000–150,000 miles, and a loan that's been open at least six months. The rate is estimated by credit score from Experian's Q2 2026 average used-car rates. Checking rates with a soft pull doesn't affect your score; a full application usually means a hard inquiry.</div>
+    </div>
+  </div>
+
+  <div class="ad-banner">Advertisement · Google AdSense</div>
+
+  <div class="content-section">
+    <h2>Why You Usually Can't Just "Remove" a Cosigner</h2>
+    <p>A cosigner signed the original contract, and the lender approved the loan because of both of you. Chase puts it plainly: a cosigner can't remove themselves, and the primary borrower can't remove them either. Their obligation ends when the loan is paid off — including when it's paid off by a new loan in your name alone. A few lenders offer a formal cosigner release after a run of on-time payments, so ask yours first, but most auto lenders don't.</p>
+
+    <h2>What a Refinance Lender Looks At</h2>
+    <p>Refinancing alone means you apply as if the cosigner never existed. Lenders look at your credit and your income by themselves, and also at the car and the loan:</p>
+    <ul>
+      <li><strong>Loan-to-value.</strong> Owing much more than the car is worth is the most common reason a solo refinance fails. Most lenders cap it somewhere between 125% and 150%.</li>
+      <li><strong>Your income.</strong> The new payment as a share of your gross income (payment-to-income), and all your debt payments including rent (debt-to-income).</li>
+      <li><strong>Your credit.</strong> Minimums are often in the 500s, but the rate you're offered depends heavily on your score. Every on-time payment on the cosigned loan has been building your own history too.</li>
+      <li><strong>The car.</strong> Many lenders want it about 10 model years old or newer, with no more than 100,000 to 150,000 miles.</li>
+      <li><strong>The loan.</strong> Many won't refinance less than $5,000, and some want the loan open for at least six months.</li>
+    </ul>
+
+    <h2>If You Don't Qualify Yet</h2>
+    <ul>
+      <li><strong>Underwater?</strong> Paying the balance down to about 125% of the car's value — the calculator shows the amount — opens up most lenders.</li>
+      <li><strong>Ratios too high?</strong> A longer term lowers the payment and the payment-to-income ratio, though it usually adds interest. Paying off a credit card balance lowers debt-to-income.</li>
+      <li><strong>Credit too thin?</strong> Six to twelve more months of on-time payments can move you up a tier.</li>
+      <li><strong>Need out now?</strong> Selling the car and paying off the loan ends the cosigner's obligation immediately.</li>
+    </ul>
+    <p>The full walkthrough, including what happens to the title and to the cosigner's credit, is in <a href="../blog/can-you-refinance-car-loan-without-cosigner.html">Can You Refinance a Car Loan Without Your Cosigner?</a></p>
+
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/can-you-refinance-car-loan-without-cosigner.html" style="color:var(--orange);text-decoration:none;">Can You Refinance a Car Loan Without Your Cosigner?</a></li>
+        <li><a href="auto-loan-cosigner-calculator.html" style="color:var(--orange);text-decoration:none;">Auto Loan Cosigner Calculator</a></li>
+        <li><a href="../blog/do-you-need-a-cosigner-for-a-car-loan.html" style="color:var(--orange);text-decoration:none;">Do You Need a Cosigner for a Car Loan?</a></li>
+        <li><a href="../blog/joint-auto-loan-vs-cosigner.html" style="color:var(--orange);text-decoration:none;">Joint Auto Loan vs Cosigner</a></li>
+        <li><a href="car-refinance-calculator.html" style="color:var(--orange);text-decoration:none;">Car Refinance Calculator</a></li>
+        <li><a href="../blog/how-to-refinance-a-car-loan.html" style="color:var(--orange);text-decoration:none;">How to Refinance a Car Loan</a></li>
+        <li><a href="car-payment-to-income-calculator.html" style="color:var(--orange);text-decoration:none;">Car Payment to Income Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- FOOTER:START -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">Auto<span>Calc</span>Hub</a>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/methodology.html">How We Calculate</a>
+      <a href="/editorial-policy.html">Editorial Policy</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy-policy.html">Privacy</a>
+      <a href="/blog/">Blog</a>
+      <a href="/glossary/">Glossary</a>
+    </div>
+    <p class="footer-copy">© 2026 autocalchub.com · For informational use only</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return (n < 0 ? '−$' : '$') + Math.abs(Math.round(n)).toLocaleString(); }
+function money2(n){ return '$' + n.toFixed(2); }
+function v(id){ return parseFloat(document.getElementById(id).value) || 0; }
+function pmt(B, apr, n){ var r = apr / 1200; return r === 0 ? B / n : B * r / (1 - Math.pow(1 + r, -n)); }
+
+// Experian Q2 2026 average used-car APR by tier, placed at each tier's midpoint score
+var MID = [400, 550, 630, 720, 815], USED = [21.62, 19.10, 13.93, 8.81, 6.29];
+function rateFor(s){
+  if (s <= MID[0]) return USED[0];
+  if (s >= MID[4]) return USED[4];
+  for (var i = 0; i < 4; i++) if (s >= MID[i] && s <= MID[i + 1]) return USED[i] + (USED[i + 1] - USED[i]) * (s - MID[i]) / (MID[i + 1] - MID[i]);
+  return USED[4];
+}
+function grade(x, pass, border){ return x <= pass ? 'pass' : (x <= border ? 'border' : 'fail'); }
+var ICON = {pass: '✅', border: '⚠️', fail: '❌'};
+
+['bal','val','apr','left','opened','age','miles','inc','housing','other','score'].forEach(function(id){ document.getElementById(id).addEventListener('input', calculate); });
+document.getElementById('term').addEventListener('change', calculate);
+
+function calculate(){
+  var bal = v('bal'), val = v('val'), apr = v('apr'), left = Math.round(v('left')), opened = v('opened'), age = v('age'), miles = v('miles');
+  var inc = v('inc'), housing = v('housing'), other = v('other'), score = Math.min(850, Math.max(300, v('score') || 300));
+  var term = parseInt(document.getElementById('term').value, 10);
+  if (bal <= 0 || val <= 0 || inc <= 0 || left <= 0) return;
+
+  var cur = pmt(bal, apr, left), a = rateFor(score), nw = pmt(bal, a, term);
+  var ltv = bal / val * 100, pti = nw / inc * 100, dti = (housing + other + nw) / inc * 100;
+  var C = {
+    ltv: grade(ltv, 125, 150), pti: grade(pti, 15, 20), dti: grade(dti, 45, 55),
+    score: score >= 661 ? 'pass' : (score >= 501 ? 'border' : 'fail'),
+    bal: bal >= 5000 ? 'pass' : (bal >= 3000 ? 'border' : 'fail'),
+    age: grade(age, 10, 12), miles: grade(miles, 100000, 150000), open: opened >= 6 ? 'pass' : 'fail'
+  };
+  function set(id, txt, k){ document.getElementById(id).textContent = ICON[C[k]] + ' ' + txt; }
+  set('cLtv', ltv.toFixed(0) + '%', 'ltv');
+  set('cPti', pti.toFixed(1) + '%', 'pti');
+  set('cDti', dti.toFixed(1) + '%', 'dti');
+  set('cScore', String(Math.round(score)), 'score');
+  set('cBal', money(bal), 'bal');
+  set('cAge', age + (age === 1 ? ' year' : ' years'), 'age');
+  set('cMiles', Math.round(miles).toLocaleString() + ' mi', 'miles');
+  set('cOpen', Math.round(opened) + ' mo', 'open');
+
+  var curInt = cur * left - bal, newInt = nw * term - bal;
+  document.getElementById('oCur').textContent = money2(cur);
+  document.getElementById('oApr').textContent = a.toFixed(2) + '%';
+  document.getElementById('oNew').textContent = money2(nw);
+  document.getElementById('oCurInt').textContent = money(curInt);
+  document.getElementById('oNewInt').textContent = money(newInt);
+  document.getElementById('oDiff').textContent = (nw <= cur ? money2(cur - nw) + ' less' : money2(nw - cur) + ' more');
+
+  var keys = Object.keys(C), fails = keys.filter(function(k){ return C[k] === 'fail'; }), borders = keys.filter(function(k){ return C[k] === 'border'; });
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  if (fails.length === 0 && borders.length === 0) {
+    vT.textContent = 'You Likely Qualify on Your Own';
+    vB.textContent = 'All ' + keys.length + ' checks pass';
+    vS.textContent = 'At about ' + a.toFixed(2) + '%, your payment alone would be ' + money2(nw) + '. Refinancing would pay off the current loan and release your cosigner.';
+  } else if (fails.length === 0) {
+    vT.textContent = 'Possible — It Depends on the Lender';
+    vB.textContent = borders.length + (borders.length === 1 ? ' borderline check' : ' borderline checks');
+    vS.textContent = 'Nothing rules you out, but some lenders will say no. Compare several with soft-pull rate checks before you formally apply.';
+  } else {
+    vT.textContent = 'Not Yet — Here\'s What\'s in the Way';
+    vB.textContent = fails.length + (fails.length === 1 ? ' check fails' : ' checks fail');
+    vS.textContent = 'Most refinance lenders would turn this down today. The notes below show what to change first.';
+  }
+
+  var N = {
+    ltv: 'You owe ' + ltv.toFixed(0) + '% of the car\'s value. Paying the balance down by about ' + money(Math.max(0, bal - 1.25 * val)) + ' would bring it to 125%, which most lenders accept.',
+    pti: 'The new payment is ' + pti.toFixed(1) + '% of your gross income. A longer term lowers it; to reach 15% at this payment you would need about ' + money(nw / 0.15) + ' a month in income.',
+    dti: 'Your debt payments, including rent and the new car payment, take ' + dti.toFixed(1) + '% of your income. Getting under 45% takes about ' + money(Math.max(0, housing + other + nw - 0.45 * inc)) + ' less in monthly payments, or about ' + money((housing + other + nw) / 0.45) + ' a month in income.',
+    score: score <= 500 ? 'Below about 500, most refinance lenders won\'t approve a loan. Six to twelve more months of on-time payments is the most reliable fix.' : 'At ' + Math.round(score) + ' you\'re likely to be approved, but at subprime rates. A higher score lowers the rate more than anything else you control.',
+    bal: bal < 3000 ? 'With ' + money(bal) + ' left, most lenders won\'t refinance it — and paying it off may be the quicker way to release your cosigner.' : 'Some lenders set a $5,000 minimum. Credit unions are often more flexible on small balances.',
+    age: 'Many lenders stop at about 10 model years. Credit unions are the best place to look for an older car.',
+    miles: 'Mileage above 100,000 rules out some lenders, and above 150,000 most of them.',
+    open: 'Some lenders want the loan open at least six months before they\'ll refinance it.'
+  };
+  var notes = fails.concat(borders).map(function(k){ return '<strong>' + ICON[C[k]] + '</strong> ' + N[k]; });
+  var note = notes.length ? notes.join('<br><br>') : '<strong>All the usual checks pass.</strong> Get rate quotes from two or three refinance lenders or credit unions; soft-pull quotes don\'t affect your score.';
+  if (term > left) note += '<br><br><strong>Watch the term.</strong> A ' + term + '-month loan runs ' + (term - left) + ' months past your current payoff date, so you pay ' + (newInt > curInt ? money(newInt - curInt) + ' more' : money(curInt - newInt) + ' less') + ' interest in total even though the payment changes by ' + (nw <= cur ? money2(cur - nw) + ' less' : money2(nw - cur) + ' more') + ' a month.';
+  else if (newInt < curInt) note += '<br><br><strong>Refinancing alone also saves money here:</strong> about ' + money(curInt - newInt) + ' less interest than finishing the current loan.';
+  note += '<br><br>Once the new loan pays off the old one, the cosigner is released. If they are also on the car\'s title, retitling is a separate step at your state DMV.';
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

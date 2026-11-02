@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-10-26 기준 · 구글 10/19자, Bing 10/26자)
+# AutoCalcHub 인수인계 문서 (2026-11-02 기준 · 구글 10/23자, Bing 11/2자)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,9 +12,10 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (10/26 주간 세션 기준)
-- 블로그 90개, 툴 44개 (index.html 제외). 10/26 블로그 1 + 툴 1 신규(연체 비용), 보강 2(월 보유비용·구매 시기). 10/22 신규 카테고리 `🚲 Car-Light Living`.
-- sitemap.xml 총 URL 147개. 홈 stat `44+`.
+## 2. 콘텐츠 현황 (11/2 주간 세션 기준)
+- 블로그 91개, 툴 45개 (index.html 제외). 11/2 블로그 1 + 툴 1 신규(코사이너 제거 리파이), 보강: 사전승인(중고차 섹션)·주유 클러스터 가격 갱신(블로그 1·툴 6).
+- sitemap.xml 총 URL 149개. 홈 stat `45+`.
+- **작업 컨테이너가 바뀌면 scratchpad 스크립트가 사라짐.** 11/2에 재작성한 빌더/검증 스크립트 요지: 새 페이지는 같은 종류의 최신 페이지(툴=`tools/late-car-payment-cost-calculator.html`, 블로그=`blog/how-much-does-a-late-car-payment-cost.html`)를 템플릿으로 head(title·description·canonical·JSON-LD) 교체 + 인라인 헤더/푸터 재사용. Playwright는 전역 설치(`require('playwright')`, executablePath 불필요).
 - **GitHub push는 Claude GitHub App 연결로 동작**(9/28부터). 세션 프록시가 토큰 직접 push를 막으므로 토큰이 아니라 앱 연결이 필요함. 커밋 작성자는 `Claude <noreply@anthropic.com>`.
 - **블로그 태그 카테고리 13종** (10/22 `🚲 Car-Light Living` 추가, blog-tag 텍스트 "Car-Light Living", blog/index 섹션 id `section-carlight`, tools/index는 EV 앞 하위 헤더): `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`, `💼 Business &amp; Tax`.
 - **Related 링크 블록 헤딩 5가지 변형** — 통합 정규식 `<h[23][^>]*>Related (?:Guides|Tools)(?: &amp;| &)? ?(?:Tools|Guides)?</h[23]>` + h2는 들여쓰기 4칸 분기.
@@ -54,11 +55,19 @@
 - 작업 시작 전 GA4 + Search Console 리포트 캡처 받아서 방향 잡기
 - **정기 루틴과 별개로**, 세션 여유가 있을 때 GSC 데이터 기반 추가 보강/신규 작업을 하기도 함 (7/8, 7/10 세션이 이 케이스) — 이건 "주간 루틴 소진"과 무관하게 별도로 카운트됨
 
-## 5. SEO / Search Console 현황 (2026-10-26 확인 · 구글 10/19자, Bing 10/26자)
+## 5. SEO / Search Console 현황 (2026-11-02 확인 · 구글 10/23자, Bing 11/2자)
 
 ### 🚨 보강 전 필수 확인 절차 (10/19 확립, 계속 유효)
 - **구글 대상 보강은 ① GSC `페이지.csv`(노출 발생 목록)에 있고 ② Coverage `테이블.csv`(미크롤링 목록)에 없는 페이지에만 의미가 있다.** 10/5에 이 확인 없이 미크롤링 상태인 TCO 계산기를 보강해 효과가 0이었던 사례가 있음.
 - 미크롤링 페이지는 보강 대신 **색인된 페이지에서 내부링크를 걸어 크롤링을 유도**하는 것이 유일한 조치.
+
+### 📥 11/2자 자료 요약 (11/2 세션)
+- **구글**(Coverage 10/23자): 발견됨-색인안됨 111 → **118**(10/19·10/22 신규 7개가 그대로 추가, 10/26 신규 2개는 아직 미반영), 크롤링됨-색인안됨 2(사전승인·차량이력) 그대로, **탈출 0**. 노출 페이지 24, 클릭 0. 변화 없음 — 외부 링크 외 레버 없음.
+- **Bing(누적 리포트, 1주 증분)**: 노출 9,299 → **10,728**(+1,429), 클릭 192 → **216**(+24), 페이지 59.
+  - salary 2,127/**90**(+15클릭), MPG 2,051/7(0.34%, 메타 변경 금지 규칙 유지), fill-up 1,260/16(+0클릭), gas-tank 툴 867/23, put-down 846/15, **best-time 535/5(+173노출, 클릭 0 — 10/26 제목 변경 반영 대기)**, EV vs gas 522/8(18위), 판매세 509/4, 정비 블로그 426/5, 월 보유비용 369/6(6.3위), 사전승인 249/4, trade-in 추정기 208/8, **코사이너 계산기 12/6(1.25위, CTR 50%, "car payment calculator with cosigner" 류 클릭)**.
+  - 10/22·10/26 신규 8페이지는 아직 Bing 리포트에 없음.
+- **GA4(10/5~11/1)**: 활성 324, 참여 48.5초(41.6초에서 상승), bing 148세션·duckduckgo 67·yahoo 41(모두 Bing 인덱스 기반).
+- **쿼리 모양**: ① 연봉 대비 비율("what percentage of salary to spend on car" 등 1~3위 클릭 다수 — salary 블로그 커버, 손대지 않음) ② **"read more about used car loan pre approval" 64노출 7.4위** → 사전승인 블로그에 중고차 섹션 보강 ③ 코사이너 계산기 쿼리 클릭 → 코사이너 클러스터 확장 ④ "is X mpg good" 다수(MPG 블로그 커버) ⑤ 부분 주유 쿼리 계속(gas-tank 툴 커버).
 
 ### 📥 10/26자 자료 요약 (10/26 세션)
 - **구글**: Coverage 자료는 10/19자 그대로. 미크롤링 111 + 크롤링됨-색인안됨 2(사전승인·차량이력), 신규 추가 1(trade-in-vs-private-sale), 탈출 0. 노출 페이지 24, 클릭 1. **변화 없음 — 외부 링크 외 레버 없음(10/7 분석 유지).**
@@ -1544,6 +1553,34 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 2. 연체 툴·블로그 + 10/22 신규 6페이지 Bing 반응.
 3. 가스 가격 낡은 페이지 잔여분 + gas-tank 툴 기본값 시세 점검.
 4. 연체/디퍼먼트 클러스터 확장 후보: "리파이로 할부 낮추기 vs 기간연장", "압류 후 남는 빚(deficiency balance)".
+
+## 6-31. 11/2 주간 세션: 코사이너 제거 리파이(툴+블로그) + 사전승인 중고차 보강 + 주유 클러스터 가격 갱신
+
+### 판단 (수익화 우선순위)
+1. **코사이너 클러스터 확장(신규)** — 기존 코사이너 계산기가 Bing 1.25위·CTR 50%로 클릭 증가. 웹서치 "remove cosigner from car loan": Bankrate·Chase·SoFi·Experian·Caribou·self.inc 등 **설명글뿐, 자격 판정 계산기 없음**. 리파이 제휴(최고 단가) 직결. 블로그는 헤드 키워드("how to remove a cosigner")를 피해 롱테일 질문형 "Can you refinance ... without your cosigner".
+2. **사전승인 보강** — "used car loan pre approval" 64노출 7.4위, 사전승인 249노출. 중고차 대출 전용 페이지 없음(중복 확인). 구글 크롤링됨-색인안됨 페이지지만 Bing 대상 보강으로 유효.
+3. **주유 클러스터 가격 갱신** — AAA 11/1: 일반 $4.17·중간 $4.68·고급 $5.08·디젤 $6.30, 최고 CA $5.91·최저 NC $3.39. 기존 기본값/예시가 $4.33~$4.48(9월) 또는 $3.30~$3.60(봄 이전)으로 낡음. 구글 색인된 툴(mpg·ev-charging·fuel-cost·gas-vs-ev·road-trip)이 포함돼 있어 구글 쪽에도 의미.
+- 보류: 중고차 대출 연식/주행거리 전용 신규글(SoFi·KBB·Autotrader·Experian 상위 → 경쟁 과다), used EV 비용(Recurrent·Edmunds), salary 블로그 보강(최고 전환 페이지, 이미 1~3위 클릭).
+
+### 작업
+- `tools/cosigner-removal-refinance-calculator.html` (신규, Financing, 🤝) — 8개 심사 항목 통과/경계/불가: LTV(≤125/≤150), PTI(≤15/≤20), DTI 주거비 포함(≤45/≤55), 신용점수(≥661/≥501), 잔액(≥$5k/≥$3k), 차령(≤10/≤12년), 주행(≤100k/≤150k), 대출 경과(≥6개월). 단독 금리 = Experian Q2 2026 중고차 티어 평균 보간(연체 툴과 동일 방식). 신규 납입액·이자 비교, LTV 125% 도달 상환액·DTI 45% 도달 필요 소득, 기간 연장 경고, 명의(DMV) 안내.
+  - 기본값 $18k·차값 $19.5k·11.5%·48개월·월소득 $4,200·주거 $1,300·기타 $200·690점 → DTI 46.7% 경계 1개, "Possible", 신규 10.52%·$461, 이자 $413 절감.
+- `blog/can-you-refinance-car-loan-without-cosigner.html` (신규) — 해제 불가 이유(Chase), 4가지 출구, 심사 한도 표(NerdWallet·Bankrate), 계산 예시 2개, 시기, 명의·코사이너 신용, 미달 시 해결책.
+- `blog/how-to-get-pre-approved-car-loan.html` (보강) — "Getting Pre-Approved for a Used Car" 섹션: Experian Q2 2026 신차/중고 금리표(모바일에서 중고 열이 먼저 보이게 배치), 차량 연식·주행 제한, VIN 확정 후 조건 변동, 개인 간 거래, 세금 포함. meta 교체, Updated November 2026.
+- 가격 갱신(본문 변경이라 dateModified·lastmod 갱신): `blog/how-much-does-it-cost-to-fill-up-a-car.html`(전 수치 $4.17 재계산), `tools/gas-tank-fill-cost-calculator.html`(기본값 4.17/4.68/5.08/6.30, DIFF 0.51/0.91, 본문 표·예시 전부), `tools/fuel-cost-calculator.html`·`gas-vs-ev-savings-calculator.html`·`mpg-calculator.html`·`road-trip-cost-calculator.html`(기본값 3.30~3.50 → 4.17 + 예시), `tools/ev-charging-cost-calculator.html`(예시).
+  - **남은 낡은 가격**: MPG 블로그·EV vs gas·quarter-tank·first-car는 "$4.48(9월 하순)"으로 날짜 명시돼 있어 유지(MPG는 메타 변경 금지 규칙도 있음). how-much-does-ev-cost-to-charge-at-home·how-to-calculate-fuel-cost-road-trip·how-to-improve-car-gas-mileage($3.40), is-a-high-mpg-car-worth-the-extra-cost($3.30)는 노출 거의 없어 다음 기회에.
+- 허브/홈(45+)/sitemap(149)/llms, 내부링크 7개(상한 10, 날짜 미변경). 30일 지난 9/28 페이지(quarter-tank 블로그·gas-tank 툴) New 배지 제거.
+
+### 검증
+- 코사이너 툴: 파이썬 독립 구현 ↔ node 목업 DOM 6개 시나리오 일치(전부 통과·경계·LTV 141%+DTI 불가·소액잔액·대출 3개월·4개 불가).
+- Playwright 390/1280(신규 2·보강 5·홈·허브 2): 오버플로 0, nav 1, 결과 간격 69px, JS 오류 0. 검증 스크립트 전체 통과(sitemap 149, 내부링크 깨짐 0, canonical·고아·중복 title 0).
+- 참고: 사이트 표는 `min-width:480px`라 모바일에서 3열 이상은 가로 스크롤(기존 사이트 규칙). 핵심 열을 2번째에 둘 것.
+
+### ⚠️ 다음 세션 필독
+1. best-time(10/26 제목 변경) CTR 반영 여부, 월 보유비용 순위.
+2. 코사이너 신규 2페이지 + 10/22·10/26 신규 8페이지 Bing 반응.
+3. 가스값 다시 크게 움직이면(±20센트) 이번에 갱신한 7페이지 기준값 재점검.
+4. 코사이너/리파이 확장 후보: "코사이너가 갚아야 할 때(주채무자 연체 시 코사이너 영향)", "리파이로 할부 낮추기 vs 기간 연장".
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 
