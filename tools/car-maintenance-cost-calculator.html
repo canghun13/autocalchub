@@ -135,6 +135,7 @@
     .highlight-box p { color: var(--charcoal); margin: 0; font-weight: 500; }
     .disclaimer { background: var(--off-white); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem 1.5rem; margin-top: 3rem; font-size: 0.8rem; color: var(--light); line-height: 1.6; }
     @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .results-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .breakdown-table { font-size: 0.78rem; } .breakdown-table th, .breakdown-table td { padding: 0.5rem 0.25rem; } .breakdown-table th { letter-spacing: 0; font-size: 0.68rem; } .breakdown-table .freq { font-size: 0.72rem; } }
   </style>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
@@ -163,7 +164,6 @@
     <p>Estimate your annual maintenance budget based on your vehicle's make type, age, and mileage.</p>
   </div>
 
-  <div class="ad-banner">Advertisement · Google AdSense</div>
 
   <div class="calc-card">
     <h2>Your vehicle details</h2>
@@ -245,7 +245,7 @@
     </div>
 
     <h2 style="margin-top:1.5rem;">Typical Service Breakdown</h2>
-    <table class="breakdown-table">
+    <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;"><table class="breakdown-table">
       <thead>
         <tr>
           <th>Service</th>
@@ -255,10 +255,9 @@
         </tr>
       </thead>
       <tbody id="breakdown-body"></tbody>
-    </table>
+    </table></div>
   </div>
 
-  <div class="ad-banner">Advertisement · Google AdSense</div>
 
   <div class="content-section">
     <h2>How to Use This Calculator</h2>

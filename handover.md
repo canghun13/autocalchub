@@ -14,7 +14,7 @@
 
 ## 2. 콘텐츠 현황 (11/2 주간 세션 기준)
 - 블로그 91개, 툴 45개 (index.html 제외). 11/2 블로그 1 + 툴 1 신규(코사이너 제거 리파이), 보강: 사전승인(중고차 섹션)·주유 클러스터 가격 갱신(블로그 1·툴 6).
-- sitemap.xml 총 URL 149개. 홈 stat `45+`.
+- sitemap.xml 총 URL 149개. 홈 stat `45+`. (11/3 색인 점검: Sources 40페이지·홈 스키마·광고 자리표시 삭제 — 6-32)
 - **작업 컨테이너가 바뀌면 scratchpad 스크립트가 사라짐.** 11/2에 재작성한 빌더/검증 스크립트 요지: 새 페이지는 같은 종류의 최신 페이지(툴=`tools/late-car-payment-cost-calculator.html`, 블로그=`blog/how-much-does-a-late-car-payment-cost.html`)를 템플릿으로 head(title·description·canonical·JSON-LD) 교체 + 인라인 헤더/푸터 재사용. Playwright는 전역 설치(`require('playwright')`, executablePath 불필요).
 - **GitHub push는 Claude GitHub App 연결로 동작**(9/28부터). 세션 프록시가 토큰 직접 push를 막으므로 토큰이 아니라 앱 연결이 필요함. 커밋 작성자는 `Claude <noreply@anthropic.com>`.
 - **블로그 태그 카테고리 13종** (10/22 `🚲 Car-Light Living` 추가, blog-tag 텍스트 "Car-Light Living", blog/index 섹션 id `section-carlight`, tools/index는 EV 앞 하위 헤더): `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`, `💼 Business &amp; Tax`.
@@ -1585,6 +1585,30 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 2. 코사이너 신규 2페이지 + 10/22·10/26 신규 8페이지 Bing 반응.
 3. 가스값 다시 크게 움직이면(±20센트) 이번에 갱신한 7페이지 기준값 재점검.
 4. 코사이너/리파이 확장 후보: "코사이너가 갚아야 할 때(주채무자 연체 시 코사이너 영향)", "리파이로 할부 낮추기 vs 기간 연장".
+
+## 6-32. 11/3 구글 색인 전체 점검 (사용자 지시 — 색인 24개에서 정체)
+
+### 이력 재구성 (첨부된 Coverage 8/11~11/2 전부 대조)
+- 발견됨-색인안됨: 81(8/7) → 85 → 91 → 102 → 105 → 107 → 109 → 111 → 112 → **118(10/23)**. 새 글은 전부 이 목록으로 들어감.
+- **탈출은 딱 두 번**: 9/7 자료에서 5개(0% APR 툴·코사이너 블로그·biweekly·리파이 공제·CarMax vs Carvana), 10/5 자료에서 크롤링됨-색인안됨 2개(72개월·affordability 툴). 그 뒤 **두 달간 0**.
+- 즉 구글봇이 막힌 건 아님(9월 초까지 실제로 크롤·색인함). 다만 **허브(`/blog/`, `/tools/`)와 about·methodology·editorial·contact·privacy조차 한 번도 크롤 안 됨(최종 크롤 1970-01-01)** — 구글이 홈 이후로 거의 안 들어오는 상태.
+- GSC 노출: 5월 1,676 → 6월 22 → 7월 42 → 8월 62 → 9월 18 → 10월 19. 5월 스파이크 이후 바닥.
+
+### 점검 결과 (사이트 쪽)
+- 이상 없음(재확인): canonical·noindex·sitemap·고아 0·title 중복 0·head 구조·robots.txt·중복 콘텐츠(8-gram 겹침 0.16 이하, 1쌍뿐)·반복 문장 0·페이지 크기 12~35KB.
+- **새로 발견·수정한 것 4가지**
+  1. **외부 출처 링크 0개(136개 콘텐츠 전부)** — 본문은 AAA·Experian·FICO·IRS 등을 인용하는데 링크가 하나도 없었음. 에디토리얼 정책엔 "every statistic is sourced"라고 써놓고. YMYL(금융) 신뢰 신호로 큰 구멍. → **데이터를 인용한 40개 페이지에 "Sources" 블록 추가**(Related 박스 바로 위, 새 탭·noopener). URL은 이번에 직접 열어 내용 일치를 확인한 것만 사용(AAA 가스가격/YDC 2025·2026/연료 부족 위험, Experian 금리·디퍼먼트·고주행, FICO 연체 인포그래픽 PDF, KBB, NerdWallet·Bankrate 리파이 요건, Chase 코사이너, ProPublica 디퍼먼트, NerdWallet MIT 마크업, IRS 클린비히클, Federal Register 차량대출이자 공제 최종규칙, IRS Pub 463, fueleconomy.gov, NHTSA). Carfax·Cox·Experian 평균납입액은 원문 URL 미확인이라 **넣지 않음**. 링크 추가라 lastmod 미변경.
+  2. **홈에 구조화 데이터 0개** → WebSite + Organization(JSON-LD @graph, publishingPrinciples=editorial-policy) 추가. favicon은 112px 미만이라 logo 미지정.
+  3. **숨김 광고 자리표시 `<div class="ad-banner">Advertisement · Google AdSense</div>` 227개(137페이지)** — CSS로 숨겼지만 HTML·텍스트 추출엔 그대로 남아 있었음. 전부 삭제(`.ad-banner{display:none}` CSS는 유지).
+  4. 전 페이지 모바일 스윕(150개)에서 `tools/car-maintenance-cost-calculator.html` 정비 항목 표가 28px 넘침(기존 결함) → 래퍼 + 모바일 패딩 축소로 화면 안에 맞춤.
+
+### 결론
+- 사이트 쪽 걸림돌은 이번으로 거의 다 걷어냄. 남은 원인은 여전히 **크롤 수요(신생 도메인·외부 링크 0·YMYL·익명)**.
+- 사이트 밖에서만 확인 가능한 것(사용자 확인 요청함): GSC **URL 검사로 홈의 "마지막 크롤링" 날짜·"페이지 가져오기" 결과**(실시간 테스트 포함), **설정 → 크롤링 통계**(90일 요청 수·호스트 상태·응답 코드). 여기서 4xx/5xx나 Cloudflare 차단이 보이면 그게 진짜 원인. **색인 생성 요청 버튼 권유는 하지 않음(기존 규칙).**
+
+### 규칙 추가
+- **새 글·툴에서 수치를 인용하면 Sources 블록에 원문 링크를 같이 넣을 것**(직접 열어 확인한 URL만). 블록 형식은 `class="sources"` div, Related 박스 바로 위.
+- 광고 자리표시 div 다시 넣지 말 것(새 페이지 템플릿에서도 제거됨).
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 
