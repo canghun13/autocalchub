@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cosigner Risk Calculator — How Cosigning a Car Loan Affects Buying a House | AutoCalcHub</title>
+  <meta name="description" content="See what cosigning a car loan really costs you: how much the payment cuts your mortgage and home-buying budget, and what you could owe if the car is repossessed.">
+  <link rel="canonical" href="https://autocalchub.com/tools/cosigner-risk-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block;margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--border)}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Cosigner Risk Calculator",
+    "url": "https://autocalchub.com/tools/cosigner-risk-calculator.html",
+    "description": "Estimates what cosigning an auto loan costs the cosigner: the car payment's effect on mortgage debt-to-income and maximum home price at a chosen mortgage rate, and the deficiency balance owed if the borrower stops paying and the car is repossessed, using simple depreciation, auction recovery and fee assumptions.",
+    "datePublished": "2026-11-09",
+    "dateModified": "2026-11-09",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://autocalchub.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://autocalchub.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Cosigner Risk Calculator",
+        "item": "https://autocalchub.com/tools/cosigner-risk-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<!-- HEADER:START -->
+<nav>
+  <a href="/" class="logo">Auto<span>Calc</span>Hub</a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- HEADER:END -->
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Cosigner Risk Calculator: What Cosigning a Car Loan Costs You</h1>
+    <p>Cosigning feels like a signature. To a mortgage lender it's a car payment on your own record, and to the auto lender it's a promise to pay if the borrower doesn't. Enter the loan and your finances to see how much house you could lose the ability to buy — and what you'd owe if the car were repossessed.</p>
+  </div>
+
+  <div class="calc-card">
+    <h2>🚗 The Car Loan You'd Cosign</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="loan">Loan Amount</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="loan" value="25000" min="0" step="500"></div>
+      </div>
+      <div class="form-group">
+        <label for="apr">Interest Rate (APR)</label>
+        <div class="input-wrap has-suffix"><input type="number" id="apr" value="9.5" min="0" step="0.1" max="36"><span class="input-suffix">%</span></div>
+      </div>
+      <div class="form-group">
+        <label for="term">Loan Term</label>
+        <select id="term">
+          <option value="36">36 months</option>
+          <option value="48">48 months</option>
+          <option value="60" selected>60 months</option>
+          <option value="72">72 months</option>
+          <option value="84">84 months</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="price">Car's Value When Bought</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="price" value="25000" min="0" step="500"></div>
+      </div>
+      <div class="form-group">
+        <label for="kind">New or Used</label>
+        <select id="kind">
+          <option value="new" selected>New (about 20% lost in year one, then 15% a year)</option>
+          <option value="used">Used (about 15% a year)</option>
+        </select>
+      </div>
+    </div>
+
+    <h2 style="margin-top:2rem;">🏠 Your Finances</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="inc">Your Gross Monthly Income</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="inc" value="8000" min="0" step="100"></div>
+        <span class="hint">Before tax. Include a co-applicant on the mortgage if you would have one.</span>
+      </div>
+      <div class="form-group">
+        <label for="other">Your Other Monthly Debt Payments</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="other" value="400" min="0" step="25"></div>
+        <span class="hint">Minimum payments on cards, student loans and your own car. Not rent.</span>
+      </div>
+      <div class="form-group">
+        <label for="dti">Mortgage Debt-to-Income Limit</label>
+        <select id="dti">
+          <option value="36">36% (conservative)</option>
+          <option value="43">43%</option>
+          <option value="45" selected>45% (common for conventional loans)</option>
+          <option value="50">50% (automated approval ceiling)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="mrate">Mortgage Rate</label>
+        <div class="input-wrap has-suffix"><input type="number" id="mrate" value="7.18" min="0" step="0.01" max="15"><span class="input-suffix">%</span></div>
+        <span class="hint">Freddie Mac 30-year average on Nov. 5, 2026: 7.18%.</span>
+      </div>
+      <div class="form-group">
+        <label for="tih">Property Tax, Insurance &amp; HOA</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="tih" value="450" min="0" step="25"></div>
+        <span class="hint">Per month, for the home you would buy.</span>
+      </div>
+      <div class="form-group">
+        <label for="down">Down Payment</label>
+        <div class="input-wrap has-suffix"><input type="number" id="down" value="10" min="0" step="1" max="50"><span class="input-suffix">%</span></div>
+      </div>
+    </div>
+
+    <h2 style="margin-top:2rem;">⚠️ If the Borrower Stops Paying</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="stop">Payments Stop After</label>
+        <div class="input-wrap has-suffix"><input type="number" id="stop" value="24" min="0" step="1"><span class="input-suffix">mo</span></div>
+        <span class="hint">Months of on-time payments before the loan goes bad.</span>
+      </div>
+      <div class="form-group">
+        <label for="auction">Repossessed Car Sells For</label>
+        <div class="input-wrap has-suffix"><input type="number" id="auction" value="80" min="0" step="5" max="100"><span class="input-suffix">%</span></div>
+        <span class="hint">Share of market value at auction. Auctions usually fetch less than retail.</span>
+      </div>
+      <div class="form-group">
+        <label for="fees">Repossession &amp; Sale Fees</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="fees" value="1200" min="0" step="100"></div>
+        <span class="hint">Towing, storage, auction and legal costs added to the debt. An estimate.</span>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="verdict-box">
+        <h3 id="vTitle"></h3>
+        <span class="big" id="vBig"></span>
+        <p id="vSub"></p>
+      </div>
+
+      <div class="two-col">
+        <div class="calc-card" style="margin:0">
+          <h2>Your Home-Buying Budget</h2>
+          <div class="row"><span>Car payment that counts against you</span><span id="oPay"></span></div>
+          <div class="row"><span>Mortgage you could get, without cosigning</span><span id="oLoan0"></span></div>
+          <div class="row"><span>Mortgage you could get, after cosigning</span><span id="oLoan1"></span></div>
+          <div class="row"><span>Home price, without → with</span><span id="oPrice"></span></div>
+          <div class="row"><span>Buying power lost</span><span id="oLost"></span></div>
+        </div>
+        <div class="calc-card" style="margin:0">
+          <h2>Worst Case: Repossession</h2>
+          <div class="row"><span>Loan balance when payments stop</span><span id="oBal"></span></div>
+          <div class="row"><span>Car's market value then</span><span id="oMv"></span></div>
+          <div class="row"><span>Auction proceeds</span><span id="oProc"></span></div>
+          <div class="row"><span>Repossession &amp; sale fees</span><span id="oFees"></span></div>
+          <div class="row"><span>Deficiency you could owe</span><span id="oDef"></span></div>
+        </div>
+      </div>
+
+      <div class="note" id="mainNote"></div>
+      <div class="disclaimer">⚠️ <strong>An estimate, not a lending decision.</strong> The home-buying side converts the debt-to-income room left after your debts into a 30-year fixed mortgage at the rate you enter; real approvals also weigh credit, reserves and the property. The repossession side assumes the loan balance stops falling when payments stop and ignores missed-payment interest, late fees and any legal limits your state puts on deficiency claims, so the real figure can differ. Depreciation follows the simple schedule shown in the New or Used box.</div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2>Why a Car You Don't Drive Shows Up on Your Mortgage Application</h2>
+    <p>When you cosign, the auto loan appears on your credit report as your debt, with the full monthly payment. Mortgage underwriters add that payment to your debt-to-income ratio just as if the car were yours. Because every dollar of monthly debt is a dollar that can't go toward a house payment, a $525 car payment at a 7.18% mortgage rate removes roughly $77,000 of borrowing — about $86,000 of home price with 10% down.</p>
+
+    <h2>The 12-Month Exception</h2>
+    <p>There is a way out for conventional loans. Fannie Mae lets a lender exclude a cosigned debt from your ratios if the other person has been making the payments and you can document 12 months of their payments with no late ones — usually their bank statements or canceled checks. Until there's a clean year of payments on paper, plan on the payment counting against you.</p>
+
+    <h2>What You're Promising the Auto Lender</h2>
+    <p>As Experian explains, a cosigner is equally responsible for the loan. If payments stop, the late payments land on your credit report too, and if the car is repossessed, the lender sells it, usually at auction, and both of you owe the shortfall plus fees. The repossession stays on both credit reports for seven years. Early in a loan, when the balance is high and the car has just taken its biggest depreciation hit, that shortfall is at its largest.</p>
+
+    <h2>How to Cosign With Less Risk</h2>
+    <ul>
+      <li><strong>Get online access to the account</strong> so you see a missed payment the day it happens, not when your credit score drops.</li>
+      <li><strong>Keep the loan short and the down payment real.</strong> A smaller balance and a shorter term shrink both the payment that counts against you and the worst-case shortfall.</li>
+      <li><strong>Agree on an exit:</strong> once the borrower has a year of on-time payments, they refinance in their own name. Our <a href="cosigner-removal-refinance-calculator.html">cosigner removal calculator</a> shows whether they would qualify.</li>
+      <li><strong>Buying a home soon?</strong> Cosign after you close, not before.</li>
+    </ul>
+    <p>The full guide: <a href="../blog/will-cosigning-a-car-loan-affect-buying-a-house.html">Will Cosigning a Car Loan Affect Buying a House?</a></p>
+
+    <div class="sources" style="margin-top:2rem;font-size:0.85rem;line-height:1.7;color:var(--mid);">
+      <h3 style="margin:0 0 0.5rem;font-size:0.95rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Sources</h3>
+      <ul style="margin:0;padding-left:1.25rem;">
+        <li><a href="https://www.experian.com/blogs/ask-experian/what-happens-to-the-cosigner-if-a-car-is-repossessed/" rel="noopener" target="_blank" style="color:var(--orange);text-decoration:none;">Experian — how cosigners are affected when a car is repossessed</a></li>
+        <li><a href="https://selling-guide.fanniemae.com/sel/b3-6-05/monthly-debt-obligations" rel="noopener" target="_blank" style="color:var(--orange);text-decoration:none;">Fannie Mae Selling Guide B3-6-05 — monthly debt obligations (debts paid by others)</a></li>
+        <li><a href="https://www.freddiemac.com/pmms" rel="noopener" target="_blank" style="color:var(--orange);text-decoration:none;">Freddie Mac — Primary Mortgage Market Survey (weekly mortgage rates)</a></li>
+      </ul>
+    </div>
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/will-cosigning-a-car-loan-affect-buying-a-house.html" style="color:var(--orange);text-decoration:none;">Will Cosigning a Car Loan Affect Buying a House?</a></li>
+        <li><a href="auto-loan-cosigner-calculator.html" style="color:var(--orange);text-decoration:none;">Auto Loan Cosigner Calculator</a></li>
+        <li><a href="cosigner-removal-refinance-calculator.html" style="color:var(--orange);text-decoration:none;">Cosigner Removal Calculator</a></li>
+        <li><a href="../blog/do-you-need-a-cosigner-for-a-car-loan.html" style="color:var(--orange);text-decoration:none;">Do You Need a Cosigner for a Car Loan?</a></li>
+        <li><a href="../blog/joint-auto-loan-vs-cosigner.html" style="color:var(--orange);text-decoration:none;">Joint Auto Loan vs Cosigner</a></li>
+        <li><a href="../blog/can-you-refinance-car-loan-without-cosigner.html" style="color:var(--orange);text-decoration:none;">Can You Refinance a Car Loan Without Your Cosigner?</a></li>
+        <li><a href="car-payment-to-income-calculator.html" style="color:var(--orange);text-decoration:none;">Car Payment to Income Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- FOOTER:START -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">Auto<span>Calc</span>Hub</a>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/methodology.html">How We Calculate</a>
+      <a href="/editorial-policy.html">Editorial Policy</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy-policy.html">Privacy</a>
+      <a href="/blog/">Blog</a>
+      <a href="/glossary/">Glossary</a>
+    </div>
+    <p class="footer-copy">© 2026 autocalchub.com · For informational use only</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return (n < 0 ? '−$' : '$') + Math.abs(Math.round(n)).toLocaleString(); }
+function money2(n){ return '$' + n.toFixed(2); }
+function v(id){ return parseFloat(document.getElementById(id).value) || 0; }
+function pmt(B, apr, n){ var r = apr / 1200; return r === 0 ? B / n : B * r / (1 - Math.pow(1 + r, -n)); }
+function balAfter(B, apr, n, k){ if (k >= n) return 0; var r = apr / 1200, P = pmt(B, apr, n); return r === 0 ? B - P * k : B * Math.pow(1 + r, k) - P * (Math.pow(1 + r, k) - 1) / r; }
+function loanFromPI(pi, rate){ var r = rate / 1200, n = 360; return r === 0 ? pi * n : pi * (1 - Math.pow(1 + r, -n)) / r; }
+function valueAt(price, kind, months){
+  var y = months / 12, val = price;
+  if (kind === 'new') { val *= 1 - 0.20 * Math.min(y, 1); if (y > 1) val *= Math.pow(0.85, y - 1); }
+  else val *= Math.pow(0.85, y);
+  return val;
+}
+['loan','apr','price','inc','other','mrate','tih','down','stop','auction','fees'].forEach(function(id){ document.getElementById(id).addEventListener('input', calculate); });
+['term','kind','dti'].forEach(function(id){ document.getElementById(id).addEventListener('change', calculate); });
+
+function calculate(){
+  var L = v('loan'), apr = v('apr'), n = parseInt(document.getElementById('term').value, 10), price = v('price'), kind = document.getElementById('kind').value;
+  var inc = v('inc'), other = v('other'), dti = parseFloat(document.getElementById('dti').value), mrate = v('mrate'), tih = v('tih'), down = Math.min(v('down'), 95);
+  var stop = Math.max(0, Math.round(v('stop'))), auction = Math.min(v('auction'), 100), fees = v('fees');
+  if (L <= 0 || inc <= 0) return;
+
+  var P = pmt(L, apr, n), maxDebt = inc * dti / 100;
+  function cap(extra){ var pi = maxDebt - other - extra - tih; if (pi <= 0) return {loan: 0, price: 0}; var l = loanFromPI(pi, mrate); return {loan: l, price: l / (1 - down / 100)}; }
+  var a = cap(0), b = cap(P), lost = a.price - b.price;
+
+  var bal = balAfter(L, apr, n, stop), mv = valueAt(price, kind, stop), proc = mv * auction / 100, def = Math.max(0, bal + fees - proc);
+  var stopped = stop < n;
+
+  document.getElementById('oPay').textContent = money2(P) + '/mo';
+  document.getElementById('oLoan0').textContent = money(a.loan);
+  document.getElementById('oLoan1').textContent = money(b.loan);
+  document.getElementById('oPrice').textContent = money(a.price) + ' → ' + money(b.price);
+  document.getElementById('oLost').textContent = money(lost);
+  document.getElementById('oBal').textContent = stopped ? money(bal) : 'Paid off';
+  document.getElementById('oMv').textContent = money(mv);
+  document.getElementById('oProc').textContent = stopped ? money(proc) : '—';
+  document.getElementById('oFees').textContent = stopped ? money(fees) : '—';
+  document.getElementById('oDef').textContent = stopped ? money(def) : '$0';
+
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  if (a.price <= 0) {
+    vT.textContent = 'Your Debts Already Fill This Limit';
+    vB.textContent = 'No room for a mortgage';
+    vS.textContent = 'At a ' + dti + '% limit, your current debts and the housing costs you entered leave nothing for a mortgage payment, with or without the car loan.';
+  } else {
+    vT.textContent = 'Cosigning Cuts Your Home Budget By';
+    vB.textContent = money(lost);
+    vS.textContent = 'The ' + money2(P) + ' car payment counts as your debt, so the most you could borrow drops from ' + money(a.loan) + ' to ' + money(b.loan) + '. ' +
+      (stopped ? (def > 0 ? 'If the borrower stopped paying after ' + stop + ' months, you could also owe about ' + money(def) + ' after a repossession.' : 'If the borrower stopped paying after ' + stop + ' months, the car would likely sell for enough to cover the balance and fees.') : '');
+  }
+
+  var note = '<strong>How this was calculated:</strong> a ' + dti + '% limit on ' + money(inc) + ' of monthly income allows ' + money(maxDebt) + ' in total debt payments. After ' + money(other) + ' of other debts and ' + money(tih) + ' of taxes, insurance and HOA, that leaves ' +
+    money(Math.max(0, maxDebt - other - tih)) + ' for mortgage principal and interest — or ' + money(Math.max(0, maxDebt - other - tih - P)) + ' once the car payment is counted. At ' + mrate.toFixed(2) + '% over 30 years, each $100 a month of debt costs about ' + money(loanFromPI(100, mrate)) + ' of mortgage.';
+  if (stopped) note += '<br><br><strong>The repossession math:</strong> after ' + stop + ' payments the balance is about ' + money(bal) + '. A ' + (kind === 'new' ? 'new' : 'used') + ' car bought at ' + money(price) + ' would be worth about ' + money(mv) + ', and selling at ' + auction + '% at auction brings ' + money(proc) + '. ' +
+    (def > 0 ? 'Add ' + money(fees) + ' in fees and the shortfall is about ' + money(def) + ' — owed by you and the borrower alike, on top of a repossession on both credit reports for seven years.' : 'That covers the balance and fees, but the late payments and repossession would still go on both credit reports.');
+  note += '<br><br><strong>The way to get this back:</strong> once the borrower has made 12 on-time payments from their own account, a conventional mortgage lender can leave the car loan out of your ratios if you document those payments.';
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

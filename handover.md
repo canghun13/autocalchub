@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-11-02 기준 · 구글 10/23자, Bing 11/2자)
+# AutoCalcHub 인수인계 문서 (2026-11-09 기준 · 구글 10/23자, Bing 11/2자)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,9 +12,9 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (11/2 주간 세션 기준)
-- 블로그 91개, 툴 45개 (index.html 제외). 11/2 블로그 1 + 툴 1 신규(코사이너 제거 리파이), 보강: 사전승인(중고차 섹션)·주유 클러스터 가격 갱신(블로그 1·툴 6).
-- sitemap.xml 총 URL 149개. 홈 stat `45+`. (11/3 색인 점검: Sources 40페이지·홈 스키마·광고 자리표시 삭제 — 6-32)
+## 2. 콘텐츠 현황 (11/9 주간 세션 기준)
+- 블로그 92개, 툴 46개 (index.html 제외). 11/2 블로그 1 + 툴 1 신규(코사이너 제거 리파이), 보강: 사전승인(중고차 섹션)·주유 클러스터 가격 갱신(블로그 1·툴 6).
+- sitemap.xml 총 URL 151개. 홈 stat `46+`. (11/3 색인 점검: Sources 40페이지·홈 스키마·광고 자리표시 삭제 — 6-32)
 - **작업 컨테이너가 바뀌면 scratchpad 스크립트가 사라짐.** 11/2에 재작성한 빌더/검증 스크립트 요지: 새 페이지는 같은 종류의 최신 페이지(툴=`tools/late-car-payment-cost-calculator.html`, 블로그=`blog/how-much-does-a-late-car-payment-cost.html`)를 템플릿으로 head(title·description·canonical·JSON-LD) 교체 + 인라인 헤더/푸터 재사용. Playwright는 전역 설치(`require('playwright')`, executablePath 불필요).
 - **GitHub push는 Claude GitHub App 연결로 동작**(9/28부터). 세션 프록시가 토큰 직접 push를 막으므로 토큰이 아니라 앱 연결이 필요함. 커밋 작성자는 `Claude <noreply@anthropic.com>`.
 - **블로그 태그 카테고리 13종** (10/22 `🚲 Car-Light Living` 추가, blog-tag 텍스트 "Car-Light Living", blog/index 섹션 id `section-carlight`, tools/index는 EV 앞 하위 헤더): `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`, `💼 Business &amp; Tax`.
@@ -1609,6 +1609,39 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 ### 규칙 추가
 - **새 글·툴에서 수치를 인용하면 Sources 블록에 원문 링크를 같이 넣을 것**(직접 열어 확인한 URL만). 블록 형식은 `class="sources"` div, Related 박스 바로 위.
 - 광고 자리표시 div 다시 넣지 말 것(새 페이지 템플릿에서도 제거됨).
+
+## 6-33. 11/9 주간 세션: 코사이너 측 리스크(툴+블로그) + EV vs gas 전면 갱신 + 낡은 가스값 3페이지
+
+### 자료
+- **첨부 Bing 2개(PageTraffic·Keyword 11/9)는 ecoenergycalc.com 자료** — autocalchub 아님. 이번 주 Bing 판단은 11/2자 기준. (다른 사이트 파일 혼입은 과거에도 반복됨 → 파일명 도메인 먼저 확인할 것)
+- 구글 Coverage: 차트 10/23에서 갱신 안 됨(발견됨 119·크롤링됨 2, 탈출 0). 노출 페이지 24, 클릭 0. 변화 없음.
+- GA4(10/12~11/8): 활성 303, 참여 48.5초. 조회 상위 salary 74·**EV vs gas 49**·gas-tank 32·EV tax credit 20. bing 154세션.
+
+### 판단 (수익화 우선순위)
+1. **신규: 코사이너 "본인" 쪽 리스크** — 지금까지 코사이너 클러스터는 차주 관점(금리 절감·코사이너 해제)뿐. 코사이너가 되는 사람(부모 등) 관점 + **모기지 DTI 영향**은 웹서치상 RateGenius·gustancho·Fool 등 글뿐, **잃는 주택 구매력을 계산하는 툴 없음**. 모기지(최고 단가 업종) + 오토론 양쪽 수익화.
+2. **EV vs gas 전면 갱신** — GA 조회 2위(49)인데 "Updated July 2026"·$0.16/kWh·$4.48(9월) 기준. Bing 522노출 18위로 순위 약함. AAA 2026 YDC(EV 중형세단 $3,080/년 더 비쌈)라는 강한 신규 근거.
+3. 낡은 가스값($3.40) 3페이지 정리.
+
+### 작업
+- `tools/cosigner-risk-calculator.html` (신규, Financing, 🏠) — ① 차 할부금이 코사이너 DTI에 들어가 줄어드는 모기지·주택가격(DTI 한도 36/43/45/50%, 30년 고정 금리 입력, 세금·보험·HOA, 계약금%) ② 차주가 N개월 후 연체 시 압류 부족분(잔액 + 비용 − 경매가; 신차 1년 20%·이후 15%/년, 중고 15%/년 감가 — 사이트 감가 글·감가 계산기와 동일 기준). 12개월 예외 안내.
+  - 기본값 $25k·9.5%·60개월, 월소득 $8,000·기타 부채 $400·45%·$450·7.18%·10% → 월 $525가 **모기지 $77.5k·주택가 $86.1k 감소**, 24개월 후 연체 시 부족분 ~$3,991.
+- `blog/will-cosigning-a-car-loan-affect-buying-a-house.html` (신규) — DTI 처리, 할부금별 손실표($100당 ~$14,800 @7.18%), **Fannie Mae B3-6-05: 타인이 12개월 연체 없이 갚은 기록(본인 계좌 이체·명세서) 있으면 DTI 제외**, 신용 영향, 압류 부족분(Experian), 안전하게 코사인하는 법(집 먼저 사고 코사인).
+- `blog/electric-vs-gas-car-true-cost.html` (보강) — Quick answer + "What AAA's 2026 Numbers Say" 섹션(차급×EV/가솔린/하이브리드 연비용 표, 모바일에 맞게 `min-width:0`), 전기 18¢/kWh·가스 $4.17로 연료표·5년 비교 재계산(RAV4 가솔린 30MPG 명시: 5년 $5,610 가솔린 유리, 2만 마일이면 사실상 동일, 1.5만 마일×8년이면 EV $1,480 유리 — 계산 가정 본문 명시), meta 교체, Sources에 AAA 2026·Quartz 추가.
+- 가스값 $3.40 → $4.17: `how-to-calculate-fuel-cost-road-trip`, `how-to-improve-car-gas-mileage`, `how-much-does-ev-cost-to-charge-at-home`. **`is-a-high-mpg-car-worth-the-extra-cost`($3.30 표 전체)는 아직 남음.**
+- 허브/홈(46+)/sitemap(151)/llms, 내부링크 7개. 30일 지난 10/5 페이지 New 배지 제거.
+
+### 데이터 출처 (직접 확인)
+- Freddie Mac PMMS 11/5: 30년 7.18%·15년 6.57%. Fannie Mae B3-6-05(12개월 납부 기록 시 제외). Experian 코사이너 압류(동일 책임·부족분·7년). AAA 2026 YDC·Quartz 차급별 ¢/mi.
+
+### 검증
+- 코사이너 리스크 툴: 파이썬 독립 구현 ↔ node 목업 DOM 6개 시나리오 일치(DTI 여유 없음·완납 후 시나리오 포함).
+- Playwright 전 페이지(152) 모바일 스윕: 넘침 0·nav 1·JS 오류 0. 신규 툴 390/1280 결과 간격 69px. 검증 스크립트 전체 통과.
+
+### ⚠️ 다음 세션 필독
+1. Bing 자료가 autocalchub 것인지 파일명부터 확인.
+2. EV vs gas(18위) 순위·CTR 변화, best-time 연말 시즌 CTR.
+3. `is-a-high-mpg-car-worth-the-extra-cost` 가스값 표 갱신.
+4. 코사이너 클러스터 5개(차주 측 2·해제 2·코사이너 측 2) 반응 — 확장 후보: "코사이너가 차를 팔 수 있나/명의", FHA·VA의 코사인 부채 처리.
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 
