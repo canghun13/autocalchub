@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drop Full Coverage Calculator — Is Collision Worth It on an Older Car? | AutoCalcHub</title>
+  <meta name="description" content="Should you drop collision or comprehensive on an older car? Compare each premium with your car's value, apply the 10x rule, see the most each coverage could pay and the year it stops being worth it.">
+  <link rel="canonical" href="https://autocalchub.com/tools/drop-full-coverage-calculator.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH1JYG24PK"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-ZH1JYG24PK');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
+  <style>
+    .tool-page{max-width:820px;margin:0 auto;padding:3rem 2rem 5rem}
+    .tool-header{margin-bottom:2.5rem}
+    .tool-header h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;letter-spacing:-0.02em;color:var(--charcoal);margin-bottom:0.5rem}
+    .tool-header p{color:var(--mid);font-size:1rem}
+    .calc-card{background:white;border:1px solid var(--border);border-radius:16px;padding:2rem;margin-bottom:1.5rem}
+    .calc-card h2{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:2px solid var(--orange)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:0.4rem}
+    label{font-size:0.85rem;font-weight:500;color:var(--mid)}
+    .hint{font-size:0.75rem;color:var(--light);line-height:1.5}
+    .input-wrap{position:relative}
+    .input-prefix,.input-suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:0.9rem;color:var(--light);font-weight:500;pointer-events:none}
+    .input-prefix{left:0.875rem}
+    .input-suffix{right:0.875rem}
+    input[type="number"]{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;transition:border-color 0.2s;-moz-appearance:textfield}
+    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+    input[type="number"]:focus,select:focus{outline:none;border-color:var(--orange)}
+    .has-prefix input{padding-left:2rem}
+    .has-suffix input{padding-right:3rem}
+    select{width:100%;padding:0.75rem 0.875rem;border:1.5px solid var(--border);border-radius:8px;font-size:0.95rem;font-family:'Inter',sans-serif;color:var(--charcoal);background:white;cursor:pointer}
+    .calc-btn{width:100%;margin-top:1.5rem;background:var(--navy);color:white;border:none;border-radius:8px;padding:0.875rem;font-size:1rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;transition:background 0.2s}
+    .calc-btn:hover{background:var(--navy-mid)}
+    .results{display:none}
+    .results.show{display:block;margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--border)}
+    .verdict-box{border-radius:12px;padding:1.75rem;margin-bottom:1.5rem;text-align:center;background:var(--navy)}
+    .verdict-box h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:white;margin:0 0 0.4rem}
+    .verdict-box .big{font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--orange);display:block;margin:0.5rem 0}
+    .verdict-box p{color:rgba(255,255,255,0.75);font-size:0.9rem;margin:0;line-height:1.6}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+    .row{display:flex;justify-content:space-between;align-items:baseline;padding:0.55rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;gap:1rem}
+    .row:last-child{border-bottom:none;font-weight:600;color:var(--charcoal);padding-top:0.75rem}
+    .row span:first-child{color:var(--mid)}
+    .row span:last-child{color:var(--charcoal);font-weight:500;white-space:nowrap}
+    .row.warn span:last-child{color:#c62828}
+    .row.good span:last-child{color:#2e7d32}
+    .note{background:var(--off-white);border-radius:10px;padding:1.25rem;font-size:0.88rem;color:var(--mid);line-height:1.7}
+    .note strong{color:var(--charcoal)}
+    .disclaimer{background:#fff8e6;border:1px solid #f0d585;border-radius:10px;padding:1.1rem 1.25rem;font-size:0.82rem;color:#7a5c00;line-height:1.6;margin-top:1rem}
+    .content-section h2{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--charcoal);margin:2rem 0 0.75rem}
+    .content-section h3{font-size:1.05rem;font-weight:600;color:var(--charcoal);margin:1.5rem 0 0.5rem}
+    .content-section p,.content-section li{color:var(--mid);line-height:1.8;font-size:0.95rem}
+    .content-section ul,.content-section ol{margin:0.75rem 0 1rem 1.5rem}
+    .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.5rem 0;border-radius:8px}
+    table{width:100%;min-width:440px;border-collapse:collapse;font-size:0.9rem;margin:0}
+    th{background:var(--navy);color:white;padding:0.75rem 1rem;text-align:left;font-family:'Space Grotesk',sans-serif;font-weight:600}
+    td{padding:0.65rem 1rem;border-bottom:1px solid var(--border);color:var(--mid)}
+    tr:last-child td{border-bottom:none}
+    tr:nth-child(even) td{background:#fafafa}
+    @media(max-width:640px){.form-grid,.two-col{grid-template-columns:1fr}.row{flex-direction:column;align-items:flex-start;gap:0.15rem;padding:0.7rem 0}.row span:first-child{font-size:0.82rem;line-height:1.4}.row span:last-child{white-space:normal;font-size:0.95rem;color:var(--charcoal)}.row:last-child{padding-top:0.85rem}.calc-card{padding:1.5rem 1.25rem}table{font-size:0.82rem}th,td{padding:0.5rem 0.6rem}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Drop Full Coverage Calculator",
+    "url": "https://autocalchub.com/tools/drop-full-coverage-calculator.html",
+    "description": "Decides whether collision and comprehensive coverage are still worth keeping on an owned car: applies the Insurance Information Institute 10x premium rule to each coverage, shows the maximum payout after deductibles, average yearly payout from HLDI claim frequency and severity, the year each coverage falls below the 10x line given depreciation, and accounts for lender requirements and savings to replace the car.",
+    "datePublished": "2026-11-16",
+    "dateModified": "2026-11-16",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AutoCalcHub",
+      "url": "https://autocalchub.com"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://autocalchub.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://autocalchub.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Drop Full Coverage Calculator",
+        "item": "https://autocalchub.com/tools/drop-full-coverage-calculator.html"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<!-- HEADER:START -->
+<nav>
+  <a href="/" class="logo">Auto<span>Calc</span>Hub</a>
+
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/tools/">Tools</a></li>
+    <li><a href="/blog/">Blog</a></li>
+    <li><a href="/glossary/">Glossary</a></li>
+    <li><a href="/about.html">About</a></li>
+  </ul>
+
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<!-- HEADER:END -->
+<div class="tool-page">
+  <div class="tool-header">
+    <h1>Drop Full Coverage Calculator: Is Collision Still Worth It?</h1>
+    <p>Collision and comprehensive coverage only ever pay up to what your car is worth, minus the deductible. As the car ages, that ceiling falls every year while the premium usually doesn't. Enter your car's value and the two premiums from your policy to see which coverage still earns its keep — and when it stops.</p>
+  </div>
+
+  <div class="calc-card">
+    <h2>🚘 Your Car &amp; Policy</h2>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="val">Car's Current Value</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="val" value="4500" min="0" step="250"></div>
+        <span class="hint">Use the private-party or trade-in value, not what you paid.</span>
+      </div>
+      <div class="form-group">
+        <label for="pc">Collision Premium per Year</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="pc" value="516" min="0" step="10"></div>
+        <span class="hint">On your declarations page. US average in 2024: $516.</span>
+      </div>
+      <div class="form-group">
+        <label for="pk">Comprehensive Premium per Year</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="pk" value="283" min="0" step="10"></div>
+        <span class="hint">US average in 2024: $283.</span>
+      </div>
+      <div class="form-group">
+        <label for="dc">Collision Deductible</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="dc" value="1000" min="0" step="100"></div>
+      </div>
+      <div class="form-group">
+        <label for="dk">Comprehensive Deductible</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="dk" value="500" min="0" step="100"></div>
+      </div>
+      <div class="form-group">
+        <label for="sav">Savings You Could Use to Replace the Car</label>
+        <div class="input-wrap has-prefix"><span class="input-prefix">$</span><input type="number" id="sav" value="5000" min="0" step="500"></div>
+        <span class="hint">Emergency money you could spend on another car without borrowing.</span>
+      </div>
+      <div class="form-group">
+        <label for="dep">Yearly Drop in Car Value</label>
+        <div class="input-wrap has-suffix"><input type="number" id="dep" value="15" min="0" step="1" max="50"><span class="input-suffix">%</span></div>
+        <span class="hint">Older cars typically lose 10%–15% a year.</span>
+      </div>
+      <div class="form-group">
+        <label for="fin">Loan or Lease on the Car?</label>
+        <select id="fin">
+          <option value="no" selected>No — I own it outright</option>
+          <option value="yes">Yes — financed or leased</option>
+        </select>
+        <span class="hint">Lenders and leasing companies require both coverages.</span>
+      </div>
+    </div>
+
+    <div class="results" id="results">
+      <div class="verdict-box">
+        <h3 id="vTitle"></h3>
+        <span class="big" id="vBig"></span>
+        <p id="vSub"></p>
+      </div>
+
+      <div class="two-col">
+        <div class="calc-card" style="margin:0">
+          <h2>Collision</h2>
+          <div class="row"><span>Car value ÷ premium</span><span id="cRatio"></span></div>
+          <div class="row"><span>Most it could ever pay</span><span id="cBest"></span></div>
+          <div class="row"><span>Average payout vs premium, per year</span><span id="cExp"></span></div>
+          <div class="row"><span>Below the 10x line in</span><span id="cYr"></span></div>
+          <div class="row"><span>Verdict</span><span id="cV"></span></div>
+        </div>
+        <div class="calc-card" style="margin:0">
+          <h2>Comprehensive</h2>
+          <div class="row"><span>Car value ÷ premium</span><span id="kRatio"></span></div>
+          <div class="row"><span>Most it could ever pay</span><span id="kBest"></span></div>
+          <div class="row"><span>Average payout vs premium, per year</span><span id="kExp"></span></div>
+          <div class="row"><span>Below the 10x line in</span><span id="kYr"></span></div>
+          <div class="row"><span>Verdict</span><span id="kV"></span></div>
+        </div>
+      </div>
+
+      <div class="note" id="mainNote"></div>
+      <div class="disclaimer">⚠️ <strong>A rule of thumb, not advice for your policy.</strong> The 10x test is the Insurance Information Institute's guideline: if the car is worth less than ten times a coverage's yearly premium, that coverage may not be worth it. "Average yearly payout" uses HLDI's average claim frequencies (6.1 collision and 8.0 comprehensive claims per 100 insured vehicles a year) and average claim costs, capped at your car's value; those figures come from newer vehicles, and your own odds depend on how and where you drive. Dropping collision never affects liability coverage, which your state requires.</div>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h2>Why the Math Changes Every Year</h2>
+    <p>Collision and comprehensive pay the car's actual cash value, minus your deductible — never more. A $4,500 car with a $1,000 collision deductible can return at most $3,500, however bad the crash. Meanwhile the premium for that coverage stays roughly the same as the car loses 10% to 15% of its value each year. At some point you're paying hundreds a year to protect a few thousand dollars.</p>
+
+    <h2>The 10x Rule, Applied to Each Coverage</h2>
+    <p>The Insurance Information Institute's rule of thumb, cited by Kelley Blue Book: if your car is worth less than ten times the annual premium, the coverage may not be cost-effective. Run it separately for each coverage. Comprehensive — theft, hail, flood, fire, a deer — usually costs about half as much as collision, so it often stays worthwhile for several more years. Dropping collision alone is the most common first step.</p>
+
+    <h2>The Question the Math Can't Answer</h2>
+    <p>Insurance loses money on average for the buyer; that's how insurers stay in business. You buy it for the year you can't absorb the loss. If wrecking the car tomorrow would leave you unable to get to work, keep the coverage until you've saved enough to replace the car. If you could buy another car with cash, the premium is mostly a fee for a risk you can already carry.</p>
+
+    <h2>Before You Drop Anything</h2>
+    <ul>
+      <li><strong>Raise the deductible first.</strong> Going from $500 to $1,000 often cuts the collision premium noticeably and keeps you covered for a total loss.</li>
+      <li><strong>Keep the liability limits high.</strong> Dropping collision saves money; cutting liability to the state minimum can cost you far more than the car is worth.</li>
+      <li><strong>Check for uninsured motorist property damage</strong> coverage, which in some states covers your car when an uninsured driver hits you, for much less than collision.</li>
+      <li><strong>Bank the savings.</strong> Putting the dropped premium into a car fund each month turns it into self-insurance.</li>
+    </ul>
+    <p>See how insurance fits with every other running cost in <a href="../blog/is-full-coverage-worth-it-on-an-older-car.html">Is Full Coverage Worth It on an Older Car?</a></p>
+
+    <div class="sources" style="margin-top:2rem;font-size:0.85rem;line-height:1.7;color:var(--mid);">
+      <h3 style="margin:0 0 0.5rem;font-size:0.95rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Sources</h3>
+      <ul style="margin:0;padding-left:1.25rem;">
+        <li><a href="https://www.kbb.com/car-advice/collision-coverage-older-car" rel="noopener" target="_blank" style="color:var(--orange);text-decoration:none;">Kelley Blue Book — collision insurance on an older car (Insurance Information Institute 10x rule)</a></li>
+        <li><a href="https://content.naic.org/sites/default/files/2024-adb-average-premium-supplement.pdf" rel="noopener" target="_blank" style="color:var(--orange);text-decoration:none;">NAIC — 2024 Auto Insurance Database, average premium supplement</a></li>
+        <li><a href="https://www.iihs.org/media/c4bc9079-3c48-4f7f-ad15-662f94157a8b/10ocxw/HLDI%20Research/Insurance%20reports/hldi_collision_r23.pdf" rel="noopener" target="_blank" style="color:var(--orange);text-decoration:none;">HLDI — collision losses by vehicle (claim frequency and severity)</a></li>
+        <li><a href="https://www.iihs.org/media/733cd489-e70d-49b7-b34f-89616403e9ea/99a91g/HLDI%20Research/Insurance%20reports/hldi_comprehensive_c22.pdf" rel="noopener" target="_blank" style="color:var(--orange);text-decoration:none;">HLDI — comprehensive losses by vehicle (claim frequency and severity)</a></li>
+      </ul>
+    </div>
+    <div style="background:var(--off-white);border-radius:12px;padding:1.5rem;margin-top:2rem;">
+      <h3 style="margin:0 0 0.75rem;font-size:1rem;font-family:'Space Grotesk',sans-serif;font-weight:700;color:var(--charcoal);">Related Guides &amp; Tools</h3>
+      <ul style="margin:0;padding-left:1.25rem;color:var(--mid);font-size:0.9rem;line-height:1.8;">
+        <li><a href="../blog/is-full-coverage-worth-it-on-an-older-car.html" style="color:var(--orange);text-decoration:none;">Is Full Coverage Worth It on an Older Car?</a></li>
+        <li><a href="car-insurance-estimator.html" style="color:var(--orange);text-decoration:none;">Car Insurance Cost Estimator</a></li>
+        <li><a href="../blog/how-to-lower-your-car-insurance-premium.html" style="color:var(--orange);text-decoration:none;">How to Lower Your Car Insurance Premium</a></li>
+        <li><a href="used-car-value-calculator.html" style="color:var(--orange);text-decoration:none;">Used Car Value Calculator</a></li>
+        <li><a href="repair-or-replace-car-calculator.html" style="color:var(--orange);text-decoration:none;">Repair or Replace Calculator</a></li>
+        <li><a href="../blog/what-happens-when-car-loan-is-paid-off.html" style="color:var(--orange);text-decoration:none;">What Happens When Your Car Loan Is Paid Off?</a></li>
+        <li><a href="gap-insurance-calculator.html" style="color:var(--orange);text-decoration:none;">GAP Insurance Calculator</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- FOOTER:START -->
+<footer>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">Auto<span>Calc</span>Hub</a>
+    <div class="footer-links">
+      <a href="/about.html">About</a>
+      <a href="/methodology.html">How We Calculate</a>
+      <a href="/editorial-policy.html">Editorial Policy</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy-policy.html">Privacy</a>
+      <a href="/blog/">Blog</a>
+      <a href="/glossary/">Glossary</a>
+    </div>
+    <p class="footer-copy">© 2026 autocalchub.com · For informational use only</p>
+  </div>
+</footer>
+<!-- FOOTER:END -->
+<script src="../assets/js/components.js"></script>
+<script>
+function money(n){ return (n < 0 ? '−$' : '$') + Math.abs(Math.round(n)).toLocaleString(); }
+function v(id){ return parseFloat(document.getElementById(id).value) || 0; }
+var FC = 0.061, SC = 8739, FK = 0.0804, SK = 2356; // HLDI frequency per insured vehicle-year and average claim cost
+function yrsUntil(V, prem, dep){ var x = V; for (var y = 0; y <= 40; y++) { if (x < 10 * prem) return y; x *= 1 - dep / 100; } return null; }
+function yrText(y){ return y === null ? 'Over 40 years' : (y === 0 ? 'Already below' : y + (y === 1 ? ' year' : ' years')); }
+['val','pc','pk','dc','dk','sav','dep'].forEach(function(id){ document.getElementById(id).addEventListener('input', calculate); });
+document.getElementById('fin').addEventListener('change', calculate);
+
+function calculate(){
+  var V = v('val'), pc = v('pc'), pk = v('pk'), dc = v('dc'), dk = v('dk'), sav = v('sav'), dep = Math.min(v('dep'), 60), fin = document.getElementById('fin').value === 'yes';
+  if (V <= 0) return;
+  var keepC = pc > 0 ? V >= 10 * pc : true, keepK = pk > 0 ? V >= 10 * pk : true;
+  var ec = FC * Math.max(0, Math.min(SC, V) - dc), ek = FK * Math.max(0, Math.min(SK, V) - dk);
+  var yc = pc > 0 ? yrsUntil(V, pc, dep) : null, yk = pk > 0 ? yrsUntil(V, pk, dep) : null;
+
+  document.getElementById('cRatio').textContent = pc > 0 ? (V / pc).toFixed(1) + 'x' : '—';
+  document.getElementById('kRatio').textContent = pk > 0 ? (V / pk).toFixed(1) + 'x' : '—';
+  document.getElementById('cBest').textContent = money(Math.max(0, V - dc));
+  document.getElementById('kBest').textContent = money(Math.max(0, V - dk));
+  document.getElementById('cExp').textContent = money(ec) + ' vs ' + money(pc);
+  document.getElementById('kExp').textContent = money(ek) + ' vs ' + money(pk);
+  document.getElementById('cYr').textContent = yrText(yc);
+  document.getElementById('kYr').textContent = yrText(yk);
+  document.getElementById('cV').textContent = fin ? 'Required' : (keepC ? 'Keep' : 'Consider dropping');
+  document.getElementById('kV').textContent = fin ? 'Required' : (keepK ? 'Keep' : 'Consider dropping');
+
+  var vT = document.getElementById('vTitle'), vB = document.getElementById('vBig'), vS = document.getElementById('vSub');
+  var save = (keepC ? 0 : pc) + (keepK ? 0 : pk), canReplace = sav >= V;
+  if (fin) {
+    vT.textContent = 'Your Lender Requires Full Coverage';
+    vB.textContent = 'Keep both';
+    vS.textContent = 'While there\'s a loan or lease on the car, the lender or leasing company requires collision and comprehensive. Revisit this the month the loan is paid off.';
+  } else if (keepC && keepK) {
+    vT.textContent = 'Full Coverage Still Earns Its Keep';
+    vB.textContent = 'Keep both';
+    vS.textContent = 'Your car is worth at least ten times each premium. At ' + dep + '% a year, collision drops below that line in about ' + yrText(yc).toLowerCase() + '.';
+  } else if (!canReplace) {
+    vT.textContent = 'Borderline — Build Savings First';
+    vB.textContent = money(save) + ' a year at stake';
+    vS.textContent = (keepK ? 'Collision' : 'Both coverages') + ' fail the 10x test, but your savings wouldn\'t replace a ' + money(V) + ' car. Raising the deductible is the middle ground until they would.';
+  } else if (!keepC && keepK) {
+    vT.textContent = 'Drop Collision, Keep Comprehensive';
+    vB.textContent = 'Save ' + money(pc) + ' a year';
+    vS.textContent = 'Collision can pay at most ' + money(Math.max(0, V - dc)) + ' and costs ' + money(pc) + ' a year. Comprehensive is still cheap relative to the car\'s value.';
+  } else if (!keepC && !keepK) {
+    vT.textContent = 'Full Coverage Has Stopped Paying Off';
+    vB.textContent = 'Save ' + money(pc + pk) + ' a year';
+    vS.textContent = 'Both coverages cost more than a tenth of what the car is worth, and you could replace it from savings.';
+  } else {
+    vT.textContent = 'Drop Comprehensive, Keep Collision';
+    vB.textContent = 'Save ' + money(pk) + ' a year';
+    vS.textContent = 'Your comprehensive premium is unusually high for this car. Check whether a higher deductible brings it down first.';
+  }
+
+  var note = '<strong>How this was calculated:</strong> collision can pay up to ' + money(Math.max(0, V - dc)) + ' and comprehensive up to ' + money(Math.max(0, V - dk)) + ' — the car\'s value minus each deductible. ' +
+    'At average claim rates, drivers recover about ' + money(ec) + ' a year from collision and ' + money(ek) + ' from comprehensive on a car like this, against ' + money(pc + pk) + ' in premiums.';
+  if (!fin && save > 0) note += '<br><br><strong>Over five years</strong>, dropping ' + (keepK ? 'collision' : (keepC ? 'comprehensive' : 'both')) + ' saves about ' + money(save * 5) + ' in premiums — while the car itself falls to about ' + money(V * Math.pow(1 - dep / 100, 5)) + '. Putting that money aside each month makes you your own insurer.';
+  document.getElementById('mainNote').innerHTML = note;
+  document.getElementById('results').className = 'results show';
+}
+calculate();
+</script>
+</body>
+</html>

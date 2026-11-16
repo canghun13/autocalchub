@@ -56,6 +56,7 @@
 - [Late Car Payment Cost Calculator](https://autocalchub.com/tools/late-car-payment-cost-calculator.html): Late fee under flat, percentage or combined contract terms with an optional cap, extra simple interest, credit reporting status by days late, estimated score drop after 30 days and the extra interest on a future car loan using Experian Q2 2026 rates by tier.
 - [Cosigner Removal Calculator](https://autocalchub.com/tools/cosigner-removal-refinance-calculator.html): Whether a primary borrower can refinance an auto loan alone to release a cosigner — loan-to-value, payment-to-income, debt-to-income, credit, balance, vehicle age, mileage and loan seasoning checks against typical refinance limits, with the solo rate, payment and what to fix.
 - [Cosigner Risk Calculator](https://autocalchub.com/tools/cosigner-risk-calculator.html): What cosigning an auto loan costs the cosigner: the payment's effect on mortgage debt-to-income and maximum home price at a chosen mortgage rate, and the deficiency owed if the borrower stops paying and the car is repossessed.
+- [Drop Full Coverage Calculator](https://autocalchub.com/tools/drop-full-coverage-calculator.html): Whether collision and comprehensive are still worth keeping on a paid-off car: the 10x premium rule per coverage, maximum payout after deductibles, average payout from HLDI claim data, the year each coverage falls below the line, and lender and savings checks.
 
 ## Guides: Buying a Car
 - [How Much Should You Spend on Your First Car?](https://autocalchub.com/blog/how-much-should-i-spend-on-my-first-car.html): How young-driver insurance ($151/month at 22, $330 at 18) and thin-credit loan rates (13.93% near-prime used vs 8.81% prime) shrink a first-car budget; what each salary buys at 22 under the 10% rule and a 15% ceiling, and whether a $32,000 first car works.
@@ -121,6 +122,7 @@
 - [Should You Buy a Car for Uber or Lyft?](https://autocalchub.com/blog/should-you-buy-a-car-for-uber-lyft-2026.html): Buy, rent, or lease for rideshare or delivery driving — the real cost-per-mile math, the lease mileage-cap trap, and the loan contract risk most drivers miss.
 
 ## Guides: Running Costs
+- [Is Full Coverage Worth It on an Older Car?](https://autocalchub.com/blog/is-full-coverage-worth-it-on-an-older-car.html): Collision and comprehensive payout limits, the 10x rule per coverage at NAIC 2024 average premiums, a decision table by car value, claim odds, and raising the deductible as a middle ground.
 - [Is a High-MPG Car Worth the Extra Cost?](https://autocalchub.com/blog/is-a-high-mpg-car-worth-the-extra-cost.html): Why fuel savings are non-linear — a 5 MPG gain is worth 4.7x more at 15 MPG than at 35 MPG — plus payback tables by premium and annual mileage.
 
 - [Is an Extended Car Warranty Worth It?](https://autocalchub.com/blog/is-extended-car-warranty-worth-it.html): The real math on self-insuring vs. buying coverage, and when a warranty actually pays for itself.

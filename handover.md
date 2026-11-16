@@ -1,4 +1,4 @@
-# AutoCalcHub 인수인계 문서 (2026-11-09 기준 · 구글 10/23자, Bing 11/2자)
+# AutoCalcHub 인수인계 문서 (2026-11-16 기준 · 구글 11/9자, Bing 11/13자 일별 추이)
 
 > 이 문서는 새 대화 세션에서 이어받아 작업을 진행할 수 있도록 프로젝트 전체 맥락을 담은 통합 인수인계 문서입니다. Git 루트에 위치하며, 작업할 때마다 이 문서를 최신 상태로 갱신할 것.
 
@@ -12,9 +12,9 @@
 - 디자인: 다크 네이비 + 오렌지, 폰트는 Space Grotesk(제목) + Inter(본문)
 - 월 운영비: 약 38,000원 (Claude Pro + 도메인 5개)
 
-## 2. 콘텐츠 현황 (11/9 주간 세션 기준)
-- 블로그 92개, 툴 46개 (index.html 제외). 11/2 블로그 1 + 툴 1 신규(코사이너 제거 리파이), 보강: 사전승인(중고차 섹션)·주유 클러스터 가격 갱신(블로그 1·툴 6).
-- sitemap.xml 총 URL 151개. 홈 stat `46+`. (11/3 색인 점검: Sources 40페이지·홈 스키마·광고 자리표시 삭제 — 6-32)
+## 2. 콘텐츠 현황 (11/16 주간 세션 기준)
+- 블로그 93개, 툴 47개 (index.html 제외). 11/2 블로그 1 + 툴 1 신규(코사이너 제거 리파이), 보강: 사전승인(중고차 섹션)·주유 클러스터 가격 갱신(블로그 1·툴 6).
+- sitemap.xml 총 URL 153개. 홈 stat `47+`. (11/3 색인 점검: Sources 40페이지·홈 스키마·광고 자리표시 삭제 — 6-32)
 - **작업 컨테이너가 바뀌면 scratchpad 스크립트가 사라짐.** 11/2에 재작성한 빌더/검증 스크립트 요지: 새 페이지는 같은 종류의 최신 페이지(툴=`tools/late-car-payment-cost-calculator.html`, 블로그=`blog/how-much-does-a-late-car-payment-cost.html`)를 템플릿으로 head(title·description·canonical·JSON-LD) 교체 + 인라인 헤더/푸터 재사용. Playwright는 전역 설치(`require('playwright')`, executablePath 불필요).
 - **GitHub push는 Claude GitHub App 연결로 동작**(9/28부터). 세션 프록시가 토큰 직접 push를 막으므로 토큰이 아니라 앱 연결이 필요함. 커밋 작성자는 `Claude <noreply@anthropic.com>`.
 - **블로그 태그 카테고리 13종** (10/22 `🚲 Car-Light Living` 추가, blog-tag 텍스트 "Car-Light Living", blog/index 섹션 id `section-carlight`, tools/index는 EV 앞 하위 헤더): `💰 Buying a Car`, `🏦 Financing`, `⛽ Running Costs`, `⚡ Electric Vehicles`, `📈 Ownership & Value`, `🤝 Selling &amp; Trade-In`, `🚕 Gig &amp; Rideshare`, `🚨 Accidents &amp; Claims`, `🚚 Moving &amp; Relocation`, `🔧 Repairs &amp; Reliability`, `🛻 Trucks &amp; Towing`, `💼 Business &amp; Tax`.
@@ -1642,6 +1642,35 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 2. EV vs gas(18위) 순위·CTR 변화, best-time 연말 시즌 CTR.
 3. `is-a-high-mpg-car-worth-the-extra-cost` 가스값 표 갱신.
 4. 코사이너 클러스터 5개(차주 측 2·해제 2·코사이너 측 2) 반응 — 확장 후보: "코사이너가 차를 팔 수 있나/명의", FHA·VA의 코사인 부채 처리.
+
+## 6-34. 11/16 주간 세션: 보험 클러스터 확장(풀커버리지 해지 툴+블로그) + 고연비 글 가스값
+
+### 자료
+- **Bing은 이번엔 일별 추이(SearchPerformanceOverview, 같은 파일 2개)만** — 페이지·키워드 리포트 없음. 주별: 10/19주 클릭 37·노출 2,133(최고) → 10/26주 27/2,109 → 11/2주 21/1,967 → 11/9주(5일치) 11/1,316. **노출은 주 ~2,000 유지, 클릭만 하락(CTR 1.7%→1.1%)**. 페이지 데이터가 없어 원인 특정 불가 — 다음에 PageTraffic 오면 salary·fill-up·gas-tank 순위/CTR부터 확인. (GA4도 salary 87→74→53, gas-tank 33→32→20 조회로 같은 방향; 연말 차 구매 비수기·가스값 하락 영향 가능성)
+- 구글 Coverage(11/9자): 발견됨 119→123(10/26·11/2 신규 4개 추가), 크롤링됨 2, **탈출 0**. 노출 페이지 24·클릭 0. 변화 없음.
+- GA4(10/19~11/15): 활성 290, 참여 46.2초. salary 53·EV vs gas 42·EV tax credit 23·gas-tank 20·사전승인 14(↑)·코사이너 계산기 10.
+
+### 판단
+- 수익화 최상위 업종인 **자동차 보험** 클러스터가 얇음(보험료 낮추기 블로그·보험 견적기·GAP뿐). "언제 풀커버리지(자차·자기차량손해) 빼나" 검색결과는 Bankrate·Policygenius·Clark·Zebra·KBB 등 **글뿐, 계산기 없음** → 계산기 + 차값별 표 롱테일 글로 진입.
+
+### 작업
+- `tools/drop-full-coverage-calculator.html` (신규, Running Costs, 📉) — 보장별(충돌·종합) **III 10배 규칙**(차값 < 연 보험료×10이면 해지 고려), 자기부담금 뺀 최대 보상액, HLDI 평균 청구빈도(충돌 6.1·종합 8.04 /100대·년)·평균 청구액($8,739·$2,356, 차값 상한)으로 평균 보상액, 감가율로 10배선 아래로 내려가는 연도, 대출/리스 시 "유지 필수", 저축으로 차 교체 가능 여부. 판정 5종(둘 다 유지/충돌만 해지/둘 다 해지/경계-저축 먼저/대출 필수).
+  - 기본값 차값 $4,500·충돌 $516·종합 $283(NAIC 2024 평균)·자기부담 $1,000/$500·저축 $5,000 → "Drop Collision, Keep Comprehensive", 연 $516 절약.
+- `blog/is-full-coverage-worth-it-on-an-older-car.html` (신규, Running Costs) — 차값별 판정표($2k~$10k), 평균 보험료 기준 충돌 해지선 ~$5,200·종합 ~$2,800, 청구 확률(충돌 16년에 1번꼴), 해지 조건(완납·교체 가능), 자기부담금 상향 대안, $10k 차는 15%/년 감가로 약 5년 후 선 아래.
+- `blog/is-a-high-mpg-car-worth-the-extra-cost.html` (보강) — 가스값 $3.30 → $4.17로 표 3개·본문 전부 재계산(25→35MPG 연 $715·월 $60, 페이백 표). **이로써 낡은 가스값 이월 과제 종료**(남은 $4.48은 날짜 명시된 9월 수치).
+- 허브(Running Costs)·홈(47+)·sitemap(153)·llms, 내부링크 8개. 30일 지난 trade-in-vs-private-sale 툴 New 배지 제거.
+
+### 데이터 출처 (직접 확인)
+- NAIC 2024 Auto Insurance Database 평균 보험료(책임 $813·충돌 $516·종합 $283·합계 $1,613). KBB(III 10배 규칙 인용). HLDI R-23(충돌 6.1/100, $8,739)·C-22(종합 8.04/100, $2,356) — 2020~22년식 기준이라 노후차엔 상한(차값) 적용.
+
+### 검증
+- 풀커버리지 툴: 파이썬 독립 구현 ↔ node 목업 DOM 7개 시나리오 일치.
+- Playwright 전 페이지(154) 모바일 스윕 넘침 0·JS 오류 0, 신규 툴 결과 간격 69px, 블로그 표 모바일 폭 맞춤(`min-width:0`). 검증 스크립트 통과.
+
+### ⚠️ 다음 세션 필독
+1. **Bing 클릭 하락 원인** — PageTraffic/Keyword 리포트 오면 상위 페이지별 순위·CTR 비교(10/26 자료와).
+2. 보험 클러스터 확장 후보: "자기부담금 $500 vs $1,000 계산", "차량 연식별 보험료"(대형사 경쟁 확인 필요).
+3. 코사이너 5종·연체·EV vs gas 갱신 반응.
 
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 
