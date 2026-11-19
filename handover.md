@@ -1692,6 +1692,25 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 - 사이트 안에서 할 수 있는 건 거의 소진. **외부 링크/언급**이 유일한 큰 레버 — 사용자에게 저비용 방법 제안함(기자 질의 응답 플랫폼에 데이터 인용 제공, 질문 커뮤니티 실답변). **링크 구매는 금지(페널티 위험).**
 - 도메인 유지비는 연 $10.46 수준.
 
+## 6-36. 11/19 홈페이지 전면 리뉴얼 (사용자 지시: 애드센스 "가치 없는 콘텐츠" 대응, 첫인상 개선)
+
+### 바뀐 구조 (`index.html`)
+1. **히어로**: "Car money decisions, worked out." + 차별점 문장(기본 계산기가 못 답하는 질문, 가정 공개, 출처 링크) + 버튼 2개(계산기 찾기 / How we calculate) + **"Common questions" 칩 6개**(연봉 예산·쿼터탱크 주유비·우버 vs 소유·자차 해지·연체·트레이드인) + 우측 **"Numbers we're using now" 카드**(가스 $4.17 AAA 11/1, 모기지 7.18% Freddie Mac 11/5, 중고차론 프라임 8.81% Experian Q2, 신차 보유비 $1,072/월 AAA 2026). ⚠️ **이 카드 수치는 낡으면 역효과 — 가스값·금리 갱신 때 같이 바꿀 것.**
+2. **"Answers you won't get from a payment calculator"**: 실제 사이트 수치 3개($77,500 코사이너→모기지, $3,080 EV 연 추가비용, $1,100+ 30일 연체) → 각 툴/글 링크.
+3. **"Start with the decision you're making"**: 기존 47개 툴 카드 벽을 **6개 그룹(구매·대출·운행비·EV·가치/판매/청구·리스/생활/업무) 질문형 목록**으로 재구성(47개 링크 전부 유지, 빌드 시 기존 링크 집합과 일치 assert). CSS columns 2열 메이슨리.
+4. **"How we build these"**(사실만): 수식 설명, 출처 링크, 신규 계산기 독립 구현 대조, 갱신·정정 공개 → methodology·정정 이력·about 링크.
+5. **Guides**: 최신 3개 카드 + "Most read" 6개(Bing 상위 글).
+- 제거: "0 Hidden fees / 100%" 같은 빈 통계, "Built for real drivers" 블록.
+- title/description/og/WebSite JSON-LD description 교체: "AutoCalcHub — Free Car Cost Calculators With the Math Shown".
+- 푸터 아래 런칭 디렉터리 배지 줄(사용자가 직접 넣은 것)은 그대로 둠. ⚠️ 그중 `boostdomainrating.com`(도메인 점수 올려주는 서비스) 배지는 구글 링크 정책상 좋지 않은 신호일 수 있어 사용자에게 제거 여부 판단 요청함.
+
+### ⚠️ 이후 사이트 반영 스크립트 변경점
+- 홈에 `class="tool-card"`·`>47+<` 통계가 **더 이상 없음**. 새 툴 추가 시: 해당 그룹 `<div class="group" id="g-buying|g-financing|g-running|g-ev|g-selling|g-life">`의 `<ul class="tool-list">`에 `<li><a href="tools/X.html"><span class="t-name">이름</span><span class="t-q">질문</span></a></li>` 추가 + 히어로 `<strong>47</strong> calculators`와 "All 47 calculators" 숫자 +1.
+- 새 블로그: `<div class="blog-grid">`의 최신 3개 카드 교체 방식은 동일(4칸 들여쓰기 `<a href="blog/..." class="blog-card">`), 히어로 `<strong>93</strong> guides`·"View all 93 guides" 숫자 +1.
+
+### 검증
+- Playwright 1280/390 전체 스크린샷 확인: 가로 넘침 0, JS 오류 0, nav 1. 검증 스크립트 통과.
+
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 
 - 이 저장소는 사용자가 매 세션 GitHub Personal Access Token을 직접 발급해서 대화 중에 전달하는 방식으로 운영됨. 토큰이 없으면 clone은 되지만(public repo) push는 불가.

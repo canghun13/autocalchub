@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AutoCalcHub – Free Car & Auto Calculators</title>
-  <meta name="description" content="Free car calculators: car loan, fuel cost, MPG, depreciation, EV charging cost, and more. Make smarter auto decisions with AutoCalcHub.">
-  <meta property="og:title" content="AutoCalcHub – Free Car & Auto Calculators">
-  <meta property="og:description" content="Free auto calculators for car loans, fuel costs, MPG, depreciation, and EV charging.">
+  <title>AutoCalcHub — Free Car Cost Calculators With the Math Shown</title>
+  <meta name="description" content="Free car calculators for the decisions basic calculators skip: affordability by salary, late payments, cosigning, refinancing, fill-up and fuel costs, insurance, EVs and trade-ins — every assumption shown and every source linked.">
+  <meta property="og:title" content="AutoCalcHub — Free Car Cost Calculators With the Math Shown">
+  <meta property="og:description" content="Free car calculators for the decisions basic calculators skip: affordability by salary, late payments, cosigning, refinancing, fill-up and fuel costs, insurance, EVs and trade-ins — every assumption shown and every source linked.">
   <link rel="canonical" href="https://autocalchub.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,196 +14,108 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
     /* HERO */
-    .hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
-      padding: 6rem 2rem 5rem;
-      text-align: center;
-      color: white;
-    }
-    .hero-tag {
-      display: inline-block;
-      background: rgba(244,124,32,0.2);
-      color: var(--orange-light);
-      border: 1px solid rgba(244,124,32,0.4);
-      font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.35rem 1rem; border-radius: 100px;
-      margin-bottom: 1.5rem;
-    }
-    h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      font-weight: 700;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      color: white;
-      margin-bottom: 1.25rem;
-    }
+    .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%); color: white; padding: 5rem 1.5rem 4rem; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 3rem; align-items: start; }
+    .now-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: 14px; padding: 1.5rem; margin-top: 3.25rem; }
+    .now-card h2 { font-family: 'Space Grotesk', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange-light); margin-bottom: 0.25rem; }
+    .now-card .now-sub { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
+    .now-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-top: 1px solid rgba(255,255,255,0.1); }
+    .now-row span { font-size: 0.84rem; color: rgba(255,255,255,0.7); line-height: 1.35; }
+    .now-row small { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-top: 0.15rem; }
+    .now-row strong { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; color: white; white-space: nowrap; }
+    .hero-tag { display: inline-block; background: rgba(244,124,32,0.18); color: var(--orange-light); border: 1px solid rgba(244,124,32,0.4); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 100px; margin-bottom: 1.25rem; }
+    h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.1rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.03em; color: white; margin-bottom: 1.1rem; max-width: 760px; }
     h1 span { color: var(--orange); }
-    .hero-sub {
-      font-size: 1.05rem; color: rgba(255,255,255,0.7);
-      max-width: 520px; margin: 0 auto 2.5rem;
-      font-weight: 300;
-    }
-    .hero-cta {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--orange);
-      color: white;
-      padding: 0.875rem 2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 0.9rem; font-weight: 600;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .hero-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
+    .hero-sub { font-size: 1.05rem; color: rgba(255,255,255,0.75); max-width: 640px; margin-bottom: 2rem; line-height: 1.65; }
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.85rem 1.6rem; border-radius: 8px; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: background 0.2s, transform 0.2s; }
+    .btn-primary { background: var(--orange); color: white; }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-1px); }
+    .btn-ghost { color: white; border: 1px solid rgba(255,255,255,0.3); }
+    .btn-ghost:hover { border-color: var(--orange-light); color: var(--orange-light); }
+    .q-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 0.75rem; }
+    .q-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .q-list a { color: white; text-decoration: none; font-size: 0.88rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); padding: 0.55rem 0.9rem; border-radius: 100px; transition: background 0.2s, border-color 0.2s; }
+    .q-list a:hover { background: rgba(244,124,32,0.18); border-color: var(--orange); }
+    .hero-facts { margin-top: 2.5rem; font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+    .hero-facts strong { color: white; font-family: 'Space Grotesk', sans-serif; }
 
-    /* STATS BAR */
-    .stats-bar {
-      background: white;
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem 2rem;
-      display: flex; justify-content: center; gap: 4rem;
-      flex-wrap: wrap;
-    }
-    .stat { text-align: center; }
-    .stat-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.75rem; font-weight: 700;
-      color: var(--navy);
-    }
-    .stat-label { font-size: 0.8rem; color: var(--light); margin-top: 0.1rem; }
+    /* SECTIONS */
+    .section { padding: 4.5rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+    .section-header { margin-bottom: 2.25rem; }
+    .section-header h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.6rem, 3vw, 2rem); font-weight: 700; letter-spacing: -0.02em; color: var(--charcoal); }
+    .section-header p { color: var(--mid); margin-top: 0.5rem; max-width: 640px; line-height: 1.6; }
+    .section-header-row { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .link-more { font-size: 0.875rem; font-weight: 600; color: var(--orange); text-decoration: none; white-space: nowrap; }
 
-    /* TOOLS GRID */
-    .section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
-    .section-header { margin-bottom: 3rem; }
-    .section-header h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem; font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--charcoal);
-    }
-    .section-header p { color: var(--mid); margin-top: 0.5rem; }
+    /* PROOF */
+    .proof-band { background: var(--off-white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    .proof-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+    .proof-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: var(--orange-light); }
+    .proof-num { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; color: var(--navy); letter-spacing: -0.02em; line-height: 1; }
+    .proof-unit { font-size: 0.8rem; font-weight: 600; color: var(--orange); text-transform: uppercase; letter-spacing: 0.06em; margin: 0.4rem 0 0.9rem; }
+    .proof-card p { font-size: 0.9rem; color: var(--mid); line-height: 1.55; flex: 1; }
+    .proof-link { margin-top: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--orange); }
 
-    .tools-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.25rem;
-    }
-    .tool-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-      position: relative; overflow: hidden;
-    }
-    .tool-card::before {
-      content: '';
-      position: absolute; top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--orange), var(--orange-light));
-      opacity: 0; transition: opacity 0.2s;
-    }
-    .tool-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: var(--orange-light); }
-    .tool-card:hover::before { opacity: 1; }
-    .tool-card.featured { border-color: var(--orange-light); }
-    .tool-card.featured::before { opacity: 1; }
+    /* DECISION GROUPS */
+    .group-grid { columns: 2; column-gap: 1.25rem; }
+    .group { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem 1.5rem 1rem; break-inside: avoid; margin-bottom: 1.25rem; display: inline-block; width: 100%; }
+    .group-head { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .group-head h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--charcoal); display: flex; align-items: center; gap: 0.6rem; }
+    .group-icon { width: 36px; height: 36px; background: var(--orange-pale); border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .group-head a { font-size: 0.78rem; font-weight: 600; color: var(--orange); text-decoration: none; white-space: nowrap; }
+    .tool-list { list-style: none; }
+    .tool-list li { border-top: 1px solid var(--border); }
+    .tool-list a { display: block; padding: 0.7rem 0; text-decoration: none; color: inherit; }
+    .tool-list a:hover .t-name { color: var(--orange); }
+    .t-name { display: block; font-size: 0.92rem; font-weight: 600; color: var(--charcoal); transition: color 0.2s; }
+    .t-q { display: block; font-size: 0.83rem; color: var(--mid); margin-top: 0.15rem; line-height: 1.45; }
 
-    .tool-icon {
-      width: 48px; height: 48px;
-      background: var(--orange-pale);
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.5rem; margin-bottom: 1rem;
-    }
-    .tool-badge {
-      display: inline-block;
-      background: var(--orange-pale);
-      color: var(--orange);
-      font-size: 0.7rem; font-weight: 600;
-      letter-spacing: 0.05em; text-transform: uppercase;
-      padding: 0.2rem 0.6rem; border-radius: 100px;
-      margin-bottom: 0.75rem;
-    }
-    .tool-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--charcoal); }
-    .tool-card p { font-size: 0.875rem; color: var(--mid); line-height: 1.5; }
-    .tool-arrow {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      margin-top: 1rem; font-size: 0.8rem; font-weight: 600;
-      color: var(--orange);
-    }
+    /* METHOD */
+    .method { background: var(--navy); }
+    .method .section-header h2 { color: white; }
+    .method .section-header p { color: rgba(255,255,255,0.65); }
+    .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .method-item { background: var(--navy-light); border-radius: 12px; padding: 1.5rem; }
+    .method-item h3 { font-size: 0.98rem; font-weight: 600; color: white; margin-bottom: 0.5rem; }
+    .method-item p { font-size: 0.85rem; color: rgba(255,255,255,0.65); line-height: 1.55; }
+    .method-links { margin-top: 2rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .method-links a { color: var(--orange-light); font-size: 0.88rem; font-weight: 600; text-decoration: none; }
 
-    /* WHY SECTION */
-    .why-section { background: var(--navy); padding: 5rem 2rem; }
-    .why-inner {
-      max-width: 1100px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-      align-items: center;
-    }
-    .why-text h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.25rem; font-weight: 700;
-      line-height: 1.2; letter-spacing: -0.02em;
-      margin-bottom: 1.25rem; color: white;
-    }
-    .why-text h2 span { color: var(--orange); }
-    .why-text p { color: rgba(255,255,255,0.6); margin-bottom: 1rem; font-size: 0.95rem; }
-    .why-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-    .why-list li {
-      display: flex; gap: 0.75rem; align-items: flex-start;
-      font-size: 0.9rem; color: rgba(255,255,255,0.7);
-    }
-    .why-list li::before {
-      content: '✓'; flex-shrink: 0;
-      width: 22px; height: 22px;
-      background: rgba(244,124,32,0.2);
-      color: var(--orange);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.7rem; font-weight: 700; margin-top: 1px;
-    }
-    .why-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .why-card {
-      background: var(--navy-light); border-radius: 12px;
-      padding: 1.5rem; text-align: center;
-    }
-    .why-card:first-child { grid-column: 1 / -1; background: var(--orange); }
-    .why-card-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.5rem; font-weight: 700; color: white;
-    }
-    .why-card-label { font-size: 0.8rem; color: rgba(255,255,255,0.7); margin-top: 0.25rem; }
-
-    /* BLOG PREVIEW */
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
-    }
-    .blog-card {
-      background: white; border: 1px solid var(--border);
-      border-radius: 12px; padding: 1.75rem;
-      text-decoration: none; color: inherit;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+    /* GUIDES */
+    .guides { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    .blog-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; }
     .blog-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
-    .blog-tag {
-      display: inline-block;
-      background: var(--orange-pale); color: var(--orange);
-      font-size: 0.7rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.05em;
-      padding: 0.2rem 0.6rem; border-radius: 100px;
-      margin-bottom: 0.75rem;
-    }
+    .blog-tag { display: inline-block; background: var(--orange-pale); color: var(--orange); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.2rem 0.6rem; border-radius: 100px; margin-bottom: 0.75rem; }
     .blog-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--charcoal); line-height: 1.4; }
     .blog-card p { font-size: 0.875rem; color: var(--mid); line-height: 1.5; }
     .blog-meta { font-size: 0.75rem; color: var(--light); margin-top: 1rem; }
+    .popular { background: var(--off-white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+    .popular h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--charcoal); }
+    .popular ol { padding-left: 1.2rem; columns: 2; column-gap: 2.5rem; }
+    .popular li { break-inside: avoid; }
+    .popular li { padding: 0.45rem 0; font-size: 0.9rem; color: var(--mid); }
+    .popular a { color: var(--charcoal); text-decoration: none; font-weight: 500; }
+    .popular a:hover { color: var(--orange); }
 
-    @media (max-width: 768px) {
-      .why-inner { grid-template-columns: 1fr; }
-      .stats-bar { gap: 2rem; }
+    @media (max-width: 900px) {
+      .proof-grid { grid-template-columns: 1fr; }
+      .group-grid { columns: 1; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .popular ol { columns: 1; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .now-card { margin-top: 0; }
+      .method-grid { grid-template-columns: 1fr 1fr; }
+      .guides { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .hero { padding: 3.25rem 1rem 3rem; }
+      .section { padding: 3.25rem 1rem; }
+      .method-grid { grid-template-columns: 1fr; }
+      .q-list a { font-size: 0.84rem; }
     }
   </style>
   <!-- Google tag (gtag.js) -->
@@ -224,7 +136,7 @@
         "@id": "https://autocalchub.com/#website",
         "url": "https://autocalchub.com/",
         "name": "AutoCalcHub",
-        "description": "Free car calculators: car loan, fuel cost, MPG, depreciation, EV charging cost, and more. Make smarter auto decisions with AutoCalcHub.",
+        "description": "Free car calculators for the decisions basic calculators skip: affordability by salary, late payments, cosigning, refinancing, fill-up and fuel costs, insurance, EVs and trade-ins — every assumption shown and every source linked.",
         "inLanguage": "en-US",
         "publisher": {
           "@id": "https://autocalchub.com/#organization"
@@ -262,365 +174,207 @@
 
 <!-- HERO -->
 <section class="hero">
-  <span class="hero-tag">Free · No signup · Instant results</span>
-  <h1>Smarter <span>car decisions</span><br>start here</h1>
-  <p class="hero-sub">Free auto calculators for car loans, fuel costs, depreciation, EV charging, and more — built for real drivers.</p>
-  <a href="#tools" class="hero-cta">Explore all tools ↓</a>
+  <div class="hero-inner hero-grid">
+    <div>
+    <span class="hero-tag">Free · No signup · Sources linked</span>
+    <h1>Car money decisions, <span>worked out.</span></h1>
+    <p class="hero-sub">Calculators for the questions a basic loan calculator can't answer — what cosigning does to your mortgage, when to drop full coverage, what a late payment really costs. Every assumption is shown, and every statistic links to where it came from.</p>
+    <div class="hero-actions">
+      <a href="#decisions" class="btn btn-primary">Find your calculator ↓</a>
+      <a href="methodology.html" class="btn btn-ghost">How we calculate</a>
+    </div>
+    <div class="q-label">Common questions</div>
+    <div class="q-list">
+      <a href="blog/how-much-should-i-spend-on-a-car-based-on-salary.html">How much should I spend on a car on my salary?</a>
+      <a href="tools/gas-tank-fill-cost-calculator.html">What does a fill-up cost from a quarter tank?</a>
+      <a href="blog/is-it-cheaper-to-uber-than-own-a-car.html">Is it cheaper to Uber than own a car?</a>
+      <a href="tools/drop-full-coverage-calculator.html">Should I drop collision on my old car?</a>
+      <a href="blog/how-much-does-a-late-car-payment-cost.html">What if my car payment is late?</a>
+      <a href="tools/trade-in-vs-private-sale-calculator.html">Trade in or sell privately?</a>
+    </div>
+    <p class="hero-facts"><strong>47</strong> calculators · <strong>93</strong> guides · fuel prices from AAA, loan rates from Experian, insurance data from NAIC</p>
+    </div>
+    <aside class="now-card" aria-label="Current figures used on this site">
+      <h2>Numbers we're using now</h2>
+      <p class="now-sub">Updated November 2026</p>
+      <div class="now-row"><span>Regular gas, US average<small>AAA, Nov 1, 2026</small></span><strong>$4.17</strong></div>
+      <div class="now-row"><span>30-year mortgage rate<small>Freddie Mac, Nov 5, 2026</small></span><strong>7.18%</strong></div>
+      <div class="now-row"><span>Used-car loan, prime credit<small>Experian, Q2 2026</small></span><strong>8.81%</strong></div>
+      <div class="now-row"><span>Cost to own a new car<small>AAA Your Driving Costs 2026</small></span><strong>$1,072/mo</strong></div>
+    </aside>
+  </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-bar">
-  <div class="stat"><div class="stat-num">47+</div><div class="stat-label">Free tools</div></div>
-  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">No signup needed</div></div>
-  <div class="stat"><div class="stat-num">0</div><div class="stat-label">Hidden fees</div></div>
+<!-- PROOF -->
+<div class="proof-band">
+  <section class="section">
+    <div class="section-header">
+      <h2>Answers you won't get from a payment calculator</h2>
+      <p>Each of these comes from a calculator or guide on this site, using public data you can check.</p>
+    </div>
+    <div class="proof-grid">
+      <a href="tools/cosigner-risk-calculator.html" class="proof-card">
+        <div class="proof-num">$77,500</div>
+        <div class="proof-unit">less mortgage</div>
+        <p>A $525 cosigned car payment counts as your debt. At a 7.18% mortgage rate, that is roughly how much less you could borrow for a home.</p>
+        <span class="proof-link">Cosigner Risk Calculator →</span>
+      </a>
+      <a href="blog/electric-vs-gas-car-true-cost.html" class="proof-card">
+        <div class="proof-num">$3,080</div>
+        <div class="proof-unit">a year more</div>
+        <p>What a midsize EV costs to own each year over the gas version in AAA's 2026 data — despite fuel that is 66–70% cheaper.</p>
+        <span class="proof-link">EV vs gas, the full math →</span>
+      </a>
+      <a href="tools/late-car-payment-cost-calculator.html" class="proof-card">
+        <div class="proof-num">$1,100+</div>
+        <div class="proof-unit">on your next loan</div>
+        <p>Five days late costs about 40 cents in interest. Thirty days late can add $1,100 to $2,100 to your next car loan.</p>
+        <span class="proof-link">Late Car Payment Cost Calculator →</span>
+      </a>
+    </div>
+  </section>
 </div>
 
-<!-- AD -->
-
-<!-- TOOLS GRID -->
-<section class="section" id="tools">
-  <div class="section-header">
-    <h2>Auto Calculators</h2>
-    <p>Pick a tool and get your answer in seconds.</p>
+<!-- DECISIONS -->
+<section class="section" id="decisions">
+  <div class="section-header section-header-row">
+    <div>
+      <h2>Start with the decision you're making</h2>
+      <p>All 47 calculators, grouped by where you are with the car.</p>
+    </div>
+    <a href="tools/" class="link-more">Browse all tools →</a>
   </div>
-
-    <div class="tools-grid">
-    <a href="tools/car-loan-calculator.html" class="tool-card featured">
-      <div class="tool-icon">🚗</div>
-      <span class="tool-badge">Most Popular</span>
-      <h3>Car Loan Calculator</h3>
-      <p>Calculate your monthly payment, total interest, and full cost of any auto loan instantly.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-affordability-calculator.html" class="tool-card">
-      <div class="tool-icon">🎯</div>
-      <h3>Car Affordability Calculator</h3>
-      <p>Find out exactly how much car you can afford based on your income and the 20/4/10 rule.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/fuel-cost-calculator.html" class="tool-card">
-      <div class="tool-icon">⛽</div>
-      <h3>Fuel Cost Calculator</h3>
-      <p>Estimate how much you'll spend on gas for any trip or over a full year of driving.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/mpg-calculator.html" class="tool-card">
-      <div class="tool-icon">📊</div>
-      <h3>MPG Calculator</h3>
-      <p>Find your car's real-world fuel efficiency from miles driven and gallons used.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-depreciation-calculator.html" class="tool-card">
-      <div class="tool-icon">📉</div>
-      <h3>Car Depreciation Calculator</h3>
-      <p>See how much your car loses in value over time and what it will be worth in future years.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/ev-charging-cost-calculator.html" class="tool-card">
-      <div class="tool-icon">⚡</div>
-      <h3>EV Charging Cost Calculator</h3>
-      <p>Calculate the cost to charge your electric vehicle at home or at a public charger.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/gas-vs-ev-savings-calculator.html" class="tool-card">
-      <div class="tool-icon">⚡</div>
-      <h3>Gas vs EV Savings Calculator</h3>
-      <p>Compare the 5-year total cost of a gas car vs an electric vehicle side by side.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/road-trip-cost-calculator.html" class="tool-card">
-      <div class="tool-icon">🗺️</div>
-      <h3>Road Trip Cost Calculator</h3>
-      <p>Estimate the total cost of your road trip including gas, food, lodging, and more.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-insurance-estimator.html" class="tool-card">
-      <div class="tool-icon">🛡️</div>
-      <h3>Car Insurance Cost Estimator</h3>
-      <p>Get a rough estimate of what you should be paying for car insurance based on your profile.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/used-car-value-calculator.html" class="tool-card">
-      <div class="tool-icon">🔍</div>
-      <h3>Used Car Value Calculator</h3>
-      <p>Estimate the fair market value of any used car based on age, mileage, and condition.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-lease-vs-buy-calculator.html" class="tool-card">
-      <div class="tool-icon">🔑</div>
-      <h3>Car Lease vs Buy Calculator</h3>
-      <p>Compare the total cost of leasing vs buying a car to see which option saves you more money.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/cash-vs-finance-car-calculator.html" class="tool-card">
-      <div class="tool-icon">💰</div>
-      <h3>Cash vs Finance Car Calculator</h3>
-      <p>Compare paying cash outright vs financing and investing the difference — see which actually saves more.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-down-payment-calculator.html" class="tool-card">
-      <div class="tool-icon">💵</div>
-      <h3>Car Down Payment Calculator</h3>
-      <p>See how different down payment amounts affect your monthly payment, total interest, and equity position.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-maintenance-cost-calculator.html" class="tool-card">
-      <div class="tool-icon">🔧</div>
-      <h3>Car Maintenance Cost Calculator</h3>
-      <p>Estimate your annual maintenance budget based on your vehicle's make type, age, and mileage.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-trade-in-value-estimator.html" class="tool-card">
-      <div class="tool-icon">🔄</div>
-      <h3>Car Trade-In Value Estimator</h3>
-      <p>Estimate what a dealer will offer for your car vs. private party value, and decide which option makes more sense.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-sales-tax-calculator.html" class="tool-card">
-      <div class="tool-icon">🧾</div>
-      <h3>Car Sales Tax Calculator</h3>
-      <p>Find out exactly how much sales tax you'll owe on a vehicle purchase in any US state — with trade-in deductions included.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/gap-insurance-calculator.html" class="tool-card">
-      <div class="tool-icon">🛡️</div>
-      <h3>GAP Insurance Calculator</h3>
-      <p>Find out if you're underwater on your loan and whether GAP coverage makes financial sense for your situation.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/totaled-car-settlement-calculator.html" class="tool-card">
-      <div class="tool-icon">🚨</div>
-      <h3>Totaled Car Settlement Calculator</h3>
-      <p>See if your car meets the total loss threshold, what the payout is after your deductible, and whether keeping the salvage pays.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/ship-car-vs-drive-calculator.html" class="tool-card">
-      <div class="tool-icon">🚚</div>
-      <h3>Ship a Car or Drive It?</h3>
-      <p>Compare auto transport against driving it yourself — fuel, hotels, wear, the flight back, and your time.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/lease-excess-mileage-calculator.html" class="tool-card">
-      <div class="tool-icon">📋</div>
-      <h3>Lease Excess Mileage Calculator</h3>
-      <p>Project your overage charge, the daily budget that avoids it, and whether buying out the lease beats paying it.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/repair-or-replace-car-calculator.html" class="tool-card">
-      <div class="tool-icon">🔧</div>
-      <h3>Repair or Replace Calculator</h3>
-      <p>The 50% rule ignores what a replacement costs. Compare the true cost per month of each path.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/truck-vs-rent-calculator.html" class="tool-card">
-      <div class="tool-icon">🛻</div>
-      <h3>Do You Actually Need a Truck?</h3>
-      <p>What a pickup costs over a smaller vehicle, and how many truck rentals that premium buys.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/mileage-deduction-method-calculator.html" class="tool-card">
-      <div class="tool-icon">💼</div>
-      <h3>Standard Mileage vs Actual Expenses</h3>
-      <p>The first-year election is permanent. Compare both methods across five years, not just year one.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-affordability-rules-comparison.html" class="tool-card">
-      <div class="tool-icon">📐</div>
-      <h3>Car Affordability Rules Compared</h3>
-      <p>Six competing rules of thumb applied to your salary side by side — they disagree by nearly 8x.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/drop-full-coverage-calculator.html" class="tool-card">
-      <div class="tool-icon">📉</div>
-      <span class="tool-badge">New</span>
-      <h3>Drop Full Coverage Calculator</h3>
-      <p>Is collision still worth it on your older car? The 10x test and the year it stops paying off.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/cosigner-risk-calculator.html" class="tool-card">
-      <div class="tool-icon">🏠</div>
-      <span class="tool-badge">New</span>
-      <h3>Cosigner Risk Calculator</h3>
-      <p>How much cosigning a car loan cuts your home budget, and what you could owe if it goes bad.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/cosigner-removal-refinance-calculator.html" class="tool-card">
-      <div class="tool-icon">🤝</div>
-      <span class="tool-badge">New</span>
-      <h3>Cosigner Removal Calculator</h3>
-      <p>Can you refinance alone and release your cosigner? See the checks you pass and what to fix.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/late-car-payment-cost-calculator.html" class="tool-card">
-      <div class="tool-icon">⏰</div>
-      <span class="tool-badge">New</span>
-      <h3>Late Car Payment Cost Calculator</h3>
-      <p>The late fee, the interest, and what reaching 30 days late could cost on your next loan.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/second-car-cost-calculator.html" class="tool-card">
-      <div class="tool-icon">🚗</div>
-      <span class="tool-badge">New</span>
-      <h3>Second Car Cost Calculator</h3>
-      <p>Is the second car worth keeping? Its real cost against what would replace it.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-vs-uber-calculator.html" class="tool-card">
-      <div class="tool-icon">🚕</div>
-      <span class="tool-badge">New</span>
-      <h3>Car vs Uber Calculator</h3>
-      <p>The trip count where owning beats rideshare — for a financed or paid-off car.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-payment-deferment-calculator.html" class="tool-card">
-      <div class="tool-icon">📅</div>
-      <span class="tool-badge">New</span>
-      <h3>Car Payment Deferment Calculator</h3>
-      <p>What skipping a car payment really costs, and when refinancing is better.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/trade-in-vs-private-sale-calculator.html" class="tool-card">
-      <div class="tool-icon">⚖️</div>
-      <h3>Trade-In vs Private Sale Calculator</h3>
-      <p>Count your state's trade-in tax credit and see the private price you'd need to come out ahead.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-payment-to-income-calculator.html" class="tool-card">
-      <div class="tool-icon">💵</div>
-      <h3>Car Payment to Income Calculator</h3>
-      <p>See a payment the way you and a lender each see it — and the gap between approved and affordable.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/gas-tank-fill-cost-calculator.html" class="tool-card">
-      <div class="tool-icon">🛢️</div>
-      <h3>Gas Tank Fill-Up Cost Calculator</h3>
-      <p>What a fill costs from a quarter, a half or empty — by vehicle class, grade and your local price.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/dealer-rate-markup-calculator.html" class="tool-card">
-      <div class="tool-icon">💳</div>
-      <h3>Dealer Rate Markup Calculator</h3>
-      <p>Put your pre-approved rate next to the dealer's quote — see the markup and what it costs.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-refinance-calculator.html" class="tool-card">
-      <div class="tool-icon">🔁</div>
-      <h3>Car Refinance Calculator</h3>
-      <p>See how much you could save by refinancing your auto loan — monthly savings and break-even point.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-loan-interest-deduction-calculator.html" class="tool-card">
-      <div class="tool-icon">🧾</div>
-      <h3>Car Loan Interest Deduction Calculator</h3>
-      <p>Estimate the 2025–2028 car loan interest deduction, with the income phase-out applied year by year.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-early-payoff-calculator.html" class="tool-card">
-      <div class="tool-icon">⏱️</div>
-      <h3>Car Early Payoff Calculator</h3>
-      <p>See how much interest you save and how many months you cut by paying extra each month.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-total-cost-of-ownership-calculator.html" class="tool-card">
-      <div class="tool-icon">📦</div>
-      <h3>Car Total Cost of Ownership Calculator</h3>
-      <p>Calculate the true 5-year cost of owning a car — purchase, interest, insurance, fuel, and depreciation.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/negative-equity-rollover-calculator.html" class="tool-card">
-      <div class="tool-icon">⚠️</div>
-      <h3>Negative Equity Rollover Calculator</h3>
-      <p>See exactly how much extra interest and monthly payment you take on by rolling negative equity into a new loan.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/biweekly-car-payment-calculator.html" class="tool-card">
-      <div class="tool-icon">📆</div>
-      <h3>Bi-Weekly Car Payment Calculator</h3>
-      <p>See how much interest and time you save by switching your car loan to bi-weekly payments.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/zero-percent-apr-vs-rebate-calculator.html" class="tool-card">
-      <div class="tool-icon">🎁</div>
-      <h3>0% APR vs Cash Rebate Calculator</h3>
-      <p>Compare a 0% financing offer against taking the rebate and financing at your own rate — see which wins.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/auto-loan-cosigner-calculator.html" class="tool-card">
-      <div class="tool-icon">🤝</div>
-      <h3>Auto Loan Cosigner Calculator</h3>
-      <p>See how much a cosigner could lower your monthly payment and total interest.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/rideshare-car-cost-per-mile-calculator.html" class="tool-card">
-      <div class="tool-icon">🚕</div>
-      <h3>Rideshare Car Cost-Per-Mile Calculator</h3>
-      <p>Compare buying, renting, and leasing for Uber, Lyft, or delivery driving on real cost per mile.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-tariff-impact-calculator.html" class="tool-card">
-      <div class="tool-icon">📋</div>
-      <h3>Car Tariff Impact Calculator</h3>
-      <p>Check your VIN's country of assembly and estimate the 2026 tariff impact on your price.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/car-subscription-vs-lease-vs-buy-calculator.html" class="tool-card">
-      <div class="tool-icon">🔄</div>
-      <h3>Car Subscription vs Lease vs Buy Calculator</h3>
-      <p>Compare the true monthly cost of a subscription, lease, and buying — all inclusive.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-    <a href="tools/lease-takeover-cost-calculator.html" class="tool-card">
-      <div class="tool-icon">🔄</div>
-      <h3>Lease Takeover Cost Calculator</h3>
-      <p>Compare taking over someone else's lease against starting a new lease for the same term.</p>
-      <div class="tool-arrow">Calculate now →</div>
-    </a>
-  </div>
-  <div style="text-align:center;margin-top:2rem">
-    <a href="tools/" style="display:inline-block;background:var(--navy);color:white;padding:0.8rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;transition:background 0.2s" onmouseover="this.style.background='#243b55'" onmouseout="this.style.background='var(--navy)'">View all tools →</a>
-  </div>
-</section>
-
-<!-- WHY -->
-<div class="why-section">
-  <div class="why-inner">
-    <div class="why-text">
-      <h2>Built for <span>real drivers</span></h2>
-      <p>AutoCalcHub was built because car ownership decisions shouldn't require a finance degree. Our tools give you clear numbers, fast.</p>
-      <ul class="why-list">
-        <li>All calculators use standard auto industry formulas</li>
-        <li>No account needed. No email required. Just results.</li>
-        <li>Works on any device — desktop, tablet, or phone</li>
-        <li>New tools added regularly</li>
+  <div class="group-grid">
+    <div class="group" id="g-buying">
+      <div class="group-head">
+        <h3><span class="group-icon">🛒</span>Buying a car</h3>
+        <a href="blog/#section-buying">Guides →</a>
+      </div>
+      <ul class="tool-list">
+          <li><a href="tools/car-payment-to-income-calculator.html"><span class="t-name">Car Payment to Income</span><span class="t-q">What a lender will approve on my salary — and what I can actually afford?</span></a></li>
+          <li><a href="tools/car-affordability-calculator.html"><span class="t-name">Car Affordability</span><span class="t-q">How much car can I afford with the 20/4/10 rule?</span></a></li>
+          <li><a href="tools/car-affordability-rules-comparison.html"><span class="t-name">Affordability Rules Compared</span><span class="t-q">What does each budgeting rule say for my income?</span></a></li>
+          <li><a href="tools/car-sales-tax-calculator.html"><span class="t-name">Car Sales Tax by State</span><span class="t-q">How much tax will I pay, after trade-in credit and rebates?</span></a></li>
+          <li><a href="tools/dealer-rate-markup-calculator.html"><span class="t-name">Dealer Rate Markup</span><span class="t-q">What is the dealer's loan rate really costing me?</span></a></li>
+          <li><a href="tools/zero-percent-apr-vs-rebate-calculator.html"><span class="t-name">0% APR vs Cash Rebate</span><span class="t-q">Which promotion saves more on this car?</span></a></li>
+          <li><a href="tools/car-down-payment-calculator.html"><span class="t-name">Down Payment</span><span class="t-q">How much should I put down?</span></a></li>
+          <li><a href="tools/cash-vs-finance-car-calculator.html"><span class="t-name">Cash vs Finance</span><span class="t-q">Should I pay cash or take the loan?</span></a></li>
+          <li><a href="tools/car-lease-vs-buy-calculator.html"><span class="t-name">Lease vs Buy</span><span class="t-q">Is leasing or buying cheaper for me?</span></a></li>
+          <li><a href="tools/car-tariff-impact-calculator.html"><span class="t-name">Car Tariff Impact</span><span class="t-q">How much do tariffs add to this car?</span></a></li>
       </ul>
     </div>
-    <div class="why-visual">
-      <div class="why-card">
-        <div class="why-card-num">100%</div>
-        <div class="why-card-label">Free forever</div>
+    <div class="group" id="g-financing">
+      <div class="group-head">
+        <h3><span class="group-icon">🏦</span>Car loans</h3>
+        <a href="blog/#section-financing">Guides →</a>
       </div>
-      <div class="why-card">
-        <div class="why-card-num">47+</div>
-        <div class="why-card-label">Tools available</div>
+      <ul class="tool-list">
+          <li><a href="tools/car-loan-calculator.html"><span class="t-name">Car Loan</span><span class="t-q">What is my monthly payment and total interest?</span></a></li>
+          <li><a href="tools/car-refinance-calculator.html"><span class="t-name">Refinance</span><span class="t-q">How much would refinancing save me?</span></a></li>
+          <li><a href="tools/late-car-payment-cost-calculator.html"><span class="t-name">Late Car Payment Cost</span><span class="t-q">What does paying 5, 15 or 30 days late really cost?</span></a></li>
+          <li><a href="tools/car-payment-deferment-calculator.html"><span class="t-name">Payment Deferment</span><span class="t-q">What does skipping a payment cost by the end of the loan?</span></a></li>
+          <li><a href="tools/cosigner-risk-calculator.html"><span class="t-name">Cosigner Risk</span><span class="t-q">How much does cosigning cut the mortgage I can get?</span></a></li>
+          <li><a href="tools/cosigner-removal-refinance-calculator.html"><span class="t-name">Cosigner Removal</span><span class="t-q">Can I refinance alone and release my cosigner?</span></a></li>
+          <li><a href="tools/auto-loan-cosigner-calculator.html"><span class="t-name">Auto Loan Cosigner</span><span class="t-q">How much does a cosigner lower my rate?</span></a></li>
+          <li><a href="tools/negative-equity-rollover-calculator.html"><span class="t-name">Negative Equity Rollover</span><span class="t-q">What does rolling what I owe into a new loan cost?</span></a></li>
+          <li><a href="tools/car-early-payoff-calculator.html"><span class="t-name">Early Payoff</span><span class="t-q">How much do extra payments save?</span></a></li>
+          <li><a href="tools/biweekly-car-payment-calculator.html"><span class="t-name">Bi-Weekly Payments</span><span class="t-q">Do bi-weekly payments really save interest?</span></a></li>
+          <li><a href="tools/car-loan-interest-deduction-calculator.html"><span class="t-name">Car Loan Interest Deduction</span><span class="t-q">How much is the new car loan interest deduction worth to me?</span></a></li>
+      </ul>
+    </div>
+    <div class="group" id="g-running">
+      <div class="group-head">
+        <h3><span class="group-icon">⛽</span>Running costs</h3>
+        <a href="blog/#section-running">Guides →</a>
       </div>
-      <div class="why-card">
-        <div class="why-card-num">0</div>
-        <div class="why-card-label">Signup required</div>
+      <ul class="tool-list">
+          <li><a href="tools/gas-tank-fill-cost-calculator.html"><span class="t-name">Gas Tank Fill-Up Cost</span><span class="t-q">What will this fill cost from a quarter, half or empty tank?</span></a></li>
+          <li><a href="tools/fuel-cost-calculator.html"><span class="t-name">Fuel Cost</span><span class="t-q">What do I spend on gas a month or a year?</span></a></li>
+          <li><a href="tools/mpg-calculator.html"><span class="t-name">MPG</span><span class="t-q">What mileage am I really getting?</span></a></li>
+          <li><a href="tools/road-trip-cost-calculator.html"><span class="t-name">Road Trip Cost</span><span class="t-q">What will this trip cost in gas?</span></a></li>
+          <li><a href="tools/drop-full-coverage-calculator.html"><span class="t-name">Drop Full Coverage</span><span class="t-q">Is collision still worth it on my older car?</span></a></li>
+          <li><a href="tools/car-insurance-estimator.html"><span class="t-name">Car Insurance Estimator</span><span class="t-q">What should I expect to pay for insurance?</span></a></li>
+          <li><a href="tools/car-maintenance-cost-calculator.html"><span class="t-name">Maintenance Cost</span><span class="t-q">What will upkeep cost me this year?</span></a></li>
+          <li><a href="tools/repair-or-replace-car-calculator.html"><span class="t-name">Repair or Replace</span><span class="t-q">Is this repair worth it, or is it time for another car?</span></a></li>
+          <li><a href="tools/car-total-cost-of-ownership-calculator.html"><span class="t-name">Total Running Cost</span><span class="t-q">What does this car cost me in total over five years?</span></a></li>
+      </ul>
+    </div>
+    <div class="group" id="g-ev">
+      <div class="group-head">
+        <h3><span class="group-icon">⚡</span>Electric vehicles</h3>
+        <a href="blog/#section-ev">Guides →</a>
       </div>
+      <ul class="tool-list">
+          <li><a href="tools/ev-charging-cost-calculator.html"><span class="t-name">EV Charging Cost</span><span class="t-q">What does charging cost at home and on the road?</span></a></li>
+          <li><a href="tools/gas-vs-ev-savings-calculator.html"><span class="t-name">Gas vs EV Savings</span><span class="t-q">Would an EV actually save me money?</span></a></li>
+      </ul>
+    </div>
+    <div class="group" id="g-selling">
+      <div class="group-head">
+        <h3><span class="group-icon">🤝</span>Value, selling &amp; claims</h3>
+        <a href="blog/#section-selling">Guides →</a>
+      </div>
+      <ul class="tool-list">
+          <li><a href="tools/car-depreciation-calculator.html"><span class="t-name">Depreciation</span><span class="t-q">How fast will this car lose value?</span></a></li>
+          <li><a href="tools/used-car-value-calculator.html"><span class="t-name">Used Car Value</span><span class="t-q">What is my car worth?</span></a></li>
+          <li><a href="tools/car-trade-in-value-estimator.html"><span class="t-name">Trade-In Value</span><span class="t-q">What will a dealer offer me?</span></a></li>
+          <li><a href="tools/trade-in-vs-private-sale-calculator.html"><span class="t-name">Trade-In vs Private Sale</span><span class="t-q">Is selling privately worth it after the tax credit?</span></a></li>
+          <li><a href="tools/totaled-car-settlement-calculator.html"><span class="t-name">Totaled Car Settlement</span><span class="t-q">What will insurance pay, and do I still owe on the loan?</span></a></li>
+          <li><a href="tools/gap-insurance-calculator.html"><span class="t-name">GAP Insurance</span><span class="t-q">Do I need GAP coverage?</span></a></li>
+      </ul>
+    </div>
+    <div class="group" id="g-life">
+      <div class="group-head">
+        <h3><span class="group-icon">🚲</span>Leases, lifestyle &amp; work</h3>
+        <a href="blog/#section-carlight">Guides →</a>
+      </div>
+      <ul class="tool-list">
+          <li><a href="tools/car-vs-uber-calculator.html"><span class="t-name">Car vs Uber</span><span class="t-q">Is it cheaper to rideshare than own a car?</span></a></li>
+          <li><a href="tools/second-car-cost-calculator.html"><span class="t-name">Second Car Cost</span><span class="t-q">Could our household manage with one car?</span></a></li>
+          <li><a href="tools/rideshare-car-cost-per-mile-calculator.html"><span class="t-name">Rideshare Cost per Mile</span><span class="t-q">What does driving for Uber or Lyft cost me per mile?</span></a></li>
+          <li><a href="tools/mileage-deduction-method-calculator.html"><span class="t-name">Mileage Deduction Method</span><span class="t-q">Standard mileage or actual expenses — which deducts more?</span></a></li>
+          <li><a href="tools/ship-car-vs-drive-calculator.html"><span class="t-name">Ship or Drive</span><span class="t-q">Should I ship my car or drive it when I move?</span></a></li>
+          <li><a href="tools/truck-vs-rent-calculator.html"><span class="t-name">Truck vs Rent</span><span class="t-q">Do I need to own a truck, or just rent one?</span></a></li>
+          <li><a href="tools/lease-excess-mileage-calculator.html"><span class="t-name">Lease Excess Mileage</span><span class="t-q">What will going over my lease miles cost?</span></a></li>
+          <li><a href="tools/lease-takeover-cost-calculator.html"><span class="t-name">Lease Takeover</span><span class="t-q">Is taking over this lease a good deal?</span></a></li>
+          <li><a href="tools/car-subscription-vs-lease-vs-buy-calculator.html"><span class="t-name">Subscription vs Lease vs Buy</span><span class="t-q">Is a car subscription worth it?</span></a></li>
+      </ul>
     </div>
   </div>
+</section>
+
+<!-- METHOD -->
+<div class="method">
+  <section class="section">
+    <div class="section-header">
+      <h2>How we build these</h2>
+      <p>No black boxes. If a number matters to your decision, you should be able to see where it came from.</p>
+    </div>
+    <div class="method-grid">
+      <div class="method-item"><h3>The math is explained</h3><p>Calculators explain the formula they use and the assumptions behind the result, on the same page.</p></div>
+      <div class="method-item"><h3>Sources are linked</h3><p>Figures come from public sources such as AAA, Experian, NAIC, Freddie Mac, Fannie Mae and the IRS, listed and linked on the pages that use them.</p></div>
+      <div class="method-item"><h3>Checked before it goes live</h3><p>New calculators are tested against a separately written version of the same math across several scenarios.</p></div>
+      <div class="method-item"><h3>Updated and corrected</h3><p>Prices and rates are refreshed as new data comes out, and corrections are listed publicly.</p></div>
+    </div>
+    <div class="method-links">
+      <a href="methodology.html">How we calculate →</a>
+      <a href="editorial-policy.html#corrections">Corrections log →</a>
+      <a href="about.html">About AutoCalcHub →</a>
+    </div>
+  </section>
 </div>
 
-<!-- BLOG PREVIEW -->
+<!-- GUIDES -->
 <section class="section">
-  <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+  <div class="section-header section-header-row">
     <div>
-      <h2>Latest from the blog</h2>
-      <p>Practical guides to help you spend less and drive smarter.</p>
+      <h2>Guides</h2>
+      <p>The reasoning behind the numbers — with worked examples.</p>
     </div>
-    <a href="blog/" style="font-size:0.875rem;font-weight:600;color:var(--orange);text-decoration:none;white-space:nowrap">View all articles →</a>
+    <a href="blog/" class="link-more">View all 93 guides →</a>
   </div>
-  <div class="blog-grid">
+  <div class="guides">
+    <div class="blog-grid">
     <a href="blog/is-full-coverage-worth-it-on-an-older-car.html" class="blog-card">
       <span class="blog-tag">Running Costs</span>
       <h3>Is Full Coverage Worth It on an Older Car?</h3>
@@ -639,13 +393,20 @@
       <p>The loan-to-value, income and credit checks you must pass alone — and what to fix first.</p>
       <div class="blog-meta">8 min read · November 2026</div>
     </a>
-  </div>
-  <div style="text-align:center;margin-top:2rem">
-    <a href="blog/" style="display:inline-block;background:var(--navy);color:white;padding:0.8rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.9rem;transition:background 0.2s" onmouseover="this.style.background='#243b55'" onmouseout="this.style.background='var(--navy)'">View all articles →</a>
+    </div>
+    <div class="popular">
+      <h3>Most read</h3>
+      <ol>
+        <li><a href="blog/how-much-should-i-spend-on-a-car-based-on-salary.html">How Much Should I Spend on a Car Based on My Salary?</a></li>
+        <li><a href="blog/how-much-does-it-cost-to-fill-up-a-car.html">How Much Does It Cost to Fill Up a Car?</a></li>
+        <li><a href="blog/how-much-should-i-put-down-on-a-car.html">How Much Should You Put Down on a Car?</a></li>
+        <li><a href="blog/what-is-a-good-mpg-for-a-car.html">What Is a Good MPG for a Car?</a></li>
+        <li><a href="blog/best-time-of-year-to-buy-a-car.html">Best Time of Year to Buy a Car</a></li>
+        <li><a href="blog/how-much-does-it-cost-to-own-car-per-month.html">How Much Does It Cost to Own a Car Per Month?</a></li>
+      </ol>
+    </div>
   </div>
 </section>
-
-<!-- AD -->
 
 <!-- FOOTER:START -->
 <footer>
