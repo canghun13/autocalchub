@@ -1718,6 +1718,23 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 - **블로그 허브에서 빠져 있던 글 1개 발견·추가**: `what-is-a-good-car-payment-per-month.html`(Financing 섹션). 이제 93개 전부 허브에 있음.
 - ⚠️ 이후 신규 글/툴 추가 시 허브 히어로 숫자도 갱신: 툴 허브 `47 free calculators`·`47 calculators for…`·해당 칩 `<span>개수</span>`, 블로그 허브 `93 guides`(2곳)·해당 칩 개수.
 
+## 6-37. 11/19 이미지 작업 (사용자 승인: 1번 데이터 차트 + 2번 대표 이미지, 스톡 사진은 안 함)
+
+### 대표 이미지(og:image) — 전 페이지 153개
+- `assets/img/og/<slug>.jpg` (1200×630, 사이트 남색·주황, 제목=H1, 태그=Guide/Calculator/Glossary/About, 약 55~70KB). slug 규칙: `blog/x.html`→`blog-x.jpg`, `tools/index.html`→`tools.jpg`, 홈→`index.jpg`.
+- 모든 페이지 `<link rel="canonical">` 바로 뒤에 og:type/site_name/title/description/url/image(+width/height/alt) + `twitter:card summary_large_image`. 블로그 Article·툴 WebPage JSON-LD에 `"image"` 추가(140개).
+- ⚠️ **신규 페이지는 반드시** 만든 뒤 `python3 scripts/og/make_og.py blog/새글.html tools/새툴.html` 실행(카드 생성+메타+JSON-LD image, 재실행해도 중복 안 생김). 제목 바꾼 페이지도 같은 명령으로 재생성. `--all`은 전체 재생성. (`scripts/`는 Jekyll 빌드 제외 폴더)
+
+### 데이터 차트 — 상위 글 6개 (사이트 자체 수치로 그린 원본, HTML/CSS)
+- 공통 CSS: `assets/css/style.css` 맨 아래 `.dchart`/`dc-*`. 이미지 파일 아님(가볍고 모바일 글자 크기 유지). 표는 그대로 두고 차트를 표 아래에 추가(표 = 접근성용 데이터 보기).
+- salary(35% 규칙 상한가 + KBB 평균 신차가 $51,109 기준선, 본문 "$50,000" 문구도 KBB 10월 수치로 교체 + Sources 블록 신설) / fill-up(차종별 1회 주유비, 연한 끝=탱크 범위) / own-per-month($1,072 항목별) / EV vs gas(EV−가솔린 연간 차액, 발산형) / late payment(30일 연체 후 다음 대출 추가 이자) / full coverage(보장 대비 보험료 배수 선그래프 + 10x 기준선).
+- 6개 모두 dateModified·"Updated November 2026"·sitemap lastmod 11-19.
+- ⚠️ 차트 안 수치는 본문 표와 같은 값. **본문 수치(가스값·AAA·금리 등) 갱신 시 같은 글의 `<figure class="dchart">` 안 값·막대 width %도 같이 고칠 것** (생성 함수 참고: `scripts/charts.py`).
+- 색: 파랑 #3b6ea5 / 주황 #f47c20 (색약 검증 통과), 텍스트는 본문 색만.
+
+### 검증
+- 153개 og 이미지 파일 존재 확인, verify.py ALL PASS, 모바일 390px 전체 154페이지 가로 넘침 0, 차트 6개 1280/390 스크린샷 육안 확인.
+
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 
 - 이 저장소는 사용자가 매 세션 GitHub Personal Access Token을 직접 발급해서 대화 중에 전달하는 방식으로 운영됨. 토큰이 없으면 clone은 되지만(public repo) push는 불가.

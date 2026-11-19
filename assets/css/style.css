@@ -200,3 +200,49 @@ footer {
   .footer-inner { flex-direction: column; text-align: center; }
   .footer-links { gap: 0.6rem 1rem; font-size: 0.8rem; }
 }
+
+/* ── Data charts (dc-) : HTML/CSS charts drawn from each page's own figures ── */
+.dchart{margin:2rem 0;padding:1.25rem 1.25rem 1rem;border:1px solid var(--border);border-radius:12px;background:#fff}
+.dchart figcaption{margin-bottom:1rem}
+.dchart .dc-title{display:block;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;color:var(--charcoal);line-height:1.35}
+.dchart .dc-sub{display:block;font-size:0.85rem;color:var(--mid);margin-top:0.2rem;line-height:1.5}
+.dchart .dc-legend{display:flex;flex-wrap:wrap;gap:0.4rem 1.1rem;font-size:0.8rem;color:var(--mid);margin:0 0 0.9rem}
+.dchart .dc-key{display:inline-flex;align-items:center;gap:0.4rem}
+.dchart .dc-key i{display:inline-block;width:12px;height:12px;border-radius:3px}
+.dchart .dc-key i.ln{height:3px;width:16px;border-radius:2px}
+.dchart .dc-rows{display:grid;grid-template-columns:minmax(7rem,11rem) 1fr;gap:0.55rem 0.9rem;align-items:center}
+.dchart .dc-lab{font-size:0.85rem;color:var(--charcoal);line-height:1.3}
+.dchart .dc-lab small{display:block;color:var(--light);font-size:0.75rem}
+.dchart .dc-track{position:relative;height:22px}
+.dchart .dc-bar{position:absolute;top:1px;height:20px;background:#3b6ea5;border-radius:0 4px 4px 0;min-width:2px}
+.dchart .dc-bar.hi{background:#f47c20}
+.dchart .dc-bar.neg{border-radius:4px 0 0 4px}
+.dchart .dc-bar.sol{border-radius:0}
+.dchart .dc-bar.rng{background:#9db7d2;border-radius:0 4px 4px 0}
+.dchart .dc-val{position:absolute;top:50%;transform:translateY(-50%);padding-left:0.45rem;font-size:0.8rem;font-weight:600;color:var(--charcoal);white-space:nowrap}
+.dchart .dc-val.l{padding-left:0;padding-right:0.45rem;transform:translate(-100%,-50%)}
+.dchart .dc-zero{position:absolute;top:-4px;bottom:-4px;width:1px;background:var(--light)}
+.dchart .dc-ref{position:absolute;top:-0.6rem;bottom:-0.6rem;width:2px;background:var(--charcoal);opacity:0.75}
+.dchart .dc-reflab{position:relative;height:1.1rem;font-size:0.75rem;color:var(--charcoal);font-weight:600}
+.dchart .dc-reflab span{position:absolute;transform:translateX(-50%);white-space:nowrap}
+.dchart .dc-plot{position:relative;height:230px;margin:0.25rem 0 0 2.6rem;border-left:1px solid var(--border);border-bottom:1px solid var(--light)}
+.dchart .dc-plot svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.dchart .dc-grid{position:absolute;left:0;right:0;height:1px;background:var(--border)}
+.dchart .dc-yt{position:absolute;left:-2.6rem;width:2.2rem;text-align:right;transform:translateY(-50%);font-size:0.75rem;color:var(--light)}
+.dchart .dc-xt{position:absolute;top:100%;margin-top:0.35rem;transform:translateX(-50%);font-size:0.75rem;color:var(--light);white-space:nowrap}
+.dchart .dc-dot{position:absolute;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:50%;box-shadow:0 0 0 2px #fff}
+.dchart .dc-dot::after{content:"";position:absolute;inset:-8px}
+.dchart .dc-end{position:absolute;transform:translate(-100%,-150%);font-size:0.78rem;font-weight:600;color:var(--charcoal);white-space:nowrap;background:rgba(255,255,255,0.85);padding:0 0.2rem;border-radius:3px}
+.dchart .dc-thr{position:absolute;left:0;right:0;height:2px;background:var(--charcoal);opacity:0.75}
+.dchart .dc-thrlab{position:absolute;right:0.4rem;transform:translateY(30%);font-size:0.75rem;font-weight:600;color:var(--charcoal);background:rgba(255,255,255,0.85);padding:0 0.2rem}
+.dchart .dc-xcap{margin:1.9rem 0 0 2.6rem;font-size:0.75rem;color:var(--mid);text-align:center}
+.dchart .dc-src{margin:1rem 0 0;font-size:0.75rem;line-height:1.5;color:var(--light)}
+.dchart [title]{cursor:default}
+@media (max-width:600px){
+  .dchart{padding:1rem 0.9rem 0.85rem}
+  .dchart .dc-rows{grid-template-columns:1fr;gap:0.2rem}
+  .dchart .dc-lab{margin-top:0.45rem}
+  .dchart .dc-ref{top:-2.1rem;bottom:-0.3rem}
+  .dchart .dc-reflab{margin-top:0}
+  .dchart .dc-plot{height:200px}
+}
