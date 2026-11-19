@@ -1727,7 +1727,7 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 
 ### 데이터 차트 — 상위 글 6개 (사이트 자체 수치로 그린 원본, HTML/CSS)
 - 공통 CSS: `assets/css/style.css` 맨 아래 `.dchart`/`dc-*`. 이미지 파일 아님(가볍고 모바일 글자 크기 유지). 표는 그대로 두고 차트를 표 아래에 추가(표 = 접근성용 데이터 보기).
-- salary(35% 규칙 상한가 + KBB 평균 신차가 $51,109 기준선, 본문 "$50,000" 문구도 KBB 10월 수치로 교체 + Sources 블록 신설) / fill-up(차종별 1회 주유비, 연한 끝=탱크 범위) / own-per-month($1,072 항목별) / EV vs gas(EV−가솔린 연간 차액, 발산형) / late payment(30일 연체 후 다음 대출 추가 이자) / full coverage(보장 대비 보험료 배수 선그래프 + 10x 기준선).
+- salary(35% 규칙 상한가 파란 막대 + KBB 평균 신차가 $51,109 주황 막대 — 처음엔 세로 기준선이었으나 사용자가 "저 선 뭐냐"고 해서 막대로 교체, 기준선 방식은 쓰지 말 것, 본문 "$50,000" 문구도 KBB 10월 수치로 교체 + Sources 블록 신설) / fill-up(차종별 1회 주유비, 연한 끝=탱크 범위) / own-per-month($1,072 항목별) / EV vs gas(EV−가솔린 연간 차액, 발산형) / late payment(30일 연체 후 다음 대출 추가 이자) / full coverage(보장 대비 보험료 배수 선그래프 + 10x 기준선).
 - 6개 모두 dateModified·"Updated November 2026"·sitemap lastmod 11-19.
 - ⚠️ 차트 안 수치는 본문 표와 같은 값. **본문 수치(가스값·AAA·금리 등) 갱신 시 같은 글의 `<figure class="dchart">` 안 값·막대 width %도 같이 고칠 것** (생성 함수 참고: `scripts/charts.py`).
 - 색: 파랑 #3b6ea5 / 주황 #f47c20 (색약 검증 통과), 텍스트는 본문 색만.
