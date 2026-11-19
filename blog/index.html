@@ -43,6 +43,20 @@
     .latest-header h2{font-family:"Space Grotesk",sans-serif;font-size:1.1rem;font-weight:700;color:var(--charcoal)}
     .new-badge{background:var(--orange);color:white;font-size:0.65rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:100px;text-transform:uppercase;margin-left:0.5rem;vertical-align:middle}
     .updated-badge{background:#2563eb;color:white;font-size:0.65rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:100px;text-transform:uppercase;margin-left:0.5rem;vertical-align:middle}
+
+    /* HUB HERO */
+    .hub-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:white;padding:3.5rem 0 2.75rem}
+    .hub-inner{max-width:1100px;margin:0 auto;padding:0 2rem}
+    .hub-tag{display:inline-block;background:rgba(244,124,32,0.18);color:var(--orange-light);border:1px solid rgba(244,124,32,0.4);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:100px;margin-bottom:1rem}
+    .hub-hero h1{color:white;font-size:clamp(2rem,4vw,2.8rem);margin-bottom:0.75rem}
+    .hub-hero .hub-sub{color:rgba(255,255,255,0.75);max-width:680px;line-height:1.65;font-size:1rem;margin-bottom:1.75rem}
+    .hub-jump{display:flex;flex-wrap:wrap;gap:0.5rem}
+    .hub-jump a{color:white;text-decoration:none;font-size:0.84rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);padding:0.45rem 0.85rem;border-radius:100px;transition:background 0.2s,border-color 0.2s}
+    .hub-jump a:hover{background:rgba(244,124,32,0.18);border-color:var(--orange)}
+    .hub-jump a span{color:rgba(255,255,255,0.5);margin-left:0.3rem}
+    .page{padding-top:2.25rem}
+    .category-header{scroll-margin-top:1rem}
+    @media(max-width:560px){.hub-hero{padding:2.5rem 0 2rem}.hub-jump a{font-size:0.8rem}}
   </style>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
@@ -64,9 +78,29 @@
   </button>
 </nav>
 <!-- HEADER:END -->
+<section class="hub-hero">
+  <div class="hub-inner">
+    <span class="hub-tag">93 guides</span>
+    <h1>Car Money Guides</h1>
+    <p class="hub-sub">93 guides that work through the numbers — what to spend, when to buy, how car loans really behave, and what a car costs to keep. Pick a topic or search below.</p>
+    <div class="hub-jump" role="navigation" aria-label="Jump to a category">
+        <a href="#cat-buying-a-car">Buying a Car<span>19</span></a>
+        <a href="#cat-financing">Financing<span>31</span></a>
+        <a href="#cat-running-costs">Running Costs<span>12</span></a>
+        <a href="#cat-car-light-living">Car-Light Living<span>2</span></a>
+        <a href="#cat-electric-vehicles">Electric Vehicles<span>6</span></a>
+        <a href="#cat-ownership-value">Ownership &amp; Value<span>5</span></a>
+        <a href="#cat-selling-trade-in">Selling &amp; Trade-In<span>6</span></a>
+        <a href="#cat-gig-rideshare">Gig &amp; Rideshare<span>1</span></a>
+        <a href="#cat-accidents-claims">Accidents &amp; Claims<span>3</span></a>
+        <a href="#cat-moving-relocation">Moving &amp; Relocation<span>2</span></a>
+        <a href="#cat-repairs-reliability">Repairs &amp; Reliability<span>2</span></a>
+        <a href="#cat-trucks-towing">Trucks &amp; Towing<span>2</span></a>
+        <a href="#cat-business-tax">Business &amp; Tax<span>2</span></a>
+    </div>
+  </div>
+</section>
 <div class="page">
-  <h1>Auto Blog</h1>
-  <p class="subtitle">Practical guides to help you drive smarter and spend less.</p>
 
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
@@ -95,7 +129,7 @@
 
   <!-- BUYING -->
   <div class="category-section" id="section-buying">
-    <div class="category-header">💰 Buying a Car</div>
+    <div class="category-header" id="cat-buying-a-car">💰 Buying a Car</div>
     <div class="blog-grid">
       <a href="how-much-should-i-spend-on-my-first-car.html" class="blog-card" data-title="How Much Should You Spend on Your First Car?" data-tags="buying first car budget young driver insurance credit history salary cosigner used car 22 18"><span class="blog-tag">Buying</span><h2>How Much Should You Spend on Your First Car? <span class="new-badge">New</span></h2><p>Young-driver insurance and thin-credit rates cost a first car $3,000+ of budget. What your salary buys at 22.</p><div class="blog-meta">10 min read · October 2026</div></a>
       <a href="what-salary-do-you-need-for-a-50k-car.html" class="blog-card" data-title="What Salary Do You Need for a $50,000 Car?" data-tags="buying affordability salary income needed reverse 20/4/10 car price multiple"><span class="blog-tag">Buying</span><h2>What Salary Do You Need for a $50,000 Car?</h2><p>Run the rules backwards: about $157,000 by 20/4/10 — and the multiple is worse on cheaper cars.</p><div class="blog-meta">10 min read · September 2026</div></a>
@@ -121,8 +155,9 @@
 
   <!-- FINANCING -->
   <div class="category-section" id="section-financing">
-    <div class="category-header">🏦 Financing</div>
+    <div class="category-header" id="cat-financing">🏦 Financing</div>
     <div class="blog-grid">
+      <a href="what-is-a-good-car-payment-per-month.html" class="blog-card" data-title="What Is a Good Monthly Car Payment?" data-tags="financing car payment monthly payment average budget income"><span class="blog-tag">Financing</span><h2>What Is a Good Monthly Car Payment?</h2><p>What counts as a good payment for your income, measured against the national averages.</p><div class="blog-meta">8 min read · June 2026</div></a>
       <a href="will-cosigning-a-car-loan-affect-buying-a-house.html" class="blog-card" data-title="Will Cosigning a Car Loan Affect Buying a House?" data-tags="financing cosigner co-signer mortgage debt-to-income dti buying a house repossession"><span class="blog-tag">Financing</span><h2>Will Cosigning a Car Loan Affect Buying a House? <span class="new-badge">New</span></h2><p>A $525 cosigned payment cuts about $77,500 off your mortgage — unless 12 payments are documented.</p><div class="blog-meta">8 min read · November 2026</div></a>
       <a href="can-you-refinance-car-loan-without-cosigner.html" class="blog-card" data-title="Can You Refinance a Car Loan Without Your Cosigner?" data-tags="financing cosigner remove cosigner release refinance alone co-signer qualify"><span class="blog-tag">Financing</span><h2>Can You Refinance a Car Loan Without Your Cosigner? <span class="new-badge">New</span></h2><p>The loan-to-value, income and credit checks you must pass alone — and what to fix first.</p><div class="blog-meta">8 min read · November 2026</div></a>
       <a href="how-much-does-a-late-car-payment-cost.html" class="blog-card" data-title="How Much Does a Late Car Payment Cost?" data-tags="financing late payment late fee grace period credit score 30 days late repossession"><span class="blog-tag">Financing</span><h2>How Much Does a Late Car Payment Cost? <span class="new-badge">New</span></h2><p>Five days late costs ~40 cents. Thirty days late can add $1,100–$2,100 to your next loan.</p><div class="blog-meta">8 min read · October 2026</div></a>
@@ -158,7 +193,7 @@
 
   <!-- RUNNING COSTS -->
   <div class="category-section" id="section-running">
-    <div class="category-header">⛽ Running Costs</div>
+    <div class="category-header" id="cat-running-costs">⛽ Running Costs</div>
     <div class="blog-grid">
       <a href="is-full-coverage-worth-it-on-an-older-car.html" class="blog-card" data-title="Is Full Coverage Worth It on an Older Car?" data-tags="running costs insurance full coverage collision comprehensive drop older car 10x rule deductible"><span class="blog-tag">Running Costs</span><h2>Is Full Coverage Worth It on an Older Car? <span class="new-badge">New</span></h2><p>At average premiums, collision fails the 10x test below about $5,200 of car value. A table by value.</p><div class="blog-meta">8 min read · November 2026</div></a>
       <a href="should-you-fill-up-at-quarter-tank.html" class="blog-card" data-title="Should You Fill Up at a Quarter Tank or Run It Lower?" data-tags="running costs fuel tank level quarter tank low fuel light fuel pump gas weight mpg premium grade"><span class="blog-tag">Running Costs</span><h2>Should You Fill Up at a Quarter Tank or Run It Lower?</h2><p>The fuel-weight saving is about $2 a year. One fuel pump is $250–$1,200. The break-even is 340 years.</p><div class="blog-meta">9 min read · September 2026</div></a>
@@ -177,7 +212,7 @@
 
   <!-- CAR-LIGHT LIVING -->
   <div class="category-section" id="section-carlight">
-    <div class="category-header">🚲 Car-Light Living</div>
+    <div class="category-header" id="cat-car-light-living">🚲 Car-Light Living</div>
     <div class="blog-grid">
       <a href="should-we-become-a-one-car-family.html" class="blog-card" data-title="Should We Become a One-Car Family?" data-tags="car-light one car family second car household sell second car rideshare budget"><span class="blog-tag">Car-Light Living</span><h2>Should We Become a One-Car Family? <span class="new-badge">New</span></h2><p>A paid-off second car still costs ~$4,500 a year. The trip count where dropping it pays.</p><div class="blog-meta">10 min read · October 2026</div></a>
       <a href="is-it-cheaper-to-uber-than-own-a-car.html" class="blog-card" data-title="Is It Cheaper to Uber Than Own a Car?" data-tags="car-light uber lyft rideshare car-free own a car break-even trips city"><span class="blog-tag">Car-Light Living</span><h2>Is It Cheaper to Uber Than Own a Car? <span class="new-badge">New</span></h2><p>Uber beats a financed car below ~44 trips a month — but only ~15 against a paid-off one.</p><div class="blog-meta">9 min read · October 2026</div></a>
@@ -186,7 +221,7 @@
 
   <!-- EV -->
   <div class="category-section" id="section-ev">
-    <div class="category-header">⚡ Electric Vehicles</div>
+    <div class="category-header" id="cat-electric-vehicles">⚡ Electric Vehicles</div>
     <div class="blog-grid">
       <a href="should-you-buy-a-used-ev-out-of-battery-warranty.html" class="blog-card" data-title="Should You Buy a Used EV Out of Battery Warranty?" data-tags="ev electric used battery degradation warranty replacement cost risk soh"><span class="blog-tag">Electric Vehicles</span><h2>Should You Buy a Used EV Out of Battery Warranty?</h2><p>Degradation runs ~2.3%/yr and full replacements are low single digits. How to price that risk.</p><div class="blog-meta">11 min read · August 2026</div></a>
       <a href="ev-registration-fees-by-state-2026.html" class="blog-card" data-title="EV Registration Fees by State (2026)" data-tags="EV registration fee state annual surcharge"><span class="blog-tag">EV</span><h2>EV Registration Fees by State (2026)</h2><p>41 states now charge EVs an extra annual fee — a median of $150/year, up to $267+ in some states.</p><div class="blog-meta">8 min read · July 2026</div></a>
@@ -199,7 +234,7 @@
 
   <!-- OWNERSHIP -->
   <div class="category-section" id="section-ownership">
-    <div class="category-header">📈 Ownership & Value</div>
+    <div class="category-header" id="cat-ownership-value">📈 Ownership & Value</div>
     <div class="blog-grid">
       <a href="how-to-minimize-car-depreciation.html" class="blog-card" data-title="How to Minimize Car Depreciation" data-tags="ownership depreciation resale value protect minimize slow"><span class="blog-tag">Ownership</span><h2>How to Minimize Car Depreciation</h2><p>Practical strategies to slow your car's depreciation and protect resale value — from purchase to sale.</p><div class="blog-meta">8 min read · June 2026</div></a>
       <a href="what-mileage-is-too-high-for-a-used-car.html" class="blog-card" data-title="What Mileage Is Too High for a Used Car?" data-tags="ownership mileage used car odometer"><span class="blog-tag">Ownership</span><h2>What Mileage Is Too High for a Used Car?</h2><p>Is 100k miles too high? What actually matters more than the odometer number.</p><div class="blog-meta">5 min read · May 2026</div></a>
@@ -211,7 +246,7 @@
 
   <!-- SELLING & TRADE-IN -->
   <div class="category-section" id="section-selling">
-    <div class="category-header">🤝 Selling &amp; Trade-In</div>
+    <div class="category-header" id="cat-selling-trade-in">🤝 Selling &amp; Trade-In</div>
     <div class="blog-grid">
       <a href="carmax-vs-carvana-which-pays-more.html" class="blog-card" data-title="CarMax vs Carvana: Which Pays More?" data-tags="selling carmax carvana instant offer compare"><span class="blog-tag">Selling</span><h2>CarMax vs Carvana: Which Pays More for Your Car?</h2><p>How each process actually works, the real trade-offs, and why getting both quotes matters.</p><div class="blog-meta">9 min read · July 2026</div></a>
       <a href="how-to-price-car-for-private-sale.html" class="blog-card" data-title="How to Price Your Car for a Private Sale" data-tags="selling pricing private sale listing"><span class="blog-tag">Selling</span><h2>How to Price Your Car for a Private Sale</h2><p>Price too high and you get no calls. Price too low and you leave money on the table. Here's how to land the right number.</p><div class="blog-meta">8 min read · July 2026</div></a>
@@ -223,14 +258,14 @@
   </div>
 
   <div class="category-section" id="section-gig">
-    <div class="category-header">🚕 Gig &amp; Rideshare</div>
+    <div class="category-header" id="cat-gig-rideshare">🚕 Gig &amp; Rideshare</div>
     <div class="blog-grid">
       <a href="should-you-buy-a-car-for-uber-lyft-2026.html" class="blog-card" data-title="Should You Buy a Car for Uber or Lyft?" data-tags="rideshare uber lyft doordash gig buy rent lease cost per mile"><span class="blog-tag">Gig &amp; Rideshare</span><h2>Should You Buy a Car for Uber or Lyft?</h2><p>Buy, rent, or lease? The real cost-per-mile math, the lease mileage-cap trap, and the loan contract risk most drivers miss.</p><div class="blog-meta">10 min read · July 2026</div></a>
     </div>
   </div>
 
   <div class="category-section" id="section-accidents">
-    <div class="category-header">🚨 Accidents &amp; Claims</div>
+    <div class="category-header" id="cat-accidents-claims">🚨 Accidents &amp; Claims</div>
     <div class="blog-grid">
       <a href="how-much-does-an-accident-affect-trade-in-value.html" class="blog-card" data-title="How Much Does an Accident Affect Your Trade-In Value?" data-tags="accidents claims trade-in value carfax accident history diminished value structural damage"><span class="blog-tag">Accidents &amp; Claims</span><h2>How Much Does an Accident Affect Your Trade-In Value?</h2><p>Law firms say 10–30%. Carfax data says under $500. Why they disagree and what actually drives it.</p><div class="blog-meta">10 min read · September 2026</div></a>
       <a href="should-you-keep-your-totaled-car.html" class="blog-card" data-title="Should You Keep Your Totaled Car?" data-tags="accidents claims total loss owner retention salvage rebuilt title ACV"><span class="blog-tag">Accidents & Claims</span><h2>Should You Keep Your Totaled Car?</h2><p>Owner retention costs the salvage value plus repairs — and leaves you a rebuilt title worth 20-40% less.</p><div class="blog-meta">10 min read · August 2026</div></a>
@@ -238,28 +273,28 @@
     </div>
   </div>
   <div class="category-section" id="section-moving">
-    <div class="category-header">🚚 Moving &amp; Relocation</div>
+    <div class="category-header" id="cat-moving-relocation">🚚 Moving &amp; Relocation</div>
     <div class="blog-grid">
       <a href="should-you-ship-your-car-or-drive-it.html" class="blog-card" data-title="Should You Ship Your Car or Drive It?" data-tags="moving relocation ship car auto transport drive cross country breakeven"><span class="blog-tag">Moving &amp; Relocation</span><h2>Should You Ship Your Car or Drive It?</h2><p>Driving wins on cash almost every time — until you price your own hours. The breakeven distance, explained.</p><div class="blog-meta">9 min read · August 2026</div></a>
       <a href="moving-to-another-state-what-to-do-with-your-car.html" class="blog-card" data-title="Moving to Another State: What to Do With Your Car" data-tags="moving relocation registration title dmv license insurance inspection deadline"><span class="blog-tag">Moving &amp; Relocation</span><h2>Moving to Another State: What to Do With Your Car</h2><p>Registration, title, license and insurance all have deadlines. The order that saves a second DMV trip.</p><div class="blog-meta">10 min read · August 2026</div></a>
     </div>
   </div>
   <div class="category-section" id="section-repairs">
-    <div class="category-header">🔧 Repairs &amp; Reliability</div>
+    <div class="category-header" id="cat-repairs-reliability">🔧 Repairs &amp; Reliability</div>
     <div class="blog-grid">
       <a href="is-it-worth-fixing-your-car-or-buying-a-new-one.html" class="blog-card" data-title="Is It Worth Fixing Your Car or Buying a New One?" data-tags="repairs reliability repair replace 50% rule cost per month depreciation transmission"><span class="blog-tag">Repairs &amp; Reliability</span><h2>Is It Worth Fixing Your Car or Buying a New One?</h2><p>The 50% rule never asks what you would replace it with. Same repair, opposite answers.</p><div class="blog-meta">10 min read · September 2026</div></a>
       <a href="which-car-repairs-are-worth-it.html" class="blog-card" data-title="Which Big Car Repairs Are Worth It?" data-tags="repairs reliability transmission engine head gasket rust timing belt warranty cost"><span class="blog-tag">Repairs &amp; Reliability</span><h2>Which Big Car Repairs Are Worth It?</h2><p>What transmission, engine and head gasket work costs — and how much life each actually buys.</p><div class="blog-meta">11 min read · September 2026</div></a>
     </div>
   </div>
   <div class="category-section" id="section-trucks">
-    <div class="category-header">🛻 Trucks &amp; Towing</div>
+    <div class="category-header" id="cat-trucks-towing">🛻 Trucks &amp; Towing</div>
     <div class="blog-grid">
       <a href="do-you-actually-need-a-truck.html" class="blog-card" data-title="Do You Actually Need a Truck?" data-tags="trucks towing pickup rent haul breakeven fuel penalty payload ownership cost"><span class="blog-tag">Trucks &amp; Towing</span><h2>Do You Actually Need a Truck?</h2><p>A pickup costs $231/mo more than the crossover. That premium buys 21 rental days a year.</p><div class="blog-meta">10 min read · September 2026</div></a>
       <a href="how-much-can-my-suv-actually-tow.html" class="blog-card" data-title="How Much Can My SUV Actually Tow?" data-tags="trucks towing capacity payload gvwr gcwr tongue weight trailer hitch 80% rule"><span class="blog-tag">Trucks &amp; Towing</span><h2>How Much Can My SUV Actually Tow?</h2><p>A 5,000 lb rating drops to 2,667 lbs with a family aboard. Payload runs out first.</p><div class="blog-meta">10 min read · September 2026</div></a>
     </div>
   </div>
   <div class="category-section" id="section-business">
-    <div class="category-header">💼 Business &amp; Tax</div>
+    <div class="category-header" id="cat-business-tax">💼 Business &amp; Tax</div>
     <div class="blog-grid">
       <a href="standard-mileage-vs-actual-expenses.html" class="blog-card" data-title="Standard Mileage vs Actual Expenses: The Choice You Can't Undo" data-tags="business tax mileage deduction standard actual expenses section 179 depreciation irs self-employed"><span class="blog-tag">Business &amp; Tax</span><h2>Standard Mileage vs Actual Expenses: The Choice You Can't Undo</h2><p>Pick actual in year one and standard mileage is gone forever on that car. Year one lies.</p><div class="blog-meta">11 min read · September 2026</div></a>
       <a href="what-car-expenses-can-you-write-off.html" class="blog-card" data-title="What Car Expenses Can You Actually Write Off?" data-tags="business tax write off deduction commuting business use percentage home office substantiation"><span class="blog-tag">Business &amp; Tax</span><h2>What Car Expenses Can You Actually Write Off?</h2><p>Commuting never counts, employees generally get nothing, and tolls are deductible on top.</p><div class="blog-meta">10 min read · September 2026</div></a>

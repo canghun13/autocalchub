@@ -40,6 +40,20 @@
 
     /* NEW badge (reused pattern from blog index) */
     .new-badge{background:var(--orange);color:white;font-size:0.65rem;font-weight:700;padding:0.2rem 0.55rem;border-radius:100px;text-transform:uppercase;margin-left:0.5rem;vertical-align:middle}
+
+    /* HUB HERO */
+    .hub-hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:white;padding:3.5rem 0 2.75rem}
+    .hub-inner{max-width:1100px;margin:0 auto;padding:0 2rem}
+    .hub-tag{display:inline-block;background:rgba(244,124,32,0.18);color:var(--orange-light);border:1px solid rgba(244,124,32,0.4);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.35rem 0.9rem;border-radius:100px;margin-bottom:1rem}
+    .hub-hero h1{color:white;font-size:clamp(2rem,4vw,2.8rem);margin-bottom:0.75rem}
+    .hub-hero .hub-sub{color:rgba(255,255,255,0.75);max-width:680px;line-height:1.65;font-size:1rem;margin-bottom:1.75rem}
+    .hub-jump{display:flex;flex-wrap:wrap;gap:0.5rem}
+    .hub-jump a{color:white;text-decoration:none;font-size:0.84rem;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);padding:0.45rem 0.85rem;border-radius:100px;transition:background 0.2s,border-color 0.2s}
+    .hub-jump a:hover{background:rgba(244,124,32,0.18);border-color:var(--orange)}
+    .hub-jump a span{color:rgba(255,255,255,0.5);margin-left:0.3rem}
+    .page{padding-top:2.25rem}
+    .category-header{scroll-margin-top:1rem}
+    @media(max-width:560px){.hub-hero{padding:2.5rem 0 2rem}.hub-jump a{font-size:0.8rem}}
   </style>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5592663499707350" crossorigin="anonymous"></script>
@@ -61,10 +75,27 @@
   </button>
 </nav>
 <!-- HEADER:END -->
+<section class="hub-hero">
+  <div class="hub-inner">
+    <span class="hub-tag">47 free calculators</span>
+    <h1>All Tools</h1>
+    <p class="hub-sub">47 calculators for buying, financing, running and selling a car — each one explains its math, and the figures behind it link to their sources. Pick a category or search below.</p>
+    <div class="hub-jump" role="navigation" aria-label="Jump to a category">
+        <a href="#cat-buying-financing">Buying &amp; Financing<span>26</span></a>
+        <a href="#cat-running-costs">Running Costs<span>7</span></a>
+        <a href="#cat-ownership-value">Ownership &amp; Value<span>4</span></a>
+        <a href="#cat-business-tax">Business &amp; Tax<span>1</span></a>
+        <a href="#cat-trucks-towing">Trucks &amp; Towing<span>1</span></a>
+        <a href="#cat-repairs-reliability">Repairs &amp; Reliability<span>1</span></a>
+        <a href="#cat-moving-relocation">Moving &amp; Relocation<span>1</span></a>
+        <a href="#cat-accidents-claims">Accidents &amp; Claims<span>1</span></a>
+        <a href="#cat-car-light-living">Car-Light Living<span>2</span></a>
+        <a href="#cat-electric-vehicles">Electric Vehicles<span>2</span></a>
+        <a href="#cat-gig-rideshare">Gig &amp; Rideshare<span>1</span></a>
+    </div>
+  </div>
+</section>
 <div class="page">
-  <h1>All Tools</h1>
-  <p class="subtitle">Every free calculator on AutoCalcHub — no signup, no hidden fees.</p>
-  <p style="color:var(--mid);font-size:0.95rem;line-height:1.7;max-width:640px;margin:0.5rem 0 1.5rem;">These 21 calculators cover the full lifecycle of owning a car: figuring out what you can afford before you buy, comparing financing options, tracking what it actually costs to keep driving, and estimating what your car is worth when it's time to sell, trade in, or refinance. Each tool includes a plain-language explanation of the math behind it, so you're not just getting a number — you understand what's driving it and how to use it in a real decision.</p>
 
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
@@ -76,7 +107,7 @@
 
   <!-- BUYING & FINANCING -->
   <div class="category-section" id="section-financing">
-    <div class="category-header">🏦 Buying & Financing</div>
+    <div class="category-header" id="cat-buying-financing">🏦 Buying & Financing</div>
     <p style="color:var(--mid);font-size:0.9rem;line-height:1.6;max-width:640px;margin:-0.5rem 0 1rem;">Figure out your budget before you shop, then model the loan itself — payment size, down payment tradeoffs, refinancing, early payoff, and the extra risks that come with negative equity or a loan that's underwater.</p>
     <div class="blog-grid">
       <a href="cosigner-risk-calculator.html" class="blog-card" data-title="Cosigner Risk Calculator" data-tags="cosigner co-signer risk mortgage debt-to-income house repossession deficiency"><span class="blog-tag">Financing</span><h2>🏠 Cosigner Risk Calculator</h2><p>How much cosigning a car loan cuts your home budget, and what you could owe if the car is repossessed.</p></a>
@@ -110,7 +141,7 @@
 
   <!-- RUNNING COSTS -->
   <div class="category-section" id="section-running">
-    <div class="category-header">⛽ Running Costs</div>
+    <div class="category-header" id="cat-running-costs">⛽ Running Costs</div>
     <p style="color:var(--mid);font-size:0.9rem;line-height:1.6;max-width:640px;margin:-0.5rem 0 1rem;">The ongoing costs that don't show up on the sticker price — fuel, maintenance, and the full 5-year picture of what a car actually costs to keep on the road.</p>
     <div class="blog-grid">
       <a href="drop-full-coverage-calculator.html" class="blog-card" data-title="Drop Full Coverage Calculator" data-tags="insurance full coverage collision comprehensive drop older car 10x rule"><span class="blog-tag">Running Costs</span><h2>📉 Drop Full Coverage Calculator</h2><p>Is collision or comprehensive still worth it on your older car? The 10x test, max payout and the year it stops paying.</p></a>
@@ -125,7 +156,7 @@
 
   <!-- OWNERSHIP & VALUE -->
   <div class="category-section" id="section-value">
-    <div class="category-header">📉 Ownership & Value</div>
+    <div class="category-header" id="cat-ownership-value">📉 Ownership & Value</div>
     <p style="color:var(--mid);font-size:0.9rem;line-height:1.6;max-width:640px;margin:-0.5rem 0 1rem;">Track what a car is worth over time, whether you're checking depreciation on your current vehicle, pricing out a used car, or estimating a trade-in before you negotiate.</p>
     <div class="blog-grid">
       <a href="car-depreciation-calculator.html" class="blog-card" data-title="Car Depreciation Calculator" data-tags="depreciation value resale future worth"><span class="blog-tag">Ownership</span><h2>📉 Car Depreciation Calculator</h2><p>Calculate your car's value in 1, 3, or 5 years and see exactly how much it loses per year.</p></a>
@@ -137,39 +168,39 @@
 
   <!-- ELECTRIC VEHICLES -->
   <div class="category-section" id="section-ev">
-    <div class="category-header">💼 Business &amp; Tax</div>
+    <div class="category-header" id="cat-business-tax">💼 Business &amp; Tax</div>
     <div class="blog-grid">
       <a href="mileage-deduction-method-calculator.html" class="blog-card" data-title="Standard Mileage vs Actual Expenses Calculator" data-tags="business tax mileage deduction standard actual expenses section 179 depreciation irs"><span class="blog-tag">Business &amp; Tax</span><h2>💼 Standard Mileage vs Actual Expenses</h2><p>The first-year election is permanent. Compare both methods across five years, not just year one.</p></a>
     </div>
 
-    <div class="category-header">🛻 Trucks &amp; Towing</div>
+    <div class="category-header" id="cat-trucks-towing">🛻 Trucks &amp; Towing</div>
     <div class="blog-grid">
       <a href="truck-vs-rent-calculator.html" class="blog-card" data-title="Truck vs Rent Calculator" data-tags="trucks towing pickup rent haul breakeven fuel penalty ownership cost"><span class="blog-tag">Trucks &amp; Towing</span><h2>🛻 Do You Actually Need a Truck?</h2><p>What a pickup costs over a smaller vehicle, and how many rentals that premium buys.</p></a>
     </div>
 
-    <div class="category-header">🔧 Repairs &amp; Reliability</div>
+    <div class="category-header" id="cat-repairs-reliability">🔧 Repairs &amp; Reliability</div>
     <div class="blog-grid">
       <a href="repair-or-replace-car-calculator.html" class="blog-card" data-title="Repair or Replace Car Calculator" data-tags="repairs reliability repair replace 50% rule cost per month depreciation equity"><span class="blog-tag">Repairs &amp; Reliability</span><h2>🔧 Repair or Replace Calculator</h2><p>The 50% rule ignores what a replacement costs. Compare the true cost per month of each path.</p></a>
     </div>
 
-    <div class="category-header">🚚 Moving &amp; Relocation</div>
+    <div class="category-header" id="cat-moving-relocation">🚚 Moving &amp; Relocation</div>
     <div class="blog-grid">
       <a href="ship-car-vs-drive-calculator.html" class="blog-card" data-title="Ship a Car or Drive It Calculator" data-tags="moving relocation ship car auto transport drive breakeven time value"><span class="blog-tag">Moving &amp; Relocation</span><h2>🚚 Ship a Car or Drive It?</h2><p>Compare auto transport against driving it yourself — fuel, hotels, wear, the flight back, and what your time is worth.</p></a>
     </div>
 
-    <div class="category-header">🚨 Accidents &amp; Claims</div>
+    <div class="category-header" id="cat-accidents-claims">🚨 Accidents &amp; Claims</div>
     <div class="blog-grid">
       <a href="totaled-car-settlement-calculator.html" class="blog-card" data-title="Totaled Car Settlement Calculator" data-tags="accidents claims total loss settlement ACV salvage retention deductible gap"><span class="blog-tag">Accidents &amp; Claims</span><h2>🚨 Totaled Car Settlement Calculator</h2><p>See if your car meets the total loss threshold, what the payout is after your deductible, and whether keeping the salvage makes sense.</p></a>
     </div>
 
-    <div class="category-header">🚲 Car-Light Living</div>
+    <div class="category-header" id="cat-car-light-living">🚲 Car-Light Living</div>
     <p style="color:var(--mid);font-size:0.9rem;line-height:1.6;max-width:640px;margin:-0.5rem 0 1rem;">Whether your household needs a second car — or any car — priced against rideshare, transit and rentals.</p>
     <div class="blog-grid">
       <a href="second-car-cost-calculator.html" class="blog-card" data-title="Second Car Cost Calculator" data-tags="second car one car household sell rideshare"><span class="blog-tag">Car-Light</span><h2>🚗 Second Car Cost Calculator</h2><p>What the second car really costs against the rides, rentals and extra miles that would replace it.</p></a>
       <a href="car-vs-uber-calculator.html" class="blog-card" data-title="Car vs Uber Calculator" data-tags="uber lyft rideshare car-free own break-even"><span class="blog-tag">Car-Light</span><h2>🚕 Car vs Uber Calculator</h2><p>The number of trips a month where owning a car beats rideshare — financed or paid off.</p></a>
     </div>
 
-    <div class="category-header">⚡ Electric Vehicles</div>
+    <div class="category-header" id="cat-electric-vehicles">⚡ Electric Vehicles</div>
     <p style="color:var(--mid);font-size:0.9rem;line-height:1.6;max-width:640px;margin:-0.5rem 0 1rem;">Compare EV charging costs against gas, and see whether switching from a gas car to an electric vehicle actually pencils out for your driving habits and local electricity rates.</p>
     <div class="blog-grid">
       <a href="ev-charging-cost-calculator.html" class="blog-card" data-title="EV Charging Cost Calculator" data-tags="ev charging cost kWh home public"><span class="blog-tag">EV</span><h2>⚡ EV Charging Cost Calculator</h2><p>Calculate the cost to charge your electric vehicle at home or at a public charger.</p></a>
@@ -178,7 +209,7 @@
   </div>
 
   <div class="category-section" id="section-gig">
-    <div class="category-header">🚕 Gig &amp; Rideshare</div>
+    <div class="category-header" id="cat-gig-rideshare">🚕 Gig &amp; Rideshare</div>
     <p style="color:var(--mid);font-size:0.9rem;line-height:1.6;max-width:640px;margin:-0.5rem 0 1rem;">Buying a car for Uber, Lyft, DoorDash, or Instacart is a different decision than buying one for yourself — this tool compares buy vs rent vs lease on real cost per mile, not just monthly payment.</p>
     <div class="blog-grid">
       <a href="rideshare-car-cost-per-mile-calculator.html" class="blog-card" data-title="Rideshare Car Cost-Per-Mile Calculator" data-tags="rideshare uber lyft doordash cost per mile buy rent lease"><span class="blog-tag">Gig &amp; Rideshare</span><h2>🚕 Rideshare Car Cost-Per-Mile Calculator</h2><p>Compare buying, renting, and leasing for Uber, Lyft, or delivery driving on real cost per mile.</p></a>

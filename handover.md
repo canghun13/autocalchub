@@ -1711,6 +1711,13 @@ Bing 8/30에 **대형 SUV·트럭 오너 쿼리가 늘고 있었음**("gmc subur
 ### 검증
 - Playwright 1280/390 전체 스크린샷 확인: 가로 넘침 0, JS 오류 0, nav 1. 검증 스크립트 통과.
 
+### 후속 (같은 날): Most read 입체감 + 허브 2개 헤더 통일
+- 홈 "Most read": 남색 그라데이션 패널 + 흰 카드형 항목(번호 배지, 1위 주황, 호버 시 떠오름·화살표) 2열 그리드. 가이드 섹션 하단 여백 축소.
+- `tools/index.html`·`blog/index.html`: 홈과 같은 **남색 히어로 밴드**(태그·H1·설명·카테고리 이동 칩+개수) 추가. 각 `category-header`에 `id="cat-…"` 부여(칩 앵커). 툴 허브의 낡은 문구 "These 21 calculators…" 삭제. 블로그 H1 "Auto Blog" → "Car Money Guides".
+- ⚠️ 칩을 `<nav>`로 만들면 전역 헤더 `nav` 스타일이 먹어서 깨짐 → `<div class="hub-jump" role="navigation">` 사용.
+- **블로그 허브에서 빠져 있던 글 1개 발견·추가**: `what-is-a-good-car-payment-per-month.html`(Financing 섹션). 이제 93개 전부 허브에 있음.
+- ⚠️ 이후 신규 글/툴 추가 시 허브 히어로 숫자도 갱신: 툴 허브 `47 free calculators`·`47 calculators for…`·해당 칩 `<span>개수</span>`, 블로그 허브 `93 guides`(2곳)·해당 칩 개수.
+
 ## 9. GitHub 작업 방식 안내 (신규 세션 시작 시 참고)
 
 - 이 저장소는 사용자가 매 세션 GitHub Personal Access Token을 직접 발급해서 대화 중에 전달하는 방식으로 운영됨. 토큰이 없으면 clone은 되지만(public repo) push는 불가.
